@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import MenuBar from "@/components/MenuBar";
+import { Separator } from "@/components/ui/separator";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`flex flex-col  min-h-screen ${inter.className} dark:bg-zinc-950 mx-auto max-w-screen-lg`} >
+          <Navbar />
+          <Separator className="w-full mb-5 mx-auto rounded h-0.5"/>
+          <MenuBar/>
+          <main className="flex-grow container mx-auto p-4" >{children}</main>
+          <Footer />
+      </body>
     </html>
   );
 }
