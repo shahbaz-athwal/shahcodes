@@ -1,7 +1,8 @@
 "use client";
+import { motion } from "framer-motion";
 
 import { useEffect, useState } from "react";
-import { IconSun, IconMoon } from '@tabler/icons-react';
+import { IconSun, IconMoon } from "@tabler/icons-react";
 
 const ThemeToggle = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -14,11 +15,11 @@ const ThemeToggle = () => {
 
   useEffect(() => {
     if (darkMode) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
 
@@ -27,9 +28,17 @@ const ThemeToggle = () => {
   };
 
   return (
-    <button onClick={toggleTheme} className="p-2 bg-gray-800 text-white rounded-md dark:bg-zinc-100 dark:text-black">
-      {darkMode ? <IconSun /> : <IconMoon />}
-    </button>
+    <motion.div
+      whileHover={{ scale: 1.1 }}
+      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+    >
+      <button
+        onClick={toggleTheme}
+        className="p-2 bg-gray-800 text-white rounded-md dark:bg-gray-200 dark:text-black"
+      >
+        {darkMode ? <IconSun /> : <IconMoon />}
+      </button>
+    </motion.div>
   );
 };
 

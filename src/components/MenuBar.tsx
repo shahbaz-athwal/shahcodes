@@ -1,28 +1,55 @@
-"use client"
+"use client";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { useRouter } from "next/router";
-import { usePathname } from 'next/navigation'
+
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 function MenuBar() {
-
-
-
   const path = usePathname();
 
   return (
-    <div className="flex space-x-4 w-auto items-start mx-7">
+    <div className="flex space-x-4 w-auto justify-center md:justify-start">
       <Link href="/">
-        <Button  variant={path === '/' ? 'default' : 'outline'}>About</Button>
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+          <Button  variant={path === "/" ? "default" : "outline"}>About</Button>
+        </motion.div>
       </Link>
+
       <Link href="/techstack">
-        <Button variant={path === '/techstack' ? 'default' : 'outline'}>Tech Stack</Button>
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+          <Button variant={path === "/techstack" ? "default" : "outline"}>
+            Tech Stack
+          </Button>
+        </motion.div>
       </Link>
+
       <Link href="/mylife">
-        <Button variant={path === '/mylife' ? 'default' : 'outline'}>My Life</Button>
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+          <Button variant={path === "/mylife" ? "default" : "outline"}>
+            My Life
+          </Button>
+        </motion.div>
       </Link>
+
       <Link href="/contact">
-        <Button variant={path === '/contact' ? 'default' : 'outline'}>Contact</Button>
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+        >
+          <Button variant={path === "/contact" ? "default" : "outline"}>
+            Contact
+          </Button>
+        </motion.div>
       </Link>
     </div>
   );

@@ -1,13 +1,13 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -59,17 +59,23 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        'logo-cloud': {
-                 from: { transform: 'translateX(0)' },
-                 to: { transform: 'translateX(calc(-100% - 4rem))' },
-               },
+        "logo-cloud": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - 4rem))" },
+        },
+        "logo-cloud-reverse": {
+          from: { transform: "translateX(calc(-100% + 4rem))" },
+          to: { transform: "translateX(0)" }, 
+        },
       },
       animation: {
-        'logo-cloud': 'logo-cloud 30s linear infinite',
+        "logo-cloud": "logo-cloud 30s linear infinite",
+        "logo-cloud-reverse": "logo-cloud-reverse 30s linear infinite",
+
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;
