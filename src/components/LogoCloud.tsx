@@ -1,3 +1,25 @@
+import Image from "next/image";
+
+const logos = [
+  { src: "/logos/react.svg", alt: "React" },
+  { src: "/logos/docker.svg", alt: "Docker" },
+  { src: "/logos/java.svg", alt: "Java" },
+  { src: "/logos/prisma.svg", alt: "Prisma" },
+  { src: "/logos/github.svg", alt: "GitHub" },
+  { src: "/logos/azure.svg", alt: "Azure" },
+  { src: "/logos/jenkins.svg", alt: "Jenkins" },
+];
+
+const logosReverse = [
+  { src: "/logos/aws.svg", alt: "AWS" },
+  { src: "/logos/gcp.svg", alt: "GCP" },
+  { src: "/logos/git.svg", alt: "Git" },
+  { src: "/logos/sql.svg", alt: "SQL" },
+  { src: "/logos/ts.svg", alt: "TypeScript" },
+  { src: "/logos/node.svg", alt: "Node.js" },
+  { src: "/logos/next.svg", alt: "Next.js" },
+  { src: "/logos/py.svg", alt: "Python" },
+];
 
 const AnimatedLogoCloud = () => {
   return (
@@ -17,51 +39,17 @@ const AnimatedLogoCloud = () => {
                 key={index}
                 className="flex shrink-0 animate-logo-cloud flex-row justify-around gap-6"
               >
-                
-                <img
-                  key={1}
-                  src={"react.svg"}
-                  className="h-10 w-auto px-2  dark:invert"
-                  alt={"ts"}
-                />
-                <img
-                  key={1}
-                  src={"docker.svg"}
-                  className="h-12 w-auto px-2  dark:invert"
-                  alt={"ts"}
-                />
-               
-                <img
-                  key={1}
-                  src={"java.svg"}
-                  className="h-10 w-auto px-2  dark:invert"
-                  alt={"ts"}
-                />
-                <img
-                  key={1}
-                  src={"prisma.svg"}
-                  className="h-10 w-auto px-2  dark:invert"
-                  alt={"ts"}
-                />
-                <img
-                  key={1}
-                  src={"github.svg"}
-                  className="h-10 w-auto px-2  dark:invert"
-                  alt={"ts"}
-                />
-                <img
-                  key={1}
-                  src={"azure.svg"}
-                  className="h-10 w-auto px-2  dark:invert"
-                  alt={"ts"}
-                />
-            
-                <img
-                  key={1}
-                  src={"jenkins.svg"}
-                  className="h-10 w-auto px-2 brightness-0 dark:invert"
-                  alt={"ts"}
-                />
+                {logos.map((logo, index) => (
+                  <div key={index}>
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={40}
+                      height={40}
+                      className="dark:invert"
+                    />
+                  </div>
+                ))}
               </div>
             ))}
         </div>
@@ -82,58 +70,17 @@ const AnimatedLogoCloud = () => {
                 key={index}
                 className="flex shrink-0 animate-logo-cloud-reverse flex-row justify-around gap-6"
               >
-                <img
-                  key={1}
-                  src={"/aws.svg"}
-                  className="h-10 w-auto px-2 pt-2 brightness-0  dark:invert"
-                  alt={"aws"}
-                />
-                <img
-                  key={1}
-                  src={"/gcp.svg"}
-                  className="h-10 w-auto px-2 brightness-0  dark:invert"
-                  alt={"aws"}
-                />
-                 <img
-                  key={1}
-                  src={"git.svg"}
-                  className="h-10 w-auto px-2 brightness-0 dark:invert"
-                  alt={"ts"}
-                />
-            
-                
-                <img
-                  key={1}
-                  src={"sql.svg"}
-                  className="h-10 w-auto px-2  brightness-0 dark:invert"
-                  alt={"ts"}
-                />
-                <img
-                  key={1}
-                  src={"ts.svg"}
-                  className="h-10 w-auto px-2  brightness-0 dark:invert"
-                  alt={"ts"}
-                />
-                <img
-                  key={1}
-                  src={"node.svg"}
-                  className="h-10 w-auto px-2 brightness-0 dark:invert"
-                  alt={"ts"}
-                />
-                <img
-                  key={1}
-                  src={"/next.svg"}
-                  className="h-14 w-auto px-2 pb-4 brightness-0 dark:invert"
-                  alt={"ts"}
-                />
-                <img
-                  key={1}
-                  src={"py.svg"}
-                  className="h-10 w-auto px-2  brightness-0 dark:invert"
-                  alt={"ts"}
-                />
-                
-               
+                {logosReverse.map((logo, index) => (
+                  <div key={index}>
+                    <Image
+                      src={logo.src}
+                      alt={logo.alt}
+                      width={40}
+                      height={40}
+                      className="brightness-0 dark:invert"
+                    />
+                  </div>
+                ))}
               </div>
             ))}
         </div>
