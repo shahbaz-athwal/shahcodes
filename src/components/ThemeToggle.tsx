@@ -30,7 +30,8 @@ const ThemeToggle = () => {
   return (
     <motion.div
       whileHover={{ scale: 1.1 }}
-      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+      whileTap={{ scale: 0.97 }}
     >
       <button
         onClick={toggleTheme}

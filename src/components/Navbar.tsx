@@ -19,15 +19,10 @@ const Navbar = () => {
             FullStack Developer
           </p>
           <div className="flex space-x-4 mt-2">
-              <a href="#" aria-label="GitHub">
-            {/* <motion.div
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            > */}
-                <IconBrandGithub className="text-xl text-gray-700 dark:text-gray-300" />
-            {/* </motion.div> */}
-              </a>
-            <a href="#" aria-label="LinkedIn">
+            <a href="https://github.com/shahbaz-athwal" target="_blank" aria-label="GitHub">
+              <IconBrandGithub className="text-xl text-gray-700 dark:text-gray-300" />
+            </a>
+            <a href="https://www.linkedin.com/in/shahbaz-athwal/" target="_blank" aria-label="LinkedIn">
               <IconBrandLinkedin className="text-xl text-gray-700 dark:text-gray-300" />
             </a>
           </div>
