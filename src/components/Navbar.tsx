@@ -10,8 +10,8 @@ const Navbar = () => {
       <div className="flex">
         <div>
           <div className="mb-2">
-            <Avatar className="w-20 h-auto">
-              <AvatarImage src="https://github.com/shadcn.png" />
+            <Avatar className="w-24 h-auto">
+              <AvatarImage src="/profile.png" />
             </Avatar>
           </div>
           <h1 className="text-2xl font-bold ">Shahbaz Singh</h1>

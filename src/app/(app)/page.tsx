@@ -21,7 +21,7 @@ const ExperienceSection = () => {
             <div>
               <h3 className="flex text-md font-medium">
                 Bachelor of Computer Science
-                <div className="text-xs pt-1.5 italic pl-3">
+                <div className="text-xs pt-[5px] italic pl-3">
                   ( Sep 2022 - May 2026 )
                 </div>
               </h3>
@@ -43,7 +43,7 @@ const ExperienceSection = () => {
             <div>
               <h3 className="text-md flex font-medium">
                 Teaching Assistant
-                <div className="text-xs pt-1.5 italic pl-3">
+                <div className="text-xs pt-[5px] italic pl-3">
                   ( Jan 2023 - Current )
                 </div>
               </h3>
@@ -67,7 +67,7 @@ const ExperienceSection = () => {
             <div>
               <h3 className="text-md flex font-medium">
                 ICPC Programming Competetion
-                <div className="text-xs pt-1.5 italic pl-3">( Nov 2023 )</div>
+                <div className="text-xs pt-[5px] italic pl-3">( Nov 2023 )</div>
               </h3>
               <p className="text-sm dark:text-gray-300">
                 Participated in ICPC Northeast NA region
