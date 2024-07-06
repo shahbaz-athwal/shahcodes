@@ -1,10 +1,12 @@
-'use client'
+'use client';
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 const LocationComponent = () => {
- 
-  //@ts-ignore
-  const { country, city, region } = useSearchParams()
+  const searchParams = useSearchParams();
+  const country = searchParams.get('country') || 'Unknown Country';
+  const city = searchParams.get('city') || 'Unknown City';
+  const region = searchParams.get('region') || 'Unknown Region';
 
   return (
     <div>
@@ -15,4 +17,15 @@ const LocationComponent = () => {
     </div>
   );
 };
-export default LocationComponent;
+
+const IpPage = () => {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <LocationComponent />
+      </Suspense>
+    </div>
+  );
+};
+
+export default IpPage;
