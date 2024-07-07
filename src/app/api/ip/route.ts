@@ -1,12 +1,14 @@
 import { NextRequest } from "next/server";
+import axios from "axios";
 
-export function GET(request: NextRequest) {
-  const ip = request.headers.get("X-Forwarded-For");
-  const city = request.geo?.city || 'not found';
-  const country = request.geo?.country;
-  const region = request.geo?.region;
-  const lat = request.geo?.latitude;
-  const long = request.geo?.longitude;
-
-  return Response.json({ ip, city, country, region, lat, long });
+export async function GET(request: NextRequest) {
+  const ip = '152.59.82.64' //request.headers.get("X-Forwarded-For");
+  try {
+    const { data } = await axios.get(
+      `http://ip-api.com/json/${ip}?fields=status,message,country,countryCode,region,regionName,city,timezone,query`
+    );
+    return Response.json({ data }, { status: 200 });
+  } catch (error) {
+    return Response.json({ success: false }, { status: 400 });
+  }
 }

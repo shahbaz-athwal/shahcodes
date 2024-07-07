@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="flex">
         <div>
           <div className="mb-2">
-            <Avatar className="w-24 h-auto">
+            <Avatar className="w-28 h-auto grayscale">
               <AvatarImage src="/profile.png" />
             </Avatar>
           </div>

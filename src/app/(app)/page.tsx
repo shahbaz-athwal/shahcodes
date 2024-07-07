@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 const ExperienceSection = () => {
   return (
-    <div className="pt-8">
+    <div className="pt-8 text-justify">
       <p>
-        I am a third year Computer Science with nearly 2 years of experience in
-        Full Stack Development. Currently focusing on advanced Backend and
-        DevOps skills. Proficient with TypeScript, Node.js, Docker and AWS.
+        I am athird year Computer Science with nearly 2 years of experience in
+        Full Stack Development. Currently focusing on advanced Backend and{" "}
+        DevOps skills. Proficient with <strong>TypeScript</strong>,{" "}
+        <strong>Node.js</strong>, <strong>Docker</strong>, and{" "}
+        <strong>AWS</strong>.
       </p>
 
       <h2 className="text-lg font-semibold mt-14">Education</h2>
@@ -84,7 +86,7 @@ const ExperienceSection = () => {
             <div className="w-2 h-2 rounded-full dark:bg-gray-300 bg-zinc-600"></div>
             <div>
               <h3 className="flex text-md font-medium">Whisperella</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-300">
                 An Anonymous Messaging Platform
               </p>
             </div>
@@ -92,14 +94,14 @@ const ExperienceSection = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="rounded-lg shadow-lg overflow-hidden"
+            className="rounded-lg shadow-lg overflow-hidden dark:shadow-gray-600"
           >
             <Link href="/">
-            <Image
+              <Image
                 src="/projects/whisper.png"
                 alt="FindMyJob Project"
-                width={1000} 
-                height={600} 
+                width={1000}
+                height={600}
                 className="w-full"
               />
             </Link>
@@ -111,7 +113,7 @@ const ExperienceSection = () => {
             <div className="w-2 h-2 rounded-full dark:bg-gray-300 bg-zinc-600"></div>
             <div>
               <h3 className="flex text-md font-medium">FindMyJob</h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600 dark:text-gray-300">
                 A Two Way Job Application Portal
               </p>
             </div>
@@ -119,14 +121,14 @@ const ExperienceSection = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="rounded-lg shadow-lg overflow-hidden"
+            className="rounded-lg shadow-lg overflow-hidden dark:shadow-gray-600"
           >
             <Link href="/">
               <Image
                 src="/projects/findmyjob.png"
                 alt="FindMyJob Project"
-                width={1000} 
-                height={600} 
+                width={1000}
+                height={600}
                 className="w-full"
               />
             </Link>
