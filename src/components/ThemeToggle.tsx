@@ -28,18 +28,20 @@ const ThemeToggle = () => {
   };
 
   return (
-    <motion.div
-      whileHover={{ scale: 1.1 }}
-      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-      whileTap={{ scale: 0.97 }}
-    >
-      <button
-        onClick={toggleTheme}
-        className="p-2 bg-gray-800 text-white rounded-md dark:bg-gray-200 dark:text-black"
+    <div>
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        whileTap={{ scale: 0.97 }}
       >
-        {darkMode ? <IconSun /> : <IconMoon />}
-      </button>
-    </motion.div>
+        <button
+          onClick={toggleTheme}
+          className="p-2 bg-gray-800 text-white rounded-md dark:bg-gray-200 dark:text-black"
+        >
+          {darkMode ? <IconSun /> : <IconMoon />}
+        </button>
+      </motion.div>
+    </div>
   );
 };
 
