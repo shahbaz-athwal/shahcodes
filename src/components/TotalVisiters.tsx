@@ -12,8 +12,8 @@ async function recordVisitCount() {
   const hashedIp = crypto.createHash("sha256").update(ip).digest("hex");
 
   const viewKey = 'totalVisits'
-  const ipViewKey = ["ip", hashedIp].join(":");
-//   const ipViewKey = ["ip", ip].join(":"); //DEV ONLY
+  // const ipViewKey = ["ip", hashedIp].join(":");
+  const ipViewKey = ["ip", ip].join(":"); //DEV ONLY
 
   const hasVisited = await redis.get(ipViewKey);
 

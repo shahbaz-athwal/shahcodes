@@ -6,7 +6,7 @@ const ExperienceSection = () => {
   return (
     <div className="pt-8 text-justify">
       <p>
-        I am athird year Computer Science with nearly 2 years of experience in
+        I am a third year Computer Science with nearly 2 years of experience in
         Full Stack Development. Currently focusing on advanced Backend and{" "}
         DevOps skills. Proficient with <strong>TypeScript</strong>,{" "}
         <strong>Node.js</strong>, <strong>Docker</strong>, and{" "}
@@ -21,7 +21,7 @@ const ExperienceSection = () => {
               className={"w-2 h-2 rounded-full dark:bg-gray-300 bg-zinc-600"}
             ></div>
             <div>
-              <h3 className="flex text-md font-medium">
+              <h3 className="flex text-md">
                 Bachelor of Computer Science
                 <div className="text-xs pt-[5px] italic pl-3">
                   ( Sep 2022 - May 2026 )
@@ -43,7 +43,7 @@ const ExperienceSection = () => {
               className={"w-2 h-2 rounded-full dark:bg-gray-300 bg-zinc-600"}
             ></div>
             <div>
-              <h3 className="text-md flex font-medium">
+              <h3 className="text-md flex">
                 Teaching Assistant
                 <div className="text-xs pt-[5px] italic pl-3">
                   ( Jan 2023 - Current )
@@ -67,7 +67,7 @@ const ExperienceSection = () => {
               className={"w-2 h-2 rounded-full dark:bg-gray-300 bg-zinc-600"}
             ></div>
             <div>
-              <h3 className="text-md flex font-medium">
+              <h3 className="text-md flex">
                 ICPC Programming Competetion
                 <div className="text-xs pt-[5px] italic pl-3">( Nov 2023 )</div>
               </h3>

@@ -10,7 +10,7 @@ const MenuItem = ({ href, path, label }: any) => (
       whileHover={{ scale: 1.07 }}
       whileTap={{ scale: 0.97 }}
     >
-      <Button variant={path === href ? "default" : "outline"}>{label}</Button>
+      <Button className="text-[13px] sm:text-sm" variant={path === href ? "default" : "outline"}>{label}</Button>
     </motion.div>
   </Link>
 );
@@ -19,7 +19,7 @@ function MenuBar() {
   const path = usePathname();
 
   return (
-    <div className="flex space-x-4 w-auto justify-center md:justify-start">
+    <div className="flex space-x-4 w-auto justify-start">
       <MenuItem href="/" path={path} label="About" />
       <MenuItem href="/techstack" path={path} label="Tech Stack" />
       <MenuItem href="/mylife" path={path} label="My Life" />

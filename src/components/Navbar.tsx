@@ -10,10 +10,10 @@ const Navbar = () => {
       <div>
         <div className="mb-2">
           <Avatar className="w-28 h-auto grayscale">
-            <AvatarImage src="/profile.png" />
+            <AvatarImage src="/profile.png" className="scale-110" />
           </Avatar>
         </div>
-        <h1 className="text-2xl font-bold ">Shahbaz Singh</h1>
+        <h1 className="text-2xl font-bold">Shahbaz Singh</h1>
         <p className="text-gray-900 dark:text-gray-100">FullStack Developer</p>
         <div className="flex space-x-4 mt-2">
           <a
@@ -32,7 +32,7 @@ const Navbar = () => {
           </a>
         </div>
       </div>
-      <div className="flex text-[15px] font-mono space-x-4">
+      <div className="flex text-[15px] font-mono space-x-3">
         <Suspense fallback={<div className="blur-md">Total Visiters: X</div>}>
           <TotalVisits />
         </Suspense>
