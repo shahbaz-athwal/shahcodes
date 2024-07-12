@@ -36,7 +36,7 @@ const ThemeToggle = () => {
       >
         <button
           onClick={toggleTheme}
-          className="p-2 bg-gray-800 text-white rounded-md dark:bg-gray-200 dark:text-black"
+          className="p-[6px] sm:p-2 bg-gray-800 text-white rounded-md dark:bg-gray-200 dark:text-black"
         >
           {darkMode ? <IconSun /> : <IconMoon />}
         </button>

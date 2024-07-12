@@ -1,15 +1,8 @@
 import Image from "next/image";
-import { Suspense } from "react";
-import { LocationData } from "./LocationData";
 
 const Footer = () => {
   return (
     <footer className="flex flex-col text-sm items-center mt-32">
-      <Suspense
-        fallback={<div className="blur-md">Last visit from: sdasd asdasd asdasd</div>}
-      >
-        <LocationData />
-      </Suspense>
       <Image
         width={40}
         height={40}
