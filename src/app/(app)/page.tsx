@@ -5,7 +5,7 @@ import Image from "next/image";
 const ExperienceSection = () => {
   return (
     <div className="pt-6">
-      <p className="text-base sm:text-[17px] leading-relaxed">
+      <p className="text-base text-justify sm:text-[17px] leading-relaxed">
         I am a third-year Computer Science student with nearly 2 years of
         experience in Full Stack Development. Currently, I am focusing on
         advanced Backend and DevOps skills. Proficient with{" "}
@@ -36,7 +36,7 @@ const ExperienceSection = () => {
       <h2 className="text-2xl sm:text-3xl font-extrabold mt-10">Experience</h2>
       <div className="mt-8 space-y-4 ml-2">
         <div className="flex items-center space-x-4">
-          <div className="w-2 h-2 rounded-full mb-6 sm:mb-0 flex-shrink-0 bg-zinc-600 dark:bg-gray-300"></div>
+          <div className="w-2 h-2 rounded-full mb-10 sm:mb-0 flex-shrink-0 bg-zinc-600 dark:bg-gray-300"></div>
           <div>
             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
               <h3 className="text-[17px] sm:text-lg font-medium">

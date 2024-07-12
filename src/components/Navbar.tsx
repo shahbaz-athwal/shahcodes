@@ -37,7 +37,7 @@ const Navbar = () => {
         <div>
           <ThemeToggle />
         </div>
-        <div className="flex flex-col items-end max-w-36 sm:max-w-full">
+        <div className="flex flex-col items-end">
           <Suspense fallback={<div className="blur-md">Total Visits: X</div>}>
             <TotalVisits />
           </Suspense>

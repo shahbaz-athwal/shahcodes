@@ -19,7 +19,7 @@ function MenuBar() {
   const path = usePathname();
 
   return (
-    <div className="flex justify-start flex-wrap w-auto">
+    <div className="flex justify-center sm:justify-start flex-wrap w-auto">
       <MenuItem href="/" path={path} label="About" />
       <MenuItem href="/techstack" path={path} label="Tech Stack" />
       <MenuItem href="/blog" path={path} label="Blogs" />

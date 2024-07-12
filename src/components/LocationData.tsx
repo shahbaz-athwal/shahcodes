@@ -28,7 +28,8 @@ export const LocationData = async () => {
     <>
     <div>Last Visit From:</div>
     <div>
-     {" "} {city}, {regionName}
+     {/* {" "} {city}, {regionName} */}
+     San jose, California
     </div>
     </>
   );
