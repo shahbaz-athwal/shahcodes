@@ -3,6 +3,7 @@ import ThemeToggle from "./ThemeToggle";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import TotalVisits from "./TotalVisiters";
 import { Suspense } from "react";
+import { LocationData } from "./LocationData";
 
 const Navbar = () => {
   return (
@@ -32,11 +33,25 @@ const Navbar = () => {
           </a>
         </div>
       </div>
-      <div className="flex text-[15px] font-mono space-x-3">
-        <Suspense fallback={<div className="blur-md">Total Visiters: X</div>}>
-          <TotalVisits />
-        </Suspense>
-        <ThemeToggle />
+      <div className="flex flex-col direction-normal justify-between items-end text-[15px] font-mono">
+        <div>
+          <ThemeToggle />
+        </div>
+        <div className="flex flex-col items-end max-w-36 sm:max-w-full">
+          <Suspense fallback={<div className="blur-md">Total Visits: X</div>}>
+            <TotalVisits />
+          </Suspense>
+          <Suspense
+            fallback={
+              <div>
+                <div className="blur-md">Last visit from:</div>
+                <div className="blur-md">sdasd asdasd</div>
+              </div>
+            }
+          >
+            <LocationData />
+          </Suspense>
+        </div>
       </div>
     </nav>
   );

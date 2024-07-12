@@ -36,7 +36,7 @@ async function recordVisitCount() {
 const TotalViews = async () => {
   const { visits } = await recordVisitCount();
 
-  return <div>Total Visiters: {visits}</div>;
+  return <div>Total Visits: {visits}</div>;
 };
 
 export default TotalViews;

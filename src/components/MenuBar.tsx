@@ -22,7 +22,7 @@ function MenuBar() {
     <div className="flex space-x-4 w-auto justify-start">
       <MenuItem href="/" path={path} label="About" />
       <MenuItem href="/techstack" path={path} label="Tech Stack" />
-      <MenuItem href="/mylife" path={path} label="My Life" />
+      <MenuItem href="/blog" path={path} label="Blogs" />
       <MenuItem href="/contact" path={path} label="Contact" />
     </div>
   );
