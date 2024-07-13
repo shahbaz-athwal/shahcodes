@@ -92,7 +92,7 @@ const ExperienceSection = () => {
             whileTap={{ scale: 0.95 }}
             className="rounded-lg shadow-lg overflow-hidden dark:shadow-gray-600"
           >
-            <Link href="/">
+            <Link href="https://whisperella.shahcodes.in" target="_blank">
               <Image
                 src="/projects/whisper.png"
                 alt="Whisperella Project"
@@ -119,7 +119,7 @@ const ExperienceSection = () => {
             whileTap={{ scale: 0.95 }}
             className="rounded-lg shadow-lg overflow-hidden dark:shadow-gray-600"
           >
-            <Link href="/">
+            <Link href="https://find-my-job.vercel.app/" target="_blank">
               <Image
                 src="/projects/findmyjob.png"
                 alt="FindMyJob Project"
