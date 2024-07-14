@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MenuBar from "@/components/MenuBar";
 import { Separator } from "@/components/ui/separator";
-import BackgroundDots from "@/components/BackgroundDots";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +30,6 @@ export default function RootLayout({
           </div>
             <Footer />
         </main>
-        {/* <BackgroundDots/> */}
       </body>
     </html>
   );
