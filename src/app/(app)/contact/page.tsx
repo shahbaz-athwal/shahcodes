@@ -61,10 +61,10 @@ function Page() {
   }
 
   return (
-    <div className="mt-8 mx-2">
-      <main className="px-2">
+    <div className="mx-3">
+      <div>
         <PageHeader title="Contact" />
-        <section className="pb-8">
+        <section className="py-8">
           <p className="text-lg mb-4">
             If you&apos;d like to get in touch, you can reach me using the
             following methods. I am open to freelance projects and
@@ -78,7 +78,7 @@ function Page() {
                   <Title as="h2" variant="tertiary">
                     {contactMethod.method}
                   </Title>
-                  <Link href={contactMethod.link} className="text-slate-700">
+                  <Link href={contactMethod.link} className="text-zinc-600 dark:text-zinc-500">
                     {contactMethod.label}
                   </Link>
                 </div>
@@ -86,7 +86,7 @@ function Page() {
             })}
           </div>
         </section>
-      </main>
+      </div>
 
       <div className="flex justify-center items-center">
         <Separator className="my-4 rounded h-[0.150rem] w-5/12" />

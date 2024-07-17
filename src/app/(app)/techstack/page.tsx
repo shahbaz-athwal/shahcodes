@@ -1,13 +1,12 @@
 import AnimatedLogoCloud from "@/components/LogoCloud";
+import { PageHeader } from "@/components/ui/page-header";
 
 function Page() {
   return (
-    <div className="container mt-4 p-2 dark:text-gray-300">
-      <section className="text-justify mb-8">
-      <h1 className="scroll-m-20 text-3xl mb-8 font-extrabold tracking-tight lg:text-4xl">
-        My Tech Stack
-      </h1>
-        <p className="text-[17px]">
+    <div className="mx-3">
+      <section className="text-justify mb-6">
+      <PageHeader title="My Tech Stack" />
+        <p className="text-[17px] mt-8">
           I create web applications using <strong>Next.js</strong> and also work
           with <strong>React</strong> combined with <strong>Express</strong> in{" "}
           <strong>TypeScript</strong>. I practice Data Structures and Algorithms
