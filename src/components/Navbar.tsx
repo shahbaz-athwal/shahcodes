@@ -1,9 +1,9 @@
 import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 import ThemeToggle from "./ThemeToggle";
 import { Avatar, AvatarImage } from "./ui/avatar";
-import TotalVisits from "./TotalVisiters";
 import { Suspense } from "react";
 import { LocationData } from "./LocationData";
+// import TotalVisits from "./TotalVisiters";
 
 const Navbar = () => {
   return (
@@ -15,7 +15,9 @@ const Navbar = () => {
           </Avatar>
         </div>
         <h1 className="text-xl sm:text-2xl font-medium">Shahbaz Singh</h1>
-        <p className="text-sm sm:text-base text-gray-900 dark:text-gray-100">FullStack Developer</p>
+        <p className="text-sm sm:text-base text-gray-900 dark:text-gray-100">
+          FullStack Developer
+        </p>
         <div className="flex space-x-4 mt-2">
           <a
             href="https://github.com/shahbaz-athwal"
@@ -33,14 +35,14 @@ const Navbar = () => {
           </a>
         </div>
       </div>
-      <div className="flex flex-col direction-normal justify-between items-end text-[14px] sm:text-[15px] font-mono">
+      <div className="flex flex-col direction-normal justify-between items-end text-[13px] sm:text-[15px]">
         <div>
           <ThemeToggle />
         </div>
-        <div className="flex flex-col items-end">
-          <Suspense fallback={<div className="blur-md">Total Visits: X</div>}>
+        <div className="flex flex-col items-end font-[350] text-zinc-500">
+          {/* <Suspense fallback={<div className="blur-md">Total Visits: X</div>}>
             <TotalVisits />
-          </Suspense>
+          </Suspense> */}
           <Suspense
             fallback={
               <div>
