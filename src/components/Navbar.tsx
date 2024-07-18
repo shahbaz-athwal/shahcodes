@@ -10,7 +10,7 @@ const Navbar = () => {
     <nav className="w-full justify-between flex dark:text-gray-200">
       <div>
         <div className="mb-2">
-          <Avatar className="w-24 sm:w-28 h-auto grayscale">
+          <Avatar className="w-[85px] sm:w-28 h-auto grayscale">
             <AvatarImage src="/profile.png" className="scale-110" />
           </Avatar>
         </div>
@@ -39,7 +39,7 @@ const Navbar = () => {
         <div>
           <ThemeToggle />
         </div>
-        <div className="flex flex-col items-end font-[350] text-zinc-500">
+        <div className="flex flex-col items-end font-[350] text-zinc-700 dark:text-zinc-300">
           {/* <Suspense fallback={<div className="blur-md">Total Visits: X</div>}>
             <TotalVisits />
           </Suspense> */}

@@ -34,7 +34,7 @@ const ExperienceSection = () => {
       />
 
       <PageHeader title="Projects" />
-      <div className="space-y-8 mx-2 mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="space-y-8 mx-2 mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 bg">
         <ProjectCard
           title="Whisperella"
           description="An Anonymous Messaging Platform"
