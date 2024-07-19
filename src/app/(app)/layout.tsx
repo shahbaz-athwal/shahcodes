@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MenuBar from "@/components/MenuBar";
 import { Separator } from "@/components/ui/separator";
-import { AuroraBackground } from "@/components/ui/aurora-background";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +21,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AuroraBackground>
           <main className="flex items-center justify-between w-full flex-col p-3 md:p-6 min-h-screen">
             <div className={"w-full max-w-3xl"}>
               <Navbar />
@@ -32,7 +30,6 @@ export default function RootLayout({
             </div>
             <Footer />
           </main>
-        </AuroraBackground>
       </body>
     </html>
   );
