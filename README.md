@@ -1,2 +1,6 @@
 This is my portfolio website. 
-- Build with **Next.js**
+- Built with **Next.js** and **Redis**
+- Minimalist Design
+- Vibe Zone
+- See cursors of all live viewers
+  
