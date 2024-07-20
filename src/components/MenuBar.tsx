@@ -27,6 +27,7 @@ function MenuBar() {
       <MenuItem href="/" path={path} label="About" />
       <MenuItem href="/techstack" path={path} label="Tech Stack" />
       <MenuItem href="/blog" path={path} label="Blogs" />
+      <MenuItem href="/vibezone" path={path} label="Vibe Zone" />
       <MenuItem href="/contact" path={path} label="Contact" />
     </div>
   );
