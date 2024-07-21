@@ -65,7 +65,7 @@ const config = {
         },
         "logo-cloud-reverse": {
           from: { transform: "translateX(calc(-100% + 4rem))" },
-          to: { transform: "translateX(0)" }, 
+          to: { transform: "translateX(0)" },
         },
       },
       animation: {
@@ -74,7 +74,30 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addBase }: any) {
+      const scrollbarStyles = {
+        "::-webkit-scrollbar": {
+          width: "20px",
+        },
+        "::-webkit-scrollbar-track": {
+          backgroundColor: "transparent",
+        },
+        "::-webkit-scrollbar-thumb": {
+          backgroundColor: "#d6dee1",
+          borderRadius: "20px",
+          border: "6px solid transparent",
+          backgroundClip: "content-box",
+        },
+        "::-webkit-scrollbar-thumb:hover": {
+          backgroundColor: "#a8bbbf",
+        },
+      };
+
+      addBase(scrollbarStyles);
+    },
+  ],
 } satisfies Config;
 
 export default config;
