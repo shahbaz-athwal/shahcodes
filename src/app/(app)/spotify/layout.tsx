@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SpotifyProvider } from "@/hooks/useSpotify";
 
 export const metadata: Metadata = {
-  title: "Spotify | Shahbaz Singh",
+  title: "Spotify - Shahbaz Singh",
   description: "What am I listening?",
 };
 
