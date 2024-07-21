@@ -27,8 +27,8 @@ const Player = () => {
   }, [listening]);
 
   return (
-    <div className="py-12 mx-4 md:mx-0">
-      <h1 className="font-semibold text-2xl leading-tight pb-6">
+    <div className="py-10 mx-4 md:mx-0">
+      <h1 className="font-bold text-2xl leading-tight pb-6">
         Currently Playing
       </h1>
       <div className="bg-zinc-800 p-4 rounded-lg shadow-lg dark:shadow-zinc-900">

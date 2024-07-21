@@ -3,10 +3,10 @@ import { PageHeader } from "@/components/ui/page-header";
 
 function Page() {
   return (
-    <div className="p-2">
+    <div className="p-1">
       <section className="mb-6">
       <PageHeader title="My Tech Stack" />
-        <p className="text-[17px] mt-8">
+        <p className="text-base sm:text-[17px] mt-8 leading-relaxed">
           I create web applications using <strong>Next.js</strong> and also work
           with <strong>React</strong> combined with <strong>Express</strong> in{" "}
           <strong>TypeScript</strong>. I practice Data Structures and Algorithms
