@@ -4,8 +4,8 @@ import { InformationCard } from "@/components/ui/informationCard";
 import ProjectCard from "@/components/ui/projectCard";
 const ExperienceSection = () => {
   return (
-    <div className="p-3">
-      <p className="text-base text-justify sm:text-[17px] leading-relaxed my-8">
+    <div className="p-2">
+      <p className="text-base sm:text-[17px] leading-relaxed mt-6 mb-12">
         I am a third-year Computer Science student with nearly 2 years of
         experience in Full Stack Development. Currently, I am focusing on
         advanced Backend and DevOps skills. Proficient with{" "}

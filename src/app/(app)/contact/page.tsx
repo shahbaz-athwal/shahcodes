@@ -61,7 +61,7 @@ function Page() {
   }
 
   return (
-    <div className="mx-3">
+    <div className="p-2">
       <div>
         <PageHeader title="Contact" />
         <section className="py-8">

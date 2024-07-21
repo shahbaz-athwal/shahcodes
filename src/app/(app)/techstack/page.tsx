@@ -3,8 +3,8 @@ import { PageHeader } from "@/components/ui/page-header";
 
 function Page() {
   return (
-    <div className="mx-3">
-      <section className="text-justify mb-6">
+    <div className="p-2">
+      <section className="mb-6">
       <PageHeader title="My Tech Stack" />
         <p className="text-[17px] mt-8">
           I create web applications using <strong>Next.js</strong> and also work
