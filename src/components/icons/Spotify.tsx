@@ -1,4 +1,4 @@
-export default function Spotify({ size, color, ...props }: any) {
+export default function Spotify() {
 
   return (
     <svg
