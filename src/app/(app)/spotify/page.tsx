@@ -1,41 +1,22 @@
-"use client";
-import { currentlyPlaying } from "@/app/actions/currentlyPlaying";
-import { recentlyPlayed } from "@/app/actions/recentlyPlayed";
-import Player from "@/components/Player";
-import RecentlyPlayed from "@/components/RecentlyPlayed";
-import { useSpotify } from "@/hooks/useSpotify";
-import { SpotifyPlayedItem } from "@/types/recentlyPlayed";
-import React, { useEffect, useState } from "react";
-import useSWR from "swr";
+import { Metadata } from "next";
+import { SpotifyPlayer } from "./SpotifyPlayer";
+import RenderedRecentlyPlayed from "./RenderedRecentlyPlayed";
+import { SpotifyProvider } from "@/hooks/useSpotify";
 
-const Page = () => {
-  const { setSpotifyListening } = useSpotify();
+export const metadata: Metadata = {
+  title: "Spotify - Shahbaz Singh",
+  description: "What am I listening?",
+};
 
-  const [recentPlays, setRecentPlays] = useState<SpotifyPlayedItem[] | null>(null);
-
-  useEffect(() => {
-    const fetchRecentlyPlayed = async () => {
-      const data = await recentlyPlayed();
-      setRecentPlays(data);
-    };
-
-    fetchRecentlyPlayed();
-  }, []);
-
-  const fetcher = async () => {
-    const data = await currentlyPlaying();
-    setSpotifyListening(data);
-  };
-
-  useSWR("/spotify", fetcher, {
-    refreshInterval: 5 * 1000,
-  });
-
+const Page = async () => {
   return (
-    <div>
-      <Player />
-      {recentPlays && <RecentlyPlayed recentPlays={recentPlays} />}
-    </div>
+    <>
+      <SpotifyProvider>
+        <SpotifyPlayer />
+      </SpotifyProvider>
+
+      <RenderedRecentlyPlayed />
+    </>
   );
 };
 

@@ -14,9 +14,7 @@ export default function Spotify() {
       <g
         id="Icons"
         stroke="none"
-        stroke-width="1"
         fill="none"
-        fill-rule="evenodd"
       >
         <g
           id="Color-"
