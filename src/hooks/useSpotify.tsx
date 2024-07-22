@@ -1,25 +1,47 @@
-'use client';
+"use client";
 
-import { SpotifyListeningItem } from '@/types/listening';
-import React, { useCallback, useMemo, useContext, useReducer } from 'react';
+import { SpotifyListeningItem } from "@/types/listening";
+import React, {
+  useCallback,
+  useMemo,
+  useContext,
+  useReducer,
+  ReactNode,
+} from "react";
 
+// Interfaces
 interface SpotifyState {
-    listening: SpotifyListeningItem;
+  listening: SpotifyListeningItem;
+}
+
+interface SpotifyAction {
+  type: string;
+  payload: SpotifyListeningItem;
+}
+
+interface SpotifyContextProps extends SpotifyState {
+  setSpotifyListening: (payload: SpotifyListeningItem) => void;
+}
+
+interface SpotifyProviderProps {
+  children: ReactNode;
 }
 
 // Initial State
-  export const initialState: SpotifyState = {
-    listening: {},
-  };
+export const initialState: SpotifyState = {
+  listening: {} as SpotifyListeningItem,
+};
 
 // Action Types
 export const types = {
-  SET_SPOTIFY_LISTENING: 'SET_SPOTIFY_LISTENING',
+  SET_SPOTIFY_LISTENING: "SET_SPOTIFY_LISTENING",
 };
 
 // Reducer Function
-// @ts-ignore
-export const reducer = (state, action) => {
+export const reducer = (
+  state: SpotifyState,
+  action: SpotifyAction
+): SpotifyState => {
   switch (action.type) {
     case types.SET_SPOTIFY_LISTENING:
       return {
@@ -32,20 +54,22 @@ export const reducer = (state, action) => {
 };
 
 // Context Creation
-export const SpotifyContext = React.createContext(initialState);
-SpotifyContext.displayName = 'SpotifyContext';
+export const SpotifyContext = React.createContext<
+  SpotifyContextProps | undefined
+>(undefined);
+SpotifyContext.displayName = "SpotifyContext";
 
 // Context Provider Component
-// @ts-ignore
-export const SpotifyProvider = (props) => {
+export const SpotifyProvider: React.FC<SpotifyProviderProps> = ({
+  children,
+}) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // Spotify Action
-  
   const setSpotifyListening = useCallback(
-// @ts-ignore
-    (payload) => dispatch({ type: types.SET_SPOTIFY_LISTENING, payload }),
-    [dispatch],
+    (payload: SpotifyListeningItem) =>
+      dispatch({ type: types.SET_SPOTIFY_LISTENING, payload }),
+    [dispatch]
   );
 
   // Value Memoization
@@ -54,20 +78,21 @@ export const SpotifyProvider = (props) => {
       ...state,
       setSpotifyListening,
     }),
-    [state, setSpotifyListening],
+    [state, setSpotifyListening]
   );
 
-  return <SpotifyContext.Provider value={value} {...props} />;
+  return (
+    <SpotifyContext.Provider value={value}>{children}</SpotifyContext.Provider>
+  );
 };
 
 // Custom Hook for Using Spotify Context
-export const useSpotify = () => {
+export const useSpotify = (): SpotifyContextProps => {
   const context = useContext(SpotifyContext);
 
   if (!context) {
-    throw new Error('useSpotify must be used within a SpotifyProvider');
+    throw new Error("useSpotify must be used within a SpotifyProvider");
   }
 
   return context;
 };
-

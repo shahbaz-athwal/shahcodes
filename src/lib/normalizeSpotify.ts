@@ -1,4 +1,6 @@
-export const normalizeCurrentlyListening = ({ is_playing, progress_ms, item }: any) => ({
+import { SpotifyListeningItem } from "@/types/listening";
+
+export const normalizeCurrentlyListening = ({ is_playing, progress_ms, item }: any): SpotifyListeningItem => ({
     id: item.id,
     isPlaying: is_playing,
     title: item.name,

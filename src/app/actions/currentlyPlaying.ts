@@ -6,7 +6,7 @@ export const currentlyPlaying = async () => {
     const {status, data} = await getCurrentlyListening();
 
     if (status === 204 || status > 400) {
-        return { is_playing: false }
+        return { isPlaying: false }
       }
 
     return normalizeCurrentlyListening(data)

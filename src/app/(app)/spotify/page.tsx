@@ -6,7 +6,7 @@ import React from "react";
 import useSWR from "swr";
 
 const YourComponent = () => {
-  // @ts-ignore
+  
   const { setSpotifyListening } = useSpotify();
 
   const fetcher = async () => {
