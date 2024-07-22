@@ -38,8 +38,8 @@ export const getCurrentlyListening = async () => {
 };
 
 export const getRecentlyPlayed = async () => {
-  const limit = 20; // config.number; // max 33 tracks
-  const before = new Date().getTime(); // now() - 1 hour
+  const limit = 10;
+  const before = new Date().getTime();
   // @ts-ignore
   const params = new URLSearchParams({
     limit,

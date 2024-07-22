@@ -2,6 +2,7 @@
 import { currentlyPlaying } from "@/app/actions/currentlyPlaying";
 import { recentlyPlayed } from "@/app/actions/recentlyPlayed";
 import Player from "@/components/Player";
+import RecentlyPlayed from "@/components/RecentlyPlayed";
 import { useSpotify } from "@/hooks/useSpotify";
 import { SpotifyPlayedItem } from "@/types/recentlyPlayed";
 import React, { useEffect, useState } from "react";
@@ -33,14 +34,7 @@ const Page = () => {
   return (
     <div>
       <Player />
-      <div>
-      {recentPlays?.map((item) => (
-        <div key={item.playedAt}>
-          <p>{item.title}</p>
-          <p>{item.playedAt}</p>
-        </div>
-      ))}
-    </div>
+      {recentPlays && <RecentlyPlayed recentPlays={recentPlays} />}
     </div>
   );
 };
