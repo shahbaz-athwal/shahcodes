@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { contact } from "@/app/actions/contact";
 import { Textarea } from "@/components/ui/textarea";
 import { contactSchema } from "@/schema/contactSchema";
-import { PageHeader } from "@/components/ui/page-header";
+import { Header } from "@/components/ui/topicHeader";
 import { Title } from "@/components/ui/title";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
@@ -63,7 +63,7 @@ function Page() {
   return (
     <div className="p-1">
       <div>
-        <PageHeader title="Contact" />
+        <Header title="Contact" />
         <section className="py-8">
           <p className="text-lg mb-4">
             If you&apos;d like to get in touch, you can reach me using the

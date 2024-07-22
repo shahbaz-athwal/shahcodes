@@ -1,11 +1,11 @@
 import AnimatedLogoCloud from "@/components/LogoCloud";
-import { PageHeader } from "@/components/ui/page-header";
+import { Header } from "@/components/ui/topicHeader";
 
 function Page() {
   return (
     <div className="p-1">
       <section className="mb-6">
-      <PageHeader title="My Tech Stack" />
+      <Header title="My Tech Stack" />
         <p className="text-base sm:text-[17px] mt-8 leading-relaxed">
           I create web applications using <strong>Next.js</strong> and also work
           with <strong>React</strong> combined with <strong>Express</strong> in{" "}

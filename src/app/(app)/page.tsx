@@ -1,5 +1,5 @@
 "use client";
-import { PageHeader } from "@/components/ui/page-header";
+import { Header } from "@/components/ui/topicHeader";
 import { InformationCard } from "@/components/ui/informationCard";
 import ProjectCard from "@/components/ui/projectCard";
 const ExperienceSection = () => {
@@ -15,7 +15,7 @@ const ExperienceSection = () => {
 
       <div className="space-y-12">
         <div>
-          <PageHeader title="Education" />
+          <Header title="Education" />
           <InformationCard
             title="Bachelor of Computer Science"
             date="( Sep 2022 - May 2026 )"
@@ -23,7 +23,7 @@ const ExperienceSection = () => {
           />
         </div>
         <div>
-          <PageHeader title="Experience" />
+          <Header title="Experience" />
           <InformationCard
             title="Teaching Assistant"
             date="( Jan 2023 - Current )"
@@ -38,7 +38,7 @@ const ExperienceSection = () => {
         </div>
 
         <div>
-          <PageHeader title="Projects" />
+          <Header title="Projects" />
           <div className="space-y-8 mx-2 mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 bg">
             <ProjectCard
               title="Whisperella"

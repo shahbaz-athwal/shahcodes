@@ -3,7 +3,6 @@ import ThemeToggle from "./ThemeToggle";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Suspense } from "react";
 import { LocationData } from "./LocationData";
-// import TotalVisits from "./TotalVisiters";
 
 const Navbar = () => {
   return (
@@ -40,9 +39,6 @@ const Navbar = () => {
           <ThemeToggle />
         </div>
         <div className="flex flex-col items-end font-[350] text-zinc-700 dark:text-zinc-300">
-          {/* <Suspense fallback={<div className="blur-md">Total Visits: X</div>}>
-            <TotalVisits />
-          </Suspense> */}
           <Suspense
             fallback={
               <div>
