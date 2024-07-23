@@ -41,7 +41,7 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ recentPlays }) => {
 
   return (
     <div {...handlers} className="relative overflow-hidden">
-      <h1 className="font-bold text-2xl leading-tight pb-6">Recently Played</h1>
+      <h1 className="font-bold text-2xl leading-tight pb-6 mx-4 md:mx-0">Recently Played</h1>
       <div
         className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
