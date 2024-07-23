@@ -4,7 +4,6 @@ import clsx from "clsx"
 import React from "react"
 import { useIntersection } from "react-use"
 
-// Cycle between `children` and `nav` as the `children` comes in and out of view
 export function IntersectionSwap({
   children,
   nav,
@@ -18,8 +17,6 @@ export function IntersectionSwap({
     rootMargin: "-100px",
   })
 
-  // we do the reverse `intersection.isIntersecting` to ensure we show the
-  // correct state even before React initializes
   let showPrimary = false
   if (intersection && !intersection.isIntersecting) {
     showPrimary = true
