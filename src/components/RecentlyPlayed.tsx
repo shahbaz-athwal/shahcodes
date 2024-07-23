@@ -10,6 +10,7 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { SpotifyPlayedItem } from "@/types/recentlyPlayed";
 import Link from "next/link";
+import Image from "next/image";
 
 type RecentlyPlayedProps = {
   recentPlays: SpotifyPlayedItem[];
@@ -48,10 +49,12 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ recentPlays }) => {
                     title={`${item.title} by: ${item.artist}`}
                     aria-label={`${item.title} by: ${item.artist}`}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={item.thumbnail}
-                      alt={item.title}
+                 
+                    <Image
+                      width={500}
+                      height={500}
+                      src={item.thumbnail!}
+                      alt={item.title!}
                       className="w-full h-full sm:h-64 object-cover rounded-lg shadow-lg dark:shadow-zinc-600 brightness-[0.4]"
                     />
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
