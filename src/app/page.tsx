@@ -1,11 +1,18 @@
-"use client";
 import { Header } from "@/components/ui/topicHeader";
 import { InformationCard } from "@/components/ui/informationCard";
 import ProjectCard from "@/components/ui/projectCard";
+import Navbar from "@/components/Navbar";
+import MenuBar from "@/components/MenuBar";
+import { IntersectionSwap } from "@/components/IntersectionSwap";
+import FloatingNavbar from "@/components/FloatingNavbar";
 const ExperienceSection = () => {
   return (
-    <div className="p-1">
-      <p className="text-base sm:text-[17px] leading-relaxed mt-6 mb-12">
+    <div className="px-1 pb-1">
+      <IntersectionSwap nav={<FloatingNavbar/>}>
+        <Navbar />
+        <MenuBar />
+      </IntersectionSwap>
+      <p className="text-base sm:text-[17px] leading-relaxed mt-16 mb-12">
         I am a third-year Computer Science student with nearly 2 years of
         experience in Full Stack Development. Currently, I am focusing on
         advanced Backend and DevOps skills. Proficient with{" "}

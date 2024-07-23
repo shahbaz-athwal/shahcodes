@@ -3,7 +3,7 @@ import { Header } from "@/components/ui/topicHeader";
 
 function Page() {
   return (
-    <div className="p-1">
+    <div className="p-1 pt-9">
       <section className="mb-6">
       <Header title="My Tech Stack" />
         <p className="text-base sm:text-[17px] mt-8 leading-relaxed">

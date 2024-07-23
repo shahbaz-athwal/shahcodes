@@ -62,7 +62,7 @@ function Page() {
 
   return (
     <div className="p-1">
-      <div>
+      <div className="pt-8">
         <Header title="Contact" />
         <section className="py-8">
           <p className="text-lg mb-4">

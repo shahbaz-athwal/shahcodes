@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 
 const Page = async () => {
   return (
-    <>
+    <div className="pt-6">
       <SpotifyProvider>
         <SpotifyPlayer />
       </SpotifyProvider>
 
       <RenderedRecentlyPlayed />
-    </>
+    </div>
   );
 };
 
