@@ -1,4 +1,4 @@
-import MenuBar from "../MenuBar"
+import MenuBar from "./MenuBar"
 
 function FloatingNavbar() {
   return (
