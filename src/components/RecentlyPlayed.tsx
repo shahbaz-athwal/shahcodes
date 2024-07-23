@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useSwipeable } from "react-swipeable";
 import { SpotifyPlayedItem } from "@/types/recentlyPlayed";
 import Arrow from "./icons/Arrow";
 import Link from "next/link";
@@ -33,8 +33,14 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ recentPlays }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex]);
 
+  const handlers = useSwipeable({
+    onSwipedLeft: handleNext,
+    onSwipedRight: handlePrev,
+    trackMouse: true,
+  });
+
   return (
-    <div className="relative overflow-hidden">
+    <div {...handlers} className="relative overflow-hidden">
       <h1 className="font-bold text-2xl leading-tight pb-6">Recently Played</h1>
       <div
         className="flex transition-transform duration-500 ease-in-out"
@@ -42,19 +48,14 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ recentPlays }) => {
       >
         {recentPlays.map((item) => (
           <div key={item.playedAt} className="w-full flex-shrink-0">
-            <Link
-              href={item.url!}
-              passHref
-              target="_blank"
-              rel="noopener noreferrer"
-              title={`${item.title} by: ${item.artist}`}
-              aria-label={`${item.title} by: ${item.artist}`}
-            >
-              <motion.div
-                className="p-4 mx-6 relative"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+            <div className="p-4 mx-6 relative">
+              <Link
+                href={item.url!}
+                passHref
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`${item.title} by: ${item.artist}`}
+                aria-label={`${item.title} by: ${item.artist}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -64,22 +65,22 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ recentPlays }) => {
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
                   <h3 className="text-xl font-semibold">{item.title}</h3>
-                  <p className="text-gray-300">{item.artist}</p>
+                  <p className="text-gray-300 max-w-56 text-center">{item.artist}</p>
                 </div>
-              </motion.div>
-            </Link>
+              </Link>
+            </div>
           </div>
         ))}
       </div>
       <button
         onClick={handlePrev}
-        className="absolute  top-[59%] left-0 transform -translate-y-1/2 bg-transparent -rotate-[90deg] hover:scale-125 transition-transform duration-300"
+        className="absolute  top-[55%] left-0  bg-transparent -rotate-[90deg] hover:scale-125 transition-transform duration-300"
       >
         <Arrow />
       </button>
       <button
         onClick={handleNext}
-        className="absolute top-[59%] right-0 transform -translate-y-1/2 bg-transparent rotate-90 hover:scale-125 transition-transform duration-300"
+        className="absolute top-[55%] right-0 transform  bg-transparent rotate-90 hover:scale-125 transition-transform duration-300"
       >
         <Arrow />
       </button>

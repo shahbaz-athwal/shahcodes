@@ -26,6 +26,7 @@
     "react-dom": "^19.0.0-rc.0",
     "react-hook-form": "^7.52.1",
     "react-lottie-player": "^2.0.0",
+    "react-swipeable": "^7.0.1",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
