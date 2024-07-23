@@ -1,3 +1,4 @@
+import "server-only"
 import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 import ThemeToggle from "./ThemeToggle";
 import { Avatar, AvatarImage } from "./ui/avatar";
