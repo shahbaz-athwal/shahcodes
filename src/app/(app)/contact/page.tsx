@@ -107,7 +107,7 @@ function Page() {
               <motion.div whileTap={{ scale: 0.98 }} className="my-4">
                 <FormItem>
                   <FormLabel>Name</FormLabel>
-                  <Input {...field} />
+                  <Input {...field} className="dark:bg-zinc-800"/>
                   <FormMessage />
                 </FormItem>
               </motion.div>
@@ -120,7 +120,7 @@ function Page() {
               <motion.div whileTap={{ scale: 0.98 }} className="my-4">
                 <FormItem>
                   <FormLabel>Email</FormLabel>
-                  <Input {...field} />
+                  <Input {...field} className="dark:bg-zinc-800"/>
                   <FormMessage />
                 </FormItem>
               </motion.div>
@@ -135,7 +135,7 @@ function Page() {
                   <FormLabel>Message</FormLabel>
                   <Textarea
                     placeholder="How can I help you."
-                    className="resize-none h-28"
+                    className="resize-none h-28 dark:bg-zinc-800"
                     {...field}
                   />
                   <FormMessage />
