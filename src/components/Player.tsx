@@ -31,7 +31,7 @@ const Player = () => {
       <h1 className="font-bold text-2xl leading-tight pb-6">
         Currently Playing
       </h1>
-      <div className="bg-zinc-800 p-4 rounded-lg shadow-lg dark:shadow-zinc-900">
+      <div className="bg-opacity-60 dark:bg-opacity-30 bg-black p-4 rounded-lg shadow-lg dark:shadow-zinc-900">
         <div className="flex flex-col md:flex-row items-center">
           <Link
             target={listening?.isPlaying ? "_blank" : "_self"}
