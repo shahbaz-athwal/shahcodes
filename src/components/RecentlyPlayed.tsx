@@ -61,11 +61,11 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ recentPlays }) => {
                 <img
                   src={item.thumbnail}
                   alt={item.title}
-                  className="w-full h-full sm:h-64 object-cover rounded-lg shadow-lg dark:shadow-zinc-900 brightness-[0.3]"
+                  className="w-full h-full sm:h-64 object-cover rounded-lg shadow-lg dark:shadow-zinc-900 brightness-[0.4]"
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
                   <h3 className="text-xl font-semibold">{item.title}</h3>
-                  <p className="text-gray-300 max-w-56 text-center">{item.artist}</p>
+                  <p className="text-gray-300 max-w-56 sm:max-w-full text-center">{item.artist}</p>
                 </div>
               </Link>
             </div>
