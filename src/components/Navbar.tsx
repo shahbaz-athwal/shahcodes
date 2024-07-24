@@ -1,9 +1,9 @@
 import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 import ThemeToggle from "./ThemeToggle";
-import { Avatar, AvatarImage } from "./ui/avatar";
 import { Suspense } from "react";
 import { LocationData } from "./LocationData";
 import { Separator } from "@radix-ui/react-separator";
+import {  ProfileImage } from "./ui/avatar";
 
 const Navbar = () => {
   return (
@@ -11,9 +11,7 @@ const Navbar = () => {
       <nav className="w-full justify-between flex dark:text-gray-200">
         <div>
           <div className="mb-2">
-            <Avatar className="w-[85px] sm:w-28 h-auto grayscale">
-              <AvatarImage src="/profile.png" className="scale-110" />
-            </Avatar>
+            <ProfileImage />
           </div>
           <h1 className="text-xl sm:text-2xl font-medium">Shahbaz Singh</h1>
           <p className="text-sm sm:text-base text-gray-900 dark:text-gray-100">
