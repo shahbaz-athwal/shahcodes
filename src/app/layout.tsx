@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import ThemeToggle from "@/components/ThemeToggle";
+import { ThemeProvider } from "@/hooks/useTheme";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,8 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // Todo use theme in provider
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="shahbaz_athwal" />
@@ -31,7 +31,9 @@ export default function RootLayout({
         <main className="flex items-center flex-col justify-between p-3 md:p-6 min-h-screen">
           <div className="w-full max-w-3xl">{children}</div>
           <Footer />
-          <ThemeToggle/>
+          <ThemeProvider>
+            <ThemeToggle />
+          </ThemeProvider>
         </main>
         <div className="pointer-events-none absolute inset-0 overflow-hidden z-[-1]">
           <div className="h-full dark:bg-[url('/bg_gradient.jpeg')] bg-top bg-no-repeat opacity-[0.3]" />
