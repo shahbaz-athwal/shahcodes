@@ -1,36 +1,70 @@
 "use client";
-import Link from "next/link";
-import { Button } from "./ui/button";
-import { usePathname } from "next/navigation";
+import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
 
-const MenuItem = ({ href, path, label }: any) => (
-  <Link href={href}>
-    <motion.div whileHover={{ scale: 1.07 }} whileTap={{ scale: 0.97 }}>
-      <Button
-        className={`text-[13px] sm:text-sm rounded-xl ${
-          path !== href ? "bg-transparent" : ""
-        }`}
-        variant={path === href ? "default" : "outline"}
-      >
-        {label}
-      </Button>
-    </motion.div>
-  </Link>
-);
+const links = [
+    {
+      name: "About",
+      href: "/",
+    },
+    {
+      name: "Tech",
+      href: "/techstack",
+    },
+    {
+      name: "Blogs",
+      href: "/blog",
+    },
+    {
+      name: "Spotify",
+      href: "/spotify",
+    },
+    {
+      name: "Contact",
+      href: "/contact",
+    },
+  ]
 
-function MenuBar() {
-  const path = usePathname();
-
+export default function MenuBar() {
+  
+const path = usePathname();
   return (
-    <div className="flex justify-center sm:justify-start flex-wrap gap-1 sm:gap-2 w-fit">
-      <MenuItem href="/" path={path} label="About" />
-      <MenuItem href="/techstack" path={path} label="Tech Stack" />
-      <MenuItem href="/blog" path={path} label="Blogs" />
-      <MenuItem href="/spotify" path={path} label="Spotify" />
-      <MenuItem href="/contact" path={path} label="Contact" />
-    </div>
+    
+        <ul className="flex justify-center sm:justify-start flex-wrap gap-1 sm:gap-2 w-fit">
+          {links.map((link) => (
+            <li
+              className="flex items-center justify-center relative"
+              key={link.href}
+            >
+              <Link
+                className={clsx(
+                  "flex w-full text-[15px] items-center justify-center px-3 py-1 hover:-translate-y-[2px] transition",
+                  {
+                    "text-white dark:text-black hover:text-gray-100 dark:hover:text-zinc-950":
+                      path === link.href,
+                  }
+                )}
+                href={link.href}
+              >
+                {link.name}
+
+                {link.href === path && (
+                  <motion.span
+                    className="bg-zinc-800 dark:bg-white rounded-xl absolute inset-0 -z-10"
+                    layoutId="path"
+                    transition={{
+                      type: "spring",
+                      stiffness: 380,
+                      damping: 30,
+                    }}
+                  ></motion.span>
+                )}
+              </Link>
+            </li>
+          ))}
+        </ul>
   );
 }
-
-export default MenuBar;
