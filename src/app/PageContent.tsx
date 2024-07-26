@@ -6,7 +6,6 @@ import ProjectCard from "@/components/ui/projectCard";
 const PageContent = () => {
   return (
     <motion.div
-      className="px-1 pb-1"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
