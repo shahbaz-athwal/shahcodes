@@ -1,4 +1,3 @@
-import "server-only";
 import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 import { Suspense } from "react";
 import { LocationData } from "./LocationData";

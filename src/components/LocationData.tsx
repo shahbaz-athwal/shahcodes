@@ -18,18 +18,23 @@ const updateLocation = async () => {
 
   await Promise.all([
     redis.set("lastLocation", JSON.stringify(data)),
-    redis.set(`Location:${ip}`, JSON.stringify(data)),
+    redis.set(`Location:${data.city}`, JSON.stringify(data)),
   ]);
 };
 
 export const LocationData = async () => {
-  const { city, regionName }: any = await getLastLocation();
-  return (
-    <>
-    <div>Last Visit From:</div>
-    <div>
-     {" "} {city}, {regionName}
-    </div>
-    </>
-  );
+  try {
+    const { city, regionName }: any = await getLastLocation();
+    return (
+      <>
+        <div>Last Visit From:</div>
+        <div>
+          {" "}
+          {city}, {regionName}
+        </div>
+      </>
+    );
+  } catch (error) {
+    return null
+  }
 };
