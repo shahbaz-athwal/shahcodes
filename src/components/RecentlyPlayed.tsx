@@ -53,6 +53,7 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ recentPlays }) => {
                       height={800}
                       width={1200}
                       priority
+                      placeholder="blur"
                       src={item.thumbnail!}
                       alt={item.title!}
                       className="w-full h-full sm:h-64 object-cover rounded-lg shadow-lg dark:shadow-zinc-800/70 brightness-[0.4]"

@@ -5,9 +5,10 @@ const Profile = () => (
     src='/profile.png'
     width={110}
     height={110}
-    quality={90}
+    quality={99}
     priority={true}
     alt="Shahbaz Singh"
+    className="rounded-full"
   />
 );
 
