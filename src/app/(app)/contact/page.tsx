@@ -19,6 +19,7 @@ import { Header } from "@/components/ui/topicHeader";
 import { Title } from "@/components/ui/title";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
+import { Suspense } from "react";
 
 const contacts: {
   method: string;
@@ -61,7 +62,14 @@ function Page() {
   }
 
   return (
-    <div className="p-1">
+    <Suspense fallback={<div></div>}>
+
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="p-1"
+    >
       <div className="pt-8">
         <Header title="Contact" />
         <section className="py-8">
@@ -151,7 +159,9 @@ function Page() {
           </motion.div>
         </form>
       </Form>
-    </div>
+    </motion.div>
+    </Suspense>
+
   );
 }
 

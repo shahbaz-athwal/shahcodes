@@ -1,11 +1,19 @@
+"use client"
 import AnimatedLogoCloud from "@/components/LogoCloud";
 import { Header } from "@/components/ui/topicHeader";
+import { motion } from "framer-motion";
+
 
 function Page() {
   return (
-    <div className="p-1 pt-9">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="p-1 pt-9"
+    >
       <section className="mb-6">
-      <Header title="My Tech Stack" />
+        <Header title="My Tech Stack" />
         <p className="text-base sm:text-[17px] mt-8 leading-relaxed">
           I create web applications using <strong>Next.js</strong> and also work
           with <strong>React</strong> combined with <strong>Express</strong> in{" "}
@@ -28,11 +36,12 @@ function Page() {
         <p className="text-[17px] mt-4">
           Currently, I am learning <strong>Kubernetes</strong>, advanced{" "}
           <strong>Docker</strong> concepts, and <strong>System Design</strong>{" "}
-          principles. Also, getting started with <strong>Open Source Contributions</strong>.
+          principles. Also, getting started with{" "}
+          <strong>Open Source Contributions</strong>.
         </p>
       </section>
       <AnimatedLogoCloud />
-    </div>
+    </motion.div>
   );
 }
 

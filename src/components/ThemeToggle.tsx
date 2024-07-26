@@ -7,15 +7,19 @@ const ThemeToggle = () => {
 
   return (
     <div className="fixed bottom-5 w-full flex justify-center">
-      <div className="max-w-3xl w-full flex justify-end pr-2">
-        <button
-          className="text-white bg-opacity-70 dark:bg-opacity-70 dark:text-black bg-black w-[40px] h-[40px] backdrop-blur-[0.5rem] shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.10] active:scale-105 transition-all dark:bg-white"
-          onClick={toggleTheme}
-        >
-          {darkMode ? <IconSun /> : <IconMoon />}
-        </button>
-      </div>
-    </div>
+  <div className="max-w-3xl w-full flex justify-end pr-5">
+    <button
+      className={`w-[50px] h-[50px] backdrop-blur-lg shadow-lg rounded-full flex items-center justify-center hover:scale-[1.10] active:scale-105 transition-transform duration-300 ease-in-out ${
+        darkMode
+          ? 'bg-gradient-to-r from-pink-700 to-purple-500 text-black'
+          : 'bg-gradient-to-r from-gray-600 to-indigo-500 text-white'
+      }`}
+      onClick={toggleTheme}
+    >
+      {darkMode ? <IconSun /> : <IconMoon />}
+    </button>
+  </div>
+</div>
   );
 };
 
