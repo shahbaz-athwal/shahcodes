@@ -53,7 +53,7 @@ const ExperienceSection = () => {
             <ProjectCard
               title="FindMyJob"
               description="A Two Way Job Application Portal"
-              link="https://find-my-job.vercel.app/"
+              link="https://findmyjob.shahcodes.in"
               imageSrc="/projects/findmyjob.png"
               imageAlt="FindMyJob Project"
             />
