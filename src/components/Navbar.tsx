@@ -1,10 +1,9 @@
-import "server-only"
+import "server-only";
 import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
-import ThemeToggle from "./ThemeToggle";
 import { Suspense } from "react";
 import { LocationData } from "./LocationData";
 import { Separator } from "@radix-ui/react-separator";
-import {  ProfileImage } from "./ui/avatar";
+import { ProfileImage } from "./ui/avatar";
 
 const Navbar = () => {
   return (
@@ -35,22 +34,17 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-        <div className="flex flex-col direction-normal justify-between items-end text-[13px] sm:text-[15px]">
-          <div>
-            <ThemeToggle />
-          </div>
-          <div className="flex flex-col items-end font-[350] text-zinc-700 dark:text-zinc-300">
-            <Suspense
-              fallback={
-                <div>
-                  <div className="blur-md">Last visit from:</div>
-                  <div className="blur-md">sdasd asdasd</div>
-                </div>
-              }
-            >
-              <LocationData />
-            </Suspense>
-          </div>
+        <div className="flex flex-col items-end font-[350] text-zinc-700 dark:text-zinc-300">
+          <Suspense
+            fallback={
+              <div>
+                <div className="blur-md">Last visit from:</div>
+                <div className="blur-md">sdasd asdasd</div>
+              </div>
+            }
+          >
+            <LocationData />
+          </Suspense>
         </div>
       </nav>
       <Separator className="w-full my-5 rounded h-[0.5px] sm:h-[1px] bg-zinc-500 shrink-0" />

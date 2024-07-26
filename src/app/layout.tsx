@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
         <main className="flex items-center flex-col justify-between p-3 md:p-6 min-h-screen">
           <div className="w-full max-w-3xl">{children}</div>
           <Footer />
+          <ThemeToggle/>
         </main>
         <div className="pointer-events-none absolute inset-0 overflow-hidden z-[-1]">
           <div className="h-full dark:bg-[url('/bg_gradient.jpeg')] bg-top bg-no-repeat opacity-[0.3]" />

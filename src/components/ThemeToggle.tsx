@@ -1,6 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
-
 import { useEffect, useState } from "react";
 import { IconSun, IconMoon } from "@tabler/icons-react";
 
@@ -12,7 +10,7 @@ const ThemeToggle = () => {
     if (theme === "dark") setDarkMode(true);
     else setDarkMode(false);
   }, []);
-  
+
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -28,19 +26,15 @@ const ThemeToggle = () => {
   };
 
   return (
-    <div>
-      <motion.div
-        whileHover={{ scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 400, damping: 30 }}
-        whileTap={{ scale: 0.97 }}
-      >
+    <div className="fixed bottom-5 w-full flex justify-center">
+      <div className="max-w-3xl w-full flex justify-end pr-2">
         <button
+          className="text-white bg-opacity-60 dark:bg-opacity-50 dark:text-black bg-black w-[40px] h-[40px] backdrop-blur-[0.5rem] shadow-2xl rounded-full flex items-center justify-center hover:scale-[1.10] active:scale-105 transition-all dark:bg-white"
           onClick={toggleTheme}
-          className="p-[6px] sm:p-2 bg-gray-800 text-white rounded-md dark:bg-gray-200 dark:text-black"
         >
           {darkMode ? <IconSun /> : <IconMoon />}
         </button>
-      </motion.div>
+      </div>
     </div>
   );
 };
