@@ -34,7 +34,7 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-        <div className="flex flex-col items-end font-[350] text-zinc-700 dark:text-zinc-300">
+        <div className="flex flex-col items-end text-sm font-[350] text-zinc-700 dark:text-zinc-300">
           <Suspense
             fallback={
               <div>
