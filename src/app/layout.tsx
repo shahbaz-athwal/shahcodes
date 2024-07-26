@@ -25,13 +25,15 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased dark:bg-[rgb(26,26,26)] selection:bg-purple-800/90 dark:selection:bg-pink-800/90 selection:text-white  `}
       >
-        <main className="flex items-center justify-between w-full flex-col p-3 md:p-6 min-h-screen">
-          <div className={"w-full max-w-3xl"}>{children}</div>
+        {/* <div className="bg-[#be9af7] opacity-40 dark:bg-transparent absolute top-[-6rem] -z-10 right-[5rem] h-[31.25rem] w-[31.25rem] rounded-full blur-[10rem] sm:w-[68.75rem] dark:bg-[#946263]"></div>
+        <div className="bg-[#fb7dc2] opacity-30 dark:bg-transparent absolute top-[-4rem] -z-10 left-[-40rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem]"></div> */}
+        <main className="flex items-center flex-col p-3 md:p-6 min-h-screen">
+          <div className="max-w-3xl">{children}</div>
           <Footer />
         </main>
-          <div className="pointer-events-none absolute inset-0 overflow-hidden z-[-1]">
-            <div className="h-full  dark:bg-[url('/bg_gradient.jpeg')] bg-top bg-no-repeat opacity-[0.3]" />
-          </div>
+        <div className="pointer-events-none absolute inset-0 overflow-hidden z-[-1]">
+          <div className="h-full dark:bg-[url('/bg_gradient.jpeg')] bg-top bg-no-repeat opacity-[0.3]" />
+        </div>
       </body>
     </html>
   );

@@ -14,7 +14,7 @@ const Profile = () => (
 
 export const ProfileImage = () => {
   return (
-    <div className="rounded-full grayscale-[40%] shadow-lg w-fit">
+    <div className="rounded-full grayscale-[20%] shadow-lg w-fit">
       <Profile />
     </div>
   );
