@@ -1,18 +1,18 @@
-"use client"
+"use client";
 import AnimatedLogoCloud from "@/components/LogoCloud";
 import { Header } from "@/components/ui/topicHeader";
+import { containerVariants, itemVariants } from "@/lib/animationVariants";
 import { motion } from "framer-motion";
-
 
 function Page() {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
       className="p-1 pt-9"
     >
-      <section className="mb-6">
+      <motion.section variants={itemVariants} className="mb-6">
         <Header title="My Tech Stack" />
         <p className="text-base sm:text-[17px] mt-8 leading-relaxed">
           I create web applications using <strong>Next.js</strong> and also work
@@ -39,8 +39,10 @@ function Page() {
           principles. Also, getting started with{" "}
           <strong>Open Source Contributions</strong>.
         </p>
-      </section>
-      <AnimatedLogoCloud />
+      </motion.section>
+      <motion.div variants={itemVariants}>
+        <AnimatedLogoCloud />
+      </motion.div>
     </motion.div>
   );
 }

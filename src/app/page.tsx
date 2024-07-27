@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
 import MenuBar from "@/components/MenuBar";
 import PageContent from "./PageContent";
-const ExperienceSection = () => {
+
+const Page = () => {
   return (
     <>
       <Navbar />
@@ -11,4 +12,4 @@ const ExperienceSection = () => {
   );
 };
 
-export default ExperienceSection;
+export default Page;

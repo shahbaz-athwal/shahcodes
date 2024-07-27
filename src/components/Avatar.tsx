@@ -8,7 +8,7 @@ const Profile = () => (
     quality={99}
     priority={true}
     alt="Shahbaz Singh"
-    className="rounded-full"
+    className="rounded-full w-[90px] h-[90px] sm:w-[110px] sm:h-[110px]"
   />
 );
 

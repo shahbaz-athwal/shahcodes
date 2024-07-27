@@ -3,22 +3,28 @@ import { motion } from "framer-motion";
 import { Header } from "@/components/ui/topicHeader";
 import { InformationCard } from "@/components/ui/informationCard";
 import ProjectCard from "@/components/ui/projectCard";
+import { containerVariants, itemVariants } from "@/lib/animationVariants";
+
 const PageContent = () => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={containerVariants}
     >
-      <p className="text-base sm:text-[17px] leading-relaxed mt-16 mb-12">
+      <motion.p
+        className="text-base sm:text-[17px] leading-relaxed mt-16 mb-12"
+        variants={itemVariants}
+      >
         I am a third-year Computer Science student with nearly 2 years of
         experience in Full Stack Development. Currently, I am focusing on
         advanced Backend and DevOps skills. Proficient with{" "}
         <strong>TypeScript</strong>, <strong>Node.js</strong>,{" "}
         <strong>Docker</strong>, and <strong>AWS</strong>.
-      </p>
+      </motion.p>
 
-      <div className="space-y-12">
+      <motion.div className="space-y-12" variants={itemVariants}>
         <div>
           <Header title="Education" />
           <InformationCard
@@ -61,7 +67,7 @@ const PageContent = () => {
             />
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };

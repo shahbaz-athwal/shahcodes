@@ -2,14 +2,14 @@ import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
 import { Suspense } from "react";
 import { LocationData } from "./LocationData";
 import { Separator } from "@radix-ui/react-separator";
-import { ProfileImage } from "./ui/avatar";
+import { ProfileImage } from "./Avatar";
 
 const Navbar = () => {
   return (
     <>
       <nav className="w-full justify-between flex dark:text-gray-200">
         <div>
-          <div className="mb-2">
+          <div className="mb-2 mt-8">
             <ProfileImage />
           </div>
           <h1 className="text-xl sm:text-2xl font-medium">Shahbaz Singh</h1>
@@ -33,7 +33,7 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-        <div className="flex flex-col items-end justify-end text-xs sm:text-sm font-[350] text-zinc-700 dark:text-zinc-300">
+        <div className="flex flex-col text-right items-end justify-end text-xs sm:text-sm font-[350] text-zinc-700 dark:text-zinc-300">
           <Suspense
             fallback={
               <div>
@@ -42,9 +42,7 @@ const Navbar = () => {
               </div>
             }
           >
-            <div>
-              <LocationData />
-            </div>
+            <LocationData />
           </Suspense>
         </div>
       </nav>
