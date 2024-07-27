@@ -1,6 +1,7 @@
 import redis from "@/lib/redis";
 import { LocationResponse } from "@/types/locationResponse";
 import axios from "axios";
+import { unstable_noStore as noStore } from "next/cache";
 import { headers } from "next/headers";
 
 const getLastLocation = async () => {
@@ -32,6 +33,7 @@ const updateLocation = async () => {
 };
 
 export const LocationData = async () => {
+  noStore();
   const { city, regionName }: LocationResponse = await getLastLocation();
   return (
     <>
