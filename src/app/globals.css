@@ -5,7 +5,7 @@
 
 @layer base {
   ::-webkit-scrollbar {
-    @apply w-5;
+    @apply w-[18px];
   }
 
   ::-webkit-scrollbar-track {
@@ -13,12 +13,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-zinc-600 rounded-2xl border-transparent;
+    @apply bg-zinc-700 rounded-2xl border-transparent;
     background-clip: content-box;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-zinc-500;
+    @apply bg-zinc-600/70;
   }
 }
 
