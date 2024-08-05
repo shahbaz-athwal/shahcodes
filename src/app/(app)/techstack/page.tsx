@@ -13,7 +13,7 @@ function Page() {
       className="p-1 pt-9"
     >
       <motion.section variants={itemVariants} className="mb-6">
-        <Header title="My Tech Stack" />
+        <Header variant="primary" as="h1" >My Tech Stack</Header>
         <p className="text-base sm:text-[17px] mt-8 leading-relaxed">
           I create web applications using <strong>Next.js</strong> and also work
           with <strong>React</strong> combined with <strong>Express</strong> in{" "}

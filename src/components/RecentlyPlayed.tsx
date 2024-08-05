@@ -50,8 +50,9 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ recentPlays }) => {
                     aria-label={`${item.title} by: ${item.artist}`}
                   >
                     <Image
-                      height={800}
-                      width={1200}
+                      height={500}
+                      width={900}
+                      quality={90}
                       priority
                       src={item.thumbnail!}
                       alt={item.title!}

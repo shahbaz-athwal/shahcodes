@@ -4,7 +4,7 @@ import { Header } from "@/components/ui/topicHeader";
 import { Title } from "@/components/ui/title";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
-import ContactForm from "./ContactFrom";
+import ContactForm from "./ContactForm";
 import { containerVariants, itemVariants } from "@/lib/animationVariants";
 
 const contacts: {
@@ -27,6 +27,11 @@ const contacts: {
     link: "https://www.linkedin.com/in/shahbaz-athwal/",
     label: "in/shahbaz-athwal",
   },
+  {
+    method: "Instagram",
+    link: "https://www.instagram.com/shahbaz_athwal/",
+    label: "@shahbaz_athwal",
+  },
 ];
 
 function Page() {
@@ -38,7 +43,9 @@ function Page() {
       className="p-1"
     >
       <motion.div variants={itemVariants} className="pt-8">
-        <Header title="Contact" />
+        <Header variant="primary" as="h1">
+          Contact
+        </Header>
         <section className="py-8">
           <motion.p variants={itemVariants} className="text-lg mb-4">
             If you&apos;d like to get in touch, you can reach me using the

@@ -1,15 +1,14 @@
 import { recentlyPlayed } from "@/app/actions/recentlyPlayed";
 import RecentlyPlayed from "@/components/RecentlyPlayed";
-import { revalidatePath } from "next/cache";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function RenderedRecentlyPlayed() {
+  noStore();
+  const data = await recentlyPlayed();
 
-    const data = await recentlyPlayed();
-    revalidatePath('/')
-    
-    return (
-      <>
-        <RecentlyPlayed recentPlays={data} />
-      </> 
-    );
-  }
+  return (
+    <>
+      <RecentlyPlayed recentPlays={data} />
+    </>
+  );
+}

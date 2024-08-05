@@ -17,7 +17,7 @@ const Player = () => {
 
   const url = listening?.isPlaying
     ? listening.url
-    : "https://www.shahcodes.in/spotify";
+    : " /spotify";
 
   const progress = useMemo(() => {
     if (listening.progress && listening.duration) {
