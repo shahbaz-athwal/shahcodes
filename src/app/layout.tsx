@@ -27,7 +27,7 @@ export default function RootLayout({
         className={`${inter.className} antialiased dark:bg-[rgb(26,26,26)] selection:bg-purple-800/90 dark:selection:bg-pink-800/90 selection:text-white  `}
       >
         <main className="flex items-center flex-col justify-between p-3 md:p-6 min-h-screen">
-          <div className="w-full max-w-3xl px-1">{children}</div>
+          <div className="w-full max-w-2xl px-1">{children}</div>
           <Footer />
           <ThemeProvider>
             <ThemeToggle />

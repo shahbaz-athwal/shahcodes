@@ -26,7 +26,9 @@ const PageContent = () => {
 
       <motion.div className="space-y-12" variants={itemVariants}>
         <div>
-          <Header title="Education" />
+          <Header variant="primary" className="" as="h2">
+            Education
+          </Header>
           <InformationCard
             title="Bachelor of Computer Science"
             date="( Sep 2022 - May 2026 )"
@@ -34,7 +36,9 @@ const PageContent = () => {
           />
         </div>
         <div>
-          <Header title="Experience" />
+          <Header variant="primary" as="h2">
+            Experience
+          </Header>
           <InformationCard
             title="Teaching Assistant"
             date="( Jan 2023 - Current )"
@@ -49,8 +53,13 @@ const PageContent = () => {
         </div>
 
         <div>
-          <Header title="Projects" />
-          <div className="space-y-8 mx-2 mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 bg">
+          <Header variant="primary" as="h2">
+            Projects
+          </Header>
+          <p className="text-lg pt-4 pb-8">
+            Below is a selection of recent projects that I&apos;ve worked on.
+          </p>
+          <div className="lg:w-[140%] lg:-ml-[20%] grid grid-cols-1 md:grid-cols-2 gap-8">
             <ProjectCard
               title="Whisperella"
               description="An Anonymous Messaging Platform"

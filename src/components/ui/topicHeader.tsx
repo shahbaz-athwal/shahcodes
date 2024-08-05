@@ -1,11 +1,28 @@
+import clsx from 'clsx';
+
 interface Props {
-  title: string;
+  children: React.ReactNode;
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'time' | 'p';
+  variant?: 'primary' | 'secondary' | 'tertiary';
+  className?: string;
 }
 
-export function Header({ title }: Props) {
+const classNames = {
+  primary: 'font-extrabold text-4xl tracking-tight',
+  secondary: 'font-semibold text-2xl tracking-tight',
+  tertiary: 'font-semibold text-xl tracking-tight',
+};
+
+export function Header({
+  children,
+  as = 'span',
+  variant = 'primary',
+  className,
+}: Props) {
+  const Component = as;
   return (
-      <h1 className="text-3xl sm:text-4xl font-extrabold mt-6">
-        {title}
-      </h1>
+    <Component className={clsx(classNames[variant], className)}>
+      {children}
+    </Component>
   );
 }
