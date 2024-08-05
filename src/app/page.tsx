@@ -30,7 +30,7 @@ const projects: {
     href: "/",
     description: "My Personal Portfolio and Blog",
     image: "/projects/findmyjob.png",
-    hidden: false,
+    hidden: true,
   },
   {
     title: "RateMyAxe",
@@ -51,11 +51,11 @@ const Home = () => {
           I’m a full stack developer based in Canada
         </span>
         <p className="text-lg md:text-xl leading-normal dark:text-zinc-300/70">
-          Junior year computer science student with nearly 2 years of
-          experience in Full Stack Development. Currently, I am focusing on
-          advanced Backend and DevOps skills. Proficient with{" "}
-          <strong>TypeScript</strong>, <strong>Next.js</strong>,{" "}
-          <strong>Node.js</strong>, <strong>Docker</strong>, and{" "}
+          Junior year computer science student with nearly 2 years of experience
+          in Full Stack Development. Currently, I am focusing on advanced
+          Backend and DevOps skills. Proficient with <strong>TypeScript</strong>
+          , <strong>PostgreSQL</strong>, <strong>Next.js</strong>,{" "}
+          <strong>React</strong>,{" "}<strong>Docker</strong>, and{" "}
           <strong>AWS</strong>.
         </p>
         <Link
