@@ -3,7 +3,6 @@ import { Header } from "@/components/ui/topicHeader";
 import { containerVariants, itemVariants } from "@/lib/animationVariants";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 
 const experience: {
   company: string;
@@ -42,7 +41,7 @@ export default function Page() {
           <span className="block font-bold text-2xl pb-3 dark:text-zinc-200">
             Tech Stack
           </span>
-          <div className="text-md md:text-lg space-y-3 font-normal leading-normal text-zinc-700 dark:text-zinc-300/70">
+          <div className="text-md md:text-lg space-y-3 font-normal leading-normal text-zinc-700 dark:text-zinc-300">
             <p>
               I create web applications using <strong>Next.js</strong> and also
               work with <strong>React</strong> combined with{" "}
@@ -91,8 +90,10 @@ export default function Page() {
               <span className="dark:text-zinc-300 text-lg font-semibold">
                 Bachelors of Computer Science
               </span>
-              <span className="text-zinc-500 text-sm">Acadia University</span>
-              <span className="text-zinc-500 text-sm">Wolfville, NS</span>
+              <span className="dark:text-zinc-400 text-sm">
+                Acadia University
+              </span>
+              <span className="dark:text-zinc-400 text-sm">Wolfville, NS</span>
               <span className="block mt-2 text-zinc-500 col-span-2 text-sm font-medium tracking-tighter font-mono">
                 September 2022 → May 2026
               </span>
@@ -123,8 +124,10 @@ export default function Page() {
                     <span className="dark:text-zinc-300 text-lg font-semibold">
                       {exp.role}
                     </span>
-                    <span className="text-zinc-500 text-sm">{exp.company}</span>
-                    <span className="text-zinc-500 text-sm">
+                    <span className="dark:text-zinc-400 text-sm">
+                      {exp.company}
+                    </span>
+                    <span className="dark:text-zinc-400 text-sm">
                       {exp.location}
                     </span>
                     <span className="block mt-2 text-zinc-500 col-span-2 text-sm font-medium tracking-tighter font-mono">
