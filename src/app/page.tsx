@@ -5,38 +5,48 @@ import ProjectCard from "@/components/ui/projectCard";
 import { Header } from "@/components/ui/topicHeader";
 
 const projects: {
-  href?: string;
+  href: string;
+  code: string
   title: string;
   description: string;
   image: string;
+  badges: string[];
   hidden: boolean;
 }[] = [
   {
     title: "Whisperella",
     href: "https://whisperella.shahcodes.in",
+    code: "https://github.com/shahbaz-athwal/whisperella",
     description: "An Anonymous Messaging Platform",
     image: "/projects/whisper.png",
+    badges: ["Next.js", "Auth.js", "TypeScript", "PostgreSQL", "Resend"],
     hidden: false,
   },
   {
     title: "FindMyJob",
     href: "https://findmyjob.shahcodes.in",
+    code: "https://github.com/shahbaz-athwal/find-my-job",
     description: "A Two Way Job Application Portal",
     image: "/projects/findmyjob.png",
+    badges: ["Express", "React", "MongoDB", "GCP Cloud Run", "Cloudinary"],
     hidden: false,
   },
   {
     title: "Portfolio/Blog",
-    href: "/",
+    href: "https://www.shahcodes.in/",
+    code: "https://github.com/shahbaz-athwal/shahcodes",
     description: "My Personal Portfolio and Blog",
     image: "/projects/findmyjob.png",
+    badges: ["Next.js", "Tailwind", "TypeScript", "Redis", "Spotify API"],
     hidden: true,
   },
   {
-    title: "RateMyAxe",
+    title: "",
     href: "",
+    code: "https://github.com/shahbaz-athwal/acadia-help",
     description: "",
     image: "/projects/findmyjob.png",
+    badges: ["Next.js", "Tailwind", "TypeScript", "PostgreSQL", "ShadCN", "Notion API"],
     hidden: true,
   },
 ];
@@ -51,12 +61,12 @@ const Home = () => {
           I’m a full stack developer based in Canada
         </span>
         <p className="text-lg md:text-lg leading-normal dark:text-zinc-300/70">
-          A third year computer science student with nearly 2 years of experience
-          in Full Stack Development. Currently, I am focusing on advanced
-          Backend and DevOps skills. Proficient with <strong>TypeScript</strong>
-          , <strong>PostgreSQL</strong>, <strong>Next.js</strong>,{" "}
-          <strong>React</strong>,{" "}<strong>Docker</strong>, and{" "}
-          <strong>AWS</strong>.
+          A third year computer science student with nearly 2 years of
+          experience in Full Stack Development. Currently, I am focusing on
+          advanced Backend and DevOps skills. Proficient with{" "}
+          <strong>TypeScript</strong>, <strong>PostgreSQL</strong>,{" "}
+          <strong>Next.js</strong>, <strong>React</strong>,{" "}
+          <strong>Docker</strong>, and <strong>AWS</strong>.
         </p>
         <Link
           href="/techstack"
@@ -84,9 +94,10 @@ const Home = () => {
                   key={project.title}
                   title={project.title}
                   description={project.description}
-                  link={project.href}
-                  imageSrc={project.image}
-                  imageAlt={project.title}
+                  href={project.href}
+                  code={project.code}
+                  badges={project.badges}
+                  image={project.image}
                 />
               )
             );

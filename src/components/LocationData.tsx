@@ -24,7 +24,7 @@ const updateLocation = async () => {
   const ip = ipSource.split(",")[0].trim();
 
   const { data } = await axios.get<LocationResponse>(
-    `http://ip-api.com/json/${ip}?fields=status,country,city,region,countryCode`
+    `http://ip-api.com/json/${ip}?fields=status,city,region,countryCode`
   );
 
   await redis.set("lastLocation", JSON.stringify(data));
