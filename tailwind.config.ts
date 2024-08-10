@@ -58,46 +58,11 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      keyframes: {
-        "logo-cloud": {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(calc(-100% - 4rem))" },
-        },
-        "logo-cloud-reverse": {
-          from: { transform: "translateX(calc(-100% + 4rem))" },
-          to: { transform: "translateX(0)" },
-        },
-      },
-      animation: {
-        "logo-cloud": "logo-cloud 30s linear infinite",
-        "logo-cloud-reverse": "logo-cloud-reverse 30s linear infinite",
-      },
+      keyframes: {},
+      animation: {},
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    function ({ addBase }: any) {
-      const scrollbarStyles = {
-        "::-webkit-scrollbar": {
-          width: "20px",
-        },
-        "::-webkit-scrollbar-track": {
-          backgroundColor: "transparent",
-        },
-        "::-webkit-scrollbar-thumb": {
-          backgroundColor: "#d6dee1",
-          borderRadius: "20px",
-          border: "6px solid transparent",
-          backgroundClip: "content-box",
-        },
-        "::-webkit-scrollbar-thumb:hover": {
-          backgroundColor: "#a8bbbf",
-        },
-      };
-
-      addBase(scrollbarStyles);
-    },
-  ],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
 export default config;
