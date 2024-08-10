@@ -6,7 +6,7 @@ import { Header } from "@/components/ui/topicHeader";
 
 const projects: {
   href: string;
-  code: string
+  code: string;
   title: string;
   description: string;
   image: string;
@@ -46,7 +46,14 @@ const projects: {
     code: "https://github.com/shahbaz-athwal/acadia-help",
     description: "",
     image: "/projects/findmyjob.png",
-    badges: ["Next.js", "Tailwind", "TypeScript", "PostgreSQL", "ShadCN", "Notion API"],
+    badges: [
+      "Next.js",
+      "Tailwind",
+      "TypeScript",
+      "PostgreSQL",
+      "ShadCN",
+      "Notion API",
+    ],
     hidden: true,
   },
 ];
@@ -69,21 +76,21 @@ const Home = () => {
           <strong>Docker</strong>, and <strong>AWS</strong>.
         </p>
         <Link
-          href="/techstack"
+          href="/details"
           className="group bg-zinc-950 dark:bg-zinc-50 dark:hover:bg-zinc-200 hover:bg-zinc-800 transition-colors inline-block mt-8 font-mono text-sm font-semibold rounded-full px-8 py-3 text-white dark:text-black"
         >
           More Information{" "}
-          <span className="inline-block group-hover:translate-x-2 transition-transform">
+          <span className="inline-block font-mono group-hover:translate-x-2 transition-transform">
             {">"}
           </span>
         </Link>
       </section>
 
       <div>
-        <Header variant="primary" as="h2" className="text-3xl">
+        <Header variant="primary" as="h2" className="text-2xl">
           Projects
         </Header>
-        <p className="text-lg pt-4 pb-8">
+        <p className="text-lg pt-4 pb-8 dark:text-zinc-300/70">
           Below is a selection of recent projects that I&apos;ve worked on.
         </p>
         <div className="lg:w-[140%] lg:-ml-[20%] grid grid-cols-1 md:grid-cols-2 gap-8">

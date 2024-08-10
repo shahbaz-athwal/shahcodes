@@ -11,8 +11,8 @@ const links = [
     href: "/",
   },
   {
-    name: "Tech",
-    href: "/techstack",
+    name: "Details",
+    href: "/details",
   },
   {
     name: "Blogs",
