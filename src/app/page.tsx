@@ -67,7 +67,7 @@ const Home = () => {
         <span className="block font-semibold text-2xl pb-3 dark:text-zinc-200">
           I’m a full stack developer based in Canada
         </span>
-        <p className="text-lg md:text-lg leading-normal dark:text-zinc-300/70">
+        <p className="text-lg leading-normal dark:text-zinc-300/70">
           A third year computer science student with nearly 2 years of
           experience in Full Stack Development. Currently, I am focusing on
           advanced Backend and DevOps skills. Proficient with{" "}
