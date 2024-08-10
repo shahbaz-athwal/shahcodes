@@ -10,7 +10,8 @@ const getLastLocation = async () => {
   if (!response || response.status === "fail") {
     response = {
       city: "Wolfville",
-      regionName: "Nova Scotia",
+      region: "NS",
+      countryCode: "CA",
       status: "success",
     };
   }
@@ -23,24 +24,21 @@ const updateLocation = async () => {
   const ip = ipSource.split(",")[0].trim();
 
   const { data } = await axios.get<LocationResponse>(
-    `http://ip-api.com/json/${ip}?fields=status,country,city,regionName`
+    `http://ip-api.com/json/${ip}?fields=status,country,city,region,countryCode`
   );
 
-  await Promise.all([
-    redis.set("lastLocation", JSON.stringify(data)),
-    redis.incr(`Location:${data.city}`),
-  ]);
+  await redis.set("lastLocation", JSON.stringify(data));
 };
 
 export const LocationData = async () => {
   noStore();
-  const { city, regionName }: LocationResponse = await getLastLocation();
+  const { city, region, countryCode } = await getLastLocation();
   return (
     <>
       <div>Last Visit From:</div>
       <div>
         {" "}
-        {city}, {regionName}
+        {city}, {region}, {countryCode}
       </div>
     </>
   );

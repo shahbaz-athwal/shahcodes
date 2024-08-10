@@ -1,6 +1,6 @@
 export interface LocationResponse {
     city?: string,
-    regionName?: string,
-    country?: string,
+    region?: string,
+    countryCode?: string,
     status: 'success' | 'fail'
   }
