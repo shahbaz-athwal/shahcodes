@@ -38,8 +38,8 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ recentPlays }) => {
           }}
         >
           <CarouselContent>
-            {recentPlays.map((item) => (
-              <CarouselItem key={item.playedAt} className="w-full">
+            {recentPlays.map((item, index) => (
+              <CarouselItem key={index} className="w-full">
                 <div className="p-4 mx-6 relative">
                   <Link
                     href={item.url!}
@@ -50,19 +50,18 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ recentPlays }) => {
                     aria-label={`${item.title} by: ${item.artist}`}
                   >
                     <Image
-                      height={500}
-                      width={900}
-                      quality={90}
+                      height={400}
+                      width={400}
                       priority
                       src={item.thumbnail!}
                       alt={item.title!}
                       className="w-full h-full sm:h-64 object-cover rounded-lg shadow-lg dark:shadow-zinc-800/70 brightness-[0.4]"
                     />
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-                      <h3 className="text-xl font-semibold overflow-hidden text-ellipsis whitespace-nowrap">
+                      <h3 className="text-xl font-semibold max-w-56 sm:max-w-full overflow-hidden text-ellipsis">
                         {item.title}
                       </h3>
-                      <p className="text-gray-300 max-w-56 sm:max-w-full text-center overflow-hidden text-ellipsis whitespace-nowrap">
+                      <p className="text-gray-300 max-w-56 sm:max-w-full text-center overflow-hidden">
                         {item.artist}
                       </p>
                     </div>

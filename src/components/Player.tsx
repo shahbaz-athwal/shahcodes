@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useMemo } from "react";
-
 import Link from "next/link";
 import Lottie from "react-lottie-player";
 import PlayerJson from "@/lib/lottie-files/player.json";
 import { useSpotify } from "@/hooks/useSpotify";
 import Spotify from "./icons/Spotify";
+import Image from "next/image";
 
 const PlayerAnimation = () => {
   return <Lottie loop animationData={PlayerJson} play />;
@@ -15,9 +15,7 @@ const PlayerAnimation = () => {
 const Player = () => {
   const { listening } = useSpotify();
 
-  const url = listening?.isPlaying
-    ? listening.url
-    : " /spotify";
+  const url = listening?.isPlaying ? listening.url : " /spotify";
 
   const progress = useMemo(() => {
     if (listening.progress && listening.duration) {
@@ -43,15 +41,17 @@ const Player = () => {
           >
             {listening?.isPlaying ? (
               <div className="h-auto w-auto">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
+                  height={400}
+                  width={400}
+                  priority={true}
                   src={listening?.thumbnail || ""}
                   alt={listening?.album || "Album cover"}
                   className="rounded-lg shadow-lg w-64 h-64 md:w-32 md:h-32"
                 />
               </div>
             ) : (
-              <Spotify/>
+              <Spotify />
             )}
           </Link>
 
