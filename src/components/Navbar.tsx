@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { LocationData } from "./LocationData";
 import { Separator } from "@radix-ui/react-separator";
 import { ProfileImage } from "./Avatar";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   return (
@@ -33,17 +34,20 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-        <div className="flex flex-col text-right items-end justify-end text-xs sm:text-sm font-[350] text-zinc-700 dark:text-zinc-300">
-          <Suspense
-            fallback={
-              <div>
-                <div className="blur-md">Last visit from:</div>
-                <div className="blur-md">sdasd asdasd</div>
-              </div>
-            }
-          >
-            <LocationData />
-          </Suspense>
+        <div className="flex flex-col text-right items-end justify-between text-xs sm:text-sm font-[350] text-zinc-700 dark:text-zinc-300">
+          <ThemeToggle />
+          <div>
+            <Suspense
+              fallback={
+                <div>
+                  <div className="blur-md">Last visit from:</div>
+                  <div className="blur-md">sdasd asdasd</div>
+                </div>
+              }
+            >
+              <LocationData />
+            </Suspense>
+          </div>
         </div>
       </nav>
       <Separator className="w-full my-5 rounded h-[0.5px] sm:h-[1px] bg-zinc-500 shrink-0" />
