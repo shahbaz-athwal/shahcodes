@@ -58,7 +58,7 @@ const RecentlyPlayed: React.FC<RecentlyPlayedProps> = ({ recentPlays }) => {
                       className="w-full h-full sm:h-64 object-cover rounded-lg shadow-lg dark:shadow-zinc-800/70 brightness-[0.4]"
                     />
                     <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-                      <h3 className="text-xl font-semibold max-w-56 sm:max-w-full overflow-hidden text-ellipsis">
+                      <h3 className="text-xl font-semibold max-w-56 sm:max-w-full overflow-hidden whitespace-nowrap text-ellipsis">
                         {item.title}
                       </h3>
                       <p className="text-gray-300 max-w-56 sm:max-w-full text-center overflow-hidden">

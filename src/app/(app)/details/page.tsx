@@ -38,42 +38,34 @@ export default function Page() {
       <Header as="h1">Details</Header>
       <motion.section variants={itemVariants} className="mb-6">
         <section className="pt-8">
-          <span className="block font-bold text-2xl pb-3 dark:text-zinc-200">
+          <span className="block font-bold text-3xl pb-3 dark:text-zinc-200">
             Tech Stack
           </span>
           <div className="text-md md:text-lg space-y-3 font-normal leading-normal text-zinc-700 dark:text-zinc-300">
             <p>
-              I create web applications using <strong>Next.js</strong> and also
-              work with <strong>React</strong> combined with{" "}
-              <strong>Express</strong> in <strong>TypeScript</strong>. My
-              primary database is <strong>PostgreSQL</strong>. I practice Data
-              Structures and Algorithms in <strong>Python</strong>.
+              I like creating web applications using Next.js and also working with React
+              combined with Express in TypeScript. My primary database is
+              PostgreSQL. I practice Data Structures and Algorithms in Python.
             </p>
             <p>
-              My favorite tool is <strong>Docker</strong>. and I Use{" "}
-              <strong>GitHub Actions</strong> for <strong>CI/CD</strong>{" "}
+              My favorite tool is Docker, and I use GitHub Actions for CI/CD
               pipelines.
             </p>
             <p>
-              <strong>AWS</strong> services I use regularly, includes{" "}
-              <strong>EC2</strong>, <strong>Elastic Beanstalk</strong>,{" "}
-              <strong>S3</strong>, <strong>CloudFront</strong>,
-              <strong> Route 53</strong>, <strong>RDS</strong>, and{" "}
-              <strong>Lambda</strong>.
+              AWS services I use regularly include EC2, Elastic Beanstalk, S3,
+              CloudFront, Route 53, RDS, and Lambda.
             </p>
             <p>
-              Currently, I am learning <strong>Kubernetes</strong>, advanced{" "}
-              <strong>Docker</strong> concepts, and{" "}
-              <strong>System Design</strong> principles. Also, building side
-              projects as a hobby.
+              Currently, I am learning Kubernetes, advanced Docker concepts, and
+              System Design principles. Also, building side projects as a hobby.
             </p>
           </div>
         </section>
       </motion.section>
 
       <motion.section variants={itemVariants}>
-        <section className="pt-4">
-          <span className="block font-bold text-2xl dark:text-zinc-200">
+        <section className="pt-6">
+          <span className="block font-bold text-3xl dark:text-zinc-200">
             Education
           </span>
           <div className="flex gap-4 py-6">
@@ -103,8 +95,8 @@ export default function Page() {
       </motion.section>
 
       <motion.section variants={itemVariants}>
-        <section className="pt-4">
-          <span className="block font-bold text-2xl dark:text-zinc-200">
+        <section className="pt-6">
+          <span className="block font-bold text-3xl dark:text-zinc-200">
             Experience
           </span>
           <div className="divide-y pt-4 dark:divide-zinc-700">
