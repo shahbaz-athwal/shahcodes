@@ -43,9 +43,10 @@ export default function Page() {
           </span>
           <div className="text-md md:text-lg space-y-3 font-normal leading-normal text-zinc-700 dark:text-zinc-300">
             <p>
-              I like creating web applications using Next.js and also working with React
-              combined with Express in TypeScript. My primary database is
-              PostgreSQL. I practice Data Structures and Algorithms in Python.
+              I like creating web applications using Next.js and also working
+              with React combined with Express in TypeScript. My primary
+              database is PostgreSQL. I practice Data Structures and Algorithms
+              in Python.
             </p>
             <p>
               My favorite tool is Docker, and I use GitHub Actions for CI/CD

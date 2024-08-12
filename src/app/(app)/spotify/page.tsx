@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "what am I listening on Spotify?",
 };
 
-export default async function Page() {
+export default function Page() {
   return (
     <div className="pt-6">
       <SpotifyProvider>

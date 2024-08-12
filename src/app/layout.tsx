@@ -7,8 +7,14 @@ import { ThemeProvider } from "@/hooks/useTheme";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Shahbaz Singh",
-  description: "A Passionate Full Stack Developer",
+  title: {
+    default: "Shahbaz Singh",
+    template: "%s - Shahbaz Singh",
+  },
+  description: "A Passionate Full Stack Developer based in Canada.",
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
