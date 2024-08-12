@@ -12,7 +12,7 @@ import { SpotifyPlayedItem } from "@/types/recentlyPlayed";
 import Link from "next/link";
 import Image from "next/image";
 import { recentlyPlayed } from "@/app/actions/recentlyPlayed";
-import Loading from "@/app/(app)/spotify/loading";
+import { RecentlyPlayedSkeleton } from "@/components/Skeletons";
 
 const RecentlyPlayed = () => {
   const [recentPlays, setRecentPlays] = useState<SpotifyPlayedItem[]>();
@@ -78,7 +78,7 @@ const RecentlyPlayed = () => {
           <CarouselNext className="absolute top-1/2 right-0 bg-transparent hover:scale-125 transition-transform duration-300 rotate-90" />
         </Carousel>
       ) : (
-        <Loading />
+        <RecentlyPlayedSkeleton />
       )}
     </div>
   );
