@@ -4,7 +4,7 @@ import { Header } from "@/components/ui/topicHeader";
 import { Title } from "@/components/ui/title";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
-import ContactForm from "./ContactForm";
+import ContactForm from "@/components/ContactForm";
 import { containerVariants, itemVariants } from "@/lib/animationVariants";
 
 const contacts: {
