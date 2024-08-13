@@ -1,5 +1,7 @@
+import { rehypePrettyCodeOptions } from "./src/lib/rehypeCode";
 import { defineDocumentType, makeSource } from "contentlayer2/source-files";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
@@ -46,12 +48,14 @@ export default makeSource({
     remarkPlugins: [[remarkGfm]],
     rehypePlugins: [
       [rehypeSlug],
-      // [rehypePrettyCode, rehypePrettyCodeOptions],
-      // [rehypePrettyCodeClasses],
+      [
+        rehypePrettyCode,
+        rehypePrettyCodeOptions
+      ],
       [
         rehypeAutolinkHeadings,
         {
-          // behavior: "wrap",
+          behavior: "wrap",
           properties: {
             className: ["subheading-anchor"],
           },

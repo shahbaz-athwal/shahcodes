@@ -3,8 +3,6 @@ import Image from "next/image"
 import { useMDXComponent } from "next-contentlayer2/hooks"
 
 import { cn } from "@/lib/utils"
-// import { Callout } from "@/components/callout"
-// import { MdxCard } from "@/components/mdx-card"
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -73,16 +71,16 @@ const components = {
       {...props}
     />
   ),
-  ul: ({ className, ...props }: any) => (
+  ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
   ),
-  ol: ({ className, ...props }: any) => (
+  ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
     <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
   ),
-  li: ({ className, ...props }: any) => (
+  li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
     <li className={cn("mt-2", className)} {...props} />
   ),
-  blockquote: ({ className, ...props }: any) => (
+  blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
       className={cn(
         "mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground",
@@ -111,7 +109,7 @@ const components = {
       {...props}
     />
   ),
-  th: ({ className, ...props }: any) => (
+  th: ({ className, ...props }: any ) => (
     <th
       className={cn(
         "border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
@@ -141,15 +139,13 @@ const components = {
   code: ({ className, ...props }: any) => (
     <code
       className={cn(
-        "relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm",
+        "relative px-[1rem] py-[0.2rem] text-sm",
         className
       )}
       {...props}
     />
   ),
   Image,
-//   Callout,
-//   Card: MdxCard,
 }
 
 interface MdxProps {

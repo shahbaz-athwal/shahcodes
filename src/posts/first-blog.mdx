@@ -6,5 +6,26 @@ publishedAt: 2024-08-13
 end: 0
 ---
 
-
 <div className="text-center pt-8">Nothings here yet.</div>
+
+```js
+async function doSomething() {
+    try {
+        const result = await someFunction();
+    try {
+        const anotherResult = await anotherFunction(result);
+      try {
+          const finalResult = await finalFunction(anotherResult);
+        return finalResult;
+      } catch (err) {
+          console.error(err);
+      }
+    } catch (err) {
+        console.error(err);
+    }
+  } catch (err) {
+      console.error(err);
+  }
+}
+```
+   
