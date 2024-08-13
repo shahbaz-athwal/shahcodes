@@ -1,5 +1,5 @@
 "use server";
-import { contactSchema } from "@/schema/contactSchema";
+import { contactSchema } from "@/components/ContactForm";
 import { z } from "zod";
 
 export async function contact(data: z.infer<typeof contactSchema>) {
