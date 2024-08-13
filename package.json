@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "npx contentlayer2 build",
     "dev": "next dev",
     "prebuild": "npx contentlayer2 build",
     "build": "next build",

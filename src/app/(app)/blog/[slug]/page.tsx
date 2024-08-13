@@ -4,9 +4,10 @@ import { notFound } from "next/navigation";
 import { Mdx } from "@/components/Mdx";
 
 export const generateStaticParams = () => {
-  return allPosts
+  const posts = allPosts
     .filter((p) => p.status === "published")
     .map((p) => ({ slug: p.slug }));
+  return posts;
 };
 
 type Props = {

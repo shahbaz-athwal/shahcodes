@@ -24,6 +24,9 @@ export const Post = defineDocumentType(() => ({
       options: ["draft", "published"],
       required: true,
     },
+    end: {
+      type: "string",
+    },
   },
   computedFields: {
     slug: {
