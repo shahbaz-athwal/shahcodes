@@ -33,6 +33,7 @@
     "react-hook-form": "^7.52.1",
     "react-lottie-player": "^2.0.0",
     "react-use": "^17.5.1",
+    "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.13.2",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.0",

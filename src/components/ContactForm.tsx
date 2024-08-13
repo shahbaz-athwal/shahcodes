@@ -13,7 +13,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { contact } from "@/app/actions/contact";
 import { Textarea } from "@/components/ui/textarea";
-import { contactSchema } from "@/schema/contactSchema";
+
+const contactSchema = z.object({
+  name: z.string(),
+  email: z.string().email({ message: "Email is invalid" }),
+  message: z.string().min(3, { message: "Message is too short" }),
+});
 
 function ContactForm() {
   const form = useForm<z.infer<typeof contactSchema>>({
