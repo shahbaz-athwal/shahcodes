@@ -33,7 +33,7 @@ export const getCurrentlyListening = async () => {
   return fetch(`${baseEndpoint}/me/player/currently-playing`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
-    },
+    }
   });
 };
 
@@ -44,6 +44,20 @@ export const getRecentlyPlayed = async () => {
   }
 
   return fetch(`${baseEndpoint}/me/player/recently-played?limit=15`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+};
+
+export const getTopArtists = async () => {
+
+  const { access_token: accessToken } = await getAccessToken();
+  if (!accessToken) {
+    return;
+  }
+
+  return fetch(`${baseEndpoint}/me/top/artists?limit=5&time_range=medium_term`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
