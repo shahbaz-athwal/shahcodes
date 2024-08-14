@@ -1,6 +1,6 @@
 "use client";
 
-import { SpotifyListeningItem } from "@/types/listening";
+import { SpotifyListeningItem } from "@/types/Listening";
 import React, {
   useCallback,
   useMemo,

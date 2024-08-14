@@ -8,7 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { SpotifyPlayedItem } from "@/types/recentlyPlayed";
+import { SpotifyPlayedItem } from "@/types/RecentlyPlayed";
 import Link from "next/link";
 import Image from "next/image";
 import { recentlyPlayed } from "@/app/actions/recentlyPlayed";
@@ -22,7 +22,7 @@ const RecentlyPlayed = () => {
     const fetchData = async () => {
       const result = await recentlyPlayed();
       setRecentPlays(result);
-      setTimeout(() => setIsLoaded(true), 1);
+      setTimeout(() => setIsLoaded(true), 100);
     };
 
     fetchData();
@@ -37,7 +37,7 @@ const RecentlyPlayed = () => {
         <Carousel
           className={`w-full ${
             isLoaded
-              ? "transition-opacity duration-500 opacity-100"
+              ? "transition-opacity duration-700 opacity-100"
               : "opacity-0"
           }`}
           plugins={[Autoplay({ delay: 4000 })]}

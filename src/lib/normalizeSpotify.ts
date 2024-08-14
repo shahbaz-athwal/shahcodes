@@ -1,6 +1,6 @@
-import { SpotifyListeningItem } from "@/types/listening";
-import { SpotifyPlayedItem } from "@/types/recentlyPlayed";
-import { SpotifyTopArtist } from "@/types/topArtists";
+import { SpotifyListeningItem } from "@/types/Listening";
+import { SpotifyPlayedItem } from "@/types/RecentlyPlayed";
+import { SpotifyTopArtist } from "@/types/TopArtists";
 
 export const normalizeCurrentlyListening = ({
   is_playing,

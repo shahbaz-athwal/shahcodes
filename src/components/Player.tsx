@@ -3,7 +3,7 @@
 import React, { useMemo } from "react";
 import Link from "next/link";
 import Lottie from "react-lottie-player";
-import PlayerJson from "@/lib/lottie-files/player.json";
+import PlayerJson from "@/lib/player.json";
 import { useSpotify } from "@/hooks/useSpotify";
 import Spotify from "./icons/Spotify";
 import Image from "next/image";
