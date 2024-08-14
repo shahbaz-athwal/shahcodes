@@ -8,7 +8,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { SpotifyPlayedItem } from "@/types/RecentlyPlayed";
+import { SpotifyPlayedItem } from "@/types/SpotifyRecentlyPlayed";
 import Link from "next/link";
 import Image from "next/image";
 import { recentlyPlayed } from "@/app/actions/recentlyPlayed";

@@ -1,4 +1,4 @@
-import { SpotifyTopArtist } from "@/types/TopArtists";
+import { SpotifyTopArtist } from "@/types/SpotifyTopArtist";
 import Image from "next/image";
 import Link from "next/link";
 import { TextGradient } from "./ui/textgradient";

@@ -1,7 +1,7 @@
 "use server";
 import { normalizeArtists } from "@/lib/normalizeSpotify";
 import { getTopArtists } from "@/lib/spotify";
-import { SpotifyTopArtist } from "@/types/TopArtists";
+import { SpotifyTopArtist } from "@/types/SpotifyTopArtist";
 
 export const topArtists = async (): Promise<SpotifyTopArtist[] | null> => {
   const response = await getTopArtists();

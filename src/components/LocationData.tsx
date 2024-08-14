@@ -1,5 +1,5 @@
 import redis from "@/lib/redis";
-import { LocationResponse } from "@/types/LocationResponse";
+import { LocationResponse } from "@/types/LocationDataResponse";
 import { unstable_noStore as noStore } from "next/cache";
 import { headers } from "next/headers";
 
