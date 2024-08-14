@@ -58,8 +58,19 @@ const config = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      keyframes: {},
-      animation: {},
+      keyframes: {
+        textGradient: {
+          "0%, 100%": {
+            "background-size": "200% 200%",
+            "background-position": "left center",
+          },
+          "50%": {
+            "background-size": "200% 200%",
+            "background-position": "right center",
+          },
+        },
+      },
+      animation: { textGradient: "textGradient 5s ease infinite" },
     },
   },
   plugins: [require("tailwindcss-animate")],

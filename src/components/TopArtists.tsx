@@ -1,6 +1,7 @@
 import { SpotifyTopArtist } from "@/types/TopArtists";
 import Image from "next/image";
 import Link from "next/link";
+import { TextGradient } from "./ui/textgradient";
 
 interface Props {
   topArtists: SpotifyTopArtist[] | null;
@@ -9,8 +10,8 @@ interface Props {
 export default function TopArtists({ topArtists }: Props) {
   return (
     <div>
-      <h1 className="font-bold text-2xl leading-tight pt-10 pb-8 mx-4 md:mx-0">
-        My Top Artists
+      <h1 className="font-bold text-3xl leading-tight py-12 mx-4 md:mx-0">
+        <TextGradient>My Top Artists</TextGradient>
       </h1>
       <div className="lg:w-[140%] lg:-ml-[20%] relative grid grid-cols-1 md:grid-cols-2 gap-8 mx-8">
         {topArtists?.map((artist) => (

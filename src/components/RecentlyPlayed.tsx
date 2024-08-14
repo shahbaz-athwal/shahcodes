@@ -13,9 +13,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { recentlyPlayed } from "@/app/actions/recentlyPlayed";
 import { RecentlyPlayedSkeleton } from "@/components/Skeletons";
+import { TextGradient } from "./ui/textgradient";
 
 const RecentlyPlayed = () => {
-  const [recentPlays, setRecentPlays] = useState<SpotifyPlayedItem[] | null>(null);
+  const [recentPlays, setRecentPlays] = useState<SpotifyPlayedItem[] | null>(
+    null
+  );
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -30,8 +33,8 @@ const RecentlyPlayed = () => {
 
   return (
     <div className="relative overflow-hidden">
-      <h1 className="font-bold text-2xl leading-tight pb-6 mx-4 md:mx-0">
-        Recently Played
+      <h1 className="font-bold text-3xl leading-tight pb-6 mx-4 md:mx-0">
+        <TextGradient>Recently Played</TextGradient>
       </h1>
       {recentPlays ? (
         <Carousel

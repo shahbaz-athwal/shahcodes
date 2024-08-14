@@ -7,6 +7,7 @@ import PlayerJson from "@/lib/player.json";
 import { useSpotify } from "@/hooks/useSpotify";
 import Spotify from "./icons/Spotify";
 import Image from "next/image";
+import { TextGradient } from "./ui/textgradient";
 
 const PlayerAnimation = () => {
   return <Lottie loop animationData={PlayerJson} play />;
@@ -25,9 +26,9 @@ const Player = () => {
   }, [listening]);
 
   return (
-    <div className="py-10 mx-4 md:mx-0">
-      <h1 className="font-bold text-2xl leading-tight pb-6">
-        Currently Playing
+    <div className="py-12 mx-4 md:mx-0">
+      <h1 className="font-bold text-3xl leading-tight pb-8">
+        <TextGradient>Currently Playing</TextGradient>
       </h1>
       <div className="bg-opacity-60 dark:bg-opacity-30 bg-black p-4 rounded-lg shadow-lg dark:shadow-zinc-900">
         <div className="flex flex-col md:flex-row items-center">
