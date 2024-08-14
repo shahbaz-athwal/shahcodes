@@ -15,7 +15,7 @@ import { recentlyPlayed } from "@/app/actions/recentlyPlayed";
 import { RecentlyPlayedSkeleton } from "@/components/Skeletons";
 
 const RecentlyPlayed = () => {
-  const [recentPlays, setRecentPlays] = useState<SpotifyPlayedItem[]>();
+  const [recentPlays, setRecentPlays] = useState<SpotifyPlayedItem[] | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const RecentlyPlayed = () => {
                         priority
                         src={item.thumbnail!}
                         alt={item.title!}
-                        className="w-full h-full sm:h-64 object-cover rounded-lg shadow-lg dark:shadow-zinc-800/70 brightness-[0.4]"
+                        className="w-full h-[300px] sm:h-64 object-cover rounded-lg shadow-lg dark:shadow-zinc-800/70 brightness-[0.4]"
                       />
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
                         <h3 className="text-xl font-semibold max-w-56 sm:max-w-full overflow-hidden whitespace-nowrap text-ellipsis">

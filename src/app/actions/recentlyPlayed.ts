@@ -1,16 +1,17 @@
 "use server";
 import { normalizeRecentlyPlayed } from "@/lib/normalizeSpotify";
 import { getRecentlyPlayed } from "@/lib/spotify";
+import { SpotifyPlayedItem } from "@/types/RecentlyPlayed";
 
-export const recentlyPlayed = async () => {
+export const recentlyPlayed = async (): Promise<SpotifyPlayedItem[] | null> => {
   const response = await getRecentlyPlayed();
 
   if (!response) {
-    return { recentlyPlayed: false };
+    return null;
   }
 
   if (response.status === 204 || response.status > 400) {
-    return { recentlyPlayed: false };
+    return null;
   }
   const { items } = await response.json();
   const data = items

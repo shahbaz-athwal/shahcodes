@@ -1,9 +1,9 @@
-export interface SpotifyPlayedItem {
-    playedAt?: string;
-    title?: string;
-    artist?: string;
-    album?: string;
-    thumbnail?: string;
-    url?: string;
-    duration?: number;
-  }
+export type SpotifyPlayedItem = {
+  playedAt?: string;
+  title?: string;
+  artist?: string;
+  album?: string;
+  thumbnail?: string;
+  url?: string;
+  duration?: number;
+};
