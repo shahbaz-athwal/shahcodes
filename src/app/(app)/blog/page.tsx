@@ -33,10 +33,9 @@ export default function Blog() {
                 {post.title}
               </Title>
               <span className="text-zinc-500 dark:text-zinc-400 text-sm tracking-tight font-mono block mt-2">
-                Published on{" "}
                 <time dateTime={post.publishedAt}>
                   {new Intl.DateTimeFormat("en-US", {
-                    dateStyle: "medium",
+                    dateStyle: "long",
                   }).format(new Date(post.publishedAt))}
                 </time>
               </span>

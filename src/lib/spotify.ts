@@ -1,58 +1,51 @@
-import axios from "axios";
+const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN!;
+const baseEndpoint = "https://api.spotify.com/v1";
+const tokenEndpoint = "https://accounts.spotify.com/api/token";
 
 const getAccessToken = async () => {
-  const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN!;
+  const params = new URLSearchParams({
+    grant_type: "refresh_token",
+    refresh_token: refreshToken,
+  });
 
-  const response = await axios.post(
-    "https://accounts.spotify.com/api/token",
-    new URLSearchParams({
-      grant_type: "refresh_token",
-      refresh_token: refreshToken,
-    }).toString(),
-    {
-      headers: {
-        Authorization: `Basic ${Buffer.from(
-          `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
-        ).toString("base64")}`,
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-    }
-  );
+  const body = params.toString();
 
-  return response.data;
+  const response = await fetch(tokenEndpoint, {
+    method: "POST",
+    headers: {
+      Authorization: `Basic ${Buffer.from(
+        `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+      ).toString("base64")}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body,
+  });
+
+  return response.json();
 };
 
 export const getCurrentlyListening = async () => {
-  const nowPlayingEndpoint =
-    "https://api.spotify.com/v1/me/player/currently-playing";
-
   const { access_token: accessToken } = await getAccessToken();
+  if (!accessToken) {
+    return;
+  }
 
-  const response = await axios.get(nowPlayingEndpoint, {
+  return fetch(`${baseEndpoint}/me/player/currently-playing`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
-
-  return response;
 };
 
 export const getRecentlyPlayed = async () => {
-  const limit = 10;
-  const before = new Date().getTime();
-  // @ts-ignore
-  const params = new URLSearchParams({
-    limit,
-    before,
-  }).toString();
-
   const { access_token: accessToken } = await getAccessToken();
+  if (!accessToken) {
+    return;
+  }
 
-  const response = await axios.get(`https://api.spotify.com/v1/me/player/recently-played?${params}`, {
+  return fetch(`${baseEndpoint}/me/player/recently-played?limit=15`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
-
-  return response;
 };

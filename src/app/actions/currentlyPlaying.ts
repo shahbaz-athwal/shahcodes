@@ -1,13 +1,18 @@
-"use server"
-import { getCurrentlyListening } from '@/lib/spotify';
-import { normalizeCurrentlyListening } from '@/lib/normalizeSpotify';
+"use server";
+import { getCurrentlyListening } from "@/lib/spotify";
+import { normalizeCurrentlyListening } from "@/lib/normalizeSpotify";
 
 export const currentlyPlaying = async () => {
-    const {status, data} = await getCurrentlyListening();
+  const response = await getCurrentlyListening();
 
-    if (status === 204 || status > 400) {
-        return { isPlaying: false }
-      }
+  if (!response) {
+    return { isPlaying: false };
+  }
 
-    return normalizeCurrentlyListening(data)
-}
+  if (response.status === 204 || response.status > 400) {
+    return { isPlaying: false };
+  }
+  const data = await response.json();
+
+  return normalizeCurrentlyListening(data);
+};

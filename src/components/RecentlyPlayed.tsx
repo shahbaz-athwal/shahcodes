@@ -16,11 +16,13 @@ import { RecentlyPlayedSkeleton } from "@/components/Skeletons";
 
 const RecentlyPlayed = () => {
   const [recentPlays, setRecentPlays] = useState<SpotifyPlayedItem[]>();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await recentlyPlayed();
       setRecentPlays(result);
+      setTimeout(() => setIsLoaded(true), 1);
     };
 
     fetchData();
@@ -32,7 +34,14 @@ const RecentlyPlayed = () => {
         Recently Played
       </h1>
       {recentPlays ? (
-        <Carousel className="w-full" plugins={[Autoplay({ delay: 4000 })]}>
+        <Carousel
+          className={`w-full ${
+            isLoaded
+              ? "transition-opacity duration-500 opacity-100"
+              : "opacity-0"
+          }`}
+          plugins={[Autoplay({ delay: 4000 })]}
+        >
           <div
             className="relative"
             style={{

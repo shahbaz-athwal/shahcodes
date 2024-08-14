@@ -1,6 +1,5 @@
 import redis from "@/lib/redis";
 import { LocationResponse } from "@/types/locationResponse";
-import axios from "axios";
 import { unstable_noStore as noStore } from "next/cache";
 import { headers } from "next/headers";
 
@@ -23,9 +22,10 @@ const updateLocation = async () => {
   const ipSource = headers().get("x-forwarded-for") || "localhost";
   const ip = ipSource.split(",")[0].trim();
 
-  const { data } = await axios.get<LocationResponse>(
+  const response = await fetch(
     `http://ip-api.com/json/${ip}?fields=status,city,region,countryCode`
   );
+  const data: LocationResponse = await response.json();
 
   await redis.set("lastLocation", JSON.stringify(data));
 };
