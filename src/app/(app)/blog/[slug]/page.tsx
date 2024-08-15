@@ -1,5 +1,5 @@
 import { allPosts } from "contentlayer/generated";
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { Mdx } from "@/components/Mdx";
 import Link from "next/link";
@@ -15,8 +15,13 @@ type Props = {
   params: { slug: string };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
   const post = allPosts.find((post) => post.slug === params?.slug);
+
+  const parentMeta = await parent;
 
   if (!post) {
     notFound();
@@ -26,7 +31,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: post.title,
+    description: post.description,
+    publisher: "Shahbaz Singh",
     alternates: { canonical: url },
+    twitter: {
+      ...parentMeta.twitter,
+      siteId: undefined,
+      site: undefined,
+      creatorId: undefined,
+      creator: "@shahcodes",
+      title: post.title,
+      description: post.description,
+    },
+    openGraph: {
+      ...parentMeta.openGraph,
+      title: post.title,
+      description: post.description,
+      url: url,
+    },
   };
 }
 
