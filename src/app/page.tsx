@@ -33,7 +33,7 @@ const projects: {
   },
   {
     title: "Portfolio/Blog",
-    href: "https://www.shahcodes.in/",
+    href: "https://shahcodes.in/",
     code: "https://github.com/shahbaz-athwal/shahcodes",
     description: "My Personal Portfolio and Blog",
     image: "/og.png",
