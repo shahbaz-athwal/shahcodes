@@ -19,7 +19,7 @@ const projects: {
     code: "https://github.com/shahbaz-athwal/whisperella",
     description: "An Anonymous Messaging Platform",
     image: "/projects/whisper.png",
-    badges: ["Next.js", "Auth.js", "TypeScript", "PostgreSQL", "Resend"],
+    badges: ["Next.js", "Auth.js", "TypeScript", "PostgreSQL", "Resend", "Zod"],
     hidden: false,
   },
   {
@@ -36,16 +36,16 @@ const projects: {
     href: "https://www.shahcodes.in/",
     code: "https://github.com/shahbaz-athwal/shahcodes",
     description: "My Personal Portfolio and Blog",
-    image: "/projects/findmyjob.png",
-    badges: ["Next.js", "Tailwind", "TypeScript", "Redis", "Spotify API"],
-    hidden: true,
+    image: "/og.png",
+    badges: ["Next.js", "Tailwind", "TypeScript", "Redis", "Spotify API", "MDX"],
+    hidden: false,
   },
   {
     title: "",
     href: "",
     code: "https://github.com/shahbaz-athwal/acadia-help",
     description: "",
-    image: "/projects/findmyjob.png",
+    image: "/projects/acadia.png",
     badges: [
       "Next.js",
       "Tailwind",
@@ -53,6 +53,7 @@ const projects: {
       "PostgreSQL",
       "ShadCN",
       "Notion API",
+      "Zod"
     ],
     hidden: true,
   },
