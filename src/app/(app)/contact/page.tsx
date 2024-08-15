@@ -28,6 +28,11 @@ const contacts: {
     label: "in/shahbaz-athwal",
   },
   {
+    method: "X",
+    link: "https://x.com/shahcodes",
+    label: "@shahcodes",
+  },
+  {
     method: "Instagram",
     link: "https://www.instagram.com/shahbaz_athwal/",
     label: "@shahbaz_athwal",

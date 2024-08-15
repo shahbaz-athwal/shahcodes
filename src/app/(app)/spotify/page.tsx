@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const cachedTopArtists = cache(async () => topArtists(), [], {
-  revalidate: 2592000,
+  revalidate: 60480, //weekly
 });
 
 export default async function Page() {

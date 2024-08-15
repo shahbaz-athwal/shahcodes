@@ -8,13 +8,44 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "Shahbaz Singh",
+    default: "Shahbaz Singh - Full Stack Developer",
     template: "%s - Shahbaz Singh",
   },
   description: "A Passionate Full Stack Developer based in Canada.",
   twitter: {
     card: "summary_large_image",
+    creator: "@shahcodes",
+    images: ["/og.png"],
+    title: "Shahbaz Singh - Full Stack Developer",
   },
+  openGraph: {
+    title: "Shahbaz Singh - Full Stack Developer",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Shahbaz Singh - Full Stack Developer",
+      },
+    ],
+    siteName: "Shahbaz Singh - Full Stack Developer",
+  },
+  metadataBase: new URL("https://shahcodes.in"),
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Shahbaz Singh",
+  image: "https://shahcodes.in/profile.png",
+  url: "https://shahcodes.in",
+  jobTitle: "Full Stack Developer",
+  sameAs: [
+    "https://x.com/shahcodes",
+    "https://github.com/shahbaz-athwal",
+    "https://www.linkedin.com/in/shahbaz-athwal/",
+    "https://www.instagram.com/shahbaz_athwal/",
+  ],
 };
 
 export default function RootLayout({
@@ -25,6 +56,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="shahbaz_athwal" />
       </head>

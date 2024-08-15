@@ -1,9 +1,14 @@
-import { IconBrandGithub, IconBrandLinkedin } from "@tabler/icons-react";
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandX,
+} from "@tabler/icons-react";
 import { Suspense } from "react";
 import { LocationData } from "./LocationData";
 import { Separator } from "@radix-ui/react-separator";
 import { ProfileImage } from "./Avatar";
 import ThemeToggle from "./ThemeToggle";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -18,20 +23,23 @@ const Navbar = () => {
             FullStack Developer
           </p>
           <div className="flex space-x-4 mt-2">
-            <a
+            <Link
               href="https://github.com/shahbaz-athwal"
               target="_blank"
-              aria-label="GitHub"
+              title="GitHub"
             >
-              <IconBrandGithub className="text-xl text-gray-700 dark:text-gray-300" />
-            </a>
-            <a
+              <IconBrandGithub className="text-gray-700 dark:text-gray-300" />
+            </Link>
+            <Link
               href="https://www.linkedin.com/in/shahbaz-athwal/"
               target="_blank"
-              aria-label="LinkedIn"
+              title="LinkedIn"
             >
-              <IconBrandLinkedin className="text-xl text-gray-700 dark:text-gray-300" />
-            </a>
+              <IconBrandLinkedin className="text-gray-700 dark:text-gray-300" />
+            </Link>
+            <Link href="https://x.com/shahcodes" target="_blank" title="X">
+              <IconBrandX className="text-gray-700 dark:text-gray-300" />
+            </Link>
           </div>
         </div>
         <div className="flex flex-col text-right items-end justify-between text-xs sm:text-sm font-[350] text-zinc-700 dark:text-zinc-300">
