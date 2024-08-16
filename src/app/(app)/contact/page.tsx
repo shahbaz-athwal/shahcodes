@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
 import ContactForm from "@/components/ContactForm";
 import { containerVariants, itemVariants } from "@/lib/animationVariants";
+import { useTheme } from "@/hooks/useTheme";
 
 const contacts: {
   method: string;
@@ -40,6 +41,7 @@ const contacts: {
 ];
 
 function Page() {
+  const { darkMode } = useTheme();
   return (
     <motion.div
       initial="hidden"
@@ -89,8 +91,14 @@ function Page() {
           </div>
           <Separator className="my-4 rounded h-[0.150rem] w-5/12" />
         </div>
-        <p className="text-xl font-semibold my-4">Just leave a message</p>
-        <ContactForm />
+        <p className="text-xl font-semibold my-4">Leave an annonymous message</p>
+        {/* <ContactForm /> */}
+        <iframe
+          src={`https://whisperella.shahcodes.in/embed?mode=${
+            darkMode ? "dark" : "light"
+          }`}
+          className="w-full h-[250px] rounded-lg"
+        />
       </motion.div>
     </motion.div>
   );

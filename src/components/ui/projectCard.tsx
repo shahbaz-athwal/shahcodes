@@ -36,7 +36,7 @@ const ProjectCard = ({
             alt={title}
             width={700}
             height={400}
-            className="rounded-lg bg-cover"
+            className="rounded-lg object-cover aspect-[16/9]"
           />
         </div>
       </Link>
