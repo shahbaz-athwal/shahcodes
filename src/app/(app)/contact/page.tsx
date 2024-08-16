@@ -4,7 +4,6 @@ import { Header } from "@/components/ui/topicHeader";
 import { Title } from "@/components/ui/title";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
-import ContactForm from "@/components/ContactForm";
 import { containerVariants, itemVariants } from "@/lib/animationVariants";
 import { useTheme } from "@/hooks/useTheme";
 
@@ -84,7 +83,7 @@ function Page() {
       </motion.div>
 
       <motion.div variants={itemVariants}>
-        <div className="flex justify-center items-center">
+        {/* <div className="flex justify-center items-center">
           <Separator className="my-4 rounded h-[0.150rem] w-5/12" />
           <div className="px-2 pb-1 text-zinc-500 font-semibold tracking-tight">
             or
@@ -92,12 +91,12 @@ function Page() {
           <Separator className="my-4 rounded h-[0.150rem] w-5/12" />
         </div>
         <p className="text-xl font-semibold my-4">Leave an annonymous message</p>
-        {/* <ContactForm /> */}
+        <ContactForm /> */}
         <iframe
           src={`https://whisperella.shahcodes.in/embed?mode=${
-            darkMode ? "dark" : "light"
+            darkMode && "dark"
           }`}
-          className="w-full h-[250px] rounded-lg"
+          className="w-full h-[250px]"
         />
       </motion.div>
     </motion.div>
