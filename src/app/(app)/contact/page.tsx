@@ -93,6 +93,7 @@ function Page() {
         <p className="text-xl font-semibold my-4">Leave an annonymous message</p>
         <ContactForm /> */}
         <iframe
+          loading="lazy"
           src={`https://whisperella.shahcodes.in/embed?mode=${
             darkMode && "dark"
           }`}
