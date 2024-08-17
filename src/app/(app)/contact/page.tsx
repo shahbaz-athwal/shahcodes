@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Header } from "@/components/ui/topicHeader";
 import { Title } from "@/components/ui/title";
 import Link from "next/link";
-import { Separator } from "@/components/ui/separator";
 import { containerVariants, itemVariants } from "@/lib/animationVariants";
 import { useTheme } from "@/hooks/useTheme";
 
@@ -97,7 +96,7 @@ function Page() {
           src={`https://whisperella.shahcodes.in/embed?mode=${
             darkMode && "dark"
           }`}
-          className="w-full h-[250px]"
+          className="w-full h-72"
         />
       </motion.div>
     </motion.div>

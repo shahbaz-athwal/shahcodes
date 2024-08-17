@@ -16,31 +16,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseURL,
-      lastModified: new Date(),
+      lastModified: new Date("2024-09-16",),
       changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: `${baseURL}/details`,
-      lastModified: new Date(),
+      lastModified: new Date("2024-09-16"),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseURL}/blog`,
-      lastModified: new Date(),
+      lastModified: new Date("2024-09-17"),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${baseURL}/spotify`,
-      lastModified: new Date(),
+      lastModified: new Date("2024-09-17"),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: `${baseURL}/contact`,
-      lastModified: new Date(),
+      lastModified: new Date("2024-09-16"),
       changeFrequency: "monthly",
       priority: 0.6,
     },
