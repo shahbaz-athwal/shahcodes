@@ -10,7 +10,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.7.0",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-menubar": "^1.1.1",
@@ -28,7 +27,6 @@
     "next-contentlayer2": "^0.5.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-hook-form": "^7.52.1",
     "react-lottie-player": "^2.0.0",
     "react-use": "^17.5.1",
     "rehype-autolink-headings": "^7.1.0",
@@ -39,8 +37,7 @@
     "shiki": "^1.12.1",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.23.8"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
