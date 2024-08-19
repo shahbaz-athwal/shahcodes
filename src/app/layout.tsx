@@ -7,8 +7,9 @@ import { ThemeProvider } from "@/hooks/useTheme";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  applicationName: "Shahbaz Singh",
   title: {
-    default: "Shahbaz Singh - Full Stack Developer",
+    default: "Shahbaz Singh",
     template: "%s - Shahbaz Singh",
   },
   description: "A Passionate Full Stack Developer based in Canada.",

@@ -8,42 +8,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((p) => p.status === "published")
     .map((post) => ({
       url: `${baseURL}/blog/${post.slug}`,
-      lastModified: new Date(post.publishedAt),
-      changeFrequency: "weekly",
-      priority: 0.5,
+      lastModified: new Date(post.publishedAt).toISOString().split("T")[0],
     }));
 
-  return [
-    {
-      url: baseURL,
-      lastModified: new Date("2024-09-16",),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${baseURL}/details`,
-      lastModified: new Date("2024-09-16"),
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseURL}/blog`,
-      lastModified: new Date("2024-09-17"),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseURL}/spotify`,
-      lastModified: new Date("2024-09-17"),
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseURL}/contact`,
-      lastModified: new Date("2024-09-16"),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    ...blogs,
-  ];
+  const routes: MetadataRoute.Sitemap = ["", "/blog", "/details", "/spotify", "/contact"].map(
+    (route) => ({
+      url: `${baseURL}/${route}`,
+      lastModified: new Date().toISOString().split("T")[0],
+      changeFrequency: "weekly"
+    })
+  );
+
+  return [...routes, ...blogs];
 }
