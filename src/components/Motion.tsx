@@ -1,7 +1,7 @@
 import { MotionDiv } from "@/lib/framer";
 
 const containerVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     scale: 1,
@@ -12,7 +12,6 @@ const containerVariants = {
       staggerChildren: 0.1,
     },
   },
-  exit: { opacity: 0, scale: 0.95, transition: { duration: 0.1 } },
 };
 
 const itemVariants = {
@@ -30,8 +29,6 @@ export function MotionParent({ children }: { children: React.ReactNode }) {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      // initial={{ opacity: 0, y: 40 }}
-      // animate={{ opacity: 1, y: 0 }}
       className="p-1"
     >
       {children}

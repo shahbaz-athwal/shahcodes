@@ -1,8 +1,12 @@
-"use client";
+import { MotionChild, MotionParent } from "@/components/Motion";
 import { Header } from "@/components/ui/topicHeader";
-import { containerVariants, itemVariants } from "@/lib/animationVariants";
-import { motion } from "framer-motion";
+import { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Details",
+  description: "What technologies I use? and where I work?",
+};
 
 const experience: {
   company: string;
@@ -29,15 +33,10 @@ const experience: {
 
 export default function Page() {
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="p-1 pt-9"
-    >
-      <Header as="h1">Details</Header>
-      <motion.section variants={itemVariants} className="mb-6">
-        <section className="pt-8">
+    <MotionParent>
+      <MotionChild>
+        <Header as="h1" className="pt-8">Details</Header>
+        <section className="pt-8 mb-6">
           <span className="block font-bold text-3xl pb-3 dark:text-zinc-200">
             Tech Stack
           </span>
@@ -62,9 +61,9 @@ export default function Page() {
             </p>
           </div>
         </section>
-      </motion.section>
+      </MotionChild>
 
-      <motion.section variants={itemVariants}>
+      <MotionChild>
         <section className="pt-6">
           <span className="block font-bold text-3xl dark:text-zinc-200">
             Education
@@ -93,9 +92,9 @@ export default function Page() {
             </div>
           </div>
         </section>
-      </motion.section>
+      </MotionChild>
 
-      <motion.section variants={itemVariants}>
+      <MotionChild>
         <section className="pt-6">
           <span className="block font-bold text-3xl dark:text-zinc-200">
             Experience
@@ -132,7 +131,7 @@ export default function Page() {
             })}
           </div>
         </section>
-      </motion.section>
-    </motion.div>
+      </MotionChild>
+    </MotionParent>
   );
 }

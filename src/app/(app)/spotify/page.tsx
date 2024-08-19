@@ -5,6 +5,7 @@ import RecentlyPlayed from "@/components/RecentlyPlayed";
 import { topArtists } from "@/app/actions/topArtists";
 import { unstable_cache as cache } from "next/cache";
 import TopArtists from "@/components/TopArtists";
+import { MotionChild, MotionParent } from "@/components/Motion";
 
 export const metadata: Metadata = {
   title: "Spotify",
@@ -18,12 +19,18 @@ const cachedTopArtists = cache(async () => topArtists(), [], {
 export default async function Page() {
   const top = await cachedTopArtists();
   return (
-    <div className="pt-6">
-      <SpotifyProvider>
-        <SpotifyPlayer />
-      </SpotifyProvider>
-      <RecentlyPlayed />
-      <TopArtists topArtists={top} />
-    </div>
+    <MotionParent>
+      <MotionChild>
+        <SpotifyProvider>
+          <SpotifyPlayer />
+        </SpotifyProvider>
+      </MotionChild>
+      <MotionChild>
+        <RecentlyPlayed />
+      </MotionChild>
+      <MotionChild>
+        <TopArtists topArtists={top} />
+      </MotionChild>
+    </MotionParent>
   );
 }
