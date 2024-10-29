@@ -3,6 +3,7 @@ import MenuBar from "@/components/MenuBar";
 import Link from "next/link";
 import ProjectCard from "@/components/ui/projectCard";
 import { Header } from "@/components/ui/topicHeader";
+import { NextRequest } from "next/server";
 
 const projects: {
   href: string;
@@ -59,7 +60,8 @@ const projects: {
   },
 ];
 
-const Home = () => {
+const Home = (req: NextRequest) => {
+  console.log(req);
   return (
     <>
       <Navbar />
