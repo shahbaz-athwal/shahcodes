@@ -3,7 +3,6 @@ import MenuBar from "@/components/MenuBar";
 import Link from "next/link";
 import ProjectCard from "@/components/ui/projectCard";
 import { Header } from "@/components/ui/topicHeader";
-import { NextRequest } from "next/server";
 
 const projects: {
   href: string;
@@ -38,7 +37,14 @@ const projects: {
     code: "https://github.com/shahbaz-athwal/shahcodes",
     description: "My Personal Portfolio and Blog",
     image: "/og.png",
-    badges: ["Next.js", "Tailwind", "TypeScript", "Redis", "Spotify API", "MDX"],
+    badges: [
+      "Next.js",
+      "Tailwind",
+      "TypeScript",
+      "Redis",
+      "Spotify API",
+      "MDX",
+    ],
     hidden: false,
   },
   {
@@ -54,14 +60,14 @@ const projects: {
       "PostgreSQL",
       "ShadCN",
       "Notion API",
-      "Zod"
+      "Zod",
     ],
     hidden: true,
   },
 ];
 
-const Home = (req: NextRequest) => {
-  console.log(req);
+const Home = ({ searchParams }: any) => {
+  console.log(searchParams);
   return (
     <>
       <Navbar />
