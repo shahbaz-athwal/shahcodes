@@ -14,10 +14,10 @@ const links = [
     name: "Details",
     href: "/details",
   },
-  {
-    name: "Blogs",
-    href: "/blog",
-  },
+  // {
+  //   name: "Blogs",
+  //   href: "/blog",
+  // },
   {
     name: "Spotify",
     href: "/spotify",
