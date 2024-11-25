@@ -8,13 +8,13 @@ const Profile = () => (
     quality={90}
     priority={true}
     alt="Shahbaz Singh"
-    className="h-[90px] w-[90px] rounded-full sm:h-[110px] sm:w-[110px]"
+    className="h-[70px] w-[70px] rounded-full sm:h-[90px] sm:w-[90px]"
   />
 );
 
 export const ProfileImage = () => {
   return (
-    <div className="w-fit rounded-full shadow-lg grayscale-[30%]">
+    <div className="w-fit rounded-full shadow-lg grayscale-[35%]">
       <Profile />
     </div>
   );

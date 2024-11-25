@@ -32,12 +32,12 @@ export const LocationData = async () => {
   noStore();
   const { city, region, countryCode } = await getLastLocation();
   return (
-    <>
+    <div className="text-muted-foreground">
       <div>Last Visit From:</div>
       <div>
         {" "}
         {city}, {region}, {countryCode}
       </div>
-    </>
+    </div>
   );
 };

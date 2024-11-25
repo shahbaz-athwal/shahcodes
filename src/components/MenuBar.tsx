@@ -43,7 +43,7 @@ export default function MenuBar() {
                 "text-white hover:scale-105 hover:text-gray-100 dark:text-black dark:hover:text-zinc-950":
                   path === link.href,
               },
-              { "hover:-translate-y-[2px]": path !== link.href },
+              { "hover:text-primary text-muted-foreground": path !== link.href },
             )}
             href={link.href}
           >
@@ -51,7 +51,6 @@ export default function MenuBar() {
 
             {link.href === path && (
               <motion.span
-                // @ts-ignore
                 className="absolute inset-0 z-[-1] rounded-xl bg-zinc-800 dark:bg-white"
                 layoutId="path"
                 transition={{
