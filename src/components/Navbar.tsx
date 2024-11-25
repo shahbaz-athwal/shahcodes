@@ -1,7 +1,6 @@
 import { IconBrandGithub, IconBrandLinkedin, IconBrandX } from "@tabler/icons-react";
 import { Suspense } from "react";
 import { LocationData } from "./LocationData";
-import { Separator } from "@radix-ui/react-separator";
 import { ProfileImage } from "./Avatar";
 import ThemeToggle from "./ThemeToggle";
 import Link from "next/link";
@@ -9,7 +8,7 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <>
-      <nav className="flex w-full justify-between dark:text-gray-200">
+      <nav className="mb-4 flex w-full justify-between border-b border-zinc-200 pb-4 dark:border-zinc-700 dark:text-gray-200">
         <div>
           <div className="mb-2 mt-8">
             <ProfileImage />
@@ -44,7 +43,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <Separator className="my-5 h-[0.5px] w-full shrink-0 rounded bg-zinc-500 sm:h-[1px]" />
+      {/* <Separator className="my-5 h-[0.5px] w-full shrink-0 rounded bg-zinc-500 sm:h-[1px]" /> */}
     </>
   );
 };

@@ -64,7 +64,7 @@ const Home = async ({ searchParams }: { searchParams: SearchParams }) => {
     <>
       <Navbar />
       <MenuBar />
-      <section className="my-12">
+      <section className="my-6">
         <span className="block pb-3 text-2xl font-semibold dark:text-zinc-200">
           I’m a full stack developer based in Canada
         </span>

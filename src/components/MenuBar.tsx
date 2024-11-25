@@ -31,6 +31,8 @@ const links = [
 export default function MenuBar() {
   const path = usePathname();
   return (
+    <div className="shadow-surface-glass mx-auto w-fit place-content-center rounded-2xl px-2 py-2 backdrop-blur sm:px-4 [@supports(backdrop-filter:blur(0px))]:bg-black/[6%] dark:[@supports(backdrop-filter:blur(0px))]:bg-white/[3%]">
+
     <ul className="flex w-fit flex-wrap justify-center gap-1 sm:justify-start sm:gap-2">
       {links.map((link) => (
         <li className="relative flex items-center justify-center" key={link.href}>
@@ -63,5 +65,6 @@ export default function MenuBar() {
         </li>
       ))}
     </ul>
+    </div>
   );
 }
