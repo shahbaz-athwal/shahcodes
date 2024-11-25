@@ -29,6 +29,7 @@ export function MotionParent({ children }: { children: React.ReactNode }) {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
+      // @ts-ignore
       className="p-1"
     >
       {children}

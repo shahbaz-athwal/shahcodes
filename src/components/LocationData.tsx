@@ -19,7 +19,7 @@ const getLastLocation = async () => {
 };
 
 const updateLocation = async () => {
-  const ipSource = headers().get("x-forwarded-for") || "localhost";
+  const ipSource = (await headers()).get("x-forwarded-for") || "localhost";
   const ip = ipSource.split(",")[0].trim();
 
   const response = await fetch(

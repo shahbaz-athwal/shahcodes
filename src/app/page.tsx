@@ -66,7 +66,8 @@ const projects: {
   },
 ];
 
-const Home = ({ searchParams }: any) => {
+const Home = async (props: any) => {
+  const searchParams = await props.searchParams;
   console.log(searchParams);
   return (
     <>

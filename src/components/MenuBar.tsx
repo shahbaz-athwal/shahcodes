@@ -52,9 +52,10 @@ export default function MenuBar() {
 
             {link.href === path && (
               <motion.span
-                className="bg-zinc-800 dark:bg-white rounded-xl absolute inset-0 z-[-1]"
-                layoutId="path"
-                transition={{
+              // @ts-ignore
+              className="bg-zinc-800 dark:bg-white rounded-xl absolute inset-0 z-[-1]"
+              layoutId="path"
+              transition={{
                   type: "spring",
                   stiffness: 380,
                   damping: 30,
