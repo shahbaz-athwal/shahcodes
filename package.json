@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "dev": "concurrently \"content-collections watch\" \"next dev --turbopack\"",
-    "build": "content-collections build && next build",
+    "dev": "next dev --turbopack",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "bump-deps": "npx npm-check-updates -u && pnpm install"
@@ -31,13 +31,11 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@content-collections/cli": "^0.1.6",
     "@content-collections/core": "^0.7.3",
     "@content-collections/next": "^0.2.4",
     "@types/node": "^22",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "concurrently": "^9.1.0",
     "eslint": "^9.15.0",
     "eslint-config-next": "15.0.4-canary.27",
     "postcss": "^8",
