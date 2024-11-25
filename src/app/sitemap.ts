@@ -11,13 +11,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   //     lastModified: new Date(post.publishedAt).toISOString().split("T")[0],
   //   }));
 
-  const routes: MetadataRoute.Sitemap = ["", "/blog", "/details", "/spotify", "/contact"].map(
-    (route) => ({
-      url: `${baseURL}/${route}`,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: "weekly"
-    })
-  );
+  const routes: MetadataRoute.Sitemap = ["", "/blog", "/details", "/spotify", "/contact"].map((route) => ({
+    url: `${baseURL}/${route}`,
+    lastModified: new Date().toISOString().split("T")[0],
+    changeFrequency: "weekly",
+  }));
 
   return [...routes];
 }

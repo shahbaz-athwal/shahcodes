@@ -8,7 +8,7 @@ const ThemeToggle = () => {
   return (
     <button
       title="Change Theme"
-      className="rounded-full hover:scale-110 transition-transform flex items-center justify-center h-10 w-10"
+      className="flex h-10 w-10 items-center justify-center rounded-full transition-transform hover:scale-110"
       onClick={toggleTheme}
     >
       {!darkMode ? <IconSun /> : <IconMoon />}

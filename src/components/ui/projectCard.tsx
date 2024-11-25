@@ -13,31 +13,16 @@ interface ProjectCardProps {
   badges?: string[];
 }
 
-const ProjectCard = ({
-  title,
-  description,
-  href,
-  code,
-  image,
-  badges,
-}: ProjectCardProps) => {
+const ProjectCard = ({ title, description, href, code, image, badges }: ProjectCardProps) => {
   return (
-    <div className="flex flex-col w-fit h-full space-y-6 rounded-xl mx-2 md:mx-0 p-8 bg-zinc-100 hover:bg-zinc-200/70 dark:bg-stone-700/30 dark:hover:bg-stone-700/60">
+    <div className="mx-2 flex h-full w-fit flex-col space-y-6 rounded-xl bg-zinc-100 p-8 hover:bg-zinc-200/70 dark:bg-stone-700/30 dark:hover:bg-stone-700/60 md:mx-0">
       <div>
-        <h3 className="text-[17px] sm:text-lg font-medium">{title}</h3>
-        <p className="text-base sm:text-[17px] dark:text-gray-300">
-          {description}
-        </p>
+        <h3 className="text-[17px] font-medium sm:text-lg">{title}</h3>
+        <p className="text-base dark:text-gray-300 sm:text-[17px]">{description}</p>
       </div>
       <Link href={href} target="_blank">
-        <div className="rounded-lg shadow-lg overflow-hidden w-fit dark:shadow-zinc-700/50">
-          <Image
-            src={image}
-            alt={title}
-            width={700}
-            height={400}
-            className="rounded-lg object-cover aspect-[16/9]"
-          />
+        <div className="w-fit overflow-hidden rounded-lg shadow-lg dark:shadow-zinc-700/50">
+          <Image src={image} alt={title} width={700} height={400} className="aspect-[16/9] rounded-lg object-cover" />
         </div>
       </Link>
       <div className="flex flex-wrap gap-2">
@@ -45,7 +30,7 @@ const ProjectCard = ({
           <Badge
             key={badge}
             variant={"secondary"}
-            className="font-normal bg-zinc-200 dark:bg-zinc-700/70 hover:cursor-text"
+            className="bg-zinc-200 font-normal hover:cursor-text dark:bg-zinc-700/70"
           >
             {badge}
           </Badge>
@@ -53,14 +38,14 @@ const ProjectCard = ({
       </div>
       <div className="flex gap-2">
         <Link href={href} target="_blank">
-          <Button className="text-xs ">
-            <IconLink className="h-4 w-4 mr-1" />
+          <Button className="text-xs">
+            <IconLink className="mr-1 h-4 w-4" />
             Live
           </Button>
         </Link>
         <Link href={code} target="_blank">
           <Button className="text-xs">
-            <IconCode className="h-4 w-4 mr-1" />
+            <IconCode className="mr-1 h-4 w-4" />
             Code
           </Button>
         </Link>

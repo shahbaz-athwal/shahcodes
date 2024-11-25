@@ -6,26 +6,25 @@ publishedAt: 2024-08-13
 end: X
 ---
 
-<div className="text-center pt-8">Nothings here yet.</div>
+<div className="pt-8 text-center">Nothings here yet.</div>
 
 ```js
 async function doSomething() {
+  try {
+    const result = await someFunction();
     try {
-        const result = await someFunction();
-    try {
-        const anotherResult = await anotherFunction(result);
+      const anotherResult = await anotherFunction(result);
       try {
-          const finalResult = await finalFunction(anotherResult);
+        const finalResult = await finalFunction(anotherResult);
         return finalResult;
       } catch (err) {
-          console.error(err);
+        console.error(err);
       }
     } catch (err) {
-        console.error(err);
+      console.error(err);
     }
   } catch (err) {
-      console.error(err);
+    console.error(err);
   }
 }
 ```
-   

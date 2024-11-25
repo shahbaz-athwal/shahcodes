@@ -37,14 +37,7 @@ const projects: {
     code: "https://github.com/shahbaz-athwal/shahcodes",
     description: "My Personal Portfolio and Blog",
     image: "/og.png",
-    badges: [
-      "Next.js",
-      "Tailwind",
-      "TypeScript",
-      "Redis",
-      "Spotify API",
-      "MDX",
-    ],
+    badges: ["Next.js", "Tailwind", "TypeScript", "Redis", "Spotify API", "MDX"],
     hidden: false,
   },
   {
@@ -53,46 +46,40 @@ const projects: {
     code: "https://github.com/shahbaz-athwal/acadia-help",
     description: "",
     image: "/projects/acadia.png",
-    badges: [
-      "Next.js",
-      "Tailwind",
-      "TypeScript",
-      "PostgreSQL",
-      "ShadCN",
-      "Notion API",
-      "Zod",
-    ],
+    badges: ["Next.js", "Tailwind", "TypeScript", "PostgreSQL", "ShadCN", "Notion API", "Zod"],
     hidden: true,
   },
 ];
 
-const Home = async (props: any) => {
-  const searchParams = await props.searchParams;
-  console.log(searchParams);
+type SearchParams = Promise<{
+  countryCode: string;
+  region: string;
+  city: string;
+  isBot: string;
+}>;
+
+const Home = async ({ searchParams }: { searchParams: SearchParams }) => {
+  const queryParams = await searchParams;
   return (
     <>
       <Navbar />
       <MenuBar />
       <section className="my-12">
-        <span className="block font-semibold text-2xl pb-3 dark:text-zinc-200">
+        <span className="block pb-3 text-2xl font-semibold dark:text-zinc-200">
           I’m a full stack developer based in Canada
         </span>
         <p className="text-lg leading-normal dark:text-zinc-300/70">
-          A third year computer science student with nearly 2 years of
-          experience in Full Stack Development. Currently, I am focusing on
-          advanced Backend and DevOps skills. Proficient with{" "}
-          <strong>TypeScript</strong>, <strong>PostgreSQL</strong>,{" "}
-          <strong>Next.js</strong>, <strong>React</strong>,{" "}
-          <strong>Docker</strong>, and <strong>AWS</strong>.
+          A third year computer science student with nearly 2 years of experience in Full Stack Development. Currently,
+          I am focusing on advanced Backend and DevOps skills. Proficient with <strong>TypeScript</strong>,{" "}
+          <strong>PostgreSQL</strong>, <strong>Next.js</strong>, <strong>React</strong>, <strong>Docker</strong>, and{" "}
+          <strong>AWS</strong>.
         </p>
         <Link
           href="/details"
-          className="group bg-zinc-950 dark:bg-zinc-50 dark:hover:bg-zinc-200 hover:bg-zinc-800 transition-colors inline-block mt-8 font-mono text-sm font-semibold rounded-full px-8 py-3 text-white dark:text-black"
+          className="group mt-8 inline-block rounded-full bg-zinc-950 px-8 py-3 font-mono text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-black dark:hover:bg-zinc-200"
         >
           More Information{" "}
-          <span className="inline-block font-mono group-hover:translate-x-2 transition-transform">
-            {">"}
-          </span>
+          <span className="inline-block font-mono transition-transform group-hover:translate-x-2">{">"}</span>
         </Link>
       </section>
 
@@ -100,10 +87,10 @@ const Home = async (props: any) => {
         <Header variant="primary" as="h2" className="text-2xl">
           Projects
         </Header>
-        <p className="text-lg pt-4 pb-8 dark:text-zinc-300/70">
+        <p className="pb-8 pt-4 text-lg dark:text-zinc-300/70">
           Below is a selection of recent projects that I&apos;ve worked on.
         </p>
-        <div className="lg:w-[140%] lg:-ml-[20%] grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:-ml-[20%] lg:w-[140%]">
           {projects.map((project) => {
             return (
               !project.hidden && (

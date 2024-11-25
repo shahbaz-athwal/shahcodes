@@ -10,10 +10,10 @@ interface Props {
 export default function TopArtists({ topArtists }: Props) {
   return (
     <div>
-      <h1 className="font-bold text-3xl leading-tight py-12 mx-4 md:mx-0">
+      <h1 className="mx-4 py-12 text-3xl font-bold leading-tight md:mx-0">
         <TextGradient>My Top Artists</TextGradient>
       </h1>
-      <div className="lg:w-[140%] lg:-ml-[20%] relative grid grid-cols-1 md:grid-cols-2 gap-8 mx-8">
+      <div className="relative mx-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:-ml-[20%] lg:w-[140%]">
         {topArtists?.map((artist) => (
           <Link href={artist.url} key={artist.id} title={artist.name}>
             <div className="relative">
@@ -23,12 +23,10 @@ export default function TopArtists({ topArtists }: Props) {
                 src={artist.thumbnail}
                 alt={artist.name}
                 priority
-                className="h-64 lg:h-80 w-full object-cover rounded-lg brightness-50"
+                className="h-64 w-full rounded-lg object-cover brightness-50 lg:h-80"
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white text-xl font-semibold">
-                  {artist.name}
-                </span>
+                <span className="text-xl font-semibold text-white">{artist.name}</span>
               </div>
             </div>
           </Link>

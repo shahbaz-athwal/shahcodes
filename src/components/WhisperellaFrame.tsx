@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useTheme } from "@/hooks/useTheme";
 
 export default function WhisperellaFrame() {
@@ -8,7 +8,7 @@ export default function WhisperellaFrame() {
     <iframe
       loading="lazy"
       src={`https://whisperella.shahcodes.in/embed?mode=${darkMode && "dark"}`}
-      className="w-full h-72"
+      className="h-72 w-full"
     />
   );
 }

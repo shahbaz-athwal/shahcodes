@@ -1,13 +1,7 @@
 "use client";
 
 import { SpotifyListeningItem } from "@/types/SpotifyListening";
-import React, {
-  useCallback,
-  useMemo,
-  useContext,
-  useReducer,
-  ReactNode,
-} from "react";
+import React, { useCallback, useMemo, useContext, useReducer, ReactNode } from "react";
 
 // Interfaces
 interface SpotifyState {
@@ -38,10 +32,7 @@ export const types = {
 };
 
 // Reducer Function
-export const reducer = (
-  state: SpotifyState,
-  action: SpotifyAction
-): SpotifyState => {
+export const reducer = (state: SpotifyState, action: SpotifyAction): SpotifyState => {
   switch (action.type) {
     case types.SET_SPOTIFY_LISTENING:
       return {
@@ -54,22 +45,17 @@ export const reducer = (
 };
 
 // Context Creation
-export const SpotifyContext = React.createContext<
-  SpotifyContextProps | undefined
->(undefined);
+export const SpotifyContext = React.createContext<SpotifyContextProps | undefined>(undefined);
 SpotifyContext.displayName = "SpotifyContext";
 
 // Context Provider Component
-export const SpotifyProvider: React.FC<SpotifyProviderProps> = ({
-  children,
-}) => {
+export const SpotifyProvider: React.FC<SpotifyProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // Spotify Action
   const setSpotifyListening = useCallback(
-    (payload: SpotifyListeningItem) =>
-      dispatch({ type: types.SET_SPOTIFY_LISTENING, payload }),
-    [dispatch]
+    (payload: SpotifyListeningItem) => dispatch({ type: types.SET_SPOTIFY_LISTENING, payload }),
+    [dispatch],
   );
 
   // Value Memoization
@@ -78,12 +64,10 @@ export const SpotifyProvider: React.FC<SpotifyProviderProps> = ({
       ...state,
       setSpotifyListening,
     }),
-    [state, setSpotifyListening]
+    [state, setSpotifyListening],
   );
 
-  return (
-    <SpotifyContext.Provider value={value}>{children}</SpotifyContext.Provider>
-  );
+  return <SpotifyContext.Provider value={value}>{children}</SpotifyContext.Provider>;
 };
 
 // Custom Hook for Using Spotify Context

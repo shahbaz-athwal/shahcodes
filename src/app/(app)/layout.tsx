@@ -7,7 +7,7 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <div className="mx-auto rounded-2xl my-2 py-2 px-2 sm:px-4 w-fit place-content-center shadow-surface-glass backdrop-blur [@supports(backdrop-filter:blur(0px))]:bg-black/[6%] dark:[@supports(backdrop-filter:blur(0px))]:bg-white/[3%]">
+      <div className="shadow-surface-glass mx-auto my-2 w-fit place-content-center rounded-2xl px-2 py-2 backdrop-blur sm:px-4 [@supports(backdrop-filter:blur(0px))]:bg-black/[6%] dark:[@supports(backdrop-filter:blur(0px))]:bg-white/[3%]">
         <MenuBar />
       </div>
       {children}

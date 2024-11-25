@@ -22,9 +22,7 @@ const updateLocation = async () => {
   const ipSource = (await headers()).get("x-forwarded-for") || "localhost";
   const ip = ipSource.split(",")[0].trim();
 
-  const response = await fetch(
-    `http://ip-api.com/json/${ip}?fields=status,city,region,countryCode`
-  );
+  const response = await fetch(`http://ip-api.com/json/${ip}?fields=status,city,region,countryCode`);
   const data: LocationResponse = await response.json();
 
   await redis.set("lastLocation", JSON.stringify(data));

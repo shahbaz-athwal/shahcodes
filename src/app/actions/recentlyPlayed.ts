@@ -14,9 +14,7 @@ export const recentlyPlayed = async (): Promise<SpotifyPlayedItem[] | null> => {
     return null;
   }
   const { items } = await response.json();
-  const data = items
-    .map(normalizeRecentlyPlayed)
-    .sort((a: any, b: any) => b.played_at - a.played_at);
+  const data = items.map(normalizeRecentlyPlayed).sort((a: any, b: any) => b.played_at - a.played_at);
 
   return data;
 };

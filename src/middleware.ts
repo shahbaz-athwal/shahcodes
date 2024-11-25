@@ -7,9 +7,7 @@ export const config = {
 };
 
 export async function middleware(req: NextRequest) {
-  const {
-    nextUrl: url
-  } = req;
+  const { nextUrl: url } = req;
 
   const geo = geolocation(req);
 

@@ -31,20 +31,17 @@ const links = [
 export default function MenuBar() {
   const path = usePathname();
   return (
-    <ul className="flex justify-center sm:justify-start flex-wrap gap-1 sm:gap-2 w-fit">
+    <ul className="flex w-fit flex-wrap justify-center gap-1 sm:justify-start sm:gap-2">
       {links.map((link) => (
-        <li
-          className="flex items-center justify-center relative"
-          key={link.href}
-        >
+        <li className="relative flex items-center justify-center" key={link.href}>
           <Link
             className={clsx(
-              "flex w-full text-[15px] items-center justify-center px-3 py-1  transition",
+              "flex w-full items-center justify-center px-3 py-1 text-[15px] transition",
               {
-                "text-white hover:scale-105 dark:text-black hover:text-gray-100 dark:hover:text-zinc-950":
+                "text-white hover:scale-105 hover:text-gray-100 dark:text-black dark:hover:text-zinc-950":
                   path === link.href,
               },
-              { "hover:-translate-y-[2px]": path !== link.href }
+              { "hover:-translate-y-[2px]": path !== link.href },
             )}
             href={link.href}
           >
@@ -52,10 +49,10 @@ export default function MenuBar() {
 
             {link.href === path && (
               <motion.span
-              // @ts-ignore
-              className="bg-zinc-800 dark:bg-white rounded-xl absolute inset-0 z-[-1]"
-              layoutId="path"
-              transition={{
+                // @ts-ignore
+                className="absolute inset-0 z-[-1] rounded-xl bg-zinc-800 dark:bg-white"
+                layoutId="path"
+                transition={{
                   type: "spring",
                   stiffness: 380,
                   damping: 30,

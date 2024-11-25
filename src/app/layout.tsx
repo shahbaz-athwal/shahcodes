@@ -57,24 +57,21 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="shahbaz_athwal" />
       </head>
       <body
-        className={`${inter.className} antialiased dark:bg-[rgb(26,26,26)] selection:bg-purple-800/90 dark:selection:bg-pink-800/90 selection:text-white  `}
+        className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[rgb(26,26,26)] dark:selection:bg-pink-800/90`}
       >
-        <main className="flex items-center flex-col justify-between p-3 md:p-6 min-h-screen">
+        <main className="flex min-h-screen flex-col items-center justify-between p-3 md:p-6">
           <div className="w-full max-w-2xl px-2">
             <ThemeProvider>{children}</ThemeProvider>
           </div>
           <Footer />
         </main>
-        <div className="pointer-events-none absolute inset-0 overflow-hidden z-[-10]">
-          <div className="h-full dark:bg-[url('/bg_gradient.jpeg')] bg-top bg-no-repeat opacity-[0.3]" />
+        <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">
+          <div className="h-full bg-top bg-no-repeat opacity-[0.3] dark:bg-[url('/bg_gradient.jpeg')]" />
         </div>
       </body>
     </html>

@@ -51,23 +51,19 @@ function Page() {
           Contact
         </Header>
         <section className="py-8">
-          <p className="text-lg mb-4">
-            If you&apos;d like to get in touch, you can reach me using the
-            following methods. I am open to freelance projects and
-            collaborations.
+          <p className="mb-4 text-lg">
+            If you&apos;d like to get in touch, you can reach me using the following methods. I am open to freelance
+            projects and collaborations.
           </p>
           <MotionChild>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {contacts.map((contactMethod) => {
                 return (
                   <div className="flex flex-col" key={contactMethod.method}>
                     <Title as="h2" variant="tertiary">
                       {contactMethod.method}
                     </Title>
-                    <Link
-                      href={contactMethod.link}
-                      className="text-zinc-600 dark:text-zinc-500"
-                    >
+                    <Link href={contactMethod.link} className="text-zinc-600 dark:text-zinc-500">
                       {contactMethod.label}
                     </Link>
                   </div>

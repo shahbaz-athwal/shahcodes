@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   ::-webkit-scrollbar {
     @apply w-3;
@@ -13,7 +12,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-zinc-600/80 rounded-2xl border-transparent;
+    @apply rounded-2xl border-transparent bg-zinc-600/80;
     background-clip: content-box;
   }
 
