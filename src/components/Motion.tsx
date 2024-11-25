@@ -1,4 +1,4 @@
-import { MotionDiv } from "@/lib/framer";
+import { MotionDiv } from "@/lib/motion";
 
 const containerVariants = {
   hidden: { opacity: 0 },

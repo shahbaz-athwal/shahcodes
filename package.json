@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "preinstall": "npx only-allow pnpm", 
+    "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -21,7 +21,7 @@
     "clsx": "^2.1.1",
     "embla-carousel-autoplay": "^8.1.7",
     "embla-carousel-react": "^8.1.7",
-    "framer-motion": "^11.2.12",
+    "motion": "^11.11.17",
     "next": "^14.3.0-canary.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
