@@ -3,7 +3,9 @@ import MenuBar from "@/components/MenuBar";
 import Link from "next/link";
 import ProjectCard from "@/components/ui/projectCard";
 import { Header } from "@/components/ui/topicHeader";
+import { LocationResponse } from "@/lib/requestMetadata";
 import redis from "@/lib/redis";
+import { use } from "react";
 
 const projects: {
   href: string;
@@ -52,12 +54,10 @@ const projects: {
   },
 ];
 
-type SearchParams = Promise<{ [key: string]: string }>;
-
-const Home = async ({ searchParams }: { searchParams: SearchParams }) => {
-  const data = await searchParams
-  console.log("decoded:", data);
-  redis.set("currentLocation", JSON.stringify(data));
+const Home = async ({ searchParams }: { searchParams: Promise<LocationResponse> }) => {
+  const data = await searchParams;
+  console.log("decoded0:", data.city, data.region, data.country);
+  await redis.set("currentLocation", JSON.stringify(data));
   return (
     <>
       <Navbar />
