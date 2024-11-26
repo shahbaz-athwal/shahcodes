@@ -3,7 +3,6 @@ import MenuBar from "@/components/MenuBar";
 import Link from "next/link";
 import ProjectCard from "@/components/ui/projectCard";
 import { Header } from "@/components/ui/topicHeader";
-import { LocationResponse } from "@/lib/requestMetadata";
 import redis from "@/lib/redis";
 
 const projects: {
@@ -53,18 +52,12 @@ const projects: {
   },
 ];
 
-type SearchParams = Promise<LocationResponse>;
+type SearchParams = Promise<{ [key: string]: string }>;
 
 const Home = async ({ searchParams }: { searchParams: SearchParams }) => {
-  const data = await searchParams;
-  const decodedData = {
-    city: decodeURIComponent(data.city),
-    country: decodeURIComponent(data.country),
-    region: decodeURIComponent(data.region),
-    isBot: decodeURIComponent(data.isBot),
-  };
-  console.log(decodedData)
-  redis.set("currentLocation", JSON.stringify(decodedData));
+  const data = await searchParams
+  console.log("decoded:", data);
+  redis.set("currentLocation", JSON.stringify(data));
   return (
     <>
       <Navbar />
