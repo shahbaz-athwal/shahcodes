@@ -54,7 +54,7 @@ const projects: {
   },
 ];
 
-const Home = async ({ searchParams }: { searchParams: Promise<LocationResponse> }) => {
+export default async function Home({ searchParams }: { searchParams: Promise<LocationResponse> }) {
   const data = await searchParams;
   console.log("decoded0:", data);
   await redis.set("currentLocation", JSON.stringify(data));
@@ -108,6 +108,4 @@ const Home = async ({ searchParams }: { searchParams: Promise<LocationResponse> 
       </div>
     </>
   );
-};
-
-export default Home;
+}

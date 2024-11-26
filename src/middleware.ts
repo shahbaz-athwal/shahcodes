@@ -20,7 +20,6 @@ export async function middleware(req: NextRequest) {
     url.searchParams.set("city", city);
     url.searchParams.set("region", region);
     url.searchParams.set("isBot", isBot.toString());
-    console.log(url)
 
     return NextResponse.rewrite(url);
   }
