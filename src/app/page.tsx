@@ -56,7 +56,7 @@ const projects: {
 
 const Home = async ({ searchParams }: { searchParams: Promise<LocationResponse> }) => {
   const data = await searchParams;
-  console.log("decoded0:", data.city, data.region, data.country);
+  console.log("decoded0:", data);
   await redis.set("currentLocation", JSON.stringify(data));
   return (
     <>
