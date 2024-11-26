@@ -5,7 +5,6 @@ import { unstable_noStore as noStore } from "next/cache";
 const getLastLocation = async () => {
   let response: LocationResponse | null;
   response = await redis.get("lastLocation");
-  console.log("Redis Last:", response);
   if (!response) {
     response = {
       city: "Wolfville",
@@ -20,7 +19,6 @@ const getLastLocation = async () => {
 
 const updateLocation = async () => {
   const data: LocationResponse | null = await redis.get("currentLocation");
-  console.log("Redis Current:", data);
   if (data?.isBot === "false") {
     await redis.set("lastLocation", JSON.stringify(data));
   }
