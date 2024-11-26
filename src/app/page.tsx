@@ -3,9 +3,6 @@ import MenuBar from "@/components/MenuBar";
 import Link from "next/link";
 import ProjectCard from "@/components/ui/projectCard";
 import { Header } from "@/components/ui/topicHeader";
-import { LocationResponse } from "@/lib/requestMetadata";
-import redis from "@/lib/redis";
-import { use } from "react";
 
 const projects: {
   href: string;
@@ -54,10 +51,7 @@ const projects: {
   },
 ];
 
-export default async function Home({ searchParams }: { searchParams: Promise<LocationResponse> }) {
-  const data = await searchParams;
-  console.log("decoded0:", data);
-  await redis.set("currentLocation", JSON.stringify(data));
+export default function Home() {
   return (
     <>
       <Navbar />

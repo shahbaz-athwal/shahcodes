@@ -43,7 +43,6 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      {/* <Separator className="my-5 h-[0.5px] w-full shrink-0 rounded bg-zinc-500 sm:h-[1px]" /> */}
     </>
   );
 };

@@ -7,10 +7,10 @@ const getLastLocation = async () => {
   response = await redis.get("lastLocation");
   if (!response) {
     response = {
-      city: "Wolfville",
-      region: "NS",
-      country: "CA",
-      isBot: "false",
+      city: "Amritsar",
+      region: "PB",
+      country: "IN ",
+      isBot: false,
     };
   }
   updateLocation();
@@ -19,7 +19,8 @@ const getLastLocation = async () => {
 
 const updateLocation = async () => {
   const data: LocationResponse | null = await redis.get("currentLocation");
-  if (data?.isBot === "false") {
+  console.log(data);
+  if (data?.isBot === false) {
     await redis.set("lastLocation", JSON.stringify(data));
   }
 };

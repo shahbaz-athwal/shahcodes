@@ -5,7 +5,7 @@ export type LocationResponse = {
   city: string;
   region: string;
   country: string;
-  isBot: "true" | "false";
+  isBot: boolean;
 };
 
 const requestContext = cache(() => {
