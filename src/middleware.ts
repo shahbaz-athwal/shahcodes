@@ -9,6 +9,7 @@ export async function middleware(req: NextRequest) {
     const { nextUrl: url } = req;
 
     const geo = geolocation(req);
+    console.log("geo:", geo);
 
     const country = geo?.country || "CA";
     const city = geo?.city || "Kentville";
