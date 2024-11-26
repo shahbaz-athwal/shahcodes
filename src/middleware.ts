@@ -11,9 +11,9 @@ export async function middleware(req: NextRequest) {
 
   const geo = geolocation(req);
 
-  const country = geo?.country || "US";
-  const city = geo?.city || "San Francisco";
-  const region = geo?.region || "CA";
+  const country = geo?.country || "CA";
+  const city = geo?.city || "Kentville";
+  const region = geo?.countryRegion || "NS";
   const { isBot } = userAgent(req);
 
   url.searchParams.set("country", country);

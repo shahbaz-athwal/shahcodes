@@ -3,6 +3,7 @@ import MenuBar from "@/components/MenuBar";
 import Link from "next/link";
 import ProjectCard from "@/components/ui/projectCard";
 import { Header } from "@/components/ui/topicHeader";
+import { LocationResponse, setRequestContext } from "@/lib/requestMetadata";
 
 const projects: {
   href: string;
@@ -51,15 +52,11 @@ const projects: {
   },
 ];
 
-type SearchParams = Promise<{
-  countryCode: string;
-  region: string;
-  city: string;
-  isBot: string;
-}>;
+type SearchParams = Promise<LocationResponse>;
 
 const Home = async ({ searchParams }: { searchParams: SearchParams }) => {
-  const queryParams = await searchParams;
+  console.log(await searchParams);
+  setRequestContext(await searchParams);
   return (
     <>
       <Navbar />
