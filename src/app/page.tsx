@@ -56,8 +56,15 @@ const projects: {
 type SearchParams = Promise<LocationResponse>;
 
 const Home = async ({ searchParams }: { searchParams: SearchParams }) => {
-  console.log(await searchParams);
-  redis.set("currentLocation", JSON.stringify(await searchParams));
+  const data = await searchParams;
+  const decodedData = {
+    city: decodeURIComponent(data.city),
+    country: decodeURIComponent(data.country),
+    region: decodeURIComponent(data.region),
+    isBot: decodeURIComponent(data.isBot),
+  };
+  console.log(decodedData)
+  redis.set("currentLocation", JSON.stringify(decodedData));
   return (
     <>
       <Navbar />
