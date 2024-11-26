@@ -3,7 +3,8 @@ import MenuBar from "@/components/MenuBar";
 import Link from "next/link";
 import ProjectCard from "@/components/ui/projectCard";
 import { Header } from "@/components/ui/topicHeader";
-import { LocationResponse, setRequestContext } from "@/lib/requestMetadata";
+import { LocationResponse } from "@/lib/requestMetadata";
+import redis from "@/lib/redis";
 
 const projects: {
   href: string;
@@ -56,7 +57,7 @@ type SearchParams = Promise<LocationResponse>;
 
 const Home = async ({ searchParams }: { searchParams: SearchParams }) => {
   console.log(await searchParams);
-  setRequestContext(await searchParams);
+  redis.set("currentLocation", JSON.stringify(await searchParams));
   return (
     <>
       <Navbar />
