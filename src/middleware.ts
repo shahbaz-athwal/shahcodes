@@ -5,23 +5,24 @@ import redis from "./lib/redis";
 
 export async function middleware(req: NextRequest) {
   if (req.nextUrl.pathname === "/") {
-
     const geo = geolocation(req);
 
-    const country = geo?.country || "CA";
-    const city = geo?.city || "Kentville";
-    const region = geo?.countryRegion || "NS";
+    const country = geo?.country;
+    const city = geo?.city;
+    const region = geo?.countryRegion;
     const { isBot } = userAgent(req);
 
-    await redis.set(
-      "currentLocation",
-      JSON.stringify({
-        country,
-        city,
-        region,
-        isBot,
-      }),
-    );
+    if (country && city && region) {
+      await redis.set(
+        "currentLocation",
+        JSON.stringify({
+          country,
+          city,
+          region,
+          isBot,
+        }),
+      );
+    }
 
     return NextResponse.next();
   }
