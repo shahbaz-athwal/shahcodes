@@ -25,7 +25,7 @@ const RecentlyPlayed = () => {
 
   return (
     <div className="relative overflow-hidden">
-      <h1 className="mx-4 pb-6 text-3xl font-bold leading-tight md:mx-0">
+      <h1 className="pb-6 text-3xl font-bold leading-tight">
         <TextGradient>Recently Played</TextGradient>
       </h1>
       {recentPlays ? (
@@ -57,7 +57,7 @@ const RecentlyPlayed = () => {
                         priority
                         src={item.thumbnail!}
                         alt={item.title!}
-                        className="h-64 w-full rounded-lg object-cover shadow-lg brightness-[0.4] dark:shadow-zinc-800/70"
+                        className="h-64 w-full rounded-lg object-cover shadow-lg brightness-[0.5] dark:shadow-zinc-800/70"
                       />
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
                         <h3 className="max-w-56 overflow-hidden text-ellipsis whitespace-nowrap text-xl font-semibold sm:max-w-full">

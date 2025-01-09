@@ -26,11 +26,11 @@ const Player = () => {
   }, [listening]);
 
   return (
-    <div className="mx-4 py-12 md:mx-0">
+    <div className="py-12">
       <h1 className="pb-8 text-3xl font-bold leading-tight">
         <TextGradient>Currently Playing</TextGradient>
       </h1>
-      <div className="rounded-lg bg-black bg-opacity-60 p-4 shadow-lg dark:bg-opacity-30 dark:shadow-zinc-900">
+      <div className="rounded-lg bg-black bg-opacity-60 p-4 shadow-xl dark:bg-opacity-30">
         <div className="flex flex-col items-center md:flex-row">
           <Link
             target={listening?.isPlaying ? "_blank" : "_self"}

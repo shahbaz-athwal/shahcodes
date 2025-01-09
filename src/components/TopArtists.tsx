@@ -10,7 +10,7 @@ interface Props {
 export default function TopArtists({ topArtists }: Props) {
   return (
     <div>
-      <h1 className="mx-4 py-12 text-3xl font-bold leading-tight md:mx-0">
+      <h1 className="py-12 text-3xl font-bold leading-tight">
         <TextGradient>My Top Artists</TextGradient>
       </h1>
       <div className="relative mx-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:-ml-[20%] lg:w-[140%]">
@@ -23,7 +23,7 @@ export default function TopArtists({ topArtists }: Props) {
                 src={artist.thumbnail}
                 alt={artist.name}
                 priority
-                className="h-64 w-full rounded-lg object-cover brightness-50 lg:h-80"
+                className="h-64 w-full rounded-lg object-cover brightness-[0.6] lg:h-80"
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="text-xl font-semibold text-white">{artist.name}</span>

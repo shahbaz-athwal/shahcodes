@@ -25,13 +25,7 @@ const itemVariants = {
 
 export function MotionParent({ children }: { children: React.ReactNode }) {
   return (
-    <MotionDiv
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      // @ts-ignore
-      className="p-1"
-    >
+    <MotionDiv initial="hidden" animate="visible" variants={containerVariants} className="p-1">
       {children}
     </MotionDiv>
   );
