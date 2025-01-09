@@ -19,7 +19,6 @@ const getLastLocation = async () => {
 
 const updateLocation = async () => {
   const data: LocationResponse | null = await redis.get("currentLocation");
-  console.log(data);
   if (data?.isBot === false) {
     await redis.set("lastLocation", JSON.stringify(data));
   }
