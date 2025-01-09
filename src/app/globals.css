@@ -12,7 +12,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply rounded-2xl border-transparent bg-zinc-600/80;
+    @apply rounded-2xl border-transparent bg-stone-600/50;
     background-clip: content-box;
   }
 

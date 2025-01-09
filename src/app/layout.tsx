@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   applicationName: "Shahbaz Singh",
   title: {
-    default: "Shahbaz Singh",
+    default: "Shahbaz Singh - Full Stack Developer",
     template: "%s - Shahbaz Singh",
   },
   description: "A Passionate Full Stack Developer based in Canada.",
@@ -62,7 +62,7 @@ export default function RootLayout({
         <meta name="author" content="shahbaz_athwal" />
       </head>
       <body
-        className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[rgb(26,26,26)] dark:selection:bg-pink-800/90`}
+        className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#040201] dark:selection:bg-pink-800/90`}
       >
         <main className="flex min-h-screen flex-col items-center justify-between p-3 md:p-6">
           <div className="w-full max-w-2xl px-2">
@@ -71,7 +71,7 @@ export default function RootLayout({
           <Footer />
         </main>
         <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">
-          <div className="h-full bg-top bg-no-repeat opacity-[0.3] dark:bg-[url('/bg_gradient.jpeg')]" />
+          <div className="h-[80%] bg-[url('/bg-light.jpg')] bg-top bg-no-repeat opacity-100 blur dark:bg-[url('/bg-dark.jpg')] dark:opacity-[0.6] dark:blur-0" />
         </div>
       </body>
     </html>
