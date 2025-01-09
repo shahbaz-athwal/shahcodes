@@ -71,7 +71,7 @@ export default function RootLayout({
           <Footer />
         </main>
         <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">
-          <div className="h-[80%] bg-[url('/bg-light.jpg')] bg-top bg-no-repeat opacity-100 blur dark:bg-[url('/bg-dark.jpg')] dark:opacity-[0.6] dark:blur-0" />
+          <div className="h-[80%] bg-top bg-no-repeat opacity-100 blur dark:bg-[url('/bg-dark.jpg')] dark:opacity-[0.6] dark:blur-0 sm:bg-[url('/bg-light.jpg')]" />
         </div>
       </body>
     </html>

@@ -8,7 +8,7 @@ import Link from "next/link";
 const Navbar = () => {
   return (
     <>
-      <nav className="mb-4 flex w-full justify-between border-b border-zinc-200 pb-4 dark:border-zinc-700 dark:text-gray-200">
+      <nav className="mb-4 flex w-full justify-between border-b border-zinc-700 pb-4 dark:border-zinc-500 dark:text-gray-200">
         <div>
           <div className="mb-2 mt-8">
             <ProfileImage />
