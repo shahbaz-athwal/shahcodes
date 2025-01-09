@@ -11,7 +11,7 @@ export default function TopArtists({ topArtists }: Props) {
   return (
     <div>
       <h1 className="py-12 text-3xl font-bold leading-tight">
-        <TextGradient>My Top Artists</TextGradient>
+        <TextGradient variant="right">My Top Artists</TextGradient>
       </h1>
       <div className="relative mx-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:-ml-[20%] lg:w-[140%]">
         {topArtists?.map((artist) => (

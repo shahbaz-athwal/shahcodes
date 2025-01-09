@@ -26,7 +26,7 @@ const RecentlyPlayed = () => {
   return (
     <div className="relative overflow-hidden">
       <h1 className="pb-6 text-3xl font-bold leading-tight">
-        <TextGradient>Recently Played</TextGradient>
+        <TextGradient variant="center">Recently Played</TextGradient>
       </h1>
       {recentPlays ? (
         <Carousel
