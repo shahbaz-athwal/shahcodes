@@ -57,7 +57,7 @@ const RecentlyPlayed = () => {
                         priority
                         src={item.thumbnail!}
                         alt={item.title!}
-                        className="h-64 w-full rounded-lg object-cover shadow-lg brightness-[0.5] dark:shadow-zinc-800/70"
+                        className="h-64 w-full rounded-lg object-cover shadow-md brightness-[0.5] dark:shadow-zinc-800/30"
                       />
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
                         <h3 className="max-w-56 overflow-hidden text-ellipsis whitespace-nowrap text-xl font-semibold sm:max-w-full">
