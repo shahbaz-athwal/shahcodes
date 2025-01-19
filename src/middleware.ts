@@ -12,7 +12,7 @@ export async function middleware(req: NextRequest) {
     const region = geo?.countryRegion;
     const { isBot } = userAgent(req);
 
-    if (country && city && region) {
+    if (country && city && region && !isBot) {
       await redis.set(
         "currentLocation",
         JSON.stringify({
