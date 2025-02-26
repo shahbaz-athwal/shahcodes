@@ -5,9 +5,9 @@ import Link from "next/link";
 import Lottie from "react-lottie-player";
 import PlayerJson from "@/lib/player.json";
 import { useSpotify } from "@/hooks/useSpotify";
-import Spotify from "../../../components/icons/Spotify";
+import Spotify from "../../components/icons/Spotify";
 import Image from "next/image";
-import { TextGradient } from "../../../components/ui/textgradient";
+import { TextGradient } from "../../components/ui/textgradient";
 import { currentlyPlaying } from "@/actions/currentlyPlaying";
 import useSWR from "swr";
 
