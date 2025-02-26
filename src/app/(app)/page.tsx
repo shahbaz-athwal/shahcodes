@@ -1,8 +1,6 @@
-import Navbar from "@/components/Navbar";
-import MenuBar from "@/components/MenuBar";
 import Link from "next/link";
-import ProjectCard from "@/components/ui/projectCard";
-import { Header } from "@/components/ui/topicHeader";
+import { Header } from "@/components/ui/header";
+import ProjectCard from "@/components/ui/ProjectCard";
 
 const projects: {
   href: string;
@@ -54,8 +52,6 @@ const projects: {
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <MenuBar />
       <section className="my-6">
         <span className="block pb-3 text-2xl font-semibold dark:text-zinc-200">
           I’m a full stack developer based in Canada

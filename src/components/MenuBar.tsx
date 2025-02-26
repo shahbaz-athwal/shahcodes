@@ -73,7 +73,7 @@ export default function MenuBar() {
                 )}
                 href={link.href}
               >
-                {isMobile ? <Icon size={20} strokeWidth={2} /> : link.name}
+                {isMobile ? <Icon size={22} strokeWidth={2} /> : link.name}
 
                 {isActive && (
                   <motion.div

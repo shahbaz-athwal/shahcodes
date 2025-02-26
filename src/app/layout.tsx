@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/hooks/useTheme";
+import TopBar from "@/components/TopBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -66,7 +67,10 @@ export default function RootLayout({
       >
         <main className="flex min-h-screen flex-col items-center justify-between p-3 md:p-6">
           <div className="w-full max-w-2xl px-2">
-            <ThemeProvider>{children}</ThemeProvider>
+            <ThemeProvider>
+              <TopBar />
+              {children}
+            </ThemeProvider>
           </div>
           <Footer />
         </main>

@@ -1,4 +1,4 @@
-import { Header } from "@/components/ui/topicHeader";
+import { Header } from "@/components/ui/header";
 import { Title } from "@/components/ui/title";
 import Link from "next/link";
 import { MotionChild, MotionParent } from "@/components/Motion";

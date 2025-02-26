@@ -17,13 +17,3 @@ export function Header({ children, as = "span", variant = "primary", className }
   const Component = as;
   return <Component className={cn(classNames[variant], className)}>{children}</Component>;
 }
-
-export function PageHeader({ title }: { title: string }) {
-  return (
-    <header>
-      <div className="mb-6 border-b border-zinc-500 pb-6 text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-200">
-        {title}
-      </div>
-    </header>
-  );
-}

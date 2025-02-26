@@ -1,5 +1,5 @@
 import { MotionChild, MotionParent } from "@/components/Motion";
-import { Header } from "@/components/ui/topicHeader";
+import { Header } from "@/components/ui/header";
 import { Metadata } from "next";
 import Image from "next/image";
 
