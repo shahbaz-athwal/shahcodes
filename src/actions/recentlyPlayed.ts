@@ -1,5 +1,5 @@
 "use server";
-import { normalizeRecentlyPlayed } from "@/lib/normalizeSpotify";
+import { normalizeRecentlyPlayed } from "@/lib/normalizer";
 import { getRecentlyPlayed } from "@/lib/spotify";
 import { SpotifyPlayedItem } from "@/types/SpotifyRecentlyPlayed";
 

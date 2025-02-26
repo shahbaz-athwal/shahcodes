@@ -1,7 +1,7 @@
+import { TextGradient } from "@/components/ui/textgradient";
 import { SpotifyTopArtist } from "@/types/SpotifyTopArtist";
 import Image from "next/image";
 import Link from "next/link";
-import { TextGradient } from "./ui/textgradient";
 
 interface Props {
   topArtists: SpotifyTopArtist[] | null;

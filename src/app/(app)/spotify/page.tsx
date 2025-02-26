@@ -1,11 +1,11 @@
 import { Metadata } from "next";
-import { SpotifyPlayer } from "./SpotifyPlayer";
 import { SpotifyProvider } from "@/hooks/useSpotify";
-import RecentlyPlayed from "@/components/RecentlyPlayed";
-import { topArtists } from "@/app/actions/topArtists";
+import { topArtists } from "@/actions/topArtists";
 import { unstable_cache as cache } from "next/cache";
-import TopArtists from "@/components/TopArtists";
 import { MotionChild, MotionParent } from "@/components/Motion";
+import TopArtists from "./TopArtists";
+import SpotifyPlayer from "./SpotifyPlayer";
+import RecentlyPlayed from "./RecentlyPlayed";
 
 export const metadata: Metadata = {
   title: "Spotify",
@@ -25,9 +25,11 @@ export default async function Page() {
           <SpotifyPlayer />
         </SpotifyProvider>
       </MotionChild>
+
       <MotionChild>
         <RecentlyPlayed />
       </MotionChild>
+
       <MotionChild>
         <TopArtists topArtists={top} />
       </MotionChild>

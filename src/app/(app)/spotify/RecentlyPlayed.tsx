@@ -5,9 +5,9 @@ import Autoplay from "embla-carousel-autoplay";
 import { SpotifyPlayedItem } from "@/types/SpotifyRecentlyPlayed";
 import Link from "next/link";
 import Image from "next/image";
-import { recentlyPlayed } from "@/app/actions/recentlyPlayed";
-import { RecentlyPlayedSkeleton } from "@/components/Skeletons";
-import { TextGradient } from "./ui/textgradient";
+import { recentlyPlayed } from "@/actions/recentlyPlayed";
+import { TextGradient } from "@/components/ui/textgradient";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const RecentlyPlayed = () => {
   const [recentPlays, setRecentPlays] = useState<SpotifyPlayedItem[] | null>(null);
@@ -77,7 +77,9 @@ const RecentlyPlayed = () => {
           <CarouselNext className="absolute right-0 top-1/2 rotate-90 bg-transparent transition-transform duration-300 hover:scale-125" />
         </Carousel>
       ) : (
-        <RecentlyPlayedSkeleton />
+        <div className="flex items-center justify-center py-4">
+          <Skeleton className="mx-10 h-64 w-[408px] rounded-lg sm:mx-10 sm:w-full" />
+        </div>
       )}
     </div>
   );
