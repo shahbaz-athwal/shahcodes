@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { SpotifyProvider } from "@/hooks/useSpotify";
 import { topArtists } from "@/actions/topArtists";
 import { unstable_cache as cache } from "next/cache";
 import { MotionChild, MotionParent } from "@/components/Motion";
@@ -21,9 +20,7 @@ export default async function Page() {
   return (
     <MotionParent>
       <MotionChild>
-        <SpotifyProvider>
-          <SpotifyPlayer />
-        </SpotifyProvider>
+        <SpotifyPlayer />
       </MotionChild>
 
       <MotionChild>

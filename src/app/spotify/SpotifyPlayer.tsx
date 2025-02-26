@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import Link from "next/link";
 import Lottie from "react-lottie-player";
 import PlayerJson from "@/lib/player.json";
@@ -21,6 +21,7 @@ const SpotifyPlayer = () => {
   const fetcher = async () => {
     const data = await currentlyPlaying();
     setSpotifyListening(data);
+    return data;
   };
 
   useSWR("/spotify", fetcher, {
