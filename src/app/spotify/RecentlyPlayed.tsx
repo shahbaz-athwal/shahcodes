@@ -2,7 +2,6 @@
 import React from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import Link from "next/link";
 import Image from "next/image";
 import { TextGradient } from "@/components/ui/textgradient";
 import { useSpotify } from "@/hooks/useSpotify";
@@ -27,9 +26,8 @@ const RecentlyPlayed = () => {
               {recentlyPlayed.map((item, index) => (
                 <CarouselItem key={index} className="w-full">
                   <div className="relative mx-3 p-4">
-                    <Link
+                    <a
                       href={item.url!}
-                      passHref
                       target="_blank"
                       rel="noopener noreferrer"
                       title={`${item.title} by: ${item.artist}`}
@@ -51,7 +49,7 @@ const RecentlyPlayed = () => {
                           {item.artist}
                         </p>
                       </div>
-                    </Link>
+                    </a>
                   </div>
                 </CarouselItem>
               ))}

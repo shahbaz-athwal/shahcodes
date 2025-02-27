@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { Header } from "@/components/ui/header";
 import Projects from "./Projects";
 import { MotionParent, MotionChild } from "@/components/Motion";
@@ -9,7 +9,7 @@ export default function Home() {
       <MotionChild>
         <section className="my-6">
           <span className="block pb-3 text-2xl font-semibold dark:text-zinc-200">
-            I'm a full stack developer based in Canada
+            I&apos;m a full stack developer based in Canada
           </span>
           <p className="text-lg leading-normal dark:text-zinc-300/70">
             A third year computer science student with nearly 2 years of experience in Full Stack Development.

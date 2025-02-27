@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import TopBar from "@/components/TopBar";
 import SpotifyPrefetch from "./spotify/SpotifyFetcher";
 import { SpotifyProvider } from "@/hooks/useSpotify";
+import { ViewTransitions } from "next-view-transitions";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -58,31 +59,33 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="shahbaz_athwal" />
-      </head>
-      <body
-        className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#020100] dark:selection:bg-yellow-800/90`}
-      >
-        <main className="flex min-h-screen flex-col items-center justify-between p-3 md:p-6">
-          <div className="w-full max-w-2xl px-2">
-            <SpotifyProvider>
-              <SpotifyPrefetch />
-              <ThemeProvider>
-                <TopBar />
-                {children}
-              </ThemeProvider>
-            </SpotifyProvider>
+    <ViewTransitions>
+      <html lang="en" className="dark">
+        <head>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="author" content="shahbaz_athwal" />
+        </head>
+        <body
+          className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#020100] dark:selection:bg-yellow-800/90`}
+        >
+          <main className="flex min-h-screen flex-col items-center justify-between p-3 md:p-6">
+            <div className="w-full max-w-2xl px-1">
+              <SpotifyProvider>
+                <SpotifyPrefetch />
+                <ThemeProvider>
+                  <TopBar />
+                  {children}
+                </ThemeProvider>
+              </SpotifyProvider>
+            </div>
+            <Footer />
+          </main>
+          <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">
+            <div className="h-full bg-top bg-no-repeat opacity-100 dark:bg-[url('/bg-sm-dark.png')] dark:opacity-[0.3] sm:dark:bg-[url('/bg-dark.jpg')]" />
           </div>
-          <Footer />
-        </main>
-        <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">
-          <div className="h-full bg-top bg-no-repeat opacity-100 dark:bg-[url('/bg-sm-dark.png')] dark:opacity-[0.3] sm:dark:bg-[url('/bg-dark.jpg')]" />
-        </div>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

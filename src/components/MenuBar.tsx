@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { IconHome, IconMusic, IconMail, IconBriefcase } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";

@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useMemo, useEffect } from "react";
-import Link from "next/link";
+import React, { useMemo } from "react";
 import Lottie from "react-lottie-player";
 import PlayerJson from "@/lib/player.json";
 import { useSpotify } from "@/hooks/useSpotify";
@@ -44,7 +43,7 @@ const SpotifyPlayer = () => {
       </h1>
       <div className="m-2 rounded-lg bg-black bg-opacity-50 px-3 py-6 shadow-xl dark:bg-white dark:bg-opacity-[8%] sm:m-0 sm:p-6">
         <div className="flex flex-col items-center md:flex-row">
-          <Link
+          <a
             target={listening?.isPlaying ? "_blank" : "_self"}
             aria-label="Listen on Spotify"
             rel="noopener noreferrer"
@@ -66,7 +65,7 @@ const SpotifyPlayer = () => {
             ) : (
               <Spotify />
             )}
-          </Link>
+          </a>
 
           <div className="w-full flex-1 px-4">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
