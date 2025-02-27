@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import { IconHome, IconMusic, IconMail, IconBriefcase } from "@tabler/icons-react";
+import { cn } from "@/lib/utils";
 
 const links = [
   {
@@ -50,12 +50,12 @@ export default function MenuBar() {
 
   return (
     <div
-      className={clsx(
+      className={cn(
         "shadow-surface-glass rounded-full px-4 py-2 backdrop-blur [@supports(backdrop-filter:blur(0px))]:bg-black/[6%] dark:[@supports(backdrop-filter:blur(0px))]:bg-white/[6%]",
         isMobile ? "fixed bottom-4 left-1/2 z-50 -translate-x-1/2" : "mx-auto w-fit",
       )}
     >
-      <ul className={clsx("flex items-center justify-between", isMobile ? "w-[250px] gap-2" : "w-fit gap-1 sm:gap-2")}>
+      <ul className={cn("flex items-center justify-between", isMobile ? "w-[250px] gap-2" : "w-fit gap-1 sm:gap-2")}>
         {links.map((link) => {
           const Icon = link.icon;
           const isActive = path === link.href;
@@ -63,7 +63,7 @@ export default function MenuBar() {
           return (
             <li className="relative flex items-center justify-center" key={link.href}>
               <Link
-                className={clsx(
+                className={cn(
                   "flex items-center justify-center transition",
                   isMobile ? "h-8 w-8 rounded-full" : "px-3 py-1 text-[13px] sm:text-[15px]",
                   {
@@ -77,7 +77,7 @@ export default function MenuBar() {
 
                 {isActive && (
                   <motion.div
-                    className={clsx(
+                    className={cn(
                       "absolute z-[-1] bg-zinc-800 dark:bg-stone-200",
                       isMobile ? "inset-0 rounded-full" : "inset-0 rounded-xl",
                     )}
