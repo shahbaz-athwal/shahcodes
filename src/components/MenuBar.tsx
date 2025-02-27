@@ -37,22 +37,32 @@ const links = [
 export default function MenuBar() {
   const path = usePathname();
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 100);
+
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
 
-    handleResize();
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
     <div
       className={cn(
-        "shadow-surface-glass rounded-full px-4 py-2 backdrop-blur [@supports(backdrop-filter:blur(0px))]:bg-black/[6%] dark:[@supports(backdrop-filter:blur(0px))]:bg-white/[6%]",
+        "shadow-surface-glass rounded-full px-4 py-2 backdrop-blur transition-opacity duration-300 ease-in-out [@supports(backdrop-filter:blur(0px))]:bg-black/[6%] dark:[@supports(backdrop-filter:blur(0px))]:bg-white/[6%]",
         isMobile ? "fixed bottom-4 left-1/2 z-50 -translate-x-1/2" : "mx-auto w-fit",
+        mounted ? "opacity-100" : "opacity-0",
       )}
     >
       <ul className={cn("flex items-center justify-between", isMobile ? "w-[250px] gap-2" : "w-fit gap-1 sm:gap-2")}>

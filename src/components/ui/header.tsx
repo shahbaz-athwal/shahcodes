@@ -15,5 +15,5 @@ const classNames = {
 
 export function Header({ children, as = "span", variant = "primary", className }: Props) {
   const Component = as;
-  return <Component className={cn(classNames[variant], className)}>{children}</Component>;
+  return <Component className={cn(classNames[variant], "pt-3 sm:pt-6", className)}>{children}</Component>;
 }

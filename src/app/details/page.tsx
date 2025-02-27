@@ -35,9 +35,7 @@ export default function Page() {
   return (
     <MotionParent>
       <MotionChild>
-        <Header as="h1" className="pt-8">
-          Details
-        </Header>
+        <Header as="h1">Details</Header>
         <section className="mb-6 pt-8">
           <span className="block pb-3 text-3xl font-bold dark:text-zinc-200">Tech Stack</span>
           <div className="text-md space-y-3 font-normal leading-normal text-zinc-700 dark:text-zinc-300 md:text-lg">

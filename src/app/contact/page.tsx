@@ -47,7 +47,7 @@ function Page() {
   return (
     <MotionParent>
       <MotionChild>
-        <Header variant="primary" as="h1" className="pt-8">
+        <Header variant="primary" as="h1">
           Contact
         </Header>
         <section className="py-8">
