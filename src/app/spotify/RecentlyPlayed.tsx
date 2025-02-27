@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import Link from "next/link";
@@ -25,7 +26,7 @@ const RecentlyPlayed = () => {
             <CarouselContent>
               {recentlyPlayed.map((item, index) => (
                 <CarouselItem key={index} className="w-full">
-                  <div className="relative mx-6 p-4">
+                  <div className="relative mx-3 p-4">
                     <Link
                       href={item.url!}
                       passHref
@@ -46,7 +47,7 @@ const RecentlyPlayed = () => {
                         <h3 className="max-w-56 overflow-hidden text-ellipsis whitespace-nowrap text-xl font-semibold sm:max-w-full">
                           {item.title}
                         </h3>
-                        <p className="max-w-56 overflow-hidden text-center text-gray-300 sm:max-w-full">
+                        <p className="text-cente max-w-56 overflow-hidden text-ellipsis whitespace-nowrap text-gray-300 sm:max-w-full">
                           {item.artist}
                         </p>
                       </div>
@@ -56,8 +57,8 @@ const RecentlyPlayed = () => {
               ))}
             </CarouselContent>
           </div>
-          <CarouselPrevious className="absolute left-0 top-1/2 -rotate-[90deg] bg-transparent transition-transform duration-300 hover:scale-125" />
-          <CarouselNext className="absolute right-0 top-1/2 rotate-90 bg-transparent transition-transform duration-300 hover:scale-125" />
+          <CarouselPrevious className="absolute left-0 top-1/2 -mx-2 -rotate-[90deg] bg-transparent transition-transform duration-300 hover:scale-125" />
+          <CarouselNext className="absolute right-0 top-1/2 -mx-2 rotate-90 bg-transparent transition-transform duration-300 hover:scale-125" />
         </Carousel>
       </div>
     )

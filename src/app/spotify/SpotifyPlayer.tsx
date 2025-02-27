@@ -42,7 +42,7 @@ const SpotifyPlayer = () => {
       <h1 className="pb-8 text-3xl font-bold leading-tight">
         <TextGradient>Currently Playing</TextGradient>
       </h1>
-      <div className="rounded-lg bg-black bg-opacity-60 p-4 shadow-xl dark:bg-opacity-30">
+      <div className="m-2 rounded-lg bg-black bg-opacity-50 px-3 py-6 shadow-xl dark:bg-white dark:bg-opacity-[8%] sm:m-0 sm:p-6">
         <div className="flex flex-col items-center md:flex-row">
           <Link
             target={listening?.isPlaying ? "_blank" : "_self"}
@@ -50,17 +50,17 @@ const SpotifyPlayer = () => {
             rel="noopener noreferrer"
             title="Listen on Spotify"
             href={url!}
-            className="mb-4 flex-shrink-0 md:mb-0 md:mr-4"
+            className="-py-2 mb-6 flex-shrink-0 md:mb-0 md:mr-4"
           >
             {listening?.isPlaying ? (
-              <div className="h-auto w-auto">
+              <div className="-mx- h-auto w-auto">
                 <Image
                   height={400}
                   width={400}
                   priority={true}
                   src={listening?.thumbnail || ""}
                   alt={listening?.album || "Album cover"}
-                  className="h-64 w-64 rounded-lg shadow-lg md:h-32 md:w-32"
+                  className="h-[17rem] w-[17rem] rounded-lg shadow-lg md:h-48 md:w-48"
                 />
               </div>
             ) : (
@@ -68,7 +68,7 @@ const SpotifyPlayer = () => {
             )}
           </Link>
 
-          <div className="w-full flex-1">
+          <div className="w-full flex-1 px-4">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div className="flex flex-col text-left">
                 <p className="text-lg font-semibold text-white">
