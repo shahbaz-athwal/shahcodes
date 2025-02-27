@@ -7,14 +7,14 @@ import { IconCode, IconLink } from "@tabler/icons-react";
 interface ProjectCardProps {
   title: string;
   description: string;
-  href: string;
+  href?: string;
   code: string;
   image: string;
   badges?: string[];
 }
 
 const projects: {
-  href: string;
+  href?: string;
   code: string;
   title: string;
   description: string;
@@ -23,17 +23,25 @@ const projects: {
   hidden: boolean;
 }[] = [
   {
+    title: "Socket Chess",
+    href: "https://chess.shahcodes.in",
+    code: "https://github.com/shahbaz-athwal/chess",
+    description: "A Multiplayer Chess Game Using Socket.io",
+    image: "/projects/chess-ogg.jpg",
+    badges: ["Socket.io", "TypeScript", "Tailwind", "Zustand", "Node.js"],
+    hidden: false,
+  },
+  {
     title: "Whisperella",
     href: "https://whisperella.shahcodes.in",
     code: "https://github.com/shahbaz-athwal/whisperella",
     description: "An Anonymous Messaging Platform",
-    image: "/projects/whisper.png",
+    image: "/projects/whisperella-og.jpg",
     badges: ["Next.js", "Auth.js", "TypeScript", "PostgreSQL", "Resend", "Zod"],
     hidden: false,
   },
   {
     title: "FindMyJob",
-    href: "https://findmyjob.shahcodes.in",
     code: "https://github.com/shahbaz-athwal/find-my-job",
     description: "A Two Way Job Application Portal",
     image: "/projects/findmyjob.png",
@@ -67,9 +75,9 @@ const ProjectCard = ({ title, description, href, code, image, badges }: ProjectC
         <h3 className="text-[17px] font-medium sm:text-lg">{title}</h3>
         <p className="text-base dark:text-gray-300 sm:text-[17px]">{description}</p>
       </div>
-      <Link href={href} target="_blank">
+      <Link href={href || code} target="_blank">
         <div className="w-fit overflow-hidden rounded-lg shadow-lg dark:shadow-zinc-800/50">
-          <Image src={image} alt={title} width={700} height={400} className="aspect-[16/9] rounded-lg object-cover" />
+          <Image src={image} alt={title} width={700} height={400} className="rounded-lg object-cover" />
         </div>
       </Link>
       <div className="flex flex-wrap gap-2">
@@ -84,14 +92,16 @@ const ProjectCard = ({ title, description, href, code, image, badges }: ProjectC
         ))}
       </div>
       <div className="flex gap-2">
-        <Link href={href} target="_blank">
-          <Button className="text-xs">
-            <IconLink className="mr-1 h-4 w-4" />
-            Live
-          </Button>
-        </Link>
+        {href && (
+          <Link href={href} target="_blank">
+            <Button className="rounded-2xl text-xs">
+              <IconLink className="mr-1 h-4 w-4" />
+              Live
+            </Button>
+          </Link>
+        )}
         <Link href={code} target="_blank">
-          <Button className="text-xs">
+          <Button className="rounded-2xl text-xs">
             <IconCode className="mr-1 h-4 w-4" />
             Code
           </Button>
