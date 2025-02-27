@@ -60,7 +60,7 @@ export default function MenuBar() {
   return (
     <div
       className={cn(
-        "shadow-surface-glass rounded-full px-4 py-2 backdrop-blur transition-opacity duration-300 ease-in-out [@supports(backdrop-filter:blur(0px))]:bg-black/[6%] dark:[@supports(backdrop-filter:blur(0px))]:bg-white/[6%]",
+        "shadow-surface-glass h-fit rounded-full px-4 py-2 backdrop-blur transition-opacity duration-300 ease-in-out [@supports(backdrop-filter:blur(0px))]:bg-black/[6%] dark:[@supports(backdrop-filter:blur(0px))]:bg-white/[6%]",
         isMobile ? "fixed bottom-4 left-1/2 z-50 -translate-x-1/2" : "mx-auto w-fit",
         mounted ? "opacity-100" : "opacity-0",
       )}
@@ -75,7 +75,7 @@ export default function MenuBar() {
               <Link
                 className={cn(
                   "flex items-center justify-center transition",
-                  isMobile ? "h-8 w-8 rounded-full" : "px-3 py-1 text-[13px] sm:text-[15px]",
+                  isMobile ? "h-9 w-9 rounded-full" : "px-3 py-1 text-[13px] sm:text-[15px]",
                   {
                     "text-white hover:scale-105 hover:text-gray-100 dark:text-black dark:hover:text-zinc-950": isActive,
                   },
