@@ -2,6 +2,7 @@ import { Link } from "next-view-transitions";
 import { Header } from "@/components/ui/header";
 import Projects from "./Projects";
 import { MotionParent, MotionChild } from "@/components/Motion";
+import { GithubGraph } from "./GithubGraph";
 
 export default function Home() {
   return (
@@ -28,8 +29,15 @@ export default function Home() {
       </MotionChild>
 
       <MotionChild>
+        <Header variant="primary" as="h2" className="my-6 text-2xl">
+          Github Contributions
+        </Header>
+        <GithubGraph username="shahbaz-athwal" />
+      </MotionChild>
+
+      <MotionChild>
         <div>
-          <Header variant="primary" as="h2" className="text-2xl">
+          <Header variant="primary" as="h2" className="mt-4 text-2xl">
             Projects
           </Header>
           <p className="pb-8 pt-4 text-lg dark:text-zinc-300/70">
