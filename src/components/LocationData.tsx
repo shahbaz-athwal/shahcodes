@@ -1,6 +1,12 @@
 import redis from "@/lib/redis";
-import { type LocationResponse } from "@/lib/requestMetadata";
 import { unstable_noStore as noStore } from "next/cache";
+
+interface LocationResponse {
+  city: string;
+  region: string;
+  country: string;
+  isBot: boolean;
+}
 
 const getLastLocation = async () => {
   let response: LocationResponse | null;

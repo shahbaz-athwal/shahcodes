@@ -1,20 +1,31 @@
 "use client";
 
 import React, { useMemo } from "react";
-import Link from "next/link";
 import Lottie from "react-lottie-player";
 import PlayerJson from "@/lib/player.json";
 import { useSpotify } from "@/hooks/useSpotify";
-import Spotify from "./icons/Spotify";
+import Spotify from "../../components/icons/Spotify";
 import Image from "next/image";
-import { TextGradient } from "./ui/textgradient";
+import { TextGradient } from "../../components/ui/textgradient";
+import { currentlyPlaying } from "@/actions/currentlyPlaying";
+import useSWR from "swr";
 
 const PlayerAnimation = () => {
   return <Lottie loop animationData={PlayerJson} play />;
 };
 
-const Player = () => {
-  const { listening } = useSpotify();
+const SpotifyPlayer = () => {
+  const { listening, setSpotifyListening } = useSpotify();
+
+  const fetcher = async () => {
+    const data = await currentlyPlaying();
+    setSpotifyListening(data);
+    return data;
+  };
+
+  useSWR("/spotify", fetcher, {
+    refreshInterval: 5 * 1000,
+  });
 
   const url = listening?.isPlaying ? listening.url : " /spotify";
 
@@ -30,33 +41,33 @@ const Player = () => {
       <h1 className="pb-8 text-3xl font-bold leading-tight">
         <TextGradient>Currently Playing</TextGradient>
       </h1>
-      <div className="rounded-lg bg-black bg-opacity-60 p-4 shadow-xl dark:bg-opacity-30">
+      <div className="m-2 rounded-lg bg-black bg-opacity-50 px-3 py-6 shadow-xl dark:bg-white dark:bg-opacity-[8%] sm:m-0 sm:p-6">
         <div className="flex flex-col items-center md:flex-row">
-          <Link
+          <a
             target={listening?.isPlaying ? "_blank" : "_self"}
             aria-label="Listen on Spotify"
             rel="noopener noreferrer"
             title="Listen on Spotify"
             href={url!}
-            className="mb-4 flex-shrink-0 md:mb-0 md:mr-4"
+            className="-py-2 mb-6 flex-shrink-0 md:mb-0 md:mr-4"
           >
             {listening?.isPlaying ? (
-              <div className="h-auto w-auto">
+              <div className="-mx- h-auto w-auto">
                 <Image
                   height={400}
                   width={400}
                   priority={true}
                   src={listening?.thumbnail || ""}
                   alt={listening?.album || "Album cover"}
-                  className="h-64 w-64 rounded-lg shadow-lg md:h-32 md:w-32"
+                  className="h-[17rem] w-[17rem] rounded-lg shadow-lg md:h-48 md:w-48"
                 />
               </div>
             ) : (
               <Spotify />
             )}
-          </Link>
+          </a>
 
-          <div className="w-full flex-1">
+          <div className="w-full flex-1 px-4">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div className="flex flex-col text-left">
                 <p className="text-lg font-semibold text-white">
@@ -85,4 +96,4 @@ const Player = () => {
   );
 };
 
-export default React.memo(Player);
+export default React.memo(SpotifyPlayer);

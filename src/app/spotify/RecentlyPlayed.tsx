@@ -1,38 +1,21 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { SpotifyPlayedItem } from "@/types/SpotifyRecentlyPlayed";
-import Link from "next/link";
 import Image from "next/image";
-import { recentlyPlayed } from "@/app/actions/recentlyPlayed";
-import { RecentlyPlayedSkeleton } from "@/components/Skeletons";
-import { TextGradient } from "./ui/textgradient";
+import { TextGradient } from "@/components/ui/textgradient";
+import { useSpotify } from "@/hooks/useSpotify";
 
 const RecentlyPlayed = () => {
-  const [recentPlays, setRecentPlays] = useState<SpotifyPlayedItem[] | null>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await recentlyPlayed();
-      setRecentPlays(result);
-      setTimeout(() => setIsLoaded(true), 100);
-    };
-
-    fetchData();
-  }, []);
+  const { recentlyPlayed } = useSpotify();
 
   return (
-    <div className="relative overflow-hidden">
-      <h1 className="pb-6 text-3xl font-bold leading-tight">
-        <TextGradient variant="center">Recently Played</TextGradient>
-      </h1>
-      {recentPlays ? (
-        <Carousel
-          className={`w-full ${isLoaded ? "opacity-100 transition-opacity duration-700" : "opacity-0"}`}
-          plugins={[Autoplay({ delay: 4000 })]}
-        >
+    recentlyPlayed && (
+      <div className="relative overflow-hidden">
+        <h1 className="pb-6 text-3xl font-bold leading-tight">
+          <TextGradient variant="center">Recently Played</TextGradient>
+        </h1>
+        <Carousel className="w-full" plugins={[Autoplay({ delay: 4000 })]}>
           <div
             className="relative"
             style={{
@@ -40,12 +23,11 @@ const RecentlyPlayed = () => {
             }}
           >
             <CarouselContent>
-              {recentPlays.map((item, index) => (
+              {recentlyPlayed.map((item, index) => (
                 <CarouselItem key={index} className="w-full">
-                  <div className="relative mx-6 p-4">
-                    <Link
+                  <div className="relative mx-3 p-4">
+                    <a
                       href={item.url!}
-                      passHref
                       target="_blank"
                       rel="noopener noreferrer"
                       title={`${item.title} by: ${item.artist}`}
@@ -63,23 +45,21 @@ const RecentlyPlayed = () => {
                         <h3 className="max-w-56 overflow-hidden text-ellipsis whitespace-nowrap text-xl font-semibold sm:max-w-full">
                           {item.title}
                         </h3>
-                        <p className="max-w-56 overflow-hidden text-center text-gray-300 sm:max-w-full">
+                        <p className="text-cente max-w-56 overflow-hidden text-ellipsis whitespace-nowrap text-gray-300 sm:max-w-full">
                           {item.artist}
                         </p>
                       </div>
-                    </Link>
+                    </a>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
           </div>
-          <CarouselPrevious className="absolute left-0 top-1/2 -rotate-[90deg] bg-transparent transition-transform duration-300 hover:scale-125" />
-          <CarouselNext className="absolute right-0 top-1/2 rotate-90 bg-transparent transition-transform duration-300 hover:scale-125" />
+          <CarouselPrevious className="absolute left-0 top-1/2 -mx-2 -rotate-[90deg] bg-transparent transition-transform duration-300 hover:scale-125" />
+          <CarouselNext className="absolute right-0 top-1/2 -mx-2 rotate-90 bg-transparent transition-transform duration-300 hover:scale-125" />
         </Carousel>
-      ) : (
-        <RecentlyPlayedSkeleton />
-      )}
-    </div>
+      </div>
+    )
   );
 };
 

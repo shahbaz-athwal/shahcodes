@@ -1,6 +1,6 @@
 "use server";
 import { getCurrentlyListening } from "@/lib/spotify";
-import { normalizeCurrentlyListening } from "@/lib/normalizeSpotify";
+import { normalizeCurrentlyListening } from "@/lib/normalizer";
 
 export const currentlyPlaying = async () => {
   const response = await getCurrentlyListening();

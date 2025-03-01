@@ -1,5 +1,5 @@
 "use server";
-import { normalizeArtists } from "@/lib/normalizeSpotify";
+import { normalizeArtists } from "@/lib/normalizer";
 import { getTopArtists } from "@/lib/spotify";
 import { SpotifyTopArtist } from "@/types/SpotifyTopArtist";
 

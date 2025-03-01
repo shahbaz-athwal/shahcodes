@@ -1,16 +1,16 @@
-const refreshToken = process.env.SPOTIFY_REFRESH_TOKEN!;
-const baseEndpoint = "https://api.spotify.com/v1";
-const tokenEndpoint = "https://accounts.spotify.com/api/token";
+const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN!;
+const BASE_ENDPOINT = "https://api.spotify.com/v1";
+const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 
 const getAccessToken = async () => {
   const params = new URLSearchParams({
     grant_type: "refresh_token",
-    refresh_token: refreshToken,
+    refresh_token: REFRESH_TOKEN,
   });
 
   const body = params.toString();
 
-  const response = await fetch(tokenEndpoint, {
+  const response = await fetch(TOKEN_ENDPOINT, {
     method: "POST",
     headers: {
       Authorization: `Basic ${Buffer.from(
@@ -30,7 +30,7 @@ export const getCurrentlyListening = async () => {
     return;
   }
 
-  return fetch(`${baseEndpoint}/me/player/currently-playing`, {
+  return fetch(`${BASE_ENDPOINT}/me/player/currently-playing`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
@@ -43,7 +43,7 @@ export const getRecentlyPlayed = async () => {
     return;
   }
 
-  return fetch(`${baseEndpoint}/me/player/recently-played?limit=15`, {
+  return fetch(`${BASE_ENDPOINT}/me/player/recently-played?limit=15`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
@@ -56,7 +56,7 @@ export const getTopArtists = async () => {
     return;
   }
 
-  return fetch(`${baseEndpoint}/me/top/artists?limit=5&time_range=medium_term`, {
+  return fetch(`${BASE_ENDPOINT}/me/top/artists?limit=5&time_range=medium_term`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },

@@ -1,6 +1,5 @@
-import { Header } from "@/components/ui/topicHeader";
+import { Header } from "@/components/ui/header";
 import { Title } from "@/components/ui/title";
-import Link from "next/link";
 import { MotionChild, MotionParent } from "@/components/Motion";
 import WhisperellaFrame from "@/components/WhisperellaFrame";
 
@@ -47,7 +46,7 @@ function Page() {
   return (
     <MotionParent>
       <MotionChild>
-        <Header variant="primary" as="h1" className="pt-8">
+        <Header variant="primary" as="h1">
           Contact
         </Header>
         <section className="py-8">
@@ -63,9 +62,9 @@ function Page() {
                     <Title as="h2" variant="tertiary">
                       {contactMethod.method}
                     </Title>
-                    <Link href={contactMethod.link} className="text-zinc-600 dark:text-zinc-500">
+                    <a href={contactMethod.link} target="_blank" className="text-zinc-600 dark:text-zinc-500">
                       {contactMethod.label}
-                    </Link>
+                    </a>
                   </div>
                 );
               })}
