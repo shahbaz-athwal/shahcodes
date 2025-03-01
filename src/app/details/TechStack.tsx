@@ -135,7 +135,7 @@ export function TechStack() {
         </CardHeader>
         <CardContent>
           <div className="text-md mb-6 font-normal leading-normal text-zinc-700 dark:text-zinc-300 md:text-lg">
-            <p>I'm a full-stack developer specializing in web development with modern frameworks.</p>
+            <p>I&apos;m a full-stack developer specializing in web development with modern frameworks.</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
