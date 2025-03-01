@@ -10,17 +10,33 @@ interface ProjectCardProps {
   code: string;
   image: string;
   badges?: string[];
+  hidden?: boolean;
 }
 
-const projects: {
-  href?: string;
-  code: string;
-  title: string;
-  description: string;
-  image: string;
-  badges: string[];
-  hidden: boolean;
-}[] = [
+const projects: ProjectCardProps[] = [
+  {
+    title: "Dryft",
+    href: "https://dryft.ca",
+    code: "https://github.com/shahbaz-athwal/dryft",
+    description: "A Social Media Platform for Acadia Students",
+    image: "/projects/dryft.png",
+    badges: [
+      "Turborepo",
+      "Docker",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Zod",
+      "Zustand",
+      "Tanstack Query",
+      "Better Auth",
+      "Traefik",
+      "VPS",
+      "Kafka",
+      "Redis",
+    ],
+    hidden: true,
+  },
   {
     title: "Socket Chess",
     href: "https://chess.shahcodes.in",
@@ -45,7 +61,7 @@ const projects: {
     description: "A Two Way Job Application Portal",
     image: "/projects/findmyjob.png",
     badges: ["Express", "React", "MongoDB", "GCP Cloud Run", "Cloudinary"],
-    hidden: false,
+    hidden: true,
   },
   {
     title: "Portfolio/Blog",
@@ -57,10 +73,10 @@ const projects: {
     hidden: false,
   },
   {
-    title: "",
+    title: "Acadia Help",
     href: "",
     code: "https://github.com/shahbaz-athwal/acadia-help",
-    description: "",
+    description: "One Stop Solution for Acadia Students",
     image: "/projects/acadia.png",
     badges: ["Next.js", "Tailwind", "TypeScript", "PostgreSQL", "ShadCN", "Notion API", "Zod"],
     hidden: true,
