@@ -76,3 +76,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+.view-transition-container {
+  view-transition-name: content-container;
+}
+
+::view-transition-old(content-container),
+::view-transition-new(content-container) {
+  animation-duration: 0.4s;
+}

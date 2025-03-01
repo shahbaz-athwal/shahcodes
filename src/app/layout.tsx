@@ -70,7 +70,7 @@ export default function RootLayout({
           className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#020100] dark:selection:bg-yellow-800/90`}
         >
           <main className="flex min-h-screen flex-col items-center justify-between p-3 md:p-6">
-            <div className="w-full max-w-2xl px-1" style={{ viewTransitionName: "content-container" }}>
+            <div className="view-transition-container w-full max-w-2xl px-1">
               <SpotifyProvider>
                 <SpotifyPrefetch />
                 <ThemeProvider>

@@ -34,84 +34,100 @@ const links = [
   },
 ];
 
+// Safer implementation of slide up transition
 function slideUpTransition() {
-  document.documentElement.animate(
-    [
+  try {
+    // Animation for the old (outgoing) content
+    document.documentElement.animate(
+      [
+        {
+          opacity: 1,
+          transform: "translate(0, 0)",
+        },
+        {
+          opacity: 0,
+          transform: "translate(0, -100px)",
+        },
+      ],
       {
-        opacity: 1,
-        transform: "translate(0, 0)",
+        duration: 400,
+        easing: "ease",
+        fill: "forwards",
+        pseudoElement: "::view-transition-old(content-container)",
       },
-      {
-        opacity: 0,
-        transform: "translate(0, -100px)",
-      },
-    ],
-    {
-      duration: 400,
-      easing: "ease",
-      fill: "forwards",
-      pseudoElement: "::view-transition-old(content-container)",
-    },
-  );
+    );
 
-  document.documentElement.animate(
-    [
+    // Animation for the new (incoming) content
+    document.documentElement.animate(
+      [
+        {
+          opacity: 0,
+          transform: "translate(0, 100px)",
+        },
+        {
+          opacity: 1,
+          transform: "translate(0, 0)",
+        },
+      ],
       {
-        opacity: 0,
-        transform: "translate(0, 100px)",
+        duration: 400,
+        easing: "ease",
+        fill: "forwards",
+        pseudoElement: "::view-transition-new(content-container)",
       },
-      {
-        opacity: 1,
-        transform: "translate(0, 0)",
-      },
-    ],
-    {
-      duration: 400,
-      easing: "ease",
-      fill: "forwards",
-      pseudoElement: "::view-transition-new(content-container)",
-    },
-  );
+    );
+  } catch (error) {
+    console.log("Transition animation error:", error);
+    // Fallback to default transition if animation fails
+  }
 }
 
+// Safer implementation of slide down transition
 function slideDownTransition() {
-  document.documentElement.animate(
-    [
+  try {
+    // Animation for the old (outgoing) content
+    document.documentElement.animate(
+      [
+        {
+          opacity: 1,
+          transform: "translate(0, 0)",
+        },
+        {
+          opacity: 0,
+          transform: "translate(0, 100px)",
+        },
+      ],
       {
-        opacity: 1,
-        transform: "translate(0, 0)",
+        duration: 400,
+        easing: "ease",
+        fill: "forwards",
+        pseudoElement: "::view-transition-old(content-container)",
       },
-      {
-        opacity: 0,
-        transform: "translate(0, 100px)",
-      },
-    ],
-    {
-      duration: 400,
-      easing: "ease",
-      fill: "forwards",
-      pseudoElement: "::view-transition-old(content-container)",
-    },
-  );
+    );
 
-  document.documentElement.animate(
-    [
+    // Animation for the new (incoming) content
+    document.documentElement.animate(
+      [
+        {
+          opacity: 0,
+          transform: "translate(0, -100px)",
+        },
+        {
+          opacity: 1,
+          transform: "translate(0, 0)",
+        },
+      ],
       {
-        opacity: 0,
-        transform: "translate(0, -100px)",
+        duration: 400,
+        easing: "ease",
+        fill: "forwards",
+        pseudoElement: "::view-transition-new(content-container)",
       },
-      {
-        opacity: 1,
-        transform: "translate(0, 0)",
-      },
-    ],
-    {
-      duration: 400,
-      easing: "ease",
-      fill: "forwards",
-      pseudoElement: "::view-transition-new(content-container)",
-    },
-  );
+    );
+  } catch (error) {
+    console.log("Transition animation error:", error);
+    // Fallback to default transition if animation fails
+  }
 }
 
 export default function MenuBar() {
@@ -121,40 +137,51 @@ export default function MenuBar() {
   const router = useTransitionRouter();
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-
-    const timer = setTimeout(() => {
-      setMounted(true);
-    }, 100);
-
-    const handleResize = () => {
+    if (typeof window !== "undefined") {
       setIsMobile(window.innerWidth < 768);
-    };
 
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(timer);
-    };
+      const timer = setTimeout(() => {
+        setMounted(true);
+      }, 100);
+
+      const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+      };
+
+      window.addEventListener("resize", handleResize);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+        clearTimeout(timer);
+      };
+    }
   }, []);
 
-  // Handle navigation with custom transition
+  // Handle navigation with custom transition - with fallback for mobile
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+
+    // Check if View Transitions API is supported
+    const supportsViewTransitions = !!document.startViewTransition;
 
     const isAboutPage = path === "/";
     const goingToAboutPage = href === "/";
 
-    if (isAboutPage && !goingToAboutPage) {
-      router.push(href, {
-        onTransitionReady: slideUpTransition,
-      });
-    } else if (!isAboutPage && goingToAboutPage) {
-      router.push(href, {
-        onTransitionReady: slideDownTransition,
-      });
-    } else {
-      router.push(href);
+    try {
+      if (isAboutPage && !goingToAboutPage) {
+        router.push(href, {
+          onTransitionReady: supportsViewTransitions ? slideUpTransition : undefined,
+        });
+      } else if (!isAboutPage && goingToAboutPage) {
+        router.push(href, {
+          onTransitionReady: supportsViewTransitions ? slideDownTransition : undefined,
+        });
+      } else {
+        router.push(href);
+      }
+    } catch (error) {
+      console.log("Navigation error:", error);
+      // Fallback to standard navigation if the custom approach fails
+      window.location.href = href;
     }
   };
 
