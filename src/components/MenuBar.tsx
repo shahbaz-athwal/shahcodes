@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Link, useTransitionRouter } from "next-view-transitions";
+import { useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { IconHome, IconMusic, IconMail, IconBriefcase, IconPencilBolt } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
@@ -34,10 +34,8 @@ const links = [
   },
 ];
 
-// Safer implementation of slide up transition
 function slideUpTransition() {
   try {
-    // Animation for the old (outgoing) content
     document.documentElement.animate(
       [
         {
@@ -57,7 +55,6 @@ function slideUpTransition() {
       },
     );
 
-    // Animation for the new (incoming) content
     document.documentElement.animate(
       [
         {
@@ -78,14 +75,11 @@ function slideUpTransition() {
     );
   } catch (error) {
     console.log("Transition animation error:", error);
-    // Fallback to default transition if animation fails
   }
 }
 
-// Safer implementation of slide down transition
 function slideDownTransition() {
   try {
-    // Animation for the old (outgoing) content
     document.documentElement.animate(
       [
         {
@@ -105,7 +99,6 @@ function slideDownTransition() {
       },
     );
 
-    // Animation for the new (incoming) content
     document.documentElement.animate(
       [
         {
@@ -126,7 +119,6 @@ function slideDownTransition() {
     );
   } catch (error) {
     console.log("Transition animation error:", error);
-    // Fallback to default transition if animation fails
   }
 }
 
@@ -156,12 +148,10 @@ export default function MenuBar() {
     }
   }, []);
 
-  // Handle navigation with custom transition - with fallback for mobile
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
 
-    // Check if View Transitions API is supported
-    const supportsViewTransitions = !!document.startViewTransition;
+    const supportsViewTransitions = typeof document !== "undefined" && "startViewTransition" in document;
 
     const isAboutPage = path === "/";
     const goingToAboutPage = href === "/";
