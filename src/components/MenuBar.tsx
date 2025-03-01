@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { useTransitionRouter } from "next-view-transitions";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { IconHome, IconMusic, IconMail, IconBriefcase, IconPencilBolt } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 
@@ -48,10 +48,10 @@ function slideUpTransition() {
         },
       ],
       {
-        duration: 400,
+        duration: 500,
         easing: "ease",
         fill: "forwards",
-        pseudoElement: "::view-transition-old(content-container)",
+        pseudoElement: "::view-transition-old(top-bar)",
       },
     );
 
@@ -59,7 +59,7 @@ function slideUpTransition() {
       [
         {
           opacity: 0,
-          transform: "translate(0, 100px)",
+          transform: "translate(0, 200px)",
         },
         {
           opacity: 1,
@@ -67,10 +67,10 @@ function slideUpTransition() {
         },
       ],
       {
-        duration: 400,
+        duration: 500,
         easing: "ease",
         fill: "forwards",
-        pseudoElement: "::view-transition-new(content-container)",
+        pseudoElement: "::view-transition-new(top-bar)",
       },
     );
   } catch (error) {
@@ -92,10 +92,10 @@ function slideDownTransition() {
         },
       ],
       {
-        duration: 400,
+        duration: 500,
         easing: "ease",
         fill: "forwards",
-        pseudoElement: "::view-transition-old(content-container)",
+        pseudoElement: "::view-transition-old(top-bar)",
       },
     );
 
@@ -111,10 +111,10 @@ function slideDownTransition() {
         },
       ],
       {
-        duration: 400,
+        duration: 500,
         easing: "ease",
         fill: "forwards",
-        pseudoElement: "::view-transition-new(content-container)",
+        pseudoElement: "::view-transition-new(top-bar)",
       },
     );
   } catch (error) {
@@ -127,6 +127,7 @@ export default function MenuBar() {
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
   const router = useTransitionRouter();
+  const nextRouter = useRouter();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -151,33 +152,19 @@ export default function MenuBar() {
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
 
-    // Skip view transitions for mobile devices
-    if (isMobile) {
-      router.push(href);
-      return;
-    }
-
-    const supportsViewTransitions = typeof document !== "undefined" && "startViewTransition" in document;
-
     const isAboutPage = path === "/";
     const goingToAboutPage = href === "/";
 
-    try {
-      if (isAboutPage && !goingToAboutPage) {
-        router.push(href, {
-          onTransitionReady: supportsViewTransitions ? slideUpTransition : undefined,
-        });
-      } else if (!isAboutPage && goingToAboutPage) {
-        router.push(href, {
-          onTransitionReady: supportsViewTransitions ? slideDownTransition : undefined,
-        });
-      } else {
-        router.push(href);
-      }
-    } catch (error) {
-      console.log("Navigation error:", error);
-      // Fallback to standard navigation if the custom approach fails
-      window.location.href = href;
+    if (isAboutPage && !goingToAboutPage) {
+      router.push(href, {
+        onTransitionReady: slideUpTransition,
+      });
+    } else if (!isAboutPage && goingToAboutPage) {
+      router.push(href, {
+        onTransitionReady: slideDownTransition,
+      });
+    } else {
+      nextRouter.push(href);
     }
   };
 

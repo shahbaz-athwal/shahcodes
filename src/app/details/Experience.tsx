@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { MotionChild } from "@/components/Motion";
 import Image from "next/image";
 
 const experience: {
@@ -38,38 +37,36 @@ const experience: {
 
 export function Experience() {
   return (
-    <MotionChild>
-      <Card className="mb-8 border border-zinc-200 bg-zinc-50/50 dark:border-zinc-800 dark:bg-zinc-900/50">
-        <CardHeader className="pb-2">
-          <h2 className="text-3xl font-bold dark:text-zinc-200">Experience</h2>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-2 divide-y dark:divide-zinc-800">
-            {experience.map((exp, index) => {
-              return (
-                <div className="flex flex-col gap-4 py-6 sm:flex-row" key={index}>
-                  <div className="mt-1 flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
-                    <Image width={100} height={100} src={exp.logo} alt={exp.company} className="h-12 w-12" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xl font-semibold dark:text-zinc-200">{exp.role}</span>
-                    <span className="text-base dark:text-zinc-400">{exp.company}</span>
-                    <span className="text-sm dark:text-zinc-500">{exp.location}</span>
-                    <span className="mt-2 block font-mono text-sm font-medium tracking-tighter text-zinc-500">
-                      {exp.date}
-                    </span>
-                    <ul className="mt-3 list-disc space-y-1 pl-4 text-zinc-700 dark:text-zinc-300">
-                      {exp.description.map((bullet, i) => (
-                        <li key={i}>{bullet}</li>
-                      ))}
-                    </ul>
-                  </div>
+    <Card className="mb-8 border border-zinc-200 bg-zinc-50/50 dark:border-zinc-800 dark:bg-zinc-900/50">
+      <CardHeader className="pb-2">
+        <h2 className="text-3xl font-bold dark:text-zinc-200">Experience</h2>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-2 divide-y dark:divide-zinc-800">
+          {experience.map((exp, index) => {
+            return (
+              <div className="flex flex-col gap-4 py-6 sm:flex-row" key={index}>
+                <div className="mt-1 flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
+                  <Image width={100} height={100} src={exp.logo} alt={exp.company} className="h-12 w-12" />
                 </div>
-              );
-            })}
-          </div>
-        </CardContent>
-      </Card>
-    </MotionChild>
+                <div className="flex flex-col">
+                  <span className="text-xl font-semibold dark:text-zinc-200">{exp.role}</span>
+                  <span className="text-base dark:text-zinc-400">{exp.company}</span>
+                  <span className="text-sm dark:text-zinc-500">{exp.location}</span>
+                  <span className="mt-2 block font-mono text-sm font-medium tracking-tighter text-zinc-500">
+                    {exp.date}
+                  </span>
+                  <ul className="mt-3 list-disc space-y-1 pl-4 text-zinc-700 dark:text-zinc-300">
+                    {exp.description.map((bullet, i) => (
+                      <li key={i}>{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </CardContent>
+    </Card>
   );
 }
