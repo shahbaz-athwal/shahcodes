@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { Link } from "next-view-transitions";
+import { Link, useTransitionRouter } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import { IconHome, IconMusic, IconMail, IconBriefcase, IconPencilBolt } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
@@ -34,10 +34,91 @@ const links = [
   },
 ];
 
+function slideUpTransition() {
+  document.documentElement.animate(
+    [
+      {
+        opacity: 1,
+        transform: "translate(0, 0)",
+      },
+      {
+        opacity: 0,
+        transform: "translate(0, -100px)",
+      },
+    ],
+    {
+      duration: 400,
+      easing: "ease",
+      fill: "forwards",
+      pseudoElement: "::view-transition-old(root)",
+    },
+  );
+
+  document.documentElement.animate(
+    [
+      {
+        opacity: 0,
+        transform: "translate(0, 100px)",
+      },
+      {
+        opacity: 1,
+        transform: "translate(0, 0)",
+      },
+    ],
+    {
+      duration: 400,
+      easing: "ease",
+      fill: "forwards",
+      pseudoElement: "::view-transition-new(root)",
+    },
+  );
+}
+
+function slideDownTransition() {
+  document.documentElement.animate(
+    [
+      {
+        opacity: 1,
+        transform: "translate(0, 0)",
+      },
+      {
+        opacity: 0,
+        transform: "translate(0, 100px)",
+      },
+    ],
+    {
+      duration: 400,
+      easing: "ease",
+      fill: "forwards",
+      pseudoElement: "::view-transition-old(root)",
+    },
+  );
+
+  document.documentElement.animate(
+    [
+      {
+        opacity: 0,
+        transform: "translate(0, -100px)",
+      },
+      {
+        opacity: 1,
+        transform: "translate(0, 0)",
+      },
+    ],
+    {
+      duration: 400,
+      easing: "ease",
+      fill: "forwards",
+      pseudoElement: "::view-transition-new(root)",
+    },
+  );
+}
+
 export default function MenuBar() {
   const path = usePathname();
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const router = useTransitionRouter();
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
@@ -57,6 +138,26 @@ export default function MenuBar() {
     };
   }, []);
 
+  // Handle navigation with custom transition
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+
+    const isAboutPage = path === "/";
+    const goingToAboutPage = href === "/";
+
+    if (isAboutPage && !goingToAboutPage) {
+      router.push(href, {
+        onTransitionReady: slideUpTransition,
+      });
+    } else if (!isAboutPage && goingToAboutPage) {
+      router.push(href, {
+        onTransitionReady: slideDownTransition,
+      });
+    } else {
+      router.push(href);
+    }
+  };
+
   return (
     <div
       className={cn(
@@ -72,7 +173,7 @@ export default function MenuBar() {
 
           return (
             <li className="relative flex items-center justify-center" key={link.href}>
-              <Link
+              <a
                 className={cn(
                   "flex items-center justify-center transition",
                   isMobile ? "h-9 w-9 rounded-full" : "px-3 py-1 text-[13px] sm:text-[15px]",
@@ -82,6 +183,7 @@ export default function MenuBar() {
                   { "text-muted-foreground hover:text-primary": !isActive },
                 )}
                 href={link.href}
+                onClick={(e) => handleNavigation(e, link.href)}
               >
                 {isMobile ? <Icon size={22} strokeWidth={2} /> : link.name}
 
@@ -99,7 +201,7 @@ export default function MenuBar() {
                     }}
                   ></motion.div>
                 )}
-              </Link>
+              </a>
             </li>
           );
         })}

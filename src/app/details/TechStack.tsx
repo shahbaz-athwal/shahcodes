@@ -29,6 +29,8 @@ import {
   SiBun,
   SiDeno,
   SiTurborepo,
+  SiDrizzle,
+  SiPrisma,
 } from "react-icons/si";
 
 type TechCategoryProps = {
@@ -75,7 +77,7 @@ export function TechStack() {
         { name: "TypeScript", icon: <SiTypescript className="h-3.5 w-3.5 text-blue-500" /> },
         { name: "JavaScript", icon: <SiJavascript className="h-3.5 w-3.5 text-yellow-400" /> },
         { name: "Python", icon: <FaPython className="h-3.5 w-3.5 text-yellow-600" /> },
-        { name: "Tailwind CSS", icon: <SiTailwindcss className="h-3.5 w-3.5 text-sky-400" /> },
+        { name: "Tailwind", icon: <SiTailwindcss className="h-3.5 w-3.5 text-sky-400" /> },
       ],
     },
     {
@@ -88,6 +90,8 @@ export function TechStack() {
         { name: "Express", icon: <SiExpress className="h-3.5 w-3.5" /> },
         { name: "Flask", icon: <SiFlask className="h-3.5 w-3.5" /> },
         { name: "SQLAlchemy", icon: <FaDatabase className="h-3.5 w-3.5 text-red-500" /> },
+        { name: "Drizzle", icon: <SiDrizzle className="h-3.5 w-3.5 text-blue-500" /> },
+        { name: "Prisma", icon: <SiPrisma className="h-3.5 w-3.5 text-blue-500" /> },
         { name: "REST APIs", icon: <FaServer className="h-3.5 w-3.5 text-purple-500" /> },
       ],
     },
@@ -119,7 +123,6 @@ export function TechStack() {
       skills: [
         { name: "Kubernetes", icon: <SiKubernetes className="h-3.5 w-3.5 text-blue-500" /> },
         { name: "System Design", icon: <FaServer className="h-3.5 w-3.5 text-purple-400" /> },
-        { name: "Advanced Docker", icon: <FaDocker className="h-3.5 w-3.5 text-blue-500" /> },
       ],
     },
   ];
@@ -132,11 +135,7 @@ export function TechStack() {
         </CardHeader>
         <CardContent>
           <div className="text-md mb-6 font-normal leading-normal text-zinc-700 dark:text-zinc-300 md:text-lg">
-            <p>
-              I'm a full-stack developer specializing in web application development with modern frameworks. My primary
-              focus is building responsive, performant apps using React/Next.js and Vue.js frontends supported by Python
-              and Node.js backends.
-            </p>
+            <p>I'm a full-stack developer specializing in web development with modern frameworks.</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
