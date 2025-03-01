@@ -48,7 +48,7 @@ function slideUpTransition() {
         },
       ],
       {
-        duration: 600,
+        duration: 500,
         easing: "ease",
         fill: "forwards",
         pseudoElement: "::view-transition-old(top-bar)",
@@ -59,7 +59,7 @@ function slideUpTransition() {
       [
         {
           opacity: 0,
-          transform: "translate(0, 100px)",
+          transform: "translate(0, 200px)",
         },
         {
           opacity: 1,
@@ -67,7 +67,7 @@ function slideUpTransition() {
         },
       ],
       {
-        duration: 600,
+        duration: 500,
         easing: "ease",
         fill: "forwards",
         pseudoElement: "::view-transition-new(top-bar)",
@@ -92,7 +92,7 @@ function slideDownTransition() {
         },
       ],
       {
-        duration: 600,
+        duration: 500,
         easing: "ease",
         fill: "forwards",
         pseudoElement: "::view-transition-old(top-bar)",
@@ -111,7 +111,7 @@ function slideDownTransition() {
         },
       ],
       {
-        duration: 600,
+        duration: 500,
         easing: "ease",
         fill: "forwards",
         pseudoElement: "::view-transition-new(top-bar)",
@@ -152,26 +152,19 @@ export default function MenuBar() {
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
 
-    const supportsViewTransitions = typeof document !== "undefined" && "startViewTransition" in document;
-
     const isAboutPage = path === "/";
     const goingToAboutPage = href === "/";
 
-    try {
-      if (isAboutPage && !goingToAboutPage) {
-        router.push(href, {
-          onTransitionReady: supportsViewTransitions ? slideUpTransition : undefined,
-        });
-      } else if (!isAboutPage && goingToAboutPage) {
-        router.push(href, {
-          onTransitionReady: supportsViewTransitions ? slideDownTransition : undefined,
-        });
-      } else {
-        nextRouter.push(href);
-      }
-    } catch (error) {
-      console.log("Navigation error:", error);
-      window.location.href = href;
+    if (isAboutPage && !goingToAboutPage) {
+      router.push(href, {
+        onTransitionReady: slideUpTransition,
+      });
+    } else if (!isAboutPage && goingToAboutPage) {
+      router.push(href, {
+        onTransitionReady: slideDownTransition,
+      });
+    } else {
+      nextRouter.push(href);
     }
   };
 
