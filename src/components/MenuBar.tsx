@@ -50,7 +50,7 @@ function slideUpTransition() {
       duration: 400,
       easing: "ease",
       fill: "forwards",
-      pseudoElement: "::view-transition-old(root)",
+      pseudoElement: "::view-transition-old(content-container)",
     },
   );
 
@@ -69,7 +69,7 @@ function slideUpTransition() {
       duration: 400,
       easing: "ease",
       fill: "forwards",
-      pseudoElement: "::view-transition-new(root)",
+      pseudoElement: "::view-transition-new(content-container)",
     },
   );
 }
@@ -90,7 +90,7 @@ function slideDownTransition() {
       duration: 400,
       easing: "ease",
       fill: "forwards",
-      pseudoElement: "::view-transition-old(root)",
+      pseudoElement: "::view-transition-old(content-container)",
     },
   );
 
@@ -109,7 +109,7 @@ function slideDownTransition() {
       duration: 400,
       easing: "ease",
       fill: "forwards",
-      pseudoElement: "::view-transition-new(root)",
+      pseudoElement: "::view-transition-new(content-container)",
     },
   );
 }
