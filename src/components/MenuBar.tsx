@@ -151,6 +151,12 @@ export default function MenuBar() {
   const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
 
+    // Skip view transitions for mobile devices
+    if (isMobile) {
+      router.push(href);
+      return;
+    }
+
     const supportsViewTransitions = typeof document !== "undefined" && "startViewTransition" in document;
 
     const isAboutPage = path === "/";
