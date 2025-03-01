@@ -1,4 +1,4 @@
-import { MotionParent } from "@/components/Motion";
+import { MotionChild, MotionParent } from "@/components/Motion";
 import { Header } from "@/components/ui/header";
 import { Metadata } from "next";
 import { TechStack } from "./TechStack";
@@ -13,10 +13,18 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <MotionParent>
-      <Header as="h1">Details</Header>
-      <TechStack />
-      <Experience />
-      <Education />
+      <MotionChild>
+        <Header as="h1">Details</Header>
+      </MotionChild>
+      <MotionChild>
+        <TechStack />
+      </MotionChild>
+      <MotionChild>
+        <Experience />
+      </MotionChild>
+      <MotionChild>
+        <Education />
+      </MotionChild>
     </MotionParent>
   );
 }

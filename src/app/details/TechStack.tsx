@@ -1,6 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MotionChild } from "@/components/Motion";
 
 import {
   FaReact,
@@ -128,23 +127,21 @@ export function TechStack() {
   ];
 
   return (
-    <MotionChild>
-      <Card className="mb-8 mt-6 border border-zinc-200 bg-zinc-50/50 dark:border-zinc-800 dark:bg-zinc-900/50">
-        <CardHeader className="pb-2">
-          <h2 className="text-3xl font-bold dark:text-zinc-200">Tech Stack</h2>
-        </CardHeader>
-        <CardContent>
-          <div className="text-md mb-6 font-normal leading-normal text-zinc-700 dark:text-zinc-300 md:text-lg">
-            <p>I&apos;m a full-stack developer specializing in web development with modern frameworks.</p>
-          </div>
+    <Card className="mb-8 mt-6 border border-zinc-200 bg-zinc-50/50 dark:border-zinc-800 dark:bg-zinc-900/50">
+      <CardHeader className="pb-2">
+        <h2 className="text-3xl font-bold dark:text-zinc-200">Tech Stack</h2>
+      </CardHeader>
+      <CardContent>
+        <div className="text-md mb-6 font-normal leading-normal text-zinc-700 dark:text-zinc-300 md:text-lg">
+          <p>I&apos;m a full-stack developer specializing in web development with modern frameworks.</p>
+        </div>
 
-          <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
-            {techCategories.map((category) => (
-              <TechCategory key={category.title} title={category.title} icon={category.icon} skills={category.skills} />
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-    </MotionChild>
+        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
+          {techCategories.map((category) => (
+            <TechCategory key={category.title} title={category.title} icon={category.icon} skills={category.skills} />
+          ))}
+        </div>
+      </CardContent>
+    </Card>
   );
 }
