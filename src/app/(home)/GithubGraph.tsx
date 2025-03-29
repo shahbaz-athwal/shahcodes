@@ -51,7 +51,7 @@ export const GithubGraph = ({ username, blockMargin, colorPallete }: GithubGraph
   );
 };
 async function fetchContributionData(username: string): Promise<Activity[]> {
-  let response = await fetch(`https://github.vineet.tech/api/${username}`);
+  let response = await fetch(`https://github.vineet.pro/api/${username}`);
   let responseBody = await response.json();
 
   if (!response.ok) {
