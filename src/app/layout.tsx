@@ -7,7 +7,7 @@ import TopBar from "@/components/TopBar";
 import SpotifyPrefetch from "./spotify/SpotifyFetcher";
 import { SpotifyProvider } from "@/hooks/useSpotify";
 import { ViewTransitions } from "next-view-transitions";
-
+import LiveActivity from "@/components/LiveActivity";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -79,6 +79,7 @@ export default function RootLayout({
                 </ThemeProvider>
               </SpotifyProvider>
             </div>
+            <LiveActivity />
             <Footer />
           </main>
           <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">
