@@ -1,46 +1,10 @@
 "use client";
 import { useActivity } from "@/hooks/useActivity";
 import { Card } from "@/components/ui/card";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { MotionParent, MotionChild } from "./Motion";
-
-// Types
-interface Activity {
-  id: string;
-  name: string;
-  type: number;
-  application_id?: string;
-  state?: string;
-  details?: string;
-  timestamps?: {
-    start?: number;
-    end?: number;
-  };
-  assets?: {
-    large_image?: string;
-    large_text?: string;
-    small_image?: string;
-    small_text?: string;
-  };
-}
-
-interface SpotifyData {
-  song: string;
-  artist: string;
-  album: string;
-  album_art_url: string;
-  timestamps: {
-    start: number;
-    end: number;
-  };
-}
-
-// Helper functions
-const formatTime = (seconds: number) => {
-  const minutes = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
-};
+import { Activity, SpotifyData } from "@/types/Lanyard";
+import { formatTime } from "@/lib/utils";
 
 // Game activity component
 const GameActivity = ({ activities }: { activities: Activity[] }) => {
@@ -96,26 +60,55 @@ const GameActivity = ({ activities }: { activities: Activity[] }) => {
   );
 };
 
-// Spotify activity component
+// Spotify activity component with optimized animation
 const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
-  const [elapsed, setElapsed] = useState<number>(0);
-  const [total, setTotal] = useState<number>(0);
+  const progressRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number>();
+  const startTimeRef = useRef<number>(spotifyData.timestamps.start);
+  const endTimeRef = useRef<number>(spotifyData.timestamps.end);
+  const [elapsedFormatted, setElapsedFormatted] = useState<string>("00:00");
+  const [totalFormatted, setTotalFormatted] = useState<string>("00:00");
 
+  // Calculate total duration once
+  const totalDuration = endTimeRef.current - startTimeRef.current;
+
+  // Use requestAnimationFrame for smoother animation
+  const updateProgress = useCallback(() => {
+    if (!progressRef.current) return;
+
+    const now = Date.now();
+    const elapsed = now - startTimeRef.current;
+    const percentage = Math.min(100, (elapsed / totalDuration) * 100);
+
+    // Update progress bar width
+    progressRef.current.style.width = `${percentage}%`;
+
+    // Update formatted times
+    const elapsedSeconds = Math.floor(elapsed / 1000);
+    const totalSeconds = Math.floor(totalDuration / 1000);
+    setElapsedFormatted(formatTime(elapsedSeconds));
+    setTotalFormatted(formatTime(totalSeconds));
+
+    // Continue animation
+    animationRef.current = requestAnimationFrame(updateProgress);
+  }, [totalDuration]);
+
+  // Set up and clean up animation frame
   useEffect(() => {
-    const interval = setInterval(() => {
-      const now = Date.now();
-      const start = spotifyData.timestamps.start;
-      const end = spotifyData.timestamps.end;
+    // Initialize values from props
+    startTimeRef.current = spotifyData.timestamps.start;
+    endTimeRef.current = spotifyData.timestamps.end;
 
-      const elapsedTime = Math.floor((now - start) / 1000);
-      const totalTime = Math.floor((end - start) / 1000);
+    // Start animation
+    animationRef.current = requestAnimationFrame(updateProgress);
 
-      setElapsed(elapsedTime);
-      setTotal(totalTime);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [spotifyData]);
+    // Clean up on unmount or when data changes
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [spotifyData, updateProgress]);
 
   return (
     <Card className="my-4 w-96 rounded-lg border-none bg-stone-100 p-4 text-gray-900 dark:bg-stone-800/50 dark:text-white">
@@ -134,14 +127,11 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
 
           <div className="mt-2">
             <div className="mb-1 flex justify-between text-xs text-gray-500">
-              <span>{formatTime(elapsed)}</span>
-              <span>{formatTime(total)}</span>
+              <span>{elapsedFormatted}</span>
+              <span>{totalFormatted}</span>
             </div>
             <div className="h-1 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
-              <div
-                className="h-full bg-stone-500 dark:bg-white"
-                style={{ width: `${Math.min(100, (elapsed / total) * 100)}%` }}
-              ></div>
+              <div ref={progressRef} className="h-full bg-stone-500 dark:bg-white" style={{ width: "0%" }}></div>
             </div>
           </div>
         </div>
@@ -161,7 +151,7 @@ export default function LiveActivity() {
   return (
     <MotionParent>
       <MotionChild>
-        <GameActivity activities={data.activities || []} />
+        <GameActivity activities={data.activities} />
       </MotionChild>
       <MotionChild>{data.spotify && <SpotifyActivity spotifyData={data.spotify} />}</MotionChild>
     </MotionParent>
