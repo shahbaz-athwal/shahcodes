@@ -6,19 +6,45 @@ import { MotionParent, MotionChild } from "./Motion";
 import { Activity, SpotifyData } from "@/types/Lanyard";
 import { formatTime } from "@/lib/utils";
 
-// Game activity component
-const GameActivity = ({ activities }: { activities: Activity[] }) => {
-  const gameActivities = activities.filter((a) => a.application_id === "383226320970055681");
+const CodeActivity = ({ codeData }: { codeData: Activity[] }) => {
+  const [elapsedTimes, setElapsedTimes] = useState<Record<number, string>>({});
+  const animationRef = useRef<number>();
 
-  if (gameActivities.length === 0) return null;
+  const updateElapsedTimes = useCallback(() => {
+    const updatedTimes: Record<number, string> = {};
+
+    codeData.forEach((activity, index) => {
+      if (activity.timestamps?.start) {
+        const elapsed = Math.floor((Date.now() - activity.timestamps.start) / 1000);
+        updatedTimes[index] = formatTime(elapsed);
+      }
+    });
+
+    setElapsedTimes(updatedTimes);
+    animationRef.current = requestAnimationFrame(updateElapsedTimes);
+  }, [codeData]);
+
+  useEffect(() => {
+    if (codeData.length > 0) {
+      animationRef.current = requestAnimationFrame(updateElapsedTimes);
+    }
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [codeData, updateElapsedTimes]);
+
+  if (codeData.length === 0) return null;
 
   return (
     <Card className="w-96 rounded-lg border-none bg-stone-100 p-4 text-gray-900 dark:bg-stone-800/50 dark:text-white">
       <div className="mb-2 flex items-center justify-between">
-        <div className="text-sm font-medium">Playing</div>
+        <div className="text-sm font-medium">Coding</div>
       </div>
 
-      {gameActivities.map((activity, index) => (
+      {codeData.map((activity, index) => (
         <div key={index} className="flex items-center gap-4">
           <div className="relative flex-shrink-0">
             <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
@@ -45,12 +71,12 @@ const GameActivity = ({ activities }: { activities: Activity[] }) => {
 
           <div className="flex-1 overflow-hidden">
             <div className="text-base font-medium">{activity.name}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">{activity.details}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">{activity.state}</div>
+            <div className="text-xs text-gray-600 dark:text-gray-400">{activity.details}</div>
+            <div className="text-xs text-gray-600 dark:text-gray-400">{activity.state}</div>
             <div className="flex items-center gap-1 text-xs text-gray-500">
               <div className="h-2 w-2 rounded-full bg-green-500"></div>
               {activity.timestamps?.start
-                ? formatTime(Math.floor((Date.now() - activity.timestamps.start) / 1000))
+                ? elapsedTimes[index] || formatTime(Math.floor((Date.now() - activity.timestamps.start) / 1000))
                 : ""}
             </div>
           </div>
@@ -143,6 +169,14 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
 // Main component
 export default function LiveActivity() {
   const { data, status } = useActivity("685471362961244160");
+  const [codeData, setCodeData] = useState<Activity[]>([]);
+
+  useEffect(() => {
+    if (status === "connected" && data) {
+      const hasVsCode = data.activities.find((a) => a.name === "Visual Studio Code");
+      setCodeData(hasVsCode ? [hasVsCode] : []);
+    }
+  }, [data, status]);
 
   if (status !== "connected" || !data) {
     return null;
@@ -150,10 +184,17 @@ export default function LiveActivity() {
 
   return (
     <MotionParent>
-      <MotionChild>
-        <GameActivity activities={data.activities} />
-      </MotionChild>
-      <MotionChild>{data.spotify && <SpotifyActivity spotifyData={data.spotify} />}</MotionChild>
+      {codeData.length > 0 && (
+        <MotionChild key="code-activity">
+          <CodeActivity codeData={codeData} />
+        </MotionChild>
+      )}
+
+      {data.spotify && (
+        <MotionChild key="spotify-activity">
+          <SpotifyActivity spotifyData={data.spotify} />
+        </MotionChild>
+      )}
     </MotionParent>
   );
 }
