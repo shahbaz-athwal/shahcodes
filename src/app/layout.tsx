@@ -79,7 +79,9 @@ export default function RootLayout({
                 </ThemeProvider>
               </SpotifyProvider>
             </div>
-            <LiveActivity />
+            <div className="absolute right-4 top-4 z-10 hidden lg:block">
+              <LiveActivity />
+            </div>
             <Footer />
           </main>
           <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">

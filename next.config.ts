@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "i.scdn.co",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.discordapp.com",
+      },
     ],
   },
 };

@@ -6,7 +6,7 @@ export const useElapsedTime = (startTime?: number, endTime?: number) => {
   const [elapsedFormatted, setElapsedFormatted] = useState<string>("00:00");
   const [totalFormatted, setTotalFormatted] = useState<string>("00:00");
   const [progressPercentage, setProgressPercentage] = useState<number>(0);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number>(0);
 
   const updateTime = useCallback(() => {
     if (!startTime) return;
