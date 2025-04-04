@@ -7,23 +7,31 @@ export const useElapsedTime = (startTime?: number, endTime?: number) => {
   const [totalFormatted, setTotalFormatted] = useState<string>("00:00");
   const [progressPercentage, setProgressPercentage] = useState<number>(0);
   const animationRef = useRef<number>(0);
+  const lastUpdateRef = useRef<number>(0);
 
   const updateTime = useCallback(() => {
     if (!startTime) return;
 
     const now = Date.now();
+
+    const shouldUpdateUI = now - lastUpdateRef.current >= 1000;
+
     const elapsed = now - startTime;
     const elapsedSeconds = Math.floor(elapsed / 1000);
 
-    setElapsedFormatted(formatTime(elapsedSeconds));
+    if (shouldUpdateUI) {
+      setElapsedFormatted(formatTime(elapsedSeconds));
 
-    if (endTime) {
-      const totalDuration = endTime - startTime;
-      const totalSeconds = Math.floor(totalDuration / 1000);
-      const percentage = Math.min(100, (elapsed / totalDuration) * 100);
+      if (endTime) {
+        const totalDuration = endTime - startTime;
+        const totalSeconds = Math.floor(totalDuration / 1000);
+        const percentage = Math.min(100, (elapsed / totalDuration) * 100);
 
-      setTotalFormatted(formatTime(totalSeconds));
-      setProgressPercentage(percentage);
+        setTotalFormatted(formatTime(totalSeconds));
+        setProgressPercentage(percentage);
+      }
+
+      lastUpdateRef.current = now;
     }
 
     animationRef.current = requestAnimationFrame(updateTime);
