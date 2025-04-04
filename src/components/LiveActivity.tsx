@@ -13,7 +13,7 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
   if (!codeData) return null;
 
   return (
-    <Card className="py-2text-gray-900 w-full max-w-xs rounded-md border-none bg-stone-100/80 px-3 shadow-sm dark:bg-stone-800/30 dark:text-white">
+    <Card className="w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-sm dark:bg-stone-800/30 dark:text-white">
       <div className="flex items-center gap-3">
         <div className="relative flex-shrink-0">
           <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
@@ -71,7 +71,7 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
   }, [progressPercentage]);
 
   return (
-    <Card className="my-4 w-full max-w-xs rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-sm dark:bg-stone-800/30 dark:text-white">
+    <Card className="my-4 w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-sm dark:bg-stone-800/30 dark:text-white">
       <div className="flex items-center gap-3">
         <div className="h-12 w-12 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
           <Image
@@ -120,12 +120,8 @@ export default function LiveActivity() {
 
   return (
     <MotionParent>
-      <div className="my-2 text-sm font-medium">Live Activity</div>
-      {codeData && (
-        <MotionChild key="code-activity">
-          <CodeActivity codeData={codeData} />
-        </MotionChild>
-      )}
+      {codeData && <div className="my-2 text-sm font-medium">Live Activity</div>}
+      <MotionChild key="code-activity">{codeData && <CodeActivity codeData={codeData} />}</MotionChild>
 
       {data.spotify && (
         <MotionChild key="spotify-activity">
