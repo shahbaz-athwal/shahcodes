@@ -124,7 +124,9 @@ export default function LiveActivity() {
 
   return (
     <MotionParent>
-      {(codeData || data.spotify) && <div className="my-2 text-sm font-medium">Live Activity</div>}
+      {(codeData || (data.spotify && pathname !== "/spotify")) && (
+        <div className="my-2 text-sm font-medium">Live Activity</div>
+      )}
       <MotionChild key="code-activity">{codeData && <CodeActivity codeData={codeData} />}</MotionChild>
 
       {data.spotify && pathname !== "/spotify" && (

@@ -44,14 +44,14 @@ const SpotifyPlayer = () => {
   const { listening } = useSpotify();
 
   return (
-    <div className="py-10">
-      <h1 className="mb-6 text-center text-2xl font-bold leading-tight md:text-left">
+    <div className="pb-12">
+      <h1 className="py-10 text-3xl font-bold leading-tight">
         <TextGradient>Currently Playing</TextGradient>
       </h1>
-      <div className="dark:from-white/8 dark:to-white/4 rounded-xl bg-gradient-to-br from-stone-900/60 to-stone-900/90 p-5 shadow-2xl backdrop-blur-sm dark:from-stone-900/40 dark:to-stone-900/60">
+      <div className="dark:from-white/8 dark:to-white/4 mx-4 rounded-xl bg-gradient-to-br from-stone-900/60 to-stone-900/90 p-5 shadow-2xl backdrop-blur-sm dark:from-stone-900/40 dark:to-stone-900/60">
         <div className="flex min-h-fit flex-col items-center md:flex-row md:items-start md:space-x-5">
           {!listening ? (
-            <div className="group mb-5 flex h-44 w-44 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-black/30 shadow-md transition-all duration-300 md:mb-0">
+            <div className="group mb-5 flex h-44 w-44 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-stone-900/70 shadow-md transition-all duration-300 md:mb-0">
               <Spotify className="h-16 w-16 opacity-80" />
             </div>
           ) : (
@@ -76,12 +76,10 @@ const SpotifyPlayer = () => {
 
           <div className="w-full flex-1">
             {!listening ? (
-              <div className="flex h-full flex-col justify-center">
+              <div className="flex h-full flex-col items-center justify-center">
                 <div className="text-center md:text-left">
-                  <p className="text-lg font-bold text-white">Not Playing</p>
-                  <p className="text-sm text-gray-400">No music playing on Spotify</p>
+                  <p className="text-lg font-bold text-white sm:pt-[70px]">Not Playing</p>
                 </div>
-                <div className="mt-5 h-[76px]">{/* Spacer for consistent height */}</div>
               </div>
             ) : (
               <div className="flex flex-col">
