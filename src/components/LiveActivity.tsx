@@ -1,11 +1,13 @@
 "use client";
 import { useActivity } from "@/hooks/useActivity";
 import { Card } from "@/components/ui/card";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MotionParent, MotionChild } from "./Motion";
 import { Activity, SpotifyData } from "@/types/Lanyard";
 import { useElapsedTime } from "@/hooks/useElapsedTime";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+
 const CodeActivity = ({ codeData }: { codeData: Activity }) => {
   const startTime = codeData.timestamps?.start;
   const { elapsedFormatted } = useElapsedTime(startTime);
@@ -107,6 +109,8 @@ export default function LiveActivity() {
   const { data, status } = useActivity("685471362961244160");
   const [codeData, setCodeData] = useState<Activity>();
 
+  const pathname = usePathname();
+
   useEffect(() => {
     if (status === "connected" && data) {
       const hasVsCode = data.activities.find((a) => a.name === "Visual Studio Code");
@@ -120,10 +124,10 @@ export default function LiveActivity() {
 
   return (
     <MotionParent>
-      {codeData && <div className="my-2 text-sm font-medium">Live Activity</div>}
+      {(codeData || data.spotify) && <div className="my-2 text-sm font-medium">Live Activity</div>}
       <MotionChild key="code-activity">{codeData && <CodeActivity codeData={codeData} />}</MotionChild>
 
-      {data.spotify && (
+      {data.spotify && pathname !== "/spotify" && (
         <MotionChild key="spotify-activity">
           <SpotifyActivity spotifyData={data.spotify} />
         </MotionChild>

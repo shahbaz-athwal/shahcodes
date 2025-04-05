@@ -1,22 +1,22 @@
 "use client";
 
-import { SpotifyListeningItem } from "@/types/SpotifyListening";
+import { SpotifyData } from "@/types/Lanyard";
 import { SpotifyPlayedItem } from "@/types/SpotifyRecentlyPlayed";
 import React, { useCallback, useMemo, useContext, useReducer, ReactNode } from "react";
 
 // Interfaces
 interface SpotifyState {
-  listening: SpotifyListeningItem;
+  listening: SpotifyData | null;
   recentlyPlayed: SpotifyPlayedItem[] | null;
 }
 
 interface SpotifyAction {
   type: string;
-  payload: SpotifyListeningItem | SpotifyPlayedItem[] | null;
+  payload: SpotifyData | SpotifyPlayedItem[] | null;
 }
 
 interface SpotifyContextProps extends SpotifyState {
-  setSpotifyListening: (payload: SpotifyListeningItem) => void;
+  setSpotifyListening: (payload: SpotifyData | null) => void;
   setSpotifyRecentlyPlayed: (payload: SpotifyPlayedItem[] | null) => void;
 }
 
@@ -26,7 +26,7 @@ interface SpotifyProviderProps {
 
 // Initial State
 export const initialState: SpotifyState = {
-  listening: {} as SpotifyListeningItem,
+  listening: null,
   recentlyPlayed: null,
 };
 
@@ -42,7 +42,7 @@ export const reducer = (state: SpotifyState, action: SpotifyAction): SpotifyStat
     case types.SET_SPOTIFY_LISTENING:
       return {
         ...state,
-        listening: action.payload as SpotifyListeningItem,
+        listening: action.payload as SpotifyData,
       };
     case types.SET_SPOTIFY_RECENTLY_PLAYED:
       return {
@@ -64,7 +64,7 @@ export const SpotifyProvider: React.FC<SpotifyProviderProps> = ({ children }) =>
 
   // Spotify Actions
   const setSpotifyListening = useCallback(
-    (payload: SpotifyListeningItem) => dispatch({ type: types.SET_SPOTIFY_LISTENING, payload }),
+    (payload: SpotifyData | null) => dispatch({ type: types.SET_SPOTIFY_LISTENING, payload }),
     [dispatch],
   );
 

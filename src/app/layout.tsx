@@ -69,21 +69,21 @@ export default function RootLayout({
         <body
           className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#020100] dark:selection:bg-yellow-800/90`}
         >
-          <main className="flex min-h-screen flex-col items-center justify-between p-3 md:p-6">
-            <div className="view-transition-container w-full max-w-2xl px-1">
-              <SpotifyProvider>
+          <SpotifyProvider>
+            <main className="flex min-h-screen flex-col items-center justify-between p-3 md:p-6">
+              <div className="view-transition-container w-full max-w-2xl px-1">
                 <SpotifyPrefetch />
                 <ThemeProvider>
                   <TopBar />
                   {children}
                 </ThemeProvider>
-              </SpotifyProvider>
-            </div>
-            <div className="absolute right-4 top-4 z-10 hidden lg:block">
-              <LiveActivity />
-            </div>
-            <Footer />
-          </main>
+              </div>
+              <div className="absolute right-4 top-4 z-10 hidden lg:block">
+                <LiveActivity />
+              </div>
+              <Footer />
+            </main>
+          </SpotifyProvider>
           <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">
             <div className="h-full bg-cover dark:bg-[url('/bg-sm-dark.png')] dark:opacity-[0.3] sm:dark:bg-[url('/bg-dark.jpg')]" />
           </div>

@@ -2,9 +2,11 @@
 import { LanyardData, LanyardMessage } from "@/types/Lanyard";
 import { useEffect, useState, useCallback } from "react";
 import useWebSocket, { ReadyState } from "react-use-websocket";
+import { useSpotify } from "./useSpotify";
 
 export const useActivity = (userId: string) => {
   const [data, setData] = useState<LanyardData | null>(null);
+  const { setSpotifyListening } = useSpotify();
 
   const { sendMessage, readyState, getWebSocket } = useWebSocket("wss://api.lanyard.rest/socket", {
     onOpen: () => {
@@ -35,11 +37,14 @@ export const useActivity = (userId: string) => {
       }
 
       if (message.t === "INIT_STATE") {
-        setData(message.d[userId]);
+        const userData = message.d[userId];
+        setData(userData);
+        setSpotifyListening(userData.listening_to_spotify ? userData.spotify : null);
       }
 
       if (message.t === "PRESENCE_UPDATE") {
         setData(message.d);
+        setSpotifyListening(message.d.listening_to_spotify ? message.d.spotify : null);
       }
     },
     // Automatically reconnect on connection closed

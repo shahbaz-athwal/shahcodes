@@ -45,6 +45,7 @@ export interface SpotifyData {
   artist: string;
   album: string;
   album_art_url: string;
+  track_id: string;
   timestamps: {
     start: number;
     end: number;
