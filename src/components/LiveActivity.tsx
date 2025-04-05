@@ -18,7 +18,7 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
     <Card className="w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-sm dark:bg-stone-800/30 dark:text-white">
       <div className="flex items-center gap-3">
         <div className="relative flex-shrink-0">
-          <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
+          <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
             {codeData.assets?.large_image ? (
               <Image
                 src={`https://cdn.discordapp.com/app-assets/${codeData.application_id}/${codeData.assets.large_image}.png`}
@@ -44,11 +44,11 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
           )}
         </div>
 
-        <div className="flex-1 overflow-hidden">
-          <div className="text-sm font-medium">{codeData.name}</div>
+        <div className="flex-1 space-y-0.5 overflow-hidden">
+          <div className="text-xs font-medium">{codeData.name}</div>
           <div className="text-xs text-gray-600 dark:text-gray-400">{codeData.details}</div>
           <div className="text-xs text-gray-600 dark:text-gray-400">{codeData.state}</div>
-          <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-500">
+          <div className="flex items-center gap-1 font-mono text-[11px] text-gray-500 dark:text-gray-500">
             <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
             {elapsedFormatted}
           </div>
@@ -74,8 +74,8 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
 
   return (
     <Card className="my-4 w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-sm dark:bg-stone-800/30 dark:text-white">
-      <div className="flex items-center gap-3">
-        <div className="h-12 w-12 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
+      <div className="flex gap-3">
+        <div className="my-1 h-14 w-14 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
           <Image
             src={spotifyData.album_art_url}
             alt={spotifyData.album}
@@ -90,7 +90,7 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
           <div className="text-xs text-gray-600 dark:text-gray-400">{spotifyData.artist}</div>
 
           <div className="mt-1.5">
-            <div className="mb-0.5 flex justify-between text-xs text-gray-500">
+            <div className="mb-0.5 flex justify-between font-mono text-[11px] text-gray-500">
               <span>{elapsedFormatted}</span>
               <span>{totalFormatted}</span>
             </div>

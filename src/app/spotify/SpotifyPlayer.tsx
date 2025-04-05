@@ -3,14 +3,14 @@
 import React, { useRef, useEffect } from "react";
 import Lottie from "react-lottie-player";
 import PlayerJson from "@/lib/player.json";
-import Spotify from "../../components/icons/Spotify";
+import Spotify from "@/components/icons/Spotify";
 import Image from "next/image";
-import { TextGradient } from "../../components/ui/textgradient";
+import { TextGradient } from "@/components/ui/textgradient";
 import { useElapsedTime } from "@/hooks/useElapsedTime";
 import { useSpotify } from "@/hooks/useSpotify";
 
 const PlayerAnimation = () => {
-  return <Lottie loop animationData={PlayerJson} play />;
+  return <Lottie loop animationData={PlayerJson} play style={{ height: 50 }} />;
 };
 
 const ProgressBar = ({ startTime, endTime }: { startTime: number; endTime: number }) => {
@@ -25,14 +25,14 @@ const ProgressBar = ({ startTime, endTime }: { startTime: number; endTime: numbe
 
   return (
     <>
-      <div className="relative h-1 w-full rounded-full bg-gray-700">
+      <div className="relative h-1 w-full overflow-hidden rounded-full bg-gray-800/70">
         <div
           ref={progressRef}
-          className="absolute left-0 top-0 h-1 rounded-full bg-green-500"
+          className="absolute left-0 top-0 h-full rounded-full bg-stone-400"
           style={{ width: `${progressPercentage}%` }}
         />
       </div>
-      <div className="mb-0.5 mt-1 flex justify-between text-xs text-gray-400">
+      <div className="mb-1 mt-2 flex justify-between text-xs font-medium text-gray-400">
         <span>{elapsedFormatted}</span>
         <span>{totalFormatted}</span>
       </div>
@@ -43,63 +43,60 @@ const ProgressBar = ({ startTime, endTime }: { startTime: number; endTime: numbe
 const SpotifyPlayer = () => {
   const { listening } = useSpotify();
 
-  if (!listening) {
-    return (
-      <div className="py-12">
-        <h1 className="pb-8 text-3xl font-bold leading-tight">
-          <TextGradient>Currently Playing</TextGradient>
-        </h1>
-        <div className="m-2 rounded-lg bg-black bg-opacity-50 px-3 py-6 shadow-xl dark:bg-white dark:bg-opacity-[8%] sm:m-0 sm:p-6">
-          <div className="flex flex-col items-center justify-center py-8">
-            <Spotify />
-            <p className="text-lg font-semibold text-white">Not Playing</p>
-            <p className="text-sm text-gray-400">No music playing on Spotify</p>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="py-12">
-      <h1 className="pb-8 text-3xl font-bold leading-tight">
+    <div className="py-10">
+      <h1 className="mb-6 text-center text-2xl font-bold leading-tight md:text-left">
         <TextGradient>Currently Playing</TextGradient>
       </h1>
-      <div className="m-2 rounded-lg bg-black bg-opacity-50 px-3 py-6 shadow-xl dark:bg-white dark:bg-opacity-[8%] sm:m-0 sm:p-6">
-        <div className="flex flex-col items-center md:flex-row">
-          <a
-            target="_blank"
-            aria-label="Listen on Spotify"
-            rel="noopener noreferrer"
-            title="Listen on Spotify"
-            href={`https://open.spotify.com/track/${listening.track_id}`}
-            className="-py-2 mb-6 flex-shrink-0 md:mb-0 md:mr-4"
-          >
-            <div className="-mx- h-auto w-auto">
+      <div className="dark:from-white/8 dark:to-white/4 rounded-xl bg-gradient-to-br from-stone-900/60 to-stone-900/90 p-5 shadow-2xl backdrop-blur-sm dark:from-stone-900/40 dark:to-stone-900/60">
+        <div className="flex min-h-fit flex-col items-center md:flex-row md:items-start md:space-x-5">
+          {!listening ? (
+            <div className="group mb-5 flex h-44 w-44 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg bg-black/30 shadow-md transition-all duration-300 md:mb-0">
+              <Spotify className="h-16 w-16 opacity-80" />
+            </div>
+          ) : (
+            <a
+              target="_blank"
+              aria-label="Listen on Spotify"
+              rel="noopener noreferrer"
+              title="Listen on Spotify"
+              href={`https://open.spotify.com/track/${listening.track_id}`}
+              className="group mb-5 flex h-44 w-44 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl md:mb-0"
+            >
               <Image
                 height={400}
                 width={400}
                 priority={true}
                 src={listening.album_art_url}
                 alt={listening.album || "Album cover"}
-                className="h-[17rem] w-[17rem] rounded-lg shadow-lg md:h-48 md:w-48"
+                className="h-44 w-44 object-cover transition-transform duration-500"
               />
-            </div>
-          </a>
+            </a>
+          )}
 
-          <div className="w-full flex-1 px-4">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex flex-col text-left">
-                <p className="text-lg font-semibold text-white">{listening.song}</p>
-                <p className="text-sm text-gray-400">{listening.artist}</p>
+          <div className="w-full flex-1">
+            {!listening ? (
+              <div className="flex h-full flex-col justify-center">
+                <div className="text-center md:text-left">
+                  <p className="text-lg font-bold text-white">Not Playing</p>
+                  <p className="text-sm text-gray-400">No music playing on Spotify</p>
+                </div>
+                <div className="mt-5 h-[76px]">{/* Spacer for consistent height */}</div>
               </div>
-            </div>
-            <div className="mt-2">
-              <ProgressBar startTime={listening.timestamps.start} endTime={listening.timestamps.end} />
-              <div className="mt-2 flex justify-center">
-                <PlayerAnimation />
+            ) : (
+              <div className="flex flex-col">
+                <div className="flex flex-col space-y-1 text-center md:text-left">
+                  <p className="text-lg font-bold text-white">{listening.song}</p>
+                  <p className="text-sm text-gray-300">{listening.artist}</p>
+                </div>
+                <div className="mt-5">
+                  <ProgressBar startTime={listening.timestamps.start} endTime={listening.timestamps.end} />
+                  <div className="mt-3 flex justify-center">
+                    <PlayerAnimation />
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
