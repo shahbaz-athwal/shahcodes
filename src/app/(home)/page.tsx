@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <MotionParent>
       <MotionChild>
-        <section className="my-6">
+        <section className="my-6 sm:mt-[75px]">
           <span className="block pb-3 text-2xl font-semibold dark:text-zinc-200">
             I&apos;m a full stack developer based in Canada
           </span>

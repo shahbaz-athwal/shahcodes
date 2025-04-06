@@ -84,13 +84,14 @@ const TopBar = () => {
 
   return (
     <>
-      <nav style={{ viewTransitionName: "top-bar" }}>
-        <div className="mb-2 flex w-full justify-between border-b border-zinc-700 pb-2 dark:border-zinc-500 dark:text-gray-200">
+      <nav>
+        <div className="mb-2 flex w-full justify-between border-b border-zinc-200 pb-2 dark:border-zinc-700 dark:text-gray-200">
           <ProfileSection profile={profileInfo} />
-          {path !== "/" && <MenuBar />}
+          <div className={cn("flex items-center", path === "/" && "absolute left-0 right-0 top-[235px]")}>
+            <MenuBar />
+          </div>
           <ThemeToggle />
         </div>
-        {path === "/" && <MenuBar />}
       </nav>
     </>
   );
