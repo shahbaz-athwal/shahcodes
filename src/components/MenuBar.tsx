@@ -36,7 +36,7 @@ const links = [
 const baseMenuClass =
   "shadow-surface-glass h-fit rounded-full px-4 py-2 backdrop-blur transition-opacity duration-300 ease-in-out [@supports(backdrop-filter:blur(0px))]:bg-black/[6%] dark:[@supports(backdrop-filter:blur(0px))]:bg-white/[6%]";
 
-const DesktopMenuBar = () => {
+export const DesktopMenuBar = () => {
   const { path, handleNavigation } = useViewTransition();
   return (
     <div className={cn(baseMenuClass, "mx-auto hidden w-fit md:block")}>
@@ -78,7 +78,7 @@ const DesktopMenuBar = () => {
   );
 };
 
-const MobileDock = () => {
+export const MobileDock = () => {
   const { path, handleNavigation } = useViewTransition();
 
   return (
@@ -120,12 +120,3 @@ const MobileDock = () => {
     </div>
   );
 };
-
-export default function MenuBar() {
-  return (
-    <>
-      <DesktopMenuBar />
-      <MobileDock />
-    </>
-  );
-}

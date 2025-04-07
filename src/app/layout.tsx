@@ -71,11 +71,11 @@ export default function RootLayout({
         >
           <SpotifyProvider>
             <main className="flex min-h-screen flex-col items-center justify-between p-3 md:p-6">
-              <div className="view-transition-container w-full max-w-2xl px-1">
+              <div className="w-full max-w-2xl px-1">
                 <SpotifyPrefetch />
                 <ThemeProvider>
                   <TopBar />
-                  {children}
+                  <div className="relative z-[1] mt-12">{children}</div>
                 </ThemeProvider>
               </div>
               <div className="absolute right-4 top-4 z-10 hidden lg:block">
