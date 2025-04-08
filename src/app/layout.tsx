@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/hooks/useTheme";
 import TopBar from "@/components/TopBar";
 import SpotifyPrefetch from "./spotify/SpotifyFetcher";
 import { SpotifyProvider } from "@/hooks/useSpotify";
-import { ViewTransitions } from "next-view-transitions";
 import LiveActivity from "@/components/LiveActivity";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -59,36 +58,34 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ViewTransitions>
-      <html lang="en" className="dark">
-        <head>
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="author" content="shahbaz_athwal" />
-        </head>
-        <body
-          className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#020100] dark:selection:bg-yellow-800/90`}
-        >
-          <SpotifyProvider>
-            <main className="flex min-h-screen flex-col items-center justify-between p-3 md:p-6">
-              <div className="w-full max-w-2xl px-1">
-                <SpotifyPrefetch />
-                <ThemeProvider>
-                  <TopBar />
-                  <div className="relative z-[1] mt-12">{children}</div>
-                </ThemeProvider>
-              </div>
-              <div className="absolute right-4 top-4 z-10 hidden lg:block">
-                <LiveActivity />
-              </div>
-              <Footer />
-            </main>
-          </SpotifyProvider>
-          <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">
-            <div className="h-full bg-cover dark:bg-[url('/bg-sm-dark.png')] dark:opacity-[0.3] sm:dark:bg-[url('/bg-dark.jpg')]" />
-          </div>
-        </body>
-      </html>
-    </ViewTransitions>
+    <html lang="en" className="dark">
+      <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="shahbaz_athwal" />
+      </head>
+      <body
+        className={`${inter.className} overflow-hidden antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#020100] dark:selection:bg-yellow-800/90`}
+      >
+        <SpotifyProvider>
+          <main className="flex h-screen flex-col items-center justify-between overflow-y-auto">
+            <div className="w-full flex-grow">
+              <SpotifyPrefetch />
+              <ThemeProvider>
+                <TopBar />
+                <div className="mx-auto max-w-2xl p-4 md:p-6">{children}</div>
+              </ThemeProvider>
+            </div>
+            <div className="absolute right-4 top-4 z-10 hidden lg:block">
+              <LiveActivity />
+            </div>
+            <Footer />
+          </main>
+        </SpotifyProvider>
+        <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">
+          <div className="h-full bg-cover dark:bg-[url('/bg-sm-dark.png')] dark:opacity-[0.3] sm:dark:bg-[url('/bg-dark.jpg')]" />
+        </div>
+      </body>
+    </html>
   );
 }

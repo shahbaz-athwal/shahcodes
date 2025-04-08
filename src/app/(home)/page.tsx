@@ -1,9 +1,8 @@
-import { Link } from "next-view-transitions";
 import { Header } from "@/components/ui/header";
 import Projects from "./Projects";
 import { MotionParent, MotionChild } from "@/components/Motion";
 import { GithubGraph } from "./GithubGraph";
-
+import Link from "next/link";
 export default function Home() {
   return (
     <MotionParent>
