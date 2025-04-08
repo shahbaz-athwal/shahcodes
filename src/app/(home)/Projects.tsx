@@ -88,7 +88,7 @@ const projects: ProjectCardProps[] = [
     code: "https://github.com/shahbaz-athwal/shahcodes",
     description: "My Personal Portfolio and Blog",
     image: "/og.png",
-    badges: ["Next.js", "Tailwind", "TypeScript", "Redis", "Spotify API", "MDX"],
+    badges: ["Next.js", "Tailwind", "TypeScript", "Redis", "Spotify API", "MDX", "Discord API", "Motion"],
     hidden: false,
   },
   {
@@ -110,7 +110,7 @@ const ProjectCard = ({ title, description, href, code, image, badges }: ProjectC
         <p className="text-base dark:text-gray-300 sm:text-[17px]">{description}</p>
       </div>
       <a href={href || code} target="_blank">
-        <div className="w-fit overflow-hidden rounded-lg shadow-lg dark:shadow-zinc-800/50">
+        <div className="w-fit overflow-hidden rounded-lg shadow-xl dark:shadow-zinc-800/50">
           <Image src={image} alt={title} width={700} height={400} className="rounded-lg object-cover" />
         </div>
       </a>

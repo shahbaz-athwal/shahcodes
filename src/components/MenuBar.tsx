@@ -1,10 +1,11 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { IconHome, IconMusic, IconMail, IconBriefcase } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { MotionDiv } from "@/lib/motion";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { HoveredLink, MenuItem, Menu } from "@/components/ui/mobile-menu";
 
 const links = [
   {
@@ -120,6 +121,29 @@ export const MobileDock = () => {
           );
         })}
       </ul>
+    </div>
+  );
+};
+function Navbar() {
+  const [active, setActive] = useState<string | null>(null);
+  return (
+    <Menu setActive={setActive}>
+      <MenuItem setActive={setActive} active={active} item="Pricing">
+        <div className="flex flex-col space-y-4 text-sm">
+          <HoveredLink href="/">About</HoveredLink>
+          <HoveredLink href="/details">Details</HoveredLink>
+          <HoveredLink href="/spotify">Spotify</HoveredLink>
+          <HoveredLink href="/contact">Contact</HoveredLink>
+        </div>
+      </MenuItem>
+    </Menu>
+  );
+}
+
+export const MobileMenu = () => {
+  return (
+    <div className="justify-right relative flex w-full items-center">
+      <Navbar />
     </div>
   );
 };

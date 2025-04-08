@@ -2,7 +2,7 @@
 
 import { ProfileImage } from "./ProfileImage";
 import ThemeToggle from "./ThemeToggle";
-import { DesktopMenuBar, MobileDock } from "./MenuBar";
+import { DesktopMenuBar, MobileDock, MobileMenu } from "./MenuBar";
 import { cn } from "@/lib/utils";
 
 // const LocationSection = () => (
@@ -35,6 +35,7 @@ const TopBar = () => {
           <DesktopMenuBar />
           <ThemeToggle />
         </div>
+        <MobileMenu />
         <MobileDock />
       </nav>
     </>
