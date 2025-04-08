@@ -45,7 +45,7 @@ const SpotifyPlayer = () => {
 
   return (
     <div className="pb-12">
-      <h1 className="py-10 text-3xl font-bold leading-tight">
+      <h1 className="pb-10 text-3xl font-extrabold leading-tight">
         <TextGradient>Currently Playing</TextGradient>
       </h1>
       <div className="dark:from-white/8 dark:to-white/4 mx-4 rounded-xl bg-gradient-to-br from-stone-900/60 to-stone-900/90 p-5 shadow-2xl backdrop-blur-sm dark:from-stone-900/40 dark:to-stone-900/60">

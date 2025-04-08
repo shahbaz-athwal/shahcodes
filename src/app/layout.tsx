@@ -73,10 +73,10 @@ export default function RootLayout({
               <SpotifyPrefetch />
               <ThemeProvider>
                 <TopBar />
-                <div className="mx-auto max-w-2xl p-4 md:p-6">{children}</div>
+                <div className="mx-auto mt-16 max-w-2xl p-4 sm:mt-20 md:p-6">{children}</div>
               </ThemeProvider>
             </div>
-            <div className="absolute right-4 top-4 z-10 hidden lg:block">
+            <div className="absolute right-4 top-4 z-10 hidden xl:block">
               <LiveActivity />
             </div>
             <Footer />
