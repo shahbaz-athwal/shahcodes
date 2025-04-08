@@ -38,6 +38,25 @@ const projects: ProjectCardProps[] = [
     hidden: true,
   },
   {
+    title: "Study Link",
+    href: "https://studylink.dryft.ca",
+    code: "https://github.com/mehirk/study-link",
+    description: "A Study & Collaboration Platform",
+    image: "/projects/study-link.png",
+    badges: [
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "Node.js",
+      "PostgreSQL",
+      "Better Auth",
+      "Uploadthing",
+      "Traefik",
+      "VPS",
+    ],
+    hidden: false,
+  },
+  {
     title: "Socket Chess",
     href: "https://chess.shahcodes.in",
     code: "https://github.com/shahbaz-athwal/chess",
@@ -85,7 +104,7 @@ const projects: ProjectCardProps[] = [
 
 const ProjectCard = ({ title, description, href, code, image, badges }: ProjectCardProps) => {
   return (
-    <div className="mx-2 flex h-full w-fit flex-col space-y-6 rounded-xl bg-zinc-100 p-8 hover:bg-zinc-200/70 dark:bg-stone-700/25 dark:hover:bg-stone-700/40 md:mx-0">
+    <div className="mx-2 flex h-full w-fit flex-col space-y-6 rounded-xl bg-zinc-100 p-8 dark:bg-stone-700/25 md:mx-0">
       <div>
         <h3 className="text-[17px] font-medium sm:text-lg">{title}</h3>
         <p className="text-base dark:text-gray-300 sm:text-[17px]">{description}</p>
