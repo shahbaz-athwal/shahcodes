@@ -52,7 +52,7 @@ export const DesktopMenuBar = () => {
                   {
                     "text-white hover:scale-105 hover:text-gray-100 dark:text-black dark:hover:text-zinc-950": isActive,
                   },
-                  { "text-zinc-200 hover:text-primary dark:text-zinc-400 dark:hover:text-primary": !isActive },
+                  { "text-zinc-700 hover:text-primary dark:text-zinc-400 dark:hover:text-primary": !isActive },
                 )}
                 href={link.href}
               >
