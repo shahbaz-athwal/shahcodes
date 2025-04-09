@@ -88,7 +88,7 @@ export default function RootLayout({
           </main>
         </SpotifyProvider>
         <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">
-          <div className="h-full bg-cover dark:bg-[url('/bg-sm-dark.png')] dark:opacity-[0.3] sm:dark:bg-[url('/bg-dark.jpg')]" />
+          <div className="h-full bg-cover dark:bg-[url('https://res.cloudinary.com/dqss5unvd/image/upload/v1744240025/bg-sm-dark_hk9erl.png')] dark:opacity-[0.4] sm:dark:bg-[url('https://res.cloudinary.com/dqss5unvd/image/upload/v1744240314/bg-dark_grifof_ynbdy1.png')]" />
         </div>
       </body>
     </html>
