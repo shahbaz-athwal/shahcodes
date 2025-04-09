@@ -7,6 +7,8 @@ import TopBar from "@/components/TopBar";
 import SpotifyPrefetch from "./spotify/SpotifyFetcher";
 import { SpotifyProvider } from "@/hooks/useSpotify";
 import LiveActivity from "@/components/LiveActivity";
+import { LocationSection } from "@/components/LocationData";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -78,6 +80,9 @@ export default function RootLayout({
             </div>
             <div className="absolute right-4 top-4 z-10 hidden xl:block">
               <LiveActivity />
+            </div>
+            <div className="absolute bottom-4 right-4 z-10 hidden xl:block">
+              <LocationSection />
             </div>
             <Footer />
           </main>

@@ -5,23 +5,6 @@ import ThemeToggle from "./ThemeToggle";
 import { DesktopMenuBar, MobileDock, MobileMenu } from "./MenuBar";
 import { cn } from "@/lib/utils";
 
-// const LocationSection = () => (
-//   <div className="flex flex-col items-end justify-between text-right text-xs font-[350] text-zinc-700 dark:text-zinc-300 sm:text-sm">
-//     <div>
-//       <Suspense
-//         fallback={
-//           <div>
-//             <div className="blur-md">Last visit from:</div>
-//             <div className="blur-md">I am blured</div>
-//           </div>
-//         }
-//       >
-//         <LocationData />
-//       </Suspense>
-//     </div>
-//   </div>
-// );
-
 const TopBar = () => {
   return (
     <>
