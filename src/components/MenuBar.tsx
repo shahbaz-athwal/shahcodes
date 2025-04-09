@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { IconHome, IconMusic, IconMail, IconBriefcase } from "@tabler/icons-react";
+import { IconHome, IconMusic, IconMail, IconBriefcase, IconMenu2, IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { MotionDiv } from "@/lib/motion";
 import { usePathname } from "next/navigation";
@@ -124,26 +124,37 @@ export const MobileDock = () => {
     </div>
   );
 };
-function Navbar() {
-  const [active, setActive] = useState<string | null>(null);
-  return (
-    <Menu setActive={setActive}>
-      <MenuItem setActive={setActive} active={active} item="Pricing">
-        <div className="flex flex-col space-y-4 text-sm">
-          <HoveredLink href="/">About</HoveredLink>
-          <HoveredLink href="/details">Details</HoveredLink>
-          <HoveredLink href="/spotify">Spotify</HoveredLink>
-          <HoveredLink href="/contact">Contact</HoveredLink>
-        </div>
-      </MenuItem>
-    </Menu>
-  );
-}
 
 export const MobileMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="justify-right relative flex w-full items-center">
-      <Navbar />
+    <div className="justify-right relative block w-full items-center sm:hidden">
+      <Menu setActive={() => setIsOpen(false)}>
+        <MenuItem
+          setActive={() => setIsOpen(!isOpen)}
+          active={isOpen ? "menu" : null}
+          item={
+            <div>
+              {isOpen ? <IconX size={28} className="opacity-70" /> : <IconMenu2 size={28} className="opacity-70" />}
+            </div>
+          }
+        >
+          <div className="flex flex-col space-y-4 text-lg">
+            {links.map((link) => (
+              <HoveredLink
+                key={link.name}
+                href={link.href}
+                onClick={() => {
+                  setIsOpen(false);
+                }}
+              >
+                {link.name}
+              </HoveredLink>
+            ))}
+          </div>
+        </MenuItem>
+      </Menu>
     </div>
   );
 };
