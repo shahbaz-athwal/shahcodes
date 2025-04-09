@@ -16,9 +16,9 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
 
   return (
     <Card className="w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-sm dark:bg-stone-800/30 dark:text-white">
-      <div className="flex items-center gap-3">
+      <div className="flex gap-3">
         <div className="relative flex-shrink-0">
-          <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
+          <div className="my-1 flex h-14 w-14 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
             {codeData.assets?.large_image ? (
               <Image
                 src={`https://cdn.discordapp.com/app-assets/${codeData.application_id}/${codeData.assets.large_image}.png`}
@@ -32,7 +32,7 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
             )}
           </div>
           {codeData.assets?.small_image && (
-            <div className="absolute -bottom-1 -right-1 h-6 w-6 overflow-hidden rounded-full border-2 border-white bg-stone-200 dark:border-stone-800 dark:bg-stone-700">
+            <div className="absolute -right-1 bottom-1 h-6 w-6 overflow-hidden rounded-full border-2 border-white bg-stone-200 dark:border-stone-800 dark:bg-stone-700">
               <Image
                 src={`https://cdn.discordapp.com/app-assets/${codeData.application_id}/${codeData.assets.small_image}.png`}
                 alt={codeData.assets.small_text || ""}
@@ -45,7 +45,7 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
         </div>
 
         <div className="flex-1 space-y-0.5 overflow-hidden">
-          <div className="text-xs font-medium">{codeData.name}</div>
+          <div className="text-xs font-medium">Cursor</div>
           <div className="text-xs text-gray-600 dark:text-gray-400">{codeData.details}</div>
           <div className="text-xs text-gray-600 dark:text-gray-400">{codeData.state}</div>
           <div className="flex items-center gap-1 font-mono text-[11px] text-gray-500 dark:text-gray-500">
@@ -113,7 +113,7 @@ export default function LiveActivity() {
 
   useEffect(() => {
     if (status === "connected" && data) {
-      const hasVsCode = data.activities.find((a) => a.name === "Visual Studio Code");
+      const hasVsCode = data.activities.find((a) => a.name === "Visual Studio Code" || a.name === "Cursor");
       setCodeData(hasVsCode);
     }
   }, [data, status]);

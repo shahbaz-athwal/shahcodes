@@ -17,7 +17,7 @@ const getLastLocation = async () => {
     response = {
       city: "Amritsar",
       region: "PB",
-      country: "IN ",
+      country: "IN",
       isBot: false,
     };
   }
