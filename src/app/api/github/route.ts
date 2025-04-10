@@ -6,7 +6,7 @@ type GitHubContributionsApiResponse = {
   data: Activity[];
 };
 
-export const maxDuration = 300;
+export const maxDuration = 60;
 export const revalidate = 0;
 export const dynamic = "force-dynamic";
 
