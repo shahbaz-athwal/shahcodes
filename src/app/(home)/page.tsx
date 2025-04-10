@@ -3,7 +3,11 @@ import Projects from "./Projects";
 import { MotionParent, MotionChild } from "@/components/Motion";
 import { GithubGraph } from "./GithubGraph";
 import Link from "next/link";
-export default function Home() {
+import redis from "@/lib/redis";
+import type { Activity } from "react-activity-calendar";
+export default async function Home() {
+  const data = (await redis.get("github")) as Activity[];
+
   return (
     <MotionParent>
       <MotionChild>
@@ -32,7 +36,7 @@ export default function Home() {
         <Header variant="primary" as="h2" className="my-6 text-2xl">
           Github Contributions
         </Header>
-        <GithubGraph username="shahbaz-athwal" />
+        <GithubGraph data={data} />
       </MotionChild>
 
       <MotionChild>
