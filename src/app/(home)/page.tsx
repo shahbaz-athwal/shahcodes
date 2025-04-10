@@ -5,9 +5,14 @@ import { GithubGraph } from "./GithubGraph";
 import Link from "next/link";
 import redis from "@/lib/redis";
 import type { Activity } from "react-activity-calendar";
-export default async function Home() {
-  const data = (await redis.get("github")) as Activity[];
+import { Suspense } from "react";
 
+async function GithubGraphWithData() {
+  const data = (await redis.get("github")) as Activity[] | null;
+  return <GithubGraph data={data} />;
+}
+
+export default function Home() {
   return (
     <MotionParent>
       <MotionChild>
@@ -36,7 +41,9 @@ export default async function Home() {
         <Header variant="primary" as="h2" className="my-6 text-2xl">
           Github Contributions
         </Header>
-        <GithubGraph data={data} />
+        <Suspense fallback={<GithubGraph data={null} />}>
+          <GithubGraphWithData />
+        </Suspense>
       </MotionChild>
 
       <MotionChild>

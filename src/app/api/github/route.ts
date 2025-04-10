@@ -1,10 +1,6 @@
 // import { updateEdgeConfig } from "@/lib/vercel";
 import redis from "@/lib/redis";
 import type { Activity } from "react-activity-calendar";
-export type GitHubProperties = {
-  total: number;
-  data: Activity[];
-};
 
 type GitHubContributionsApiResponse = {
   data: Activity[];
