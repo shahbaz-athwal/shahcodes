@@ -32,7 +32,7 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
             )}
           </div>
           {codeData.assets?.small_image && (
-            <div className="absolute -right-1 bottom-1 h-6 w-6 overflow-hidden rounded-full border-2 border-white bg-stone-200 dark:border-stone-800 dark:bg-stone-700">
+            <div className="absolute -right-1 bottom-2 h-6 w-6 overflow-hidden rounded-full border-2 border-white bg-stone-200 dark:border-stone-800 dark:bg-stone-700">
               <Image
                 src={`https://cdn.discordapp.com/app-assets/${codeData.application_id}/${codeData.assets.small_image}.png`}
                 alt={codeData.assets.small_text || ""}
@@ -45,7 +45,7 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
         </div>
 
         <div className="flex-1 space-y-0.5 overflow-hidden">
-          <div className="text-xs font-medium">Cursor</div>
+          <div className="text-sm font-medium">Cursor</div>
           <div className="text-xs text-gray-600 dark:text-gray-400">{codeData.details}</div>
           <div className="text-xs text-gray-600 dark:text-gray-400">{codeData.state}</div>
           <div className="flex items-center gap-1 font-mono text-[11px] text-gray-500 dark:text-gray-500">
