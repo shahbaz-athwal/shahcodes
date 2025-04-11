@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { IconHome, IconMusic, IconMail, IconBriefcase, IconMenu2, IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { MotionDiv } from "@/lib/motion";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { HoveredLink, MenuItem, Menu } from "@/components/ui/mobile-menu";
 
@@ -38,8 +37,7 @@ const links = [
 const baseMenuClass =
   "h-fit rounded-full px-4 py-2 backdrop-blur transition-opacity bg-black/10 dark:bg-white/10 transition-colors duration-300 ease-in-out";
 
-export const DesktopMenuBar = () => {
-  const path = usePathname();
+export const DesktopMenuBar = ({ path }: { path: string }) => {
   return (
     <div className={cn(baseMenuClass, "mx-auto hidden w-fit md:block")}>
       <ul className="flex w-fit items-center justify-between gap-1 sm:gap-2">
@@ -81,9 +79,7 @@ export const DesktopMenuBar = () => {
   );
 };
 
-export const MobileDock = () => {
-  const path = usePathname();
-
+export const MobileDock = ({ path }: { path: string }) => {
   return (
     <div className={cn(baseMenuClass, "fixed bottom-4 left-1/2 z-50 block -translate-x-1/2 md:hidden")}>
       <ul className="flex w-[250px] items-center justify-between gap-2">
