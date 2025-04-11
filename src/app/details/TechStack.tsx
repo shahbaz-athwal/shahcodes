@@ -57,7 +57,7 @@ type TechCategoryProps = {
 };
 
 const TechCategory = ({ title, icon, skills }: TechCategoryProps) => (
-  <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+  <div className="rounded-xl bg-white p-3 dark:bg-stone-700/25">
     <div className="mb-3 flex items-center gap-2">
       <span className="text-primary">{icon}</span>
       <h3 className="text-md font-semibold uppercase tracking-wider text-zinc-700 dark:text-zinc-300">{title}</h3>
@@ -67,7 +67,7 @@ const TechCategory = ({ title, icon, skills }: TechCategoryProps) => (
         <Badge
           key={skill.name}
           variant="outline"
-          className="flex items-center gap-1.5 bg-zinc-50 px-2.5 py-1 text-sm dark:bg-zinc-800"
+          className="flex items-center gap-1.5 border-none bg-zinc-100 px-2.5 py-1 text-sm dark:bg-stone-700/50"
         >
           {skill.icon}
           <span>{skill.name}</span>
@@ -153,7 +153,7 @@ export function TechStack() {
   ];
 
   return (
-    <Card className="mb-8 mt-6 border border-zinc-200 bg-zinc-50/50 dark:border-zinc-800 dark:bg-zinc-900/50">
+    <Card className="mb-8 mt-6 rounded-xl border-none bg-zinc-100 dark:bg-stone-700/25">
       <CardHeader className="pb-2">
         <h2 className="text-3xl font-bold dark:text-zinc-200">Tech Stack</h2>
       </CardHeader>
