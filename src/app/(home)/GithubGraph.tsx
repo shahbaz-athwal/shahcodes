@@ -11,7 +11,12 @@ export const GithubGraph = ({ data }: GithubGraphProps) => {
   const theme = useTheme();
 
   return (
-    <MotionDiv initial={{ opacity: 0 }} animate={{ opacity: data ? 1 : 0 }} transition={{ duration: 0.5 }}>
+    <MotionDiv
+      className="sm:w-[110%]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: data ? 1 : 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <ActivityCalendar
         loading={!data}
         data={data!}
@@ -21,7 +26,7 @@ export const GithubGraph = ({ data }: GithubGraphProps) => {
         colorScheme={theme.darkMode ? "dark" : "light"}
         blockSize={10}
         theme={{
-          dark: ["#161b22", "#5d2d1f", "#803315", "#b34509", "#e05e00"],
+          dark: ["#1c1917", "#5d2d1f", "#803315", "#b34509", "#e05e00"],
           light: ["#ebedf0", "#ffc299", "#ff9966", "#ff7733", "#e65c00"],
         }}
       />
