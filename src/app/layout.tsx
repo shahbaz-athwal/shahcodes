@@ -67,7 +67,7 @@ export default function RootLayout({
         <meta name="author" content="shahbaz_athwal" />
       </head>
       <body
-        className={`${inter.className} overflow-hidden antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#020100] dark:selection:bg-yellow-800/90`}
+        className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#020100] dark:selection:bg-yellow-800/90 sm:overflow-hidden`}
       >
         <SpotifyProvider>
           <main className="flex h-screen flex-col items-center justify-between overflow-y-auto">
