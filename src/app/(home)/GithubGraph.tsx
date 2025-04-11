@@ -1,61 +1,35 @@
 "use client";
 import { useTheme } from "@/hooks/useTheme";
-import { useCallback, useEffect, useState } from "react";
-
 import { Activity, ActivityCalendar } from "react-activity-calendar";
-
-// TODO: Put this in vercel edge config
+import { MotionDiv } from "@/lib/motion";
 
 type GithubGraphProps = {
-  username: string;
-  blockMargin?: number;
-  colorPallete?: string[];
+  data: Activity[] | null;
 };
 
-export const GithubGraph = ({ username, blockMargin, colorPallete }: GithubGraphProps) => {
-  const [contribution, setContribution] = useState<Activity[]>([]);
-  const [loading, setIsLoading] = useState<boolean>(true);
+export const GithubGraph = ({ data }: GithubGraphProps) => {
   const theme = useTheme();
 
-  const fetchData = useCallback(async () => {
-    try {
-      const contributions = await fetchContributionData(username);
-      setContribution(contributions);
-    } catch (error) {
-      throw Error("Error fetching contribution data");
-    } finally {
-      setIsLoading(false);
-    }
-  }, [username]);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
   return (
-    <>
+    <MotionDiv
+      className="sm:w-[110%]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: data ? 1 : 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <ActivityCalendar
-        data={contribution}
+        loading={!data}
+        data={data!}
         maxLevel={4}
-        blockMargin={blockMargin ?? 2}
-        loading={loading}
+        blockMargin={2}
         hideTotalCount
         colorScheme={theme.darkMode ? "dark" : "light"}
         blockSize={10}
         theme={{
-          dark: colorPallete ?? ["#161b22", "#4d2d1f", "#803315", "#b34509", "#e05e00"],
-          light: colorPallete ?? ["#ebedf0", "#ffe0cc", "#ffb380", "#ff8533", "#e65c00"],
+          dark: ["#1c1917", "#5d2d1f", "#803315", "#b34509", "#e05e00"],
+          light: ["#ebedf0", "#ffc299", "#ff9966", "#ff7733", "#e65c00"],
         }}
       />
-    </>
+    </MotionDiv>
   );
 };
-async function fetchContributionData(username: string): Promise<Activity[]> {
-  let response = await fetch(`https://github.vineet.pro/api/${username}`);
-  let responseBody = await response.json();
-
-  if (!response.ok) {
-    throw Error("Erroring fetching contribution data");
-  }
-  return responseBody.data;
-}

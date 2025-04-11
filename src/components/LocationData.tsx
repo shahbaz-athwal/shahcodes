@@ -1,5 +1,7 @@
 import redis from "@/lib/redis";
 import { unstable_noStore as noStore } from "next/cache";
+import { Suspense } from "react";
+import { MotionChild, MotionParent } from "./Motion";
 
 interface LocationResponse {
   city: string;
@@ -15,7 +17,7 @@ const getLastLocation = async () => {
     response = {
       city: "Amritsar",
       region: "PB",
-      country: "IN ",
+      country: "IN",
       isBot: false,
     };
   }
@@ -30,16 +32,35 @@ const updateLocation = async () => {
   }
 };
 
-export const LocationData = async () => {
+const getCountryFlag = (countryCode: string) => {
+  const code = countryCode.trim();
+  return code
+    .toUpperCase()
+    .split("")
+    .map((char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
+    .join("");
+};
+
+const LocationData = async () => {
   noStore();
-  const { city, region, country } = await getLastLocation();
+  const { city, country } = await getLastLocation();
+  const flag = getCountryFlag(country);
+
   return (
-    <div className="text-muted-foreground">
-      <div>Last Visit From:</div>
+    <div className="font-mono text-sm text-muted-foreground">
       <div>
-        {" "}
-        {city}, {region}, {country}
+        Last Visit: {city}, {country} {flag}
       </div>
     </div>
   );
 };
+
+export const LocationSection = () => (
+  <Suspense>
+    <MotionParent>
+      <MotionChild>
+        <LocationData />
+      </MotionChild>
+    </MotionParent>
+  </Suspense>
+);

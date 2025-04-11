@@ -38,6 +38,25 @@ const projects: ProjectCardProps[] = [
     hidden: true,
   },
   {
+    title: "Study Link",
+    href: "https://studylink.dryft.ca",
+    code: "https://github.com/mehirk/study-link",
+    description: "A Study & Collaboration Platform",
+    image: "/projects/study-link.png",
+    badges: [
+      "React",
+      "TypeScript",
+      "Tailwind",
+      "Node.js",
+      "PostgreSQL",
+      "Better Auth",
+      "Uploadthing",
+      "Traefik",
+      "VPS",
+    ],
+    hidden: false,
+  },
+  {
     title: "Socket Chess",
     href: "https://chess.shahcodes.in",
     code: "https://github.com/shahbaz-athwal/chess",
@@ -69,7 +88,7 @@ const projects: ProjectCardProps[] = [
     code: "https://github.com/shahbaz-athwal/shahcodes",
     description: "My Personal Portfolio and Blog",
     image: "/og.png",
-    badges: ["Next.js", "Tailwind", "TypeScript", "Redis", "Spotify API", "MDX"],
+    badges: ["Next.js", "Tailwind", "TypeScript", "Redis", "Spotify API", "MDX", "Discord API", "Motion"],
     hidden: false,
   },
   {
@@ -85,13 +104,13 @@ const projects: ProjectCardProps[] = [
 
 const ProjectCard = ({ title, description, href, code, image, badges }: ProjectCardProps) => {
   return (
-    <div className="mx-2 flex h-full w-fit flex-col space-y-6 rounded-xl bg-zinc-100 p-8 hover:bg-zinc-200/70 dark:bg-stone-700/25 dark:hover:bg-stone-700/40 md:mx-0">
+    <div className="mx-2 flex h-full w-fit flex-col space-y-6 rounded-xl bg-zinc-100 p-8 dark:bg-stone-700/25 md:mx-0">
       <div>
         <h3 className="text-[17px] font-medium sm:text-lg">{title}</h3>
         <p className="text-base dark:text-gray-300 sm:text-[17px]">{description}</p>
       </div>
       <a href={href || code} target="_blank">
-        <div className="w-fit overflow-hidden rounded-lg shadow-lg dark:shadow-zinc-800/50">
+        <div className="w-fit overflow-hidden rounded-lg shadow-xl dark:shadow-zinc-800/50">
           <Image src={image} alt={title} width={700} height={400} className="rounded-lg object-cover" />
         </div>
       </a>

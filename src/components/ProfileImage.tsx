@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Link } from "next-view-transitions";
+import Link from "next/link";
 
 export const ProfileImage = ({ className }: { className?: string }) => {
   return (

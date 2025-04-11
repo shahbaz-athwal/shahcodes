@@ -37,7 +37,7 @@ const experience: {
 
 export function Experience() {
   return (
-    <Card className="mb-8 border border-zinc-200 bg-zinc-50/50 dark:border-zinc-800 dark:bg-zinc-900/50">
+    <Card className="mb-8 rounded-xl border-none bg-zinc-100 dark:bg-stone-700/25">
       <CardHeader className="pb-2">
         <h2 className="text-3xl font-bold dark:text-zinc-200">Experience</h2>
       </CardHeader>

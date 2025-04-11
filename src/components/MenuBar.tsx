@@ -1,10 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { motion } from "motion/react";
-import { useTransitionRouter } from "next-view-transitions";
-import { usePathname, useRouter } from "next/navigation";
-import { IconHome, IconMusic, IconMail, IconBriefcase, IconPencilBolt } from "@tabler/icons-react";
+import React, { useState } from "react";
+import { IconHome, IconMusic, IconMail, IconBriefcase, IconMenu2, IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
+import { MotionDiv } from "@/lib/motion";
+import Link from "next/link";
+import { HoveredLink, MenuItem, Menu } from "@/components/ui/mobile-menu";
 
 const links = [
   {
@@ -34,188 +34,123 @@ const links = [
   },
 ];
 
-function slideUpTransition() {
-  try {
-    document.documentElement.animate(
-      [
-        {
-          opacity: 1,
-          transform: "translate(0, 0)",
-        },
-        {
-          opacity: 0,
-          transform: "translate(0, -100px)",
-        },
-      ],
-      {
-        duration: 500,
-        easing: "ease",
-        fill: "forwards",
-        pseudoElement: "::view-transition-old(top-bar)",
-      },
-    );
+const baseMenuClass =
+  "h-fit rounded-full px-4 py-2 backdrop-blur transition-opacity bg-black/10 dark:bg-white/10 transition-colors duration-300 ease-in-out";
 
-    document.documentElement.animate(
-      [
-        {
-          opacity: 0,
-          transform: "translate(0, 200px)",
-        },
-        {
-          opacity: 1,
-          transform: "translate(0, 0)",
-        },
-      ],
-      {
-        duration: 500,
-        easing: "ease",
-        fill: "forwards",
-        pseudoElement: "::view-transition-new(top-bar)",
-      },
-    );
-  } catch (error) {
-    console.log("Transition animation error:", error);
-  }
-}
-
-function slideDownTransition() {
-  try {
-    document.documentElement.animate(
-      [
-        {
-          opacity: 1,
-          transform: "translate(0, 0)",
-        },
-        {
-          opacity: 0,
-          transform: "translate(0, 100px)",
-        },
-      ],
-      {
-        duration: 500,
-        easing: "ease",
-        fill: "forwards",
-        pseudoElement: "::view-transition-old(top-bar)",
-      },
-    );
-
-    document.documentElement.animate(
-      [
-        {
-          opacity: 0,
-          transform: "translate(0, -100px)",
-        },
-        {
-          opacity: 1,
-          transform: "translate(0, 0)",
-        },
-      ],
-      {
-        duration: 500,
-        easing: "ease",
-        fill: "forwards",
-        pseudoElement: "::view-transition-new(top-bar)",
-      },
-    );
-  } catch (error) {
-    console.log("Transition animation error:", error);
-  }
-}
-
-export default function MenuBar() {
-  const path = usePathname();
-  const [isMobile, setIsMobile] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const router = useTransitionRouter();
-  const nextRouter = useRouter();
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setIsMobile(window.innerWidth < 768);
-
-      const timer = setTimeout(() => {
-        setMounted(true);
-      }, 100);
-
-      const handleResize = () => {
-        setIsMobile(window.innerWidth < 768);
-      };
-
-      window.addEventListener("resize", handleResize);
-      return () => {
-        window.removeEventListener("resize", handleResize);
-        clearTimeout(timer);
-      };
-    }
-  }, []);
-
-  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-
-    const isAboutPage = path === "/";
-    const goingToAboutPage = href === "/";
-
-    if (isAboutPage && !goingToAboutPage) {
-      router.push(href, {
-        onTransitionReady: slideUpTransition,
-      });
-    } else if (!isAboutPage && goingToAboutPage) {
-      router.push(href, {
-        onTransitionReady: slideDownTransition,
-      });
-    } else {
-      nextRouter.push(href);
-    }
-  };
-
+export const DesktopMenuBar = ({ path }: { path: string }) => {
   return (
-    <div
-      className={cn(
-        "shadow-surface-glass h-fit rounded-full px-4 py-2 backdrop-blur transition-opacity duration-300 ease-in-out [@supports(backdrop-filter:blur(0px))]:bg-black/[6%] dark:[@supports(backdrop-filter:blur(0px))]:bg-white/[6%]",
-        isMobile ? "fixed bottom-4 left-1/2 z-50 -translate-x-1/2" : "mx-auto w-fit",
-        mounted ? "opacity-100" : "opacity-0",
-      )}
-    >
-      <ul className={cn("flex items-center justify-between", isMobile ? "w-[250px] gap-2" : "w-fit gap-1 sm:gap-2")}>
+    <div className={cn(baseMenuClass, "mx-auto hidden w-fit md:block")}>
+      <ul className="flex w-fit items-center justify-between gap-1 sm:gap-2">
         {links.map((link) => {
-          const Icon = link.icon;
           const isActive = path === link.href;
-
           return (
-            <li className="relative flex items-center justify-center" key={link.href}>
-              <a
+            <li key={link.name} className="relative flex items-center justify-center">
+              <Link
                 className={cn(
-                  "flex items-center justify-center transition",
-                  isMobile ? "h-9 w-9 rounded-full" : "px-3 py-1 text-[13px] sm:text-[15px]",
+                  "flex items-center justify-center px-3 py-1 text-[13px] transition sm:text-[15px]",
                   {
                     "text-white hover:scale-105 hover:text-gray-100 dark:text-black dark:hover:text-zinc-950": isActive,
                   },
-                  { "text-muted-foreground hover:text-primary": !isActive },
+                  { "text-zinc-700 hover:text-primary dark:text-zinc-400 dark:hover:text-primary": !isActive },
                 )}
                 href={link.href}
-                onClick={(e) => handleNavigation(e, link.href)}
               >
-                {isMobile ? <Icon size={22} strokeWidth={2} /> : link.name}
+                {link.name}
 
                 {isActive && (
-                  <motion.div
-                    className={cn(
-                      "absolute z-[-1] bg-zinc-800 dark:bg-stone-200",
-                      isMobile ? "inset-0 rounded-full" : "inset-0 rounded-xl",
-                    )}
-                    layoutId="path"
+                  <MotionDiv
+                    className="absolute inset-0 z-[-1] rounded-xl bg-zinc-800 dark:bg-stone-200"
+                    layoutId="desktop-path"
+                    layoutScroll
+                    style={{ transform: "translateZ(0)" }}
                     transition={{
                       type: "spring",
                       stiffness: 380,
                       damping: 30,
                     }}
-                  ></motion.div>
+                  />
                 )}
-              </a>
+              </Link>
             </li>
           );
         })}
       </ul>
     </div>
   );
-}
+};
+
+export const MobileDock = ({ path }: { path: string }) => {
+  return (
+    <div className={cn(baseMenuClass, "fixed bottom-4 left-1/2 z-50 block -translate-x-1/2 md:hidden")}>
+      <ul className="flex w-[250px] items-center justify-between gap-2">
+        {links.map((link) => {
+          const isActive = path === link.href;
+          return (
+            <li key={link.name} className="relative flex items-center justify-center">
+              <Link
+                className={cn(
+                  "flex h-9 w-9 items-center justify-center rounded-full transition",
+                  {
+                    "text-white hover:scale-105 hover:text-gray-100 dark:text-black dark:hover:text-zinc-950": isActive,
+                  },
+                  { "text-zinc-600 hover:text-primary dark:text-zinc-400": !isActive },
+                )}
+                href={link.href}
+              >
+                <link.icon size={22} strokeWidth={2} />
+
+                {isActive && (
+                  <MotionDiv
+                    className="absolute inset-0 z-[-1] rounded-full bg-zinc-800 dark:bg-stone-200"
+                    layoutId="mobile-path"
+                    layoutScroll
+                    style={{ transform: "translateZ(0)" }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 380,
+                      damping: 30,
+                    }}
+                  />
+                )}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
+
+export const MobileMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="justify-right relative block w-full items-center sm:hidden">
+      <Menu setActive={() => setIsOpen(false)}>
+        <MenuItem
+          setActive={() => setIsOpen(!isOpen)}
+          active={isOpen ? "menu" : null}
+          item={
+            <div>
+              {isOpen ? <IconX size={28} className="opacity-70" /> : <IconMenu2 size={28} className="opacity-70" />}
+            </div>
+          }
+        >
+          <div className="flex flex-col space-y-4 text-lg">
+            {links.map((link) => (
+              <HoveredLink
+                key={link.name}
+                href={link.href}
+                onClick={() => {
+                  setIsOpen(false);
+                }}
+              >
+                {link.name}
+              </HoveredLink>
+            ))}
+          </div>
+        </MenuItem>
+      </Menu>
+    </div>
+  );
+};

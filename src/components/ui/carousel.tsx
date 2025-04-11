@@ -5,7 +5,7 @@ import useEmblaCarousel, { type UseEmblaCarouselType } from "embla-carousel-reac
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import Arrow from "../icons/Arrow";
+import { IconChevronUp } from "@tabler/icons-react";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -187,7 +187,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
         onClick={scrollPrev}
         {...props}
       >
-        <Arrow />
+        <IconChevronUp />
         <span className="sr-only">Previous slide</span>
       </Button>
     );
@@ -215,7 +215,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
         onClick={scrollNext}
         {...props}
       >
-        <Arrow />
+        <IconChevronUp />
         <span className="sr-only">Next slide</span>
       </Button>
     );

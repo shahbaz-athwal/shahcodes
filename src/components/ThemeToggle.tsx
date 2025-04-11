@@ -8,7 +8,7 @@ const ThemeToggle = () => {
   return (
     <button
       title="Change Theme"
-      className="mt-2 flex h-8 w-8 items-center justify-center rounded-full align-middle opacity-75 transition-transform hover:scale-110 sm:h-10 sm:w-10"
+      className="items-center justify-center opacity-70 transition-transform hover:scale-110"
       onClick={toggleTheme}
     >
       {!darkMode ? <IconSun /> : <IconMoon />}
