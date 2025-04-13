@@ -8,6 +8,7 @@ import SpotifyPrefetch from "./spotify/SpotifyFetcher";
 import { SpotifyProvider } from "@/hooks/useSpotify";
 import LiveActivity from "@/components/LiveActivity";
 import { LocationSection } from "@/components/LocationData";
+import { PostHogProvider } from "@/components/PostHogProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -54,11 +55,7 @@ const jsonLd = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="dark">
       <head>
@@ -69,24 +66,26 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#020100] dark:selection:bg-yellow-800/90 sm:overflow-hidden`}
       >
-        <SpotifyProvider>
-          <main className="flex h-screen flex-col items-center justify-between overflow-y-auto">
-            <div className="w-full flex-grow">
-              <SpotifyPrefetch />
-              <ThemeProvider>
-                <TopBar />
-                <div className="mx-auto mt-16 max-w-2xl p-4 sm:mt-20 md:p-6">{children}</div>
-              </ThemeProvider>
-            </div>
-            <div className="absolute right-4 top-4 z-10 hidden xl:block">
-              <LiveActivity />
-            </div>
-            <div className="absolute bottom-4 right-4 z-10 hidden xl:block">
-              <LocationSection />
-            </div>
-            <Footer />
-          </main>
-        </SpotifyProvider>
+        <PostHogProvider>
+          <SpotifyProvider>
+            <main className="flex h-screen flex-col items-center justify-between overflow-y-auto">
+              <div className="w-full flex-grow">
+                <SpotifyPrefetch />
+                <ThemeProvider>
+                  <TopBar />
+                  <div className="mx-auto mt-16 max-w-2xl p-4 sm:mt-20 md:p-6">{children}</div>
+                </ThemeProvider>
+              </div>
+              <div className="absolute right-4 top-4 z-10 hidden xl:block">
+                <LiveActivity />
+              </div>
+              <div className="absolute bottom-4 right-4 z-10 hidden xl:block">
+                <LocationSection />
+              </div>
+              <Footer />
+            </main>
+          </SpotifyProvider>
+        </PostHogProvider>
         <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">
           <div className="h-full bg-cover dark:bg-[url('https://res.cloudinary.com/dqss5unvd/image/upload/v1744240025/bg-sm-dark_hk9erl.png')] dark:opacity-[0.4] sm:dark:bg-[url('https://res.cloudinary.com/dqss5unvd/image/upload/v1744240314/bg-dark_grifof_ynbdy1.png')]" />
         </div>
