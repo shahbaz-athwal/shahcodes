@@ -1,18 +1,26 @@
-import redis from "@/lib/redis";
 import { unstable_noStore as noStore } from "next/cache";
 import { Suspense } from "react";
 import { MotionChild, MotionParent } from "./Motion";
+import { LocationUpdater } from "./LocationUpdater";
 
 interface LocationResponse {
   city: string;
   region: string;
   country: string;
   isBot: boolean;
+  timestamp?: string;
 }
 
 const getLastLocation = async () => {
-  let response: LocationResponse | null;
-  response = await redis.get("lastLocation");
+  let response: LocationResponse | null = null;
+
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/api/location`);
+    response = await res.json();
+  } catch (error) {
+    console.error("Error fetching location:", error);
+  }
+
   if (!response) {
     response = {
       city: "Amritsar",
@@ -21,20 +29,12 @@ const getLastLocation = async () => {
       isBot: false,
     };
   }
-  updateLocation();
+
   return response;
 };
 
-const updateLocation = async () => {
-  const data: LocationResponse | null = await redis.get("currentLocation");
-  if (data?.isBot === false) {
-    await redis.set("lastLocation", JSON.stringify(data));
-  }
-};
-
 const getCountryFlag = (countryCode: string) => {
-  const code = countryCode.trim();
-  return code
+  return countryCode
     .toUpperCase()
     .split("")
     .map((char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
@@ -56,11 +56,14 @@ const LocationData = async () => {
 };
 
 export const LocationSection = () => (
-  <Suspense>
-    <MotionParent>
-      <MotionChild>
-        <LocationData />
-      </MotionChild>
-    </MotionParent>
-  </Suspense>
+  <>
+    <Suspense>
+      <MotionParent>
+        <MotionChild>
+          <LocationData />
+        </MotionChild>
+      </MotionParent>
+    </Suspense>
+    <LocationUpdater />
+  </>
 );
