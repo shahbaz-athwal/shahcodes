@@ -9,6 +9,9 @@ import RecentlyPlayed from "./RecentlyPlayed";
 export const metadata: Metadata = {
   title: "Spotify",
   description: "what am I listening on Spotify?",
+  alternates: {
+    canonical: "/spotify",
+  },
 };
 
 const cachedTopArtists = cache(async () => topArtists(), [], {
