@@ -111,7 +111,7 @@ const ProjectCard = ({ title, description, href, code, image, badges }: ProjectC
       </div>
       <a href={href || code} target="_blank">
         <div className="w-fit overflow-hidden rounded-lg shadow-xl dark:shadow-zinc-800/50">
-          <Image src={image} alt={title} width={700} height={400} className="rounded-lg object-cover" />
+          <Image src={image} alt={title} width={700} height={400} className="rounded-lg object-cover" loading="eager" />
         </div>
       </a>
       <div className="flex flex-wrap gap-2">
@@ -148,21 +148,19 @@ const ProjectCard = ({ title, description, href, code, image, badges }: ProjectC
 export default function Projects() {
   return (
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:-ml-[20%] lg:w-[140%]">
-      {projects.map((project) => {
-        return (
-          !project.hidden && (
-            <ProjectCard
-              key={project.title}
-              title={project.title}
-              description={project.description}
-              href={project.href}
-              code={project.code}
-              badges={project.badges}
-              image={project.image}
-            />
-          )
-        );
-      })}
+      {projects
+        .filter((project) => !project.hidden)
+        .map((project, index) => (
+          <ProjectCard
+            key={project.title}
+            title={project.title}
+            description={project.description}
+            href={project.href}
+            code={project.code}
+            badges={project.badges}
+            image={project.image}
+          />
+        ))}
     </div>
   );
 }
