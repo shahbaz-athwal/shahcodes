@@ -40,28 +40,20 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://shahcodes.in"),
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Shahbaz Singh",
-  image: "https://shahcodes.in/profile.png",
-  url: "https://shahcodes.in",
-  jobTitle: "Full Stack Developer",
-  sameAs: [
-    "https://x.com/shahcodes",
-    "https://github.com/shahbaz-athwal",
-    "https://www.linkedin.com/in/shahbaz-athwal/",
-    "https://www.instagram.com/shahbaz_athwal/",
-  ],
-};
-
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="dark">
       <head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="shahbaz_athwal" />
+        <link
+          rel="preload"
+          as="image"
+          href="https://res.cloudinary.com/dqss5unvd/image/upload/v1744240314/bg-dark_grifof_ynbdy1.png"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="https://res.cloudinary.com/dqss5unvd/image/upload/v1744240025/bg-sm-dark_hk9erl.png"
+        />
       </head>
       <body
         className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#020100] dark:selection:bg-yellow-800/90 sm:overflow-hidden`}
@@ -70,10 +62,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <SpotifyProvider>
             <main className="flex h-screen flex-col items-center justify-between overflow-y-auto">
               <div className="w-full flex-grow">
-                <SpotifyPrefetch />
                 <ThemeProvider>
                   <TopBar />
-                  <div className="mx-auto mt-16 max-w-2xl p-4 sm:mt-20 md:p-6">{children}</div>
+                  <div className="mx-auto mt-16 max-w-2xl p-4 sm:mt-20 md:p-6">
+                    <SpotifyPrefetch />
+                    {children}
+                  </div>
                 </ThemeProvider>
               </div>
               <div className="absolute right-4 top-4 z-10 hidden xl:block">

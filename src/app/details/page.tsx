@@ -7,7 +7,10 @@ import { Experience } from "./Experience";
 
 export const metadata: Metadata = {
   title: "Details",
-  description: "What technologies I use? and where I work?",
+  description: "What technologies I use?",
+  alternates: {
+    canonical: "/details",
+  },
 };
 
 export default function Page() {
