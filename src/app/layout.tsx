@@ -40,28 +40,10 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://shahcodes.in"),
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Shahbaz Singh",
-  image: "https://shahcodes.in/profile.png",
-  url: "https://shahcodes.in",
-  jobTitle: "Full Stack Developer",
-  sameAs: [
-    "https://x.com/shahcodes",
-    "https://github.com/shahbaz-athwal",
-    "https://www.linkedin.com/in/shahbaz-athwal/",
-    "https://www.instagram.com/shahbaz_athwal/",
-  ],
-};
-
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className="dark">
       <head>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="author" content="shahbaz_athwal" />
         <link
           rel="preload"
           as="image"
