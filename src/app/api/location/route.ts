@@ -3,15 +3,6 @@ import { geolocation } from "@vercel/functions";
 import { userAgent } from "next/server";
 import { NextRequest } from "next/server";
 
-export async function GET() {
-  try {
-    const lastLocation = await redis.get<string>("lastLocation");
-    return Response.json(lastLocation);
-  } catch (error) {
-    return Response.json(null);
-  }
-}
-
 export async function POST(req: NextRequest) {
   try {
     const geo = geolocation(req);

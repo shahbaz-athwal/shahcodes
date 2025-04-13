@@ -2,35 +2,28 @@ import { unstable_noStore as noStore } from "next/cache";
 import { Suspense } from "react";
 import { MotionChild, MotionParent } from "./Motion";
 import { LocationUpdater } from "./LocationUpdater";
+import redis from "@/lib/redis";
 
 interface LocationResponse {
   city: string;
   region: string;
   country: string;
-  isBot: boolean;
-  timestamp?: string;
 }
 
 const getLastLocation = async () => {
-  let response: LocationResponse | null = null;
+  let location: LocationResponse | null = null;
 
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/api/location`);
-    response = await res.json();
-  } catch (error) {
-    console.error("Error fetching location:", error);
-  }
+  location = await redis.get("lastLocation");
 
-  if (!response) {
-    response = {
+  if (!location) {
+    location = {
       city: "Amritsar",
       region: "PB",
       country: "IN",
-      isBot: false,
     };
   }
 
-  return response;
+  return location;
 };
 
 const getCountryFlag = (countryCode: string) => {
