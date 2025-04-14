@@ -7,7 +7,7 @@ import TopBar from "@/components/TopBar";
 import SpotifyPrefetch from "./spotify/SpotifyFetcher";
 import { SpotifyProvider } from "@/hooks/useSpotify";
 import LiveActivity from "@/components/LiveActivity";
-import { LocationSection } from "@/components/LocationData";
+// import { LocationSection } from "@/components/LocationData";
 import { PostHogProvider } from "@/components/PostHogProvider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -73,9 +73,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <div className="absolute right-4 top-4 z-10 hidden xl:block">
                 <LiveActivity />
               </div>
-              <div className="absolute bottom-4 right-4 z-10 hidden xl:block">
+              {/* <div className="absolute bottom-4 right-4 z-10 hidden xl:block">
                 <LocationSection />
-              </div>
+              </div> */}
               <Footer />
             </main>
           </SpotifyProvider>
