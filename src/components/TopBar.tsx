@@ -12,7 +12,7 @@ const TopBar = () => {
       <nav className="relative isolate z-[10]">
         <div
           className={cn(
-            "fixed inset-x-0 top-0 mx-auto flex w-full max-w-3xl items-center justify-between rounded-bl-3xl rounded-br-3xl border-b border-zinc-400 px-6 py-1.5 backdrop-blur dark:border-zinc-700 dark:text-gray-200 sm:border-x sm:px-12 sm:py-3",
+            "fixed inset-x-0 top-0 mx-auto flex w-full max-w-3xl items-center justify-between rounded-bl-3xl rounded-br-3xl border-b border-zinc-400 bg-black/15 px-6 py-1.5 backdrop-blur dark:border-zinc-800 dark:text-gray-200 sm:border-x sm:px-12 sm:py-2.5 md:-top-1 md:scale-90",
           )}
         >
           <div className="flex items-end gap-2">

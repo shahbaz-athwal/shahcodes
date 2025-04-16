@@ -77,10 +77,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   </div>
                 </ThemeProvider>
               </div>
-              <div className="absolute right-4 top-4 z-10 hidden xl:block">
+              <div className="absolute right-4 z-10 hidden xl:-top-2 xl:block xl:scale-90 2xl:top-2 2xl:scale-100">
                 <LiveActivity />
               </div>
-              <div className="absolute bottom-4 right-4 z-10 hidden xl:block">
+              <div className="absolute bottom-2 right-4 z-10 hidden xl:block">
                 <Suspense fallback={null}>
                   <Location />
                 </Suspense>

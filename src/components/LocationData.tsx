@@ -29,7 +29,7 @@ export const LocationSection = ({ location }: { location: LocationResponse | nul
     <>
       <MotionParent>
         <MotionChild>
-          <div className="font-mono text-sm text-muted-foreground">
+          <div className="font-mono text-xs text-muted-foreground 2xl:text-sm">
             <div>
               Last Visit: {location.city}, {location.country} {flag}
             </div>
