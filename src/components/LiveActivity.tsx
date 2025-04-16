@@ -122,7 +122,7 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
                 href={artistUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-1 block truncate text-xs text-gray-600 hover:underline dark:text-gray-400"
+                className="block truncate text-xs text-gray-600 hover:underline dark:text-gray-400"
               >
                 {spotifyData.artist}
               </Link>
@@ -132,7 +132,7 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
             </TooltipContent>
           </Tooltip>
 
-          <div className="mt-1.5">
+          <div className="mb-1">
             <div className="mb-0.5 flex justify-between font-mono text-[11px] text-gray-500">
               <span>{elapsedFormatted}</span>
               <span>{totalFormatted}</span>
