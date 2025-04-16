@@ -7,6 +7,12 @@ import { usePathname, useSearchParams } from "next/navigation";
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // Don't initialize PostHog in development mode
+    if (window.location.hostname === "localhost") {
+      console.log("PostHog is not initialized in development mode");
+      return;
+    }
+
     posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
       api_host: "/ingest",
       ui_host: "https://us.posthog.com",
