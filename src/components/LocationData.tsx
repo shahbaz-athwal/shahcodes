@@ -1,30 +1,11 @@
-import { unstable_noStore as noStore } from "next/cache";
-import { Suspense } from "react";
 import { MotionChild, MotionParent } from "./Motion";
 import { LocationUpdater } from "./LocationUpdater";
-import redis from "@/lib/redis";
 
-interface LocationResponse {
+export interface LocationResponse {
   city: string;
   region: string;
   country: string;
 }
-
-const getLastLocation = async () => {
-  let location: LocationResponse | null = null;
-
-  location = await redis.get("lastLocation");
-
-  if (!location) {
-    location = {
-      city: "Amritsar",
-      region: "PB",
-      country: "IN",
-    };
-  }
-
-  return location;
-};
 
 const getCountryFlag = (countryCode: string) => {
   return countryCode
@@ -34,29 +15,28 @@ const getCountryFlag = (countryCode: string) => {
     .join("");
 };
 
-const LocationData = async () => {
-  noStore();
-  const { city, country } = await getLastLocation();
-  const flag = getCountryFlag(country);
+export const LocationSection = ({ location }: { location: LocationResponse | null }) => {
+  if (!location) {
+    location = {
+      city: "Amritsar",
+      region: "PB",
+      country: "IN",
+    };
+  }
+  const flag = getCountryFlag(location.country);
 
   return (
-    <div className="font-mono text-sm text-muted-foreground">
-      <div>
-        Last Visit: {city}, {country} {flag}
-      </div>
-    </div>
-  );
-};
-
-export const LocationSection = () => (
-  <>
-    <Suspense>
+    <>
       <MotionParent>
         <MotionChild>
-          <LocationData />
+          <div className="font-mono text-sm text-muted-foreground">
+            <div>
+              Last Visit: {location.city}, {location.country} {flag}
+            </div>
+          </div>
         </MotionChild>
       </MotionParent>
-    </Suspense>
-    <LocationUpdater />
-  </>
-);
+      <LocationUpdater />
+    </>
+  );
+};

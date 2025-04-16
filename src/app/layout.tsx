@@ -9,6 +9,8 @@ import { SpotifyProvider } from "@/hooks/useSpotify";
 import LiveActivity from "@/components/LiveActivity";
 import { LocationSection } from "@/components/LocationData";
 import { PostHogProvider } from "@/components/PostHogProvider";
+import { getCachedLocationData } from "@/lib/redis";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,6 +40,11 @@ export const metadata: Metadata = {
     siteName: "Shahbaz Singh - Full Stack Developer",
   },
   metadataBase: new URL("https://shahcodes.in"),
+};
+
+const Location = async () => {
+  const location = await getCachedLocationData();
+  return <LocationSection location={location} />;
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -70,11 +77,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   </div>
                 </ThemeProvider>
               </div>
-              <div className="absolute right-4 top-4 z-10 hidden xl:block">
+              <div className="absolute right-4 top-1 z-10 hidden xl:block">
                 <LiveActivity />
               </div>
-              <div className="absolute bottom-4 right-4 z-10 hidden xl:block">
-                <LocationSection />
+              <div className="absolute bottom-2 right-4 z-10 hidden xl:block">
+                <Suspense fallback={null}>
+                  <Location />
+                </Suspense>
               </div>
               <Footer />
             </main>

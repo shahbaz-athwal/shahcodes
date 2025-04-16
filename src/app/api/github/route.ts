@@ -1,5 +1,5 @@
 // import { updateEdgeConfig } from "@/lib/vercel";
-import redis from "@/lib/redis";
+import redis, { getCachedGithubData } from "@/lib/redis";
 import type { Activity } from "react-activity-calendar";
 import { revalidateTag } from "next/cache";
 type GitHubContributionsApiResponse = {
@@ -23,8 +23,8 @@ export const GET = async (): Promise<Response> => {
     // Size limit on free plan 😭
     // await updateEdgeConfig("github", data.data);
     await redis.set("github", JSON.stringify(data.data));
-
     revalidateTag("github");
+    await getCachedGithubData();
 
     return new Response(undefined, { status: 204 });
   } catch (error) {
