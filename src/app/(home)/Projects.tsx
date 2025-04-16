@@ -147,7 +147,7 @@ const ProjectCard = ({ title, description, href, code, image, badges }: ProjectC
 
 export default function Projects() {
   return (
-    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:-ml-[20%] lg:w-[140%]">
+    <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:-ml-[10%] xl:w-[120%] 2xl:-ml-[20%] 2xl:w-[140%]">
       {projects
         .filter((project) => !project.hidden)
         .map((project, index) => (
