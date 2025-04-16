@@ -7,6 +7,8 @@ import { Activity, SpotifyData } from "@/types/Lanyard";
 import { useElapsedTime } from "@/hooks/useElapsedTime";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import Link from "next/link";
 
 const CodeActivity = ({ codeData }: { codeData: Activity }) => {
   const startTime = codeData.timestamps?.start;
@@ -72,22 +74,63 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
     }
   }, [progressPercentage]);
 
+  // Generate Spotify URLs
+  const songUrl = `https://open.spotify.com/track/${spotifyData.track_id}`;
+  const artistUrl = `https://open.spotify.com/search/${encodeURIComponent(spotifyData.artist)}`;
+  const albumUrl = `https://open.spotify.com/search/${encodeURIComponent(spotifyData.album)}`;
+
   return (
     <Card className="my-4 w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-sm dark:bg-stone-800/30 dark:text-white">
       <div className="flex gap-3">
-        <div className="my-1 h-14 w-14 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
-          <Image
-            src={spotifyData.album_art_url}
-            alt={spotifyData.album}
-            className="h-full w-full object-cover"
-            width={48}
-            height={48}
-          />
-        </div>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Link
+              href={albumUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="my-1 block h-14 w-14 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700"
+            >
+              <Image
+                src={spotifyData.album_art_url}
+                alt={spotifyData.album}
+                className="h-full w-full object-cover"
+                width={48}
+                height={48}
+              />
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{spotifyData.album}</p>
+          </TooltipContent>
+        </Tooltip>
 
         <div className="flex-1 overflow-hidden">
-          <div className="text-sm font-medium">{spotifyData.song}</div>
-          <div className="text-xs text-gray-600 dark:text-gray-400">{spotifyData.artist}</div>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link href={songUrl} target="_blank" rel="noopener noreferrer" className="truncate text-sm font-medium">
+                {spotifyData.song}
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Play on Spotify</p>
+            </TooltipContent>
+          </Tooltip>
+
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href={artistUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 block truncate text-xs text-gray-600 hover:underline dark:text-gray-400"
+              >
+                {spotifyData.artist}
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{spotifyData.artist}</p>
+            </TooltipContent>
+          </Tooltip>
 
           <div className="mt-1.5">
             <div className="mb-0.5 flex justify-between font-mono text-[11px] text-gray-500">

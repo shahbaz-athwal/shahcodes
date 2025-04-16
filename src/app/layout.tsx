@@ -11,6 +11,7 @@ import { LocationSection } from "@/components/LocationData";
 import { PostHogProvider } from "@/components/PostHogProvider";
 import { getCachedLocationData } from "@/lib/redis";
 import { Suspense } from "react";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -66,28 +67,30 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#020100] dark:selection:bg-yellow-800/90 sm:overflow-hidden`}
       >
         <PostHogProvider>
-          <SpotifyProvider>
-            <main className="flex h-screen flex-col items-center justify-between overflow-y-auto">
-              <div className="w-full flex-grow">
-                <ThemeProvider>
-                  <TopBar />
-                  <div className="mx-auto mt-16 max-w-2xl p-4 sm:mt-20 md:p-6">
-                    <SpotifyPrefetch />
-                    {children}
-                  </div>
-                </ThemeProvider>
-              </div>
-              <div className="absolute right-4 top-1 z-10 hidden xl:block">
-                <LiveActivity />
-              </div>
-              <div className="absolute bottom-2 right-4 z-10 hidden xl:block">
-                <Suspense fallback={null}>
-                  <Location />
-                </Suspense>
-              </div>
-              <Footer />
-            </main>
-          </SpotifyProvider>
+          <TooltipProvider>
+            <SpotifyProvider>
+              <main className="flex h-screen flex-col items-center justify-between overflow-y-auto">
+                <div className="w-full flex-grow">
+                  <ThemeProvider>
+                    <TopBar />
+                    <div className="mx-auto mt-16 max-w-2xl p-4 sm:mt-20 md:p-6">
+                      <SpotifyPrefetch />
+                      {children}
+                    </div>
+                  </ThemeProvider>
+                </div>
+                <div className="absolute right-4 top-1 z-10 hidden xl:block">
+                  <LiveActivity />
+                </div>
+                <div className="absolute bottom-2 right-4 z-10 hidden xl:block">
+                  <Suspense fallback={null}>
+                    <Location />
+                  </Suspense>
+                </div>
+                <Footer />
+              </main>
+            </SpotifyProvider>
+          </TooltipProvider>
         </PostHogProvider>
         <div className="pointer-events-none absolute inset-0 z-[-10] overflow-hidden">
           <div className="h-full bg-cover dark:bg-[url('https://res.cloudinary.com/dqss5unvd/image/upload/v1744240025/bg-sm-dark_hk9erl.png')] dark:opacity-[0.4] sm:dark:bg-[url('https://res.cloudinary.com/dqss5unvd/image/upload/v1744240314/bg-dark_grifof_ynbdy1.png')]" />

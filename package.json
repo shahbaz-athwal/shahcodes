@@ -13,6 +13,7 @@
   "dependencies": {
     "@radix-ui/react-separator": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-tooltip": "^1.2.0",
     "@tabler/icons-react": "^3.26.0",
     "@upstash/redis": "^1.34.3",
     "@vercel/edge-config": "^1.4.0",
