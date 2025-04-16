@@ -3,21 +3,11 @@ import Projects from "./Projects";
 import { MotionParent, MotionChild } from "@/components/Motion";
 import { GithubGraph } from "./GithubGraph";
 import Link from "next/link";
-import redis from "@/lib/redis";
-import type { Activity } from "react-activity-calendar";
+import { getCachedGithubData } from "@/lib/redis";
 import { Suspense } from "react";
-import { unstable_cache as cache } from "next/cache";
-
-const getGithubData = cache(
-  async () => {
-    return (await redis.get("github")) as Activity[] | null;
-  },
-  ["github-data"],
-  { tags: ["github"] },
-);
 
 async function GithubGraphWithData() {
-  const data = await getGithubData();
+  const data = await getCachedGithubData();
   return <GithubGraph data={data} />;
 }
 
