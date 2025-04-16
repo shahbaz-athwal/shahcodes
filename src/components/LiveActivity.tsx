@@ -17,7 +17,7 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
   return (
     <Card className="w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-sm dark:bg-stone-800/30 dark:text-white">
       <div className="flex gap-3">
-        <div className="relative flex-shrink-0">
+        <div className="relative h-[72px] w-[60px] flex-shrink-0">
           <div className="my-1 flex h-14 w-14 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
             {codeData.assets?.large_image ? (
               <Image
