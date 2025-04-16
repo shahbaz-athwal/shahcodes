@@ -70,7 +70,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <TooltipProvider>
             <SpotifyProvider>
               <main className="flex h-screen flex-col items-center justify-between overflow-y-auto">
-                <div className="w-full flex-grow">
+                <div className="w-full grow">
                   <ThemeProvider>
                     <TopBar />
                     <div className="mx-auto mt-16 max-w-2xl p-4 sm:mt-20 md:p-6">

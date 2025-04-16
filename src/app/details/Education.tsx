@@ -9,7 +9,7 @@ export function Education() {
       </CardHeader>
       <CardContent>
         <div className="flex gap-5 py-4">
-          <div className="mt-1 flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
+          <div className="mt-1 flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white shadow-xs">
             <Image
               width={100}
               height={100}

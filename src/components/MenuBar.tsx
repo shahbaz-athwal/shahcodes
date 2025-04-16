@@ -35,7 +35,7 @@ const links = [
 ];
 
 const baseMenuClass =
-  "h-fit rounded-full px-4 py-2 backdrop-blur transition-opacity bg-black/10 dark:bg-white/15 transition-colors duration-300 ease-in-out";
+  "h-fit rounded-full px-4 py-2 backdrop-blur-sm transition-opacity bg-black/10 dark:bg-white/15 transition-colors duration-300 ease-in-out";
 
 export const DesktopMenuBar = ({ path }: { path: string }) => {
   return (
