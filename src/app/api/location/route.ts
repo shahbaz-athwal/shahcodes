@@ -20,8 +20,6 @@ export async function POST(req: NextRequest) {
       country,
       city,
       region,
-      isBot,
-      timestamp: new Date().toISOString(),
     };
 
     await redis.set("lastLocation", JSON.stringify(locationData));
