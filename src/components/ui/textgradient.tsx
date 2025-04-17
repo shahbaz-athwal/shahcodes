@@ -14,7 +14,7 @@ export const TextGradient = ({ children, variant = "left" }: Props) => {
 
   return (
     <div
-      className={`animate-textGradient font-extrabold ${gradientClasses[variant]} w-full bg-clip-text text-4xl text-transparent`}
+      className={`animate-text-gradient font-extrabold ${gradientClasses[variant]} w-full bg-clip-text text-4xl text-transparent`}
     >
       {children}
     </div>
