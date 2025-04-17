@@ -35,7 +35,7 @@ const links = [
 ];
 
 const baseMenuClass =
-  "h-fit rounded-full px-4 py-2 backdrop-blur transition-opacity bg-black/10 dark:bg-white/15 transition-colors duration-300 ease-in-out";
+  "h-fit rounded-full px-4 py-2 backdrop-blur-sm transition-opacity bg-black/10 dark:bg-white/15 transition-colors duration-300 ease-in-out";
 
 export const DesktopMenuBar = ({ path }: { path: string }) => {
   return (
@@ -51,7 +51,7 @@ export const DesktopMenuBar = ({ path }: { path: string }) => {
                   {
                     "text-white hover:scale-105 hover:text-gray-100 dark:text-black dark:hover:text-zinc-950": isActive,
                   },
-                  { "text-zinc-300 hover:text-primary dark:text-zinc-400 dark:hover:text-primary": !isActive },
+                  { "text-zinc-800 hover:text-primary dark:text-zinc-400 dark:hover:text-primary": !isActive },
                 )}
                 href={link.href}
               >
