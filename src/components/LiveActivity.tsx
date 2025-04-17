@@ -17,7 +17,7 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
   if (!codeData) return null;
 
   return (
-    <Card className="w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-xs dark:bg-stone-800/30 dark:text-white">
+    <Card className="w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-xs 2xl:w-72 dark:bg-stone-800/50 dark:text-white">
       <div className="flex gap-3">
         <div className="relative h-[72px] w-[60px] shrink-0">
           <div className="my-1 flex h-14 w-14 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
@@ -80,7 +80,7 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
   const albumUrl = `https://open.spotify.com/search/${encodeURIComponent(spotifyData.album)}`;
 
   return (
-    <Card className="my-4 w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-xs dark:bg-stone-800/30 dark:text-white">
+    <Card className="my-4 w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-xs 2xl:w-72 dark:bg-stone-800/50 dark:text-white">
       <div className="flex gap-3">
         <Tooltip>
           <TooltipTrigger asChild>
@@ -173,9 +173,15 @@ export default function LiveActivity() {
   return (
     <MotionParent>
       {(codeData || (data.spotify && pathname !== "/spotify")) && (
-        <div className="my-2 text-sm font-medium">Live Activity</div>
+        <MotionChild key="live-activity">
+          <div className="my-2 text-sm font-medium">Live Activity</div>
+        </MotionChild>
       )}
-      <MotionChild key="code-activity">{codeData && <CodeActivity codeData={codeData} />}</MotionChild>
+      {codeData && (
+        <MotionChild key="code-activity">
+          <CodeActivity codeData={codeData} />
+        </MotionChild>
+      )}
 
       {data.spotify && pathname !== "/spotify" && (
         <MotionChild key="spotify-activity">
