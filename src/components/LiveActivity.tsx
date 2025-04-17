@@ -107,7 +107,12 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
         <div className="flex-1 overflow-hidden">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Link href={songUrl} target="_blank" rel="noopener noreferrer" className="truncate text-sm font-medium">
+              <Link
+                href={songUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-fit truncate text-sm font-medium"
+              >
                 {spotifyData.song}
               </Link>
             </TooltipTrigger>
@@ -122,7 +127,7 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
                 href={artistUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block truncate text-xs text-gray-600 hover:underline dark:text-gray-400"
+                className="block w-fit truncate text-xs text-gray-600 hover:underline dark:text-gray-400"
               >
                 {spotifyData.artist}
               </Link>

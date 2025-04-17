@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -35,7 +35,8 @@
   --radius-sm: calc(var(--radius) - 4px);
 
   --animate-text-gradient: textGradient 5s ease infinite;
-
+  --animate-in: animateIn 0.5s ease;
+  --animate-out: animateOut 0.2s ease;
   @keyframes textGradient {
     0%,
     100% {
@@ -45,6 +46,24 @@
     50% {
       background-size: 200% 200%;
       background-position: right center;
+    }
+  }
+
+  @keyframes animateIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes animateOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
     }
   }
 }
