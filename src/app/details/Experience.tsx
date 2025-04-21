@@ -46,7 +46,7 @@ export function Experience() {
           {experience.map((exp, index) => {
             return (
               <div className="flex flex-col gap-4 py-6 sm:flex-row" key={index}>
-                <div className="mt-1 flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm">
+                <div className="mt-1 flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white shadow-xs">
                   <Image width={100} height={100} src={exp.logo} alt={exp.company} className="h-12 w-12" />
                 </div>
                 <div className="flex flex-col">

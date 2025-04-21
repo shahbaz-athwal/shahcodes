@@ -7,14 +7,14 @@ interface Props {
 
 export const TextGradient = ({ children, variant = "left" }: Props) => {
   const gradientClasses = {
-    left: "bg-gradient-to-r from-red-500 via-amber-600 to-purple-500",
-    center: "bg-gradient-to-r from-pink-600 via-red-500 to-amber-600",
-    right: "bg-gradient-to-r from-amber-600 via-pink-500 to-red-500",
+    left: "bg-linear-to-r from-red-500 via-amber-600 to-purple-500",
+    center: "bg-linear-to-r from-pink-600 via-red-500 to-amber-600",
+    right: "bg-linear-to-r from-amber-600 via-pink-500 to-red-500",
   };
 
   return (
     <div
-      className={`animate-textGradient font-extrabold ${gradientClasses[variant]} w-full bg-clip-text text-4xl text-transparent`}
+      className={`animate-text-gradient font-extrabold ${gradientClasses[variant]} w-full bg-clip-text text-4xl text-transparent`}
     >
       {children}
     </div>
