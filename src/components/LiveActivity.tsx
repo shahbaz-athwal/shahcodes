@@ -19,7 +19,7 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
   return (
     <Card className="w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-xs 2xl:w-72 dark:bg-stone-800/50 dark:text-white">
       <div className="flex gap-3">
-        <div className="relative h-[72px] w-[60px] shrink-0">
+        <div className="relative h-[72px] w-[58px] shrink-0">
           <div className="my-1 flex h-14 w-14 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
             {codeData.assets?.large_image ? (
               <Image
@@ -111,7 +111,7 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
                 href={songUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-fit truncate text-sm font-medium"
+                className="block w-fit max-w-full truncate text-sm font-medium"
               >
                 {spotifyData.song}
               </Link>
@@ -127,7 +127,7 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
                 href={artistUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-fit truncate text-xs text-gray-600 hover:underline dark:text-gray-400"
+                className="block w-fit max-w-full truncate text-xs text-gray-600 hover:underline dark:text-gray-400"
               >
                 {spotifyData.artist}
               </Link>
@@ -172,11 +172,7 @@ export default function LiveActivity() {
 
   return (
     <MotionParent>
-      {(codeData || (data.spotify && pathname !== "/spotify")) && (
-        <MotionChild key="live-activity">
-          <div className="my-2 text-sm font-medium">Live Activity</div>
-        </MotionChild>
-      )}
+      {(codeData || (data.spotify && pathname !== "/spotify")) && <div className="my-2 font-mono">Live Activity</div>}
       {codeData && (
         <MotionChild key="code-activity">
           <CodeActivity codeData={codeData} />

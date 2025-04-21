@@ -9,10 +9,10 @@ interface Props {
 export default function TopArtists({ topArtists }: Props) {
   return (
     <div>
-      <h1 className="py-12 text-3xl font-bold leading-tight">
+      <h1 className="py-12 text-3xl leading-tight font-bold">
         <TextGradient variant="right">My Top Artists</TextGradient>
       </h1>
-      <div className="relative mx-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:-ml-[20%] lg:w-[140%]">
+      <div className="relative mx-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:-ml-[10%] xl:w-[120%] 2xl:-ml-[20%] 2xl:w-[140%]">
         {topArtists?.map((artist) => (
           <a href={artist.url} target="_blank" key={artist.id} title={artist.name}>
             <div className="relative">

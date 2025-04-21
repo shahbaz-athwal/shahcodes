@@ -64,7 +64,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
       </head>
       <body
-        className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white dark:bg-[#020100] dark:selection:bg-yellow-800/90 sm:overflow-hidden`}
+        className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white sm:overflow-hidden dark:bg-[#020100] dark:selection:bg-yellow-800/90`}
       >
         <PostHogProvider>
           <TooltipProvider>
@@ -79,10 +79,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                     </div>
                   </ThemeProvider>
                 </div>
-                <div className="absolute right-4 top-1 z-10 hidden xl:block">
+                <div className="absolute top-1 right-4 z-10 hidden xl:block">
                   <LiveActivity />
                 </div>
-                <div className="absolute bottom-2 right-4 z-10 hidden xl:block">
+                <div className="absolute right-4 bottom-2 z-10 hidden xl:block">
                   <Suspense fallback={null}>
                     <Location />
                   </Suspense>
