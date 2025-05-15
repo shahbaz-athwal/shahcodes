@@ -25,7 +25,7 @@ const ThemeToggle = () => {
 
   if (!mounted) {
     return (
-      <div className="w-6 h-6 opacity-0" aria-hidden="true" />
+      <div className="w-0 sm:w-6 h-6 opacity-0" />
     )
   }
 
