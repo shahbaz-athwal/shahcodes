@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
-import { ThemeProvider } from "@/hooks/useTheme";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import TopBar from "@/components/TopBar";
 import SpotifyPrefetch from "./spotify/SpotifyFetcher";
 import { SpotifyProvider } from "@/hooks/useSpotify";
@@ -50,7 +50,7 @@ const Location = async () => {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link
           rel="preload"
@@ -71,7 +71,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <SpotifyProvider>
               <main className="flex h-screen flex-col items-center justify-between overflow-y-auto">
                 <div className="w-full grow">
-                  <ThemeProvider>
+                  <ThemeProvider
+                   attribute="class"
+                   defaultTheme="system"
+                   enableSystem
+                   disableTransitionOnChange>
                     <TopBar />
                     <div className="mx-auto mt-16 max-w-2xl p-4 sm:mt-20 md:p-6">
                       <SpotifyPrefetch />

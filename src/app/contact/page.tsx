@@ -1,7 +1,7 @@
 import { Header } from "@/components/ui/header";
 import { Title } from "@/components/ui/title";
 import { MotionChild, MotionParent } from "@/components/Motion";
-import WhisperellaFrame from "@/components/WhisperellaFrame";
+import WhisperellaFrame from "@/app/contact/WhisperellaBox";
 
 import { Metadata } from "next";
 
