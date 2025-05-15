@@ -1,7 +1,7 @@
 import { Header } from "@/components/ui/header";
 import { Title } from "@/components/ui/title";
 import { MotionChild, MotionParent } from "@/components/Motion";
-import WhisperellaFrame from "@/app/contact/WhisperellaBox";
+import WhisperellaBox from "@/app/contact/WhisperellaBox";
 
 import { Metadata } from "next";
 
@@ -77,7 +77,7 @@ function Page() {
       </MotionChild>
 
       <MotionChild>
-        <WhisperellaFrame />
+        <WhisperellaBox />
       </MotionChild>
     </MotionParent>
   );
