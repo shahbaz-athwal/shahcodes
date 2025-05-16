@@ -1,5 +1,5 @@
 "use client";
-import { useTheme } from "@/hooks/useTheme";
+import { useThemeToggle } from "@/components/ThemeToggle";
 import { Activity, ActivityCalendar } from "react-activity-calendar";
 import { MotionDiv } from "@/lib/motion";
 
@@ -8,7 +8,9 @@ type GithubGraphProps = {
 };
 
 export const GithubGraph = ({ data }: GithubGraphProps) => {
-  const theme = useTheme();
+  const { theme, mounted } = useThemeToggle();
+
+  if (!mounted) return <div className="w-32 h-[135px] opacity-0" aria-hidden="true" />;
 
   return (
     <MotionDiv
@@ -23,7 +25,7 @@ export const GithubGraph = ({ data }: GithubGraphProps) => {
         maxLevel={4}
         blockMargin={2}
         hideTotalCount
-        colorScheme={theme.darkMode ? "dark" : "light"}
+        colorScheme={theme === "dark" ? "dark" : "light"}
         blockSize={10}
         theme={{
           dark: ["#1c1917", "#5d2d1f", "#803315", "#b34509", "#e05e00"],
