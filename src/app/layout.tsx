@@ -73,8 +73,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <div className="w-full grow">
                   <ThemeProvider
                    attribute="class"
-                   defaultTheme="system"
-                   enableSystem
+                   defaultTheme="dark"
                    disableTransitionOnChange>
                     <TopBar />
                     <div className="mx-auto mt-16 max-w-2xl p-4 sm:mt-20 md:p-6">

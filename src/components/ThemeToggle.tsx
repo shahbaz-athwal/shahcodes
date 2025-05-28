@@ -13,11 +13,15 @@ const useHasMounted = () => {
   return hasMounted;
 };
 
-export const useThemeToggle = () => {
+export const useThemeToggle = (): {
+  theme: "dark" | "light" | undefined;
+  setTheme: (theme: string) => void;
+  mounted: boolean;
+} => {
   const { theme, setTheme } = useTheme()
   const mounted = useHasMounted()
 
-  return { theme, setTheme, mounted }
+  return { theme: theme as "dark" | "light", setTheme, mounted }
 }
 
 const ThemeToggle = () => {
