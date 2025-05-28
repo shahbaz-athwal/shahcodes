@@ -42,10 +42,9 @@ const projects: ProjectCardProps[] = [
     href: "https://studylink.dryft.ca",
     code: "https://github.com/mehirk/study-link",
     description: "A Study & Collaboration Platform",
-    image: "/projects/study-link.png",
+    image: "/projects/study-link.jpg",
     badges: [
       "React",
-      "TypeScript",
       "Tailwind",
       "Node.js",
       "PostgreSQL",
@@ -53,6 +52,9 @@ const projects: ProjectCardProps[] = [
       "Uploadthing",
       "Traefik",
       "VPS",
+      "PostHog",
+      "Zero Sync Engine",
+      "Tanstack Query",
     ],
     hidden: false,
   },
@@ -61,7 +63,7 @@ const projects: ProjectCardProps[] = [
     href: "https://chess.shahcodes.in",
     code: "https://github.com/shahbaz-athwal/chess",
     description: "A Multiplayer Chess Game Using Socket.io",
-    image: "/projects/chess-ogg.jpg",
+    image: "/projects/chess.jpg",
     badges: ["Socket.io", "TypeScript", "Tailwind", "Zustand", "Node.js"],
     hidden: false,
   },
@@ -119,7 +121,7 @@ const ProjectCard = ({ title, description, href, code, image, badges }: ProjectC
           <Badge
             key={badge}
             variant={"secondary"}
-            className="bg-zinc-200 font-normal hover:cursor-text dark:bg-zinc-700/70"
+            className="bg-zinc-200 font-normal hover:bg-zinc-300 hover:cursor-text dark:bg-zinc-700/70"
           >
             {badge}
           </Badge>
