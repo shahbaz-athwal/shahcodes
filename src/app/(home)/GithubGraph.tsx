@@ -25,7 +25,7 @@ export const GithubGraph = ({ data }: GithubGraphProps) => {
         maxLevel={4}
         blockMargin={2}
         hideTotalCount
-        colorScheme={theme === "dark" ? "dark" : "light"}
+        colorScheme={theme}
         blockSize={10}
         theme={{
           dark: ["#1c1917", "#5d2d1f", "#803315", "#b34509", "#e05e00"],
