@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { IconHome, IconMusic, IconMail, IconBriefcase, IconMenu2, IconX } from "@tabler/icons-react";
+import { IconHome, IconMusic, IconMail, IconBriefcase, IconMenu2, IconX, IconPencilBolt } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { MotionDiv } from "@/lib/motion";
 import Link from "next/link";
@@ -17,11 +17,11 @@ const links = [
     href: "/details",
     icon: IconBriefcase,
   },
-  // {
-  //   name: "Blogs",
-  //   href: "/blog",
-  //   icon: IconPencilBolt,
-  // },
+  {
+    name: "Blogs",
+    href: "/blog",
+    icon: IconPencilBolt,
+  },
   {
     name: "Spotify",
     href: "/spotify",
@@ -42,7 +42,7 @@ export const DesktopMenuBar = ({ path }: { path: string }) => {
     <div className={cn(baseMenuClass, "mx-auto hidden w-fit md:block")}>
       <ul className="flex w-fit items-center justify-between gap-1 sm:gap-2">
         {links.map((link) => {
-          const isActive = path === link.href;
+          const isActive = link.href === "/blog" ? path.startsWith(link.href) : path === link.href;
           return (
             <li key={link.name} className="relative flex items-center justify-center">
               <Link
@@ -84,7 +84,7 @@ export const MobileDock = ({ path }: { path: string }) => {
     <div className={cn(baseMenuClass, "fixed bottom-4 left-1/2 z-50 block -translate-x-1/2 md:hidden")}>
       <ul className="flex w-[250px] items-center justify-between gap-2">
         {links.map((link) => {
-          const isActive = path === link.href;
+          const isActive = link.href === "/blog" ? path.startsWith(link.href) : path === link.href;
           return (
             <li key={link.name} className="relative flex items-center justify-center">
               <Link
