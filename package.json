@@ -20,6 +20,7 @@
     "@vercel/functions": "^2.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "country-flag-emoji-polyfill": "^0.1.8",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "motion": "^12.7.3",
