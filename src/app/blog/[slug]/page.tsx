@@ -2,9 +2,15 @@ import { allPosts } from "content-collections";
 import { Mdx } from "@/components/ui/mdx";
 import { notFound } from "next/navigation";
 
+export async function generateStaticParams() {
+  return allPosts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const page = allPosts.find((page) => page._meta.path === slug);
+  const page = allPosts.find((page) => page.slug === slug);
 
   if (!page) {
     notFound();
