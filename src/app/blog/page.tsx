@@ -1,5 +1,5 @@
-import { allPosts} from "content-collections"
-import Link from "next/link"
+import { allPosts } from "content-collections";
+import Link from "next/link";
 
 export default function BlogPage() {
   return (
@@ -13,5 +13,5 @@ export default function BlogPage() {
         </Link>
       ))}
     </div>
-  )
+  );
 }

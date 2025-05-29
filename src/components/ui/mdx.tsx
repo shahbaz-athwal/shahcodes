@@ -1,7 +1,7 @@
-import { MDXContent } from '@content-collections/mdx/react';
-import Image from 'next/image';
-import type { HTMLProps, ReactNode } from 'react';
-import { Link } from './link';
+import { MDXContent } from "@content-collections/mdx/react";
+import Image from "next/image";
+import type { HTMLProps, ReactNode } from "react";
+import { Link } from "./link";
 // import { Tweet } from 'react-tweet';
 // import { Video } from './video';
 
@@ -10,19 +10,16 @@ type MdxProperties = {
 };
 
 const a = (props: HTMLProps<HTMLAnchorElement>) => {
-  if (typeof props.href !== 'string') {
-    throw new TypeError('href is required');
+  if (typeof props.href !== "string") {
+    throw new TypeError("href is required");
   }
 
   return <Link {...props} />;
 };
 
 const img = (properties: HTMLProps<HTMLImageElement>) => {
-  if (
-    typeof properties.src !== 'string' ||
-    typeof properties.alt !== 'string'
-  ) {
-    throw new TypeError('Image src and alt are required');
+  if (typeof properties.src !== "string" || typeof properties.alt !== "string") {
+    throw new TypeError("Image src and alt are required");
   }
 
   return (
@@ -31,8 +28,8 @@ const img = (properties: HTMLProps<HTMLImageElement>) => {
       alt={properties.alt}
       width={1240}
       height={698}
-      unoptimized={properties.src.startsWith('http')}
-      className="my-4 overflow-hidden rounded-lg border border-border/50"
+      unoptimized={properties.src.startsWith("http")}
+      className="border-border/50 my-4 overflow-hidden rounded-lg border"
       quality={100}
     />
   );
@@ -48,43 +45,41 @@ const Instagram = ({ reel, caption }: { reel: string; caption: string }) => (
 
 const Callout = ({ children }: { children: ReactNode }) => (
   <div className="overflow-hidden rounded-lg bg-gradient-to-tr from-white/0 to-white/20 p-px">
-    <div className="rounded-[7px] bg-gradient-to-tr from-black to-neutral-950 p-6">
-      {children}
-    </div>
+    <div className="rounded-[7px] bg-gradient-to-tr from-black to-neutral-950 p-6">{children}</div>
   </div>
 );
 
 const h2 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
   <h2 {...props}>
-    <span className="mr-2 select-none text-border">##</span>
+    <span className="text-border mr-2 select-none">##</span>
     {children}
   </h2>
 );
 
 const h3 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
   <h3 {...props}>
-    <span className="mr-2 select-none text-border">###</span>
+    <span className="text-border mr-2 select-none">###</span>
     {children}
   </h3>
 );
 
 const h4 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
   <h4 {...props}>
-    <span className="mr-2 select-none text-border">####</span>
+    <span className="text-border mr-2 select-none">####</span>
     {children}
   </h4>
 );
 
 const h5 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
   <h5 {...props}>
-    <span className="mr-2 select-none text-border">#####</span>
+    <span className="text-border mr-2 select-none">#####</span>
     {children}
   </h5>
 );
 
 const h6 = ({ children, ...props }: HTMLProps<HTMLHeadingElement>) => (
   <h6 {...props}>
-    <span className="mr-2 select-none text-border">######</span>
+    <span className="text-border mr-2 select-none">######</span>
     {children}
   </h6>
 );

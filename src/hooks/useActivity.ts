@@ -17,7 +17,7 @@ export const useActivity = (userId: string) => {
           d: {
             subscribe_to_ids: [userId],
           },
-        }),
+        })
       );
     },
 

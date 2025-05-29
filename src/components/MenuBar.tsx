@@ -51,7 +51,7 @@ export const DesktopMenuBar = ({ path }: { path: string }) => {
                   {
                     "text-white hover:scale-105 hover:text-gray-100 dark:text-black dark:hover:text-zinc-950": isActive,
                   },
-                  { "text-zinc-800 hover:text-primary dark:text-zinc-400 dark:hover:text-primary": !isActive },
+                  { "hover:text-primary dark:hover:text-primary text-zinc-800 dark:text-zinc-400": !isActive }
                 )}
                 href={link.href}
               >
@@ -93,7 +93,7 @@ export const MobileDock = ({ path }: { path: string }) => {
                   {
                     "text-white hover:scale-105 hover:text-gray-100 dark:text-black dark:hover:text-zinc-950": isActive,
                   },
-                  { "text-zinc-600 hover:text-primary dark:text-zinc-400": !isActive },
+                  { "hover:text-primary text-zinc-600 dark:text-zinc-400": !isActive }
                 )}
                 href={link.href}
               >

@@ -28,11 +28,11 @@ const ProgressBar = ({ startTime, endTime }: { startTime: number; endTime: numbe
       <div className="relative h-1 w-full overflow-hidden rounded-full bg-gray-300/70 dark:bg-gray-800/70">
         <div
           ref={progressRef}
-          className="absolute left-0 top-0 h-full rounded-full bg-stone-700 dark:bg-stone-400"
+          className="absolute top-0 left-0 h-full rounded-full bg-stone-700 dark:bg-stone-400"
           style={{ width: `${progressPercentage}%` }}
         />
       </div>
-      <div className="mb-1 mt-2 flex justify-between text-xs font-medium text-gray-400">
+      <div className="mt-2 mb-1 flex justify-between text-xs font-medium text-gray-400">
         <span>{elapsedFormatted}</span>
         <span>{totalFormatted}</span>
       </div>
@@ -45,17 +45,17 @@ const SpotifyPlayer = () => {
 
   return (
     <div className="pb-12">
-      <h1 className="pb-10 text-3xl font-extrabold leading-tight">
+      <h1 className="pb-10 text-3xl leading-tight font-extrabold">
         <TextGradient>Currently Playing</TextGradient>
       </h1>
-      <div className="mx-2 space-y-6 rounded-xl bg-zinc-100 p-8 dark:bg-stone-700/25 sm:mx-0">
+      <div className="mx-2 space-y-6 rounded-xl bg-zinc-100 p-8 sm:mx-0 dark:bg-stone-700/25">
         <div className="flex min-h-fit flex-col items-center sm:flex-row sm:items-start sm:space-x-5">
           {!listening ? (
             <div className="flex h-[176px] w-full flex-col items-center justify-center space-y-4 px-2 sm:-m-8 sm:flex-row sm:gap-28 sm:space-y-0">
               <FaSpotify className="h-24 w-24 rounded-full bg-black text-green-500 opacity-80" />
               <div className="flex flex-col items-center justify-center sm:h-full">
                 <div className="text-center md:text-left">
-                  <p className="font-mono text-lg font-extrabold text-muted-foreground">Not Playing</p>
+                  <p className="text-muted-foreground font-mono text-lg font-extrabold">Not Playing</p>
                 </div>
               </div>
             </div>
@@ -81,8 +81,8 @@ const SpotifyPlayer = () => {
               <div className="w-full flex-1">
                 <div className="flex flex-col">
                   <div className="flex flex-col space-y-0.5 text-left">
-                    <p className="text-lg font-bold text-primary">{listening.song}</p>
-                    <p className="text-sm text-muted-foreground">{listening.artist}</p>
+                    <p className="text-primary text-lg font-bold">{listening.song}</p>
+                    <p className="text-muted-foreground text-sm">{listening.artist}</p>
                   </div>
                   <div className="mt-3 sm:mt-5">
                     <ProgressBar startTime={listening.timestamps.start} endTime={listening.timestamps.end} />

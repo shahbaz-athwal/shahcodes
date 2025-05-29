@@ -105,7 +105,7 @@
 
 /* Mention styles */
 .mention {
-  @apply bg-primary/10 text-primary px-1 rounded-md;
+  @apply bg-primary/10 text-primary rounded-md px-1;
 }
 
 @keyframes text {

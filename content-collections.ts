@@ -1,11 +1,6 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { compileMDX } from "@content-collections/mdx";
-import {
-  type RehypeCodeOptions,
-  rehypeCode,
-  remarkGfm,
-  remarkHeading,
-} from "fumadocs-core/mdx-plugins";
+import { type RehypeCodeOptions, rehypeCode, remarkGfm, remarkHeading } from "fumadocs-core/mdx-plugins";
 import readingTime from "reading-time";
 
 const rehypeCodeOptions: RehypeCodeOptions = {
