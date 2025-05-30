@@ -4,14 +4,12 @@ import { Metadata } from "next";
 import { TechStack } from "./TechStack";
 import { Education } from "./Education";
 import { Experience } from "./Experience";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: "Details",
-  description: "What technologies I use?",
-  alternates: {
-    canonical: "/details",
-  },
-};
+  description: "More about Shahbaz Singh",
+});
 
 export default function Page() {
   return (

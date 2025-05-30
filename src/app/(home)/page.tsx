@@ -5,6 +5,14 @@ import { GithubGraph } from "./GithubGraph";
 import Link from "next/link";
 import { getCachedGithubData } from "@/lib/redis";
 import { Suspense } from "react";
+import { Metadata } from "next";
+import { createMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = createMetadata({
+  title: "Home",
+  description: "A Full Stack Developer based in Canada.",
+  image: "/og.png",
+});
 
 async function GithubGraphWithData() {
   const data = await getCachedGithubData();

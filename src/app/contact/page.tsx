@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-const contacts: {
+export const contacts: {
   method: string;
   link: string;
   label: string;
