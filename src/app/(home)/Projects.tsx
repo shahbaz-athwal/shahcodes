@@ -106,7 +106,7 @@ const projects: ProjectCardProps[] = [
 
 const ProjectCard = ({ title, description, href, code, image, badges }: ProjectCardProps) => {
   return (
-    <div className="mx-2 flex h-full w-fit flex-col space-y-6 rounded-xl bg-zinc-100 p-8 md:mx-0 dark:bg-stone-700/25">
+    <div className="mx-2 flex h-full w-fit flex-col space-y-6 rounded-xl bg-zinc-100 p-8 md:mx-0 md:p-6 xl:p-8 dark:bg-stone-700/25">
       <div>
         <h3 className="text-[17px] font-medium sm:text-lg">{title}</h3>
         <p className="text-base sm:text-[17px] dark:text-gray-300">{description}</p>
