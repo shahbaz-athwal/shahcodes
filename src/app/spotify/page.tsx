@@ -10,6 +10,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata: Metadata = createMetadata({
   title: "Spotify",
   description: "what am I listening on Spotify?",
+  ogText: "What am I listening on Spotify?",
 });
 
 const cachedTopArtists = cache(async () => topArtists(), [], {

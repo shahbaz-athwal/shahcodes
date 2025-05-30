@@ -41,7 +41,7 @@ export const createMetadata = ({ title, description, ogText, image, ...propertie
       locale: "en_US",
       images: [
         {
-          url: image ?? `/og?title=${encodeURIComponent(ogText ?? "")}`,
+          url: image ?? `/api/og?title=${encodeURIComponent(ogText ?? "")}`,
           width: 1200,
           height: 630,
         },
@@ -56,7 +56,7 @@ export const createMetadata = ({ title, description, ogText, image, ...propertie
       creator: twitterHandle,
       images: [
         {
-          url: image ?? `/og?title=${encodeURIComponent(ogText ?? "")}`,
+          url: image ?? `/api/og?title=${encodeURIComponent(ogText ?? "")}`,
           width: 1200,
           height: 630,
         },

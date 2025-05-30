@@ -9,6 +9,7 @@ import { createMetadata } from "@/lib/metadata";
 export const metadata: Metadata = createMetadata({
   title: "Details",
   description: "More about Shahbaz Singh",
+  ogText: "Know more about my tech stack, experience and education.",
 });
 
 export default function Page() {
