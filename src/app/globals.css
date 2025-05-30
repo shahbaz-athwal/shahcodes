@@ -102,6 +102,7 @@
   .shiki {
     @apply bg-secondary/50 border-border/50 my-4 rounded-lg border;
     @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
+    position: relative;
   }
   .shiki span {
     @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
@@ -137,6 +138,19 @@
 
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-zinc-600/60;
+  }
+
+  /* Code block copy button styles */
+  .code-block-wrapper {
+    @apply relative;
+  }
+
+  .code-block-wrapper .copy-button {
+    @apply absolute top-5 right-3 opacity-0 transition-opacity duration-200;
+  }
+
+  .code-block-wrapper:hover .copy-button {
+    @apply opacity-100;
   }
 }
 

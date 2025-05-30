@@ -1,9 +1,11 @@
+"use client";
+
 import { MDXContent } from "@content-collections/mdx/react";
 import Image from "next/image";
 import type { HTMLProps, ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "./link";
-// import { Tweet } from 'react-tweet';
-// import { Video } from './video';
+import { CopyButton } from "./copy-button";
 
 type MdxProperties = {
   readonly code: string;
@@ -32,6 +34,37 @@ const img = (properties: HTMLProps<HTMLImageElement>) => {
       className="border-border/50 my-4 overflow-hidden rounded-lg border"
       quality={100}
     />
+  );
+};
+
+const Pre = ({ children, ...props }: HTMLProps<HTMLPreElement>) => {
+  const preRef = useRef<HTMLPreElement>(null);
+  const [codeContent, setCodeContent] = useState<string>("");
+
+  useEffect(() => {
+    if (preRef.current) {
+      const codeElement = preRef.current.querySelector("code");
+      if (codeElement) {
+        // Simple approach: get all text content and remove line numbers
+        const fullText = codeElement.textContent || "";
+        // Remove line numbers (assuming they're at the start of each line)
+        const cleanText = fullText
+          .split("\n")
+          .map((line) => line.replace(/^\s*\d+\s+/, ""))
+          .join("\n")
+          .trim();
+        setCodeContent(cleanText);
+      }
+    }
+  }, [children]);
+
+  return (
+    <div className="code-block-wrapper">
+      <pre ref={preRef} {...props}>
+        {children}
+      </pre>
+      {codeContent && <CopyButton text={codeContent} className="copy-button" />}
+    </div>
   );
 };
 
@@ -95,10 +128,9 @@ export const Mdx = ({ code }: MdxProperties) => (
       h5,
       h6,
       img,
-      // Video,
+      pre: Pre,
       Instagram,
       Callout,
-      // Tweet,
     }}
   />
 );
