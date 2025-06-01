@@ -16,10 +16,10 @@ import { JsonLd } from "@/components/ui/json-ld";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const Location = async () => {
-  const location = await getCachedLocationData();
-  return <LocationSection location={location} />;
-};
+// const Location = async () => {
+//   const location = await getCachedLocationData();
+//   return <LocationSection location={location} />;
+// };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -55,9 +55,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <div className="absolute top-1 right-4 z-10 hidden xl:block">
                   <LiveActivity />
                 </div>
-                <div className="absolute right-4 bottom-2 z-10 hidden xl:block">
-                  <Location />
-                </div>
+                <div className="absolute right-4 bottom-2 z-10 hidden xl:block">{/* <Location /> */}</div>
                 <Footer />
               </main>
             </SpotifyProvider>

@@ -14,10 +14,10 @@ export const metadata: Metadata = createMetadata({
   image: "/og.png",
 });
 
-async function GithubGraphWithData() {
-  const data = await getCachedGithubData();
-  return <GithubGraph data={data} />;
-}
+// async function GithubGraphWithData() {
+//   const data = await getCachedGithubData();
+//   return <GithubGraph data={data} />;
+// }
 
 export default function Home() {
   return (
@@ -48,9 +48,7 @@ export default function Home() {
         <Header variant="primary" as="h2" className="my-6 text-2xl">
           Github Contributions
         </Header>
-        <Suspense fallback={<GithubGraph data={null} />}>
-          <GithubGraphWithData />
-        </Suspense>
+        <Suspense fallback={<GithubGraph data={null} />}>{/* <GithubGraphWithData /> */}</Suspense>
       </MotionChild>
 
       <MotionChild>
