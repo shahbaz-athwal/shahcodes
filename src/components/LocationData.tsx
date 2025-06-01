@@ -27,15 +27,15 @@ export const LocationSection = ({ location }: { location: LocationResponse | nul
 
   return (
     <>
-      <MotionParent>
-        <MotionChild>
-          <div className="text-muted-foreground font-mono text-sm">
-            <div>
-              Last Visit: {location.city}, {location.country} {flag}
-            </div>
-          </div>
-        </MotionChild>
-      </MotionParent>
+      {/* <MotionParent>
+        <MotionChild> */}
+      <div className="text-muted-foreground font-mono text-sm">
+        <div>
+          Last Visit: {location.city}, {location.country} {flag}
+        </div>
+      </div>
+      {/* </MotionChild>
+      </MotionParent> */}
       <LocationUpdater />
     </>
   );

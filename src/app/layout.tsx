@@ -6,9 +6,9 @@ import TopBar from "@/components/TopBar";
 import SpotifyPrefetch from "./spotify/SpotifyFetcher";
 import { SpotifyProvider } from "@/hooks/useSpotify";
 import LiveActivity from "@/components/LiveActivity";
-import { LocationSection } from "@/components/LocationData";
+import { LocationResponse, LocationSection } from "@/components/LocationData";
 import { PostHogProvider } from "@/components/PostHogProvider";
-import { getCachedLocationData } from "@/lib/redis";
+import redis from "@/lib/redis";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { WindowsEmojiPolyfill } from "@/components/ui/windows-emoji-polyfill";
 import BgImages from "@/components/ui/bg-images";
@@ -16,10 +16,10 @@ import { JsonLd } from "@/components/ui/json-ld";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// const Location = async () => {
-//   const location = await getCachedLocationData();
-//   return <LocationSection location={location} />;
-// };
+const Location = async () => {
+  const location = (await redis.get("lastLocation")) as LocationResponse | null;
+  return <LocationSection location={location} />;
+};
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
@@ -55,7 +55,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <div className="absolute top-1 right-4 z-10 hidden xl:block">
                   <LiveActivity />
                 </div>
-                <div className="absolute right-4 bottom-2 z-10 hidden xl:block">{/* <Location /> */}</div>
+                <div className="absolute right-4 bottom-2 z-10 hidden xl:block">
+                  <Location />
+                </div>
                 <Footer />
               </main>
             </SpotifyProvider>
