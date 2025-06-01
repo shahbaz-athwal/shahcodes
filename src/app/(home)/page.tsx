@@ -3,10 +3,11 @@ import Projects from "./Projects";
 import { MotionParent, MotionChild } from "@/components/Motion";
 import { GithubGraph } from "./GithubGraph";
 import Link from "next/link";
-import { getCachedGithubData } from "@/lib/redis";
+import redis, { getCachedGithubData } from "@/lib/redis";
 import { Suspense } from "react";
 import { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
+import { Activity } from "react-activity-calendar";
 
 export const metadata: Metadata = createMetadata({
   title: "Home",
@@ -14,10 +15,12 @@ export const metadata: Metadata = createMetadata({
   image: "/og.png",
 });
 
-// async function GithubGraphWithData() {
-//   const data = await getCachedGithubData();
-//   return <GithubGraph data={data} />;
-// }
+async function GithubGraphWithData() {
+  // const data = await getCachedGithubData();
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+  const data = (await redis.get("github")) as Activity[] | null;
+  return <GithubGraph data={data} />;
+}
 
 export default function Home() {
   return (
@@ -48,7 +51,9 @@ export default function Home() {
         <Header variant="primary" as="h2" className="my-6 text-2xl">
           Github Contributions
         </Header>
-        <Suspense fallback={<GithubGraph data={null} />}>{/* <GithubGraphWithData /> */}</Suspense>
+        <Suspense fallback={<GithubGraph data={null} />}>
+          <GithubGraphWithData />
+        </Suspense>
       </MotionChild>
 
       <MotionChild>
