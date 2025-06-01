@@ -1,6 +1,6 @@
 import { Header } from "@/components/ui/header";
 import Projects from "./Projects";
-import { MotionParent, MotionChild } from "@/components/Motion";
+import { MotionParent } from "@/components/Motion";
 import { GithubGraph } from "./GithubGraph";
 import Link from "next/link";
 import redis, { getCachedGithubData } from "@/lib/redis";
@@ -24,8 +24,8 @@ async function GithubGraphWithData() {
 
 export default function Home() {
   return (
-    <MotionParent>
-      <MotionChild>
+    <>
+      <div>
         <Header variant="primary" as="h2" className="mb-6 text-4xl">
           Hi, I&apos;m Shahbaz
         </Header>
@@ -45,18 +45,18 @@ export default function Home() {
           More Information{" "}
           <span className="ml-1 inline-block font-mono transition-transform group-hover:translate-x-2">→</span>
         </Link>
-      </MotionChild>
+      </div>
 
-      <MotionChild>
+      <div>
         <Header variant="primary" as="h2" className="my-6 text-2xl">
           Github Contributions
         </Header>
         <Suspense fallback={<GithubGraph data={null} />}>
           <GithubGraphWithData />
         </Suspense>
-      </MotionChild>
+      </div>
 
-      <MotionChild>
+      <div>
         <div>
           <Header variant="primary" as="h2" className="mt-4 text-2xl">
             Projects
@@ -65,11 +65,11 @@ export default function Home() {
             Below is a selection of recent projects that I&apos;ve worked on.
           </p>
         </div>
-      </MotionChild>
+      </div>
 
-      <MotionChild>
+      <div>
         <Projects />
-      </MotionChild>
-    </MotionParent>
+      </div>
+    </>
   );
 }
