@@ -33,7 +33,7 @@ export const GET = async (request: NextRequest) => {
             {title || "Shahbaz Singh"}
           </h1>
           {description && (
-            <p tw="max-w-[36rem] text-[28px] font-normal leading-[36px] tracking-tight text-gray-300 mt-6 mb-0">
+            <p tw="max-w-[36rem] text-[26px] font-mono leading-[36px] tracking-tight text-gray-300 mt-6 ml-2 mb-0">
               {description}
             </p>
           )}
