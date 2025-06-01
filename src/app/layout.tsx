@@ -17,6 +17,7 @@ import { JsonLd } from "@/components/ui/json-ld";
 const inter = Inter({ subsets: ["latin"] });
 
 const Location = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   const location = (await redis.get("lastLocation")) as LocationResponse | null;
   return <LocationSection location={location} />;
 };

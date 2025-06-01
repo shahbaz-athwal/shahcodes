@@ -17,7 +17,7 @@ export const metadata: Metadata = createMetadata({
 
 async function GithubGraphWithData() {
   // const data = await getCachedGithubData();
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
   const data = (await redis.get("github")) as Activity[] | null;
   return <GithubGraph data={data} />;
 }
