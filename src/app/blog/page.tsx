@@ -14,7 +14,7 @@ export default function BlogPage() {
     <div>
       {allPosts.map((post) => (
         <Link href={`/blog/${post._meta.path}`} key={post._meta.path}>
-          <div key={post.title}>
+          <div>
             <h2>{post.title}</h2>
             <p>{post.description}</p>
           </div>
