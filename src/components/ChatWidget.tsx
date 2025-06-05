@@ -6,19 +6,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
-import { MessageCircle, X, Send, Bot, User, Minimize2, Maximize2 } from "lucide-react";
+import { X, Send, Bot, User } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { IconAI } from "./ui/ai-icon";
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
+  const { messages, input, handleInputChange, handleSubmit } = useChat();
 
   const toggleChat = () => setIsOpen(!isOpen);
   const closeChat = () => setIsOpen(false);
-  const toggleMinimize = () => setIsMinimized(!isMinimized);
 
   return (
     <>
@@ -26,18 +23,18 @@ export default function ChatWidget() {
       <AnimatePresence>
         {!isOpen && (
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
+            initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed right-8 bottom-8 z-50"
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="fixed right-5 bottom-10 z-50"
           >
             <Button
               onClick={toggleChat}
-              size="lg"
-              className="h-14 w-14 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg transition-all duration-200 hover:from-blue-600 hover:to-purple-700 hover:shadow-xl"
+              size="icon"
+              className="h-14 w-14 rounded-full bg-stone-900 text-white shadow-lg transition-all duration-150 hover:bg-stone-800 dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-200"
             >
-              <MessageCircle className="h-6 w-6" />
+              <IconAI className="h-6 w-6" />
             </Button>
           </motion.div>
         )}
@@ -47,156 +44,113 @@ export default function ChatWidget() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed right-8 bottom-8 z-50"
+            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed right-5 bottom-10 z-50"
           >
-            <Card
-              className={`bg-background/95 w-96 border-0 shadow-2xl backdrop-blur-sm ${
-                isMinimized ? "h-16" : "h-[32rem]"
-              } transition-all duration-300 ease-in-out`}
-            >
+            <Card className="flex h-[32rem] w-96 flex-col rounded-3xl border border-stone-200 bg-white shadow-2xl dark:border-stone-700 dark:bg-stone-900">
               {/* Header */}
-              <CardHeader className="rounded-t-lg bg-gradient-to-r from-blue-500/10 to-purple-600/10 p-4 pb-2">
+              <CardHeader className="flex-shrink-0 rounded-t-3xl border-b border-stone-100 p-4 pb-3 dark:border-stone-700">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-blue-500 to-purple-600">
-                      <Bot className="h-4 w-4 text-white" />
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-stone-900 dark:bg-stone-100">
+                      <Bot className="h-4 w-4 text-white dark:text-stone-900" />
                     </div>
-                    <div>
-                      <CardTitle className="text-lg">AI Assistant</CardTitle>
-                      <Badge variant="secondary" className="text-xs">
-                        Online
-                      </Badge>
-                    </div>
+                    <CardTitle className="text-base font-medium text-stone-900 dark:text-stone-100">Zero AI</CardTitle>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <Button variant="ghost" size="sm" onClick={toggleMinimize} className="h-8 w-8 p-0">
-                      {isMinimized ? <Maximize2 className="h-4 w-4" /> : <Minimize2 className="h-4 w-4" />}
-                    </Button>
-                    <Button variant="ghost" size="sm" onClick={closeChat} className="h-8 w-8 p-0">
-                      <X className="h-4 w-4" />
-                    </Button>
-                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={closeChat}
+                    className="h-8 w-8 rounded-xl p-0 text-stone-400 hover:bg-stone-50 hover:text-stone-600 dark:text-stone-500 dark:hover:bg-stone-800 dark:hover:text-stone-300"
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
                 </div>
               </CardHeader>
 
-              {!isMinimized && (
-                <>
-                  <Separator />
-
-                  {/* Messages Area */}
-                  <CardContent className="flex-1 p-0">
-                    <ScrollArea className="h-80 p-4">
-                      <div className="space-y-4">
-                        {messages.length === 0 && (
-                          <div className="text-muted-foreground py-8 text-center">
-                            <Bot className="mx-auto mb-2 h-12 w-12 opacity-50" />
-                            <p className="text-sm">Hello! How can I help you today?</p>
-                          </div>
-                        )}
-
-                        {messages.map((message) => (
-                          <motion.div
-                            key={message.id}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className={`flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
-                          >
-                            <div
-                              className={`flex max-w-[80%] gap-2 ${message.role === "user" ? "flex-row-reverse" : ""}`}
-                            >
-                              <div
-                                className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${
-                                  message.role === "user"
-                                    ? "bg-blue-500"
-                                    : "bg-gradient-to-r from-purple-500 to-blue-500"
-                                }`}
-                              >
-                                {message.role === "user" ? (
-                                  <User className="h-4 w-4 text-white" />
-                                ) : (
-                                  <Bot className="h-4 w-4 text-white" />
-                                )}
-                              </div>
-                              <div
-                                className={`rounded-2xl px-4 py-2 ${
-                                  message.role === "user" ? "bg-blue-500 text-white" : "bg-muted"
-                                }`}
-                              >
-                                {message.parts.map((part, i) => {
-                                  switch (part.type) {
-                                    case "text":
-                                      return (
-                                        <p key={`${message.id}-${i}`} className="text-sm whitespace-pre-wrap">
-                                          {part.text}
-                                        </p>
-                                      );
-                                  }
-                                })}
-                              </div>
-                            </div>
-                          </motion.div>
-                        ))}
-
-                        {isLoading && (
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="flex justify-start gap-3"
-                          >
-                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-blue-500">
-                              <Bot className="h-4 w-4 text-white" />
-                            </div>
-                            <div className="bg-muted rounded-2xl px-4 py-2">
-                              <div className="flex gap-1">
-                                <div
-                                  className="bg-muted-foreground/50 h-2 w-2 animate-bounce rounded-full"
-                                  style={{ animationDelay: "0ms" }}
-                                />
-                                <div
-                                  className="bg-muted-foreground/50 h-2 w-2 animate-bounce rounded-full"
-                                  style={{ animationDelay: "150ms" }}
-                                />
-                                <div
-                                  className="bg-muted-foreground/50 h-2 w-2 animate-bounce rounded-full"
-                                  style={{ animationDelay: "300ms" }}
-                                />
-                              </div>
-                            </div>
-                          </motion.div>
-                        )}
+              {/* Messages Area */}
+              <CardContent className="flex-1 overflow-hidden p-0">
+                <ScrollArea className="h-full px-4">
+                  <div className="space-y-4">
+                    {messages.length === 0 && (
+                      <div className="py-8 text-center text-stone-500 dark:text-stone-400">
+                        <Bot className="mx-auto mb-3 h-10 w-10 text-stone-300 dark:text-stone-600" />
+                        <p className="text-sm">Hey! Ask me anything about Shahbaz.</p>
                       </div>
-                    </ScrollArea>
-                  </CardContent>
+                    )}
 
-                  <Separator />
-
-                  {/* Input Area */}
-                  <div className="p-4">
-                    <form onSubmit={handleSubmit} className="flex gap-2">
-                      <Input
-                        value={input}
-                        placeholder="Type your message..."
-                        onChange={handleInputChange}
-                        className="border-muted-foreground/20 transition-color flex-1"
-                        disabled={isLoading}
-                      />
-                      <Button
-                        type="submit"
-                        size="sm"
-                        disabled={isLoading || !input.trim()}
-                        className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
+                    {messages.map((message) => (
+                      <motion.div
+                        key={message.id}
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.15 }}
+                        className={`mb-3 flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
                       >
-                        <Send className="h-4 w-4" />
-                      </Button>
-                    </form>
+                        <div className={`flex max-w-[80%] gap-2 ${message.role === "user" ? "flex-row-reverse" : ""}`}>
+                          <div
+                            className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full ${
+                              message.role === "user"
+                                ? "bg-stone-900 dark:bg-stone-100"
+                                : "border border-stone-200 bg-stone-100 dark:border-stone-600 dark:bg-stone-800"
+                            }`}
+                          >
+                            {message.role === "user" ? (
+                              <User className="h-3.5 w-3.5 text-white dark:text-stone-900" />
+                            ) : (
+                              <Bot className="h-3.5 w-3.5 text-stone-600 dark:text-stone-300" />
+                            )}
+                          </div>
+                          <div
+                            className={`rounded-3xl px-4 py-2.5 ${
+                              message.role === "user"
+                                ? "bg-stone-900 text-white dark:bg-stone-100 dark:text-stone-900"
+                                : "border border-stone-100 bg-stone-50 text-stone-900 dark:border-stone-700 dark:bg-stone-800 dark:text-stone-100"
+                            }`}
+                          >
+                            {message.parts.map((part, i) => {
+                              switch (part.type) {
+                                case "text":
+                                  return (
+                                    <p
+                                      key={`${message.id}-${i}`}
+                                      className="text-sm leading-relaxed whitespace-pre-wrap"
+                                    >
+                                      {part.text}
+                                    </p>
+                                  );
+                              }
+                            })}
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
-                </>
-              )}
+                </ScrollArea>
+              </CardContent>
+
+              {/* Input Area */}
+              <div className="flex-shrink-0 rounded-b-3xl border-t border-stone-100 p-4 dark:border-stone-700">
+                <form onSubmit={handleSubmit} className="flex gap-2">
+                  <Input
+                    value={input}
+                    placeholder="Type your message..."
+                    onChange={handleInputChange}
+                    className="flex-1 rounded-2xl border-stone-200 bg-white transition-colors focus:border-stone-400 focus:ring-0 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-100 dark:placeholder-stone-400 dark:focus:border-stone-500"
+                  />
+                  <Button
+                    type="submit"
+                    size="sm"
+                    disabled={!input.trim()}
+                    className="rounded-2xl bg-stone-900 text-white transition-colors hover:bg-stone-800 disabled:bg-stone-300 disabled:text-stone-500 dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-200 dark:disabled:bg-stone-700 dark:disabled:text-stone-400"
+                  >
+                    <Send className="h-4 w-4" />
+                  </Button>
+                </form>
+              </div>
             </Card>
           </motion.div>
         )}
