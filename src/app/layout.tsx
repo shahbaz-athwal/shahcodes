@@ -13,6 +13,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { WindowsEmojiPolyfill } from "@/components/ui/windows-emoji-polyfill";
 import BgImages from "@/components/ui/bg-images";
 import { JsonLd } from "@/components/ui/json-ld";
+import ChatWidget from "@/components/ChatWidget";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -66,6 +67,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <WindowsEmojiPolyfill />
         <BgImages />
         <JsonLd />
+        <ChatWidget />
       </body>
     </html>
   );
