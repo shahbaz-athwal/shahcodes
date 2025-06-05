@@ -18,14 +18,7 @@ export const GET = async (request: NextRequest) => {
     (
       <div tw="flex flex-col justify-between w-full h-full relative p-16">
         {/* Background Image */}
-        <img
-          // @ts-expect-error "required"
-          src={backgroundSrc}
-          alt="background"
-          width={1200}
-          height={630}
-          tw="absolute top-0 left-0 z-0"
-        />
+        <img src={backgroundSrc as any} alt="background" width={1200} height={630} tw="absolute top-0 left-0 z-0" />
 
         {/* Main Content Area */}
         <div tw="flex flex-col justify-center flex-1 z-10">
@@ -42,8 +35,7 @@ export const GET = async (request: NextRequest) => {
         {/* Profile Section at Bottom */}
         <div tw="flex items-center z-10 mt-8">
           <img
-            // @ts-expect-error "required"
-            src={avatarSrc}
+            src={avatarSrc as any}
             alt="Shahbaz Singh"
             width={80}
             height={80}
