@@ -5,8 +5,15 @@ import ThemeToggle from "./ThemeToggle";
 import { DesktopMenuBar, MobileDock, MobileMenu } from "./MenuBar";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-const TopBar = () => {
+import { allLinks } from "@/lib/contants";
+
+interface TopBarProps {
+  isBlogEnabled?: boolean;
+}
+
+const TopBar = ({ isBlogEnabled = false }: TopBarProps) => {
   const pathname = usePathname();
+  const linksWithFeatureFlags = allLinks.filter((link) => link.href !== "/blog" || isBlogEnabled);
   return (
     <>
       <nav className="relative isolate z-10">
@@ -20,14 +27,14 @@ const TopBar = () => {
             <p className="text-muted-foreground block font-mono text-xs sm:hidden">{pathname}</p>
           </div>
           <div className="flex flex-1 justify-center">
-            <DesktopMenuBar path={pathname} />
+            <DesktopMenuBar path={pathname} links={linksWithFeatureFlags} />
           </div>
           <div className="flex items-center justify-end gap-2">
             <ThemeToggle />
-            <MobileMenu />
+            <MobileMenu links={linksWithFeatureFlags} />
           </div>
         </div>
-        <MobileDock path={pathname} />
+        <MobileDock path={pathname} links={linksWithFeatureFlags} />
       </nav>
     </>
   );

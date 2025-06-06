@@ -14,6 +14,7 @@ import { WindowsEmojiPolyfill } from "@/components/ui/windows-emoji-polyfill";
 import BgImages from "@/components/ui/bg-images";
 import { JsonLd } from "@/components/ui/json-ld";
 import ChatWidget from "@/components/ChatWidget";
+import PostHogClient from "@/lib/posthog";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,10 @@ const Location = async () => {
   return <LocationSection location={location} />;
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const posthog = PostHogClient();
+  const flags = await posthog.getAllFlags("anon");
+  const isBlogEnabled = flags["blog-page"];
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
@@ -45,8 +49,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <SpotifyProvider>
               <main className="flex h-screen flex-col items-center justify-between overflow-y-auto">
                 <div className="w-full grow">
-                  <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
-                    <TopBar />
+                  <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
+                    <TopBar isBlogEnabled={isBlogEnabled as boolean} />
                     <div className="mx-auto mt-16 max-w-2xl p-4 sm:mt-20 md:p-6">
                       <SpotifyPrefetch />
                       {children}

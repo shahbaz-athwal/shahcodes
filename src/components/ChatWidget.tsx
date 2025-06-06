@@ -9,6 +9,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { X, Send, User } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { IconAI } from "./ui/ai-icon";
+import { useFeatureFlagEnabled } from "posthog-js/react";
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,6 +26,12 @@ export default function ChatWidget() {
     }
   }, [messages, isOpen]);
 
+  const isChatWidgetEnabled = useFeatureFlagEnabled("chat-widget");
+
+  if (!isChatWidgetEnabled) {
+    return null;
+  }
+
   return (
     <>
       {/* Chat Widget Button */}
@@ -34,7 +41,7 @@ export default function ChatWidget() {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
-            whileHover={{ scale: 1.05, y: -2 }}
+            whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
             className="fixed right-4 bottom-20 z-50 sm:right-5 sm:bottom-10"
