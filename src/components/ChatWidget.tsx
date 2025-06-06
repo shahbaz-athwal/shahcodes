@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { X, Send, Bot, User } from "lucide-react";
+import { X, Send, User } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { IconAI } from "./ui/ai-icon";
 
@@ -34,13 +34,15 @@ export default function ChatWidget() {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
             className="fixed right-4 bottom-20 z-50 sm:right-5 sm:bottom-10"
           >
             <Button
               onClick={toggleChat}
               size="icon"
-              className="h-12 w-12 rounded-full bg-stone-900 text-white shadow-lg transition-all duration-150 hover:bg-stone-800 sm:h-14 sm:w-14 dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-200"
+              className="h-12 w-12 rounded-full bg-stone-900 text-white shadow-lg transition-all duration-150 hover:bg-stone-800 hover:shadow-xl sm:h-14 sm:w-14 dark:bg-stone-100 dark:text-stone-900 dark:hover:bg-stone-200"
             >
               <IconAI className="h-5 w-5 sm:h-6 sm:w-6" />
             </Button>
@@ -111,7 +113,7 @@ export default function ChatWidget() {
                             {message.role === "user" ? (
                               <User className="h-3.5 w-3.5 text-white dark:text-stone-900" />
                             ) : (
-                              <Bot className="h-3.5 w-3.5 text-stone-600 dark:text-stone-300" />
+                              <IconAI className="h-3.5 w-3.5 text-stone-600 dark:text-stone-300" />
                             )}
                           </div>
                           <div
@@ -149,6 +151,7 @@ export default function ChatWidget() {
               <div className="flex-shrink-0 rounded-b-2xl border-t border-stone-100 p-4 sm:rounded-b-3xl dark:border-stone-700">
                 <form onSubmit={handleSubmit} className="flex gap-2">
                   <Input
+                    autoFocus
                     value={input}
                     placeholder="Type your message..."
                     onChange={handleInputChange}
