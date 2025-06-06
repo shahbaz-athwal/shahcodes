@@ -68,7 +68,7 @@ const SpotifyPlayer = () => {
                 rel="noopener noreferrer"
                 title="Listen on Spotify"
                 href={`https://open.spotify.com/track/${listening.track_id}`}
-                className="mb-3 aspect-square w-[100%] max-w-[400px] overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl sm:mb-0 sm:h-44 sm:w-44"
+                className="mb-3 aspect-square w-[100%] max-w-[400px] overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl sm:mb-0 sm:h-44 sm:w-44"
               >
                 <Image
                   height={400}
