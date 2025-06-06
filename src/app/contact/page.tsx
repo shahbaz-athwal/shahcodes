@@ -4,44 +4,13 @@ import { MotionChild, MotionParent } from "@/components/Motion";
 import WhisperellaBox from "@/app/contact/WhisperellaBox";
 import { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
+import { contacts } from "@/lib/contants";
 
 export const metadata: Metadata = createMetadata({
   title: "Contact",
   description: "Contact me for any queries or collaborations.",
   ogText: "Contact me for any queries or collaborations.",
 });
-
-export const contacts: {
-  method: string;
-  link: string;
-  label: string;
-}[] = [
-  {
-    method: "Email",
-    link: "mailto:shahbazathwal2107@gmail.com",
-    label: "shahbazathwal2107@gmail.com",
-  },
-  {
-    method: "GitHub",
-    link: "https://github.com/shahbaz-athwal",
-    label: "git/shahbaz-athwal",
-  },
-  {
-    method: "LinkedIn",
-    link: "https://www.linkedin.com/in/shahbaz-athwal/",
-    label: "in/shahbaz-athwal",
-  },
-  {
-    method: "X",
-    link: "https://x.com/shahcodes",
-    label: "@shahcodes",
-  },
-  {
-    method: "Instagram",
-    link: "https://www.instagram.com/shahbaz_athwal/",
-    label: "@shahbaz_athwal",
-  },
-];
 
 function Page() {
   return (

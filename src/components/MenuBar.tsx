@@ -1,43 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import { IconHome, IconMusic, IconMail, IconBriefcase, IconMenu2, IconX, IconPencilBolt } from "@tabler/icons-react";
+import { IconMenu2, IconX } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { MotionDiv } from "@/lib/motion";
 import Link from "next/link";
 import { HoveredLink, MenuItem, Menu } from "@/components/ui/mobile-menu";
-
-const links = [
-  {
-    name: "About",
-    href: "/",
-    icon: IconHome,
-  },
-  {
-    name: "Details",
-    href: "/details",
-    icon: IconBriefcase,
-  },
-  {
-    name: "Blogs",
-    href: "/blog",
-    icon: IconPencilBolt,
-  },
-  {
-    name: "Spotify",
-    href: "/spotify",
-    icon: IconMusic,
-  },
-  {
-    name: "Contact",
-    href: "/contact",
-    icon: IconMail,
-  },
-];
+import { Link as LinkType } from "@/lib/contants";
 
 const baseMenuClass =
   "h-fit rounded-full px-4 py-2 backdrop-blur-sm transition-opacity bg-black/10 dark:bg-white/15 transition-colors duration-300 ease-in-out";
 
-export const DesktopMenuBar = ({ path }: { path: string }) => {
+export const DesktopMenuBar = ({ path, links }: { path: string; links: LinkType[] }) => {
   return (
     <div className={cn(baseMenuClass, "mx-auto hidden w-fit md:block")}>
       <ul className="flex w-fit items-center justify-between gap-1 sm:gap-2">
@@ -80,7 +53,7 @@ export const DesktopMenuBar = ({ path }: { path: string }) => {
   );
 };
 
-export const MobileDock = ({ path }: { path: string }) => {
+export const MobileDock = ({ path, links }: { path: string; links: LinkType[] }) => {
   return (
     <div className={cn(baseMenuClass, "fixed bottom-4 left-1/2 z-50 block -translate-x-1/2 md:hidden")}>
       <ul className="flex w-[250px] items-center justify-between gap-2">
@@ -122,7 +95,7 @@ export const MobileDock = ({ path }: { path: string }) => {
   );
 };
 
-export const MobileMenu = () => {
+export const MobileMenu = ({ links }: { links: LinkType[] }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
