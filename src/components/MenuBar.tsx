@@ -49,9 +49,10 @@ export const DesktopMenuBar = ({ path }: { path: string }) => {
                 className={cn(
                   "flex items-center justify-center px-3 py-1 text-[13px] transition sm:text-[15px]",
                   {
-                    "text-white hover:scale-105 hover:text-gray-100 dark:text-black dark:hover:text-zinc-950": isActive,
+                    "text-stone-100 hover:scale-105 hover:text-stone-100 dark:text-stone-800 dark:hover:text-stone-900":
+                      isActive,
                   },
-                  { "hover:text-primary dark:hover:text-primary text-zinc-800 dark:text-zinc-400": !isActive }
+                  { "hover:text-primary dark:hover:text-primary text-stone-800 dark:text-stone-400": !isActive }
                 )}
                 href={link.href}
               >

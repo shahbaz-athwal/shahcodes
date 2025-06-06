@@ -88,7 +88,7 @@ export default function ChatWidget() {
                     {messages.length === 0 && (
                       <div className="py-8 text-center text-stone-500 dark:text-stone-400">
                         <IconAI className="mx-auto mb-3 h-10 w-10 text-stone-300 dark:text-stone-600" />
-                        <p className="text-base">Hey! Ask me anything about Shahbaz.</p>
+                        <p className="text-base">Hey! Ask me anything about Shahbaz</p>
                       </div>
                     )}
 

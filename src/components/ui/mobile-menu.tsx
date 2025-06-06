@@ -27,7 +27,7 @@ export const MenuItem = ({
     <div onClick={() => setActive(active ? null : item)} className="relative">
       <motion.div
         transition={{ duration: 0.2 }}
-        className="cursor-pointer text-black transition-all duration-300 hover:scale-110 hover:opacity-[0.9] dark:text-white"
+        className="cursor-pointer text-stone-900 transition-all duration-300 hover:scale-110 hover:opacity-[0.9] dark:text-stone-100"
       >
         {item}
       </motion.div>
@@ -40,7 +40,7 @@ export const MenuItem = ({
             transition={transition}
           >
             <div className="absolute top-[calc(100%_+_1.2rem)] right-0">
-              <div className="shadow-3xl text-primary rounded-tl-3xl rounded-b-3xl border border-black/[0.2] bg-white dark:border-white/[0.2] dark:bg-stone-950">
+              <div className="shadow-3xl text-primary rounded-tl-3xl rounded-b-3xl border border-stone-300 bg-white dark:border-stone-500/50 dark:bg-stone-900">
                 <div className="h-full w-max p-6" onClick={(e) => e.stopPropagation()}>
                   {children}
                 </div>
@@ -83,7 +83,7 @@ export const Menu = ({
 
 export const HoveredLink = ({ children, onClick, ...rest }: any) => {
   return (
-    <Link {...rest} className="text-neutral-700 hover:text-black dark:text-neutral-200" onClick={onClick}>
+    <Link {...rest} className="text-stone-700 hover:text-black dark:text-stone-200" onClick={onClick}>
       {children}
     </Link>
   );

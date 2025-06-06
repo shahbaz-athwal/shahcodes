@@ -38,7 +38,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
       </head>
       <body
-        className={`${inter.className} antialiased selection:bg-purple-800/90 selection:text-white sm:overflow-hidden dark:bg-stone-950 dark:selection:bg-yellow-800/90`}
+        className={`${inter.className} bg-stone-200/10 antialiased selection:bg-purple-800/90 selection:text-white sm:overflow-hidden dark:bg-stone-950 dark:selection:bg-yellow-800/90 md:dark:bg-stone-900/50`}
       >
         <PostHogProvider>
           <TooltipProvider>

@@ -17,7 +17,7 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
   if (!codeData) return null;
 
   return (
-    <Card className="w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-xs 2xl:w-72 dark:bg-stone-800/50 dark:text-white">
+    <Card className="w-64 rounded-2xl px-4 py-3 2xl:w-72">
       <div className="flex gap-3">
         <div className="relative h-[72px] w-[58px] shrink-0">
           <div className="my-1 flex h-14 w-14 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
@@ -48,9 +48,9 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
 
         <div className="flex-1 space-y-0.5 overflow-hidden">
           <div className="text-sm font-medium">Cursor</div>
-          <div className="text-xs text-gray-600 dark:text-gray-400">{codeData.details}</div>
-          <div className="text-xs text-gray-600 dark:text-gray-400">{codeData.state}</div>
-          <div className="flex items-center gap-1 font-mono text-[11px] text-gray-500 dark:text-gray-500">
+          <div className="text-xs text-stone-600 dark:text-stone-400">{codeData.details}</div>
+          <div className="text-xs text-stone-600 dark:text-stone-400">{codeData.state}</div>
+          <div className="flex items-center gap-1 font-mono text-[11px] text-stone-500 dark:text-stone-500">
             <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
             {elapsedFormatted}
           </div>
@@ -80,29 +80,23 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
   const albumUrl = `https://open.spotify.com/search/${encodeURIComponent(spotifyData.album)}`;
 
   return (
-    <Card className="my-4 w-64 rounded-md border-none bg-stone-100/80 px-3 py-2 text-gray-900 shadow-xs 2xl:w-72 dark:bg-stone-800/50 dark:text-white">
+    <Card className="my-4 w-64 rounded-2xl px-4 py-3 2xl:w-72">
       <div className="flex gap-3">
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Link
-              href={albumUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="my-1 block h-14 w-14 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700"
-            >
-              <Image
-                src={spotifyData.album_art_url}
-                alt={spotifyData.album}
-                className="h-full w-full object-cover"
-                width={48}
-                height={48}
-              />
-            </Link>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>{spotifyData.album}</p>
-          </TooltipContent>
-        </Tooltip>
+        <Link
+          href={albumUrl}
+          title={spotifyData.album}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="my-1 block h-14 w-14 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700"
+        >
+          <Image
+            src={spotifyData.album_art_url}
+            alt={spotifyData.album}
+            className="h-full w-full object-cover"
+            width={48}
+            height={48}
+          />
+        </Link>
 
         <div className="flex-1 overflow-hidden">
           <Tooltip>
@@ -121,21 +115,15 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
             </TooltipContent>
           </Tooltip>
 
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Link
-                href={artistUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-fit max-w-full truncate text-xs text-gray-600 hover:underline dark:text-gray-400"
-              >
-                {spotifyData.artist}
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{spotifyData.artist}</p>
-            </TooltipContent>
-          </Tooltip>
+          <Link
+            href={artistUrl}
+            title={spotifyData.artist}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-fit max-w-full truncate text-xs text-stone-600 dark:text-stone-400"
+          >
+            {spotifyData.artist}
+          </Link>
 
           <div className="mb-1">
             <div className="mb-0.5 flex justify-between font-mono text-[11px] text-gray-500">

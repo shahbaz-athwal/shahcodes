@@ -22,7 +22,7 @@ export default function TopArtists({ topArtists }: Props) {
                 src={artist.thumbnail}
                 alt={artist.name}
                 priority
-                className="h-64 w-full rounded-lg object-cover brightness-[0.6] lg:h-80"
+                className="h-64 w-full rounded-2xl object-cover brightness-[0.4] lg:h-80"
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="text-xl font-semibold text-white">{artist.name}</span>
