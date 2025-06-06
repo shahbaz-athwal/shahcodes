@@ -12,7 +12,7 @@ const RecentlyPlayed = () => {
   return (
     recentlyPlayed && (
       <div className="relative overflow-hidden">
-        <h1 className="pb-6 text-3xl font-bold leading-tight">
+        <h1 className="pb-6 text-3xl leading-tight font-bold">
           <TextGradient variant="center">Recently Played</TextGradient>
         </h1>
         <Carousel className="w-full" plugins={[Autoplay({ delay: 4000 })]}>
@@ -42,7 +42,7 @@ const RecentlyPlayed = () => {
                         className="h-64 w-full rounded-lg object-cover shadow-md brightness-[0.5] dark:shadow-zinc-800/30"
                       />
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-                        <h3 className="max-w-56 overflow-hidden text-ellipsis whitespace-nowrap text-xl font-semibold sm:max-w-full">
+                        <h3 className="max-w-56 overflow-hidden text-xl font-semibold text-ellipsis whitespace-nowrap sm:max-w-full">
                           {item.title}
                         </h3>
                         <p className="text-cente max-w-56 overflow-hidden text-ellipsis whitespace-nowrap text-gray-300 sm:max-w-full">
@@ -55,8 +55,8 @@ const RecentlyPlayed = () => {
               ))}
             </CarouselContent>
           </div>
-          <CarouselPrevious className="absolute left-0 top-1/2 -mx-2 -rotate-[90deg] bg-transparent transition-transform duration-300 hover:scale-125" />
-          <CarouselNext className="absolute right-0 top-1/2 -mx-2 rotate-90 bg-transparent transition-transform duration-300 hover:scale-125" />
+          <CarouselPrevious className="absolute top-1/2 left-0 -mx-2 -rotate-[90deg] bg-transparent transition-transform duration-300 hover:scale-125" />
+          <CarouselNext className="absolute top-1/2 right-0 -mx-2 rotate-90 bg-transparent transition-transform duration-300 hover:scale-125" />
         </Carousel>
       </div>
     )

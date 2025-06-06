@@ -65,12 +65,12 @@ export const SpotifyProvider: React.FC<SpotifyProviderProps> = ({ children }) =>
   // Spotify Actions
   const setSpotifyListening = useCallback(
     (payload: SpotifyData | null) => dispatch({ type: types.SET_SPOTIFY_LISTENING, payload }),
-    [dispatch],
+    [dispatch]
   );
 
   const setSpotifyRecentlyPlayed = useCallback(
     (payload: SpotifyPlayedItem[] | null) => dispatch({ type: types.SET_SPOTIFY_RECENTLY_PLAYED, payload }),
-    [dispatch],
+    [dispatch]
   );
 
   // Value Memoization
@@ -80,7 +80,7 @@ export const SpotifyProvider: React.FC<SpotifyProviderProps> = ({ children }) =>
       setSpotifyListening,
       setSpotifyRecentlyPlayed,
     }),
-    [state, setSpotifyListening, setSpotifyRecentlyPlayed],
+    [state, setSpotifyListening, setSpotifyRecentlyPlayed]
   );
 
   return <SpotifyContext.Provider value={value}>{children}</SpotifyContext.Provider>;

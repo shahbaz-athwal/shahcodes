@@ -13,7 +13,7 @@ export const getCachedGithubData = cache(
     return (await redis.get("github")) as Activity[] | null;
   },
   ["github-data"],
-  { tags: ["github"] },
+  { tags: ["github"] }
 );
 
 export const getCachedLocationData = cache(
@@ -21,7 +21,7 @@ export const getCachedLocationData = cache(
     return (await redis.get("lastLocation")) as LocationResponse | null;
   },
   ["location-data"],
-  { tags: ["location"] },
+  { tags: ["location"] }
 );
 
 export default redis;

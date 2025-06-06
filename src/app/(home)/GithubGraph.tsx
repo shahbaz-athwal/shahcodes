@@ -10,7 +10,7 @@ type GithubGraphProps = {
 export const GithubGraph = ({ data }: GithubGraphProps) => {
   const { theme, mounted } = useThemeToggle();
 
-  if (!mounted) return <div className="w-32 h-[135px] opacity-0" aria-hidden="true" />;
+  if (!mounted) return <div className="h-[135px] w-32 opacity-0" aria-hidden="true" />;
 
   return (
     <MotionDiv

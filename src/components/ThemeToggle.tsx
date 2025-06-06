@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 
 const useHasMounted = () => {
   const [hasMounted, setHasMounted] = useState(false);
-  
+
   useEffect(() => {
     setHasMounted(true);
   }, []);
-  
+
   return hasMounted;
 };
 
@@ -18,14 +18,14 @@ export const useThemeToggle = (): {
   setTheme: (theme: string) => void;
   mounted: boolean;
 } => {
-  const { theme, setTheme } = useTheme()
-  const mounted = useHasMounted()
+  const { theme, setTheme } = useTheme();
+  const mounted = useHasMounted();
 
-  return { theme: theme as "dark" | "light", setTheme, mounted }
-}
+  return { theme: theme as "dark" | "light", setTheme, mounted };
+};
 
 const ThemeToggle = () => {
-  const { theme, setTheme, mounted } = useThemeToggle()
+  const { theme, setTheme, mounted } = useThemeToggle();
 
   const handleThemeChange = (theme: string, e: React.MouseEvent) => {
     // Only proceed if the browser supports view transitions
@@ -33,11 +33,11 @@ const ThemeToggle = () => {
       // Get click coordinates for the wave effect origin
       const x = e.clientX;
       const y = e.clientY;
-      
+
       // Set the CSS variables for the wave effect origin
-      document.documentElement.style.setProperty('--x', `${x}px`);
-      document.documentElement.style.setProperty('--y', `${y}px`);
-      
+      document.documentElement.style.setProperty("--x", `${x}px`);
+      document.documentElement.style.setProperty("--y", `${y}px`);
+
       // Start the view transition
       document.startViewTransition(() => {
         setTheme(theme);
@@ -46,12 +46,10 @@ const ThemeToggle = () => {
       // Fallback for browsers that don't support view transitions
       setTheme(theme);
     }
-  }
+  };
 
   if (!mounted) {
-    return (
-      <div className="w-0 sm:w-6 h-6 opacity-0" />
-    )
+    return <div className="h-6 w-0 opacity-0 sm:w-6" />;
   }
 
   return (

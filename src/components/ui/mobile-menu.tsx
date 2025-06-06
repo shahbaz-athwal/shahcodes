@@ -39,8 +39,8 @@ export const MenuItem = ({
             exit={{ opacity: 0, scale: 0.8, y: 10 }}
             transition={transition}
           >
-            <div className="absolute right-0 top-[calc(100%_+_1.2rem)]">
-              <div className="shadow-3xl rounded-b-3xl rounded-tl-3xl border border-black/[0.2] bg-white text-primary dark:border-white/[0.2] dark:bg-stone-950">
+            <div className="absolute top-[calc(100%_+_1.2rem)] right-0">
+              <div className="shadow-3xl text-primary rounded-tl-3xl rounded-b-3xl border border-black/[0.2] bg-white dark:border-white/[0.2] dark:bg-stone-950">
                 <div className="h-full w-max p-6" onClick={(e) => e.stopPropagation()}>
                   {children}
                 </div>
@@ -69,7 +69,7 @@ export const Menu = ({
         setActive(null);
       }
     },
-    [setActive],
+    [setActive]
   );
 
   // Add/remove event listener on mount/unmount

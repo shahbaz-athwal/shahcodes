@@ -2,18 +2,16 @@ import { Header } from "@/components/ui/header";
 import { Title } from "@/components/ui/title";
 import { MotionChild, MotionParent } from "@/components/Motion";
 import WhisperellaBox from "@/app/contact/WhisperellaBox";
-
 import { Metadata } from "next";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: "Contact",
   description: "Contact me for any queries or collaborations.",
-  alternates: {
-    canonical: "/contact",
-  },
-};
+  ogText: "Contact me for any queries or collaborations.",
+});
 
-const contacts: {
+export const contacts: {
   method: string;
   link: string;
   label: string;

@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
+/* ===== CUSTOM VARIANTS ===== */
 @custom-variant dark (&:is(.dark *));
 
+/* ===== THEME CONFIGURATION ===== */
 @theme {
+  /* Color Variables */
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
@@ -30,127 +33,96 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
+  /* Border Radius */
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
+  /* Animations */
   --animate-text-gradient: textGradient 5s ease infinite;
   --animate-in: animateIn 0.5s ease;
   --animate-out: animateOut 0.2s ease;
-  @keyframes textGradient {
-    0%,
-    100% {
-      background-size: 200% 200%;
-      background-position: left center;
-    }
-    50% {
-      background-size: 200% 200%;
-      background-position: right center;
-    }
-  }
-
-  @keyframes animateIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes animateOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
 }
 
-/* View Transition Wave Effect */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
+/* ===== BASE LAYER ===== */
+/* CSS Variables for Light/Dark Themes */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 240 5.9% 10%;
+  --radius: 0.5rem;
 }
 
-::view-transition-old(root) {
-  /* Ensure the outgoing view (old theme) is beneath */
-  z-index: 0;
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 240 5.9% 10%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 240 4.9% 83.9%;
 }
 
-::view-transition-new(root) {
-  /* Ensure the incoming view (new theme) is always on top */
-  z-index: 1;
-}
-
-@keyframes reveal {
-  from {
-    /* Use CSS variables for the origin, defaulting to center if not set */
-    clip-path: circle(0% at var(--x, 50%) var(--y, 50%));
-    opacity: 0.7;
-  }
-  to {
-    /* Use CSS variables for the origin, defaulting to center if not set */
-    clip-path: circle(150% at var(--x, 50%) var(--y, 50%));
-    opacity: 1;
-  }
-}
-
-::view-transition-new(root) {
-  /* Apply the reveal animation */
-  animation: reveal 0.6s ease-in-out forwards;
-}
-
-/* Mention styles */
-.mention {
-  @apply bg-primary/10 text-primary px-1 rounded-md;
-}
-
-@keyframes text {
-  from {
-    background-position: 0% center;
-  }
-  to {
-    background-position: -200% center;
-  }
-}
-
-.animate-text {
-  animation: text 3s linear infinite;
-}
-
-@utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-  @media (width >= --theme(--breakpoint-sm)) {
-    max-width: none;
-  }
-  @media (width >= 1400px) {
-    max-width: 1400px;
-  }
-}
-
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-border, currentcolor);
   }
-}
+  .shiki {
+    @apply bg-secondary/50 border-border/50 my-4 rounded-lg border;
+    @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
+    position: relative;
+  }
+  .shiki span {
+    @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
+  }
+  .shiki code {
+    @apply overflow-x-auto p-3 text-[13px];
+    display: inherit;
+    counter-reset: line;
+  }
+  .shiki .line:before {
+    content: counter(line);
+    counter-increment: line;
+    @apply text-muted-foreground mr-8 inline-block w-3 text-right text-xs;
+  }
+  .shiki[title]:before {
+    content: attr(title);
+    @apply text-muted-foreground mb-0 block border-b p-3 text-xs;
+  }
 
-@layer base {
+  /* Custom Scrollbar Styles */
   ::-webkit-scrollbar {
     @apply h-2 w-2;
   }
@@ -167,60 +139,78 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-zinc-600/60;
   }
-}
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
-    --radius: 0.5rem;
+  /* Code block copy button styles */
+  .code-block-wrapper {
+    @apply relative;
   }
 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+  .code-block-wrapper .copy-button {
+    @apply absolute top-5 right-3 opacity-0 transition-opacity duration-200;
+  }
+
+  .code-block-wrapper:hover .copy-button {
+    @apply opacity-100;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+/* ===== KEYFRAMES ===== */
+@keyframes textGradient {
+  0%,
+  100% {
+    background-size: 200% 200%;
+    background-position: left center;
   }
-  body {
-    @apply bg-background text-foreground;
+  50% {
+    background-size: 200% 200%;
+    background-position: right center;
   }
+}
+
+@keyframes animateIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes animateOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes reveal {
+  from {
+    clip-path: circle(0% at var(--x, 50%) var(--y, 50%));
+    opacity: 0.7;
+  }
+  to {
+    clip-path: circle(150% at var(--x, 50%) var(--y, 50%));
+    opacity: 1;
+  }
+}
+
+/* ===== VIEW TRANSITIONS ===== */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  /* Ensure the outgoing view (old theme) is beneath */
+  z-index: 0;
+}
+
+::view-transition-new(root) {
+  /* Ensure the incoming view (new theme) is always on top */
+  z-index: 1;
+  /* Apply the reveal animation */
+  animation: reveal 0.8s ease-in-out forwards;
 }

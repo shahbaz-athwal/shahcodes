@@ -106,10 +106,10 @@ const projects: ProjectCardProps[] = [
 
 const ProjectCard = ({ title, description, href, code, image, badges }: ProjectCardProps) => {
   return (
-    <div className="mx-2 flex h-full w-fit flex-col space-y-6 rounded-xl bg-zinc-100 p-8 dark:bg-stone-700/25 md:mx-0">
+    <div className="mx-2 flex h-full w-fit flex-col space-y-6 rounded-xl bg-zinc-100 p-8 md:mx-0 md:p-6 xl:p-8 dark:bg-stone-700/25">
       <div>
         <h3 className="text-[17px] font-medium sm:text-lg">{title}</h3>
-        <p className="text-base dark:text-gray-300 sm:text-[17px]">{description}</p>
+        <p className="text-base sm:text-[17px] dark:text-gray-300">{description}</p>
       </div>
       <a href={href || code} target="_blank">
         <div className="w-fit overflow-hidden rounded-lg shadow-xl dark:shadow-zinc-800/50">
@@ -121,7 +121,7 @@ const ProjectCard = ({ title, description, href, code, image, badges }: ProjectC
           <Badge
             key={badge}
             variant={"secondary"}
-            className="bg-zinc-200 font-normal hover:bg-zinc-300 hover:cursor-text dark:bg-zinc-700/70"
+            className="bg-zinc-200 font-normal hover:cursor-text hover:bg-zinc-300 dark:bg-zinc-700/70"
           >
             {badge}
           </Badge>

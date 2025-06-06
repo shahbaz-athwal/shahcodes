@@ -5,14 +5,13 @@ import { MotionChild, MotionParent } from "@/components/Motion";
 import TopArtists from "./TopArtists";
 import SpotifyPlayer from "./SpotifyPlayer";
 import RecentlyPlayed from "./RecentlyPlayed";
+import { createMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: "Spotify",
   description: "what am I listening on Spotify?",
-  alternates: {
-    canonical: "/spotify",
-  },
-};
+  ogText: "What am I listening on Spotify?",
+});
 
 const cachedTopArtists = cache(async () => topArtists(), [], {
   revalidate: 60480, //weekly
