@@ -8,6 +8,7 @@ import { TextGradient } from "@/components/ui/textgradient";
 import { useElapsedTime } from "@/hooks/useElapsedTime";
 import { useSpotify } from "@/hooks/useSpotify";
 import { FaSpotify } from "react-icons/fa";
+import { Card } from "@/components/ui/card";
 
 const PlayerAnimation = () => {
   return <Lottie className="invert dark:invert-0" loop animationData={PlayerJson} play />;
@@ -25,7 +26,7 @@ const ProgressBar = ({ startTime, endTime }: { startTime: number; endTime: numbe
 
   return (
     <>
-      <div className="relative h-1 w-full overflow-hidden rounded-full bg-gray-300/70 dark:bg-gray-800/70">
+      <div className="relative h-1 w-full overflow-hidden rounded-full bg-stone-300/70 dark:bg-stone-700/70">
         <div
           ref={progressRef}
           className="absolute top-0 left-0 h-full rounded-full bg-stone-700 dark:bg-stone-400"
@@ -48,7 +49,7 @@ const SpotifyPlayer = () => {
       <h1 className="pb-10 text-3xl leading-tight font-extrabold">
         <TextGradient>Currently Playing</TextGradient>
       </h1>
-      <div className="mx-2 space-y-6 rounded-xl bg-zinc-100 p-8 sm:mx-0 dark:bg-stone-700/25">
+      <Card className="mx-2 space-y-6 p-8 sm:mx-0">
         <div className="flex min-h-fit flex-col items-center sm:flex-row sm:items-start sm:space-x-5">
           {!listening ? (
             <div className="flex h-[176px] w-full flex-col items-center justify-center space-y-4 px-2 sm:-m-8 sm:flex-row sm:gap-28 sm:space-y-0">
@@ -67,7 +68,7 @@ const SpotifyPlayer = () => {
                 rel="noopener noreferrer"
                 title="Listen on Spotify"
                 href={`https://open.spotify.com/track/${listening.track_id}`}
-                className="mb-3 aspect-square w-[100%] max-w-[400px] overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl sm:mb-0 sm:h-44 sm:w-44"
+                className="mb-3 aspect-square w-[100%] max-w-[400px] overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl sm:mb-0 sm:h-44 sm:w-44"
               >
                 <Image
                   height={400}
@@ -95,7 +96,7 @@ const SpotifyPlayer = () => {
             </>
           )}
         </div>
-      </div>
+      </Card>
     </div>
   );
 };

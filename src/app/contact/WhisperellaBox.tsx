@@ -51,9 +51,9 @@ export default function WhisperellaBox() {
   return (
     <div className="mx-auto w-full">
       <div className="flex items-center justify-center">
-        <Separator className="my-4 w-5/12 rounded" />
-        <div className="px-2 pb-1 tracking-tight text-zinc-500">or</div>
-        <Separator className="my-4 w-5/12 rounded" />
+        <Separator className="my-4 w-5/12 rounded bg-stone-300 dark:bg-stone-500/50" />
+        <div className="px-2 pb-1 tracking-tight text-stone-500">or</div>
+        <Separator className="my-4 w-5/12 rounded bg-stone-300 dark:bg-stone-500/50" />
       </div>
 
       <p className="my-4 text-xl">Leave an anonymous message</p>
@@ -66,7 +66,7 @@ export default function WhisperellaBox() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Write your anonymous message here"
-            className="resize-none rounded-xl dark:bg-stone-800/50 dark:text-white"
+            className="resize-none rounded-2xl border border-stone-300 bg-stone-200/50 text-stone-900 dark:border-stone-500/50 dark:bg-stone-800/50 dark:text-stone-300"
             rows={3}
             required
           />

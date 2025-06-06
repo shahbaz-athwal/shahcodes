@@ -39,7 +39,7 @@ const RecentlyPlayed = () => {
                         priority
                         src={item.thumbnail!}
                         alt={item.title!}
-                        className="h-64 w-full rounded-lg object-cover shadow-md brightness-[0.5] dark:shadow-zinc-800/30"
+                        className="h-64 w-full rounded-2xl object-cover shadow-md brightness-[0.4] dark:shadow-stone-800/30"
                       />
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
                         <h3 className="max-w-56 overflow-hidden text-xl font-semibold text-ellipsis whitespace-nowrap sm:max-w-full">
@@ -55,8 +55,8 @@ const RecentlyPlayed = () => {
               ))}
             </CarouselContent>
           </div>
-          <CarouselPrevious className="absolute top-1/2 left-0 -mx-2 -rotate-[90deg] bg-transparent transition-transform duration-300 hover:scale-125" />
-          <CarouselNext className="absolute top-1/2 right-0 -mx-2 rotate-90 bg-transparent transition-transform duration-300 hover:scale-125" />
+          <CarouselPrevious className="absolute top-1/2 left-0 -mx-2 -rotate-[90deg] border-none bg-transparent transition-transform duration-300 hover:scale-125 hover:bg-transparent" />
+          <CarouselNext className="absolute top-1/2 right-0 -mx-2 rotate-90 border-none bg-transparent transition-transform duration-300 hover:scale-125 hover:bg-transparent" />
         </Carousel>
       </div>
     )

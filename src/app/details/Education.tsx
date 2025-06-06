@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export function Education() {
   return (
-    <Card className="mb-8 rounded-xl border-none bg-zinc-100 dark:bg-stone-700/25">
+    <Card className="mb-8">
       <CardHeader className="pb-2">
         <h2 className="text-3xl font-bold dark:text-zinc-200">Education</h2>
       </CardHeader>

@@ -1,4 +1,4 @@
-import { contacts } from "@/app/contact/page";
+import { contacts } from "@/lib/contants";
 import type { Person, WithContext } from "schema-dts";
 
 const baseUrl = "https://shahcodes.in";

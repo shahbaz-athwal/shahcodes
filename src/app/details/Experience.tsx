@@ -37,17 +37,17 @@ const experience: {
 
 export function Experience() {
   return (
-    <Card className="mb-8 rounded-xl border-none bg-zinc-100 dark:bg-stone-700/25">
+    <Card className="mb-8">
       <CardHeader className="pb-2">
         <h2 className="text-3xl font-bold dark:text-zinc-200">Experience</h2>
       </CardHeader>
       <CardContent>
-        <div className="space-y-2 divide-y dark:divide-zinc-800">
+        <div className="space-y-2 divide-y dark:divide-stone-700">
           {experience.map((exp, index) => {
             return (
               <div className="flex flex-col gap-4 py-6 sm:flex-row" key={index}>
-                <div className="mt-1 flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-white shadow-xs">
-                  <Image width={100} height={100} src={exp.logo} alt={exp.company} className="h-12 w-12" />
+                <div className="mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white">
+                  <Image width={100} height={100} src={exp.logo} alt={exp.company} className="h-8 w-8" />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-xl font-semibold dark:text-zinc-200">{exp.role}</span>
