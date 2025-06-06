@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
   const result = streamText({
     system: SECRET_SAUCE,
-    model: openai("o4-mini"),
+    model: openai("gpt-4o"),
     messages,
   });
 
