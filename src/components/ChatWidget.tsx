@@ -13,7 +13,9 @@ import { useFeatureFlagEnabled } from "posthog-js/react";
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    maxSteps: 4,
+  });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const toggleChat = () => setIsOpen(!isOpen);
@@ -141,6 +143,12 @@ export default function ChatWidget() {
                                       {part.text}
                                     </p>
                                   );
+                                case "tool-invocation":
+                                  return (
+                                    <div key={`${message.id}-${i}`} className="font-light italic">
+                                      {"calling tool: " + part.toolInvocation.toolName}
+                                    </div>
+                                  );
                               }
                             })}
                           </div>
@@ -158,7 +166,6 @@ export default function ChatWidget() {
               <div className="flex-shrink-0 rounded-b-2xl border-t border-stone-100 p-4 sm:rounded-b-3xl dark:border-stone-700">
                 <form onSubmit={handleSubmit} className="flex gap-2">
                   <Input
-                    autoFocus
                     value={input}
                     placeholder="Type your message..."
                     onChange={handleInputChange}
