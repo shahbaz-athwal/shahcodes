@@ -23,8 +23,8 @@ const posts = defineCollection({
   }),
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document, {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [[rehypeCode, rehypeCodeOptions], remarkHeading],
+      remarkPlugins: [remarkGfm, remarkHeading],
+      rehypePlugins: [[rehypeCode, rehypeCodeOptions]],
     });
     return {
       ...document,
