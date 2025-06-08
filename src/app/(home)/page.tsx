@@ -7,8 +7,6 @@ import { getCachedGithubData } from "@/lib/redis";
 import { Suspense } from "react";
 import { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
-import { Experience } from "./Experience";
-import { Education } from "./Education";
 
 export const metadata: Metadata = createMetadata({
   title: "Home",
@@ -65,20 +63,6 @@ export default function Home() {
           </p>
         </div>
         <Projects />
-      </MotionChild>
-
-      <MotionChild>
-        <Header variant="primary" as="h3" className="mt-14 text-3xl">
-          Work Experience
-        </Header>
-        <Experience />
-      </MotionChild>
-
-      <MotionChild>
-        <Header variant="primary" as="h3" className="mt-8 text-3xl">
-          Education
-        </Header>
-        <Education />
       </MotionChild>
     </MotionParent>
   );

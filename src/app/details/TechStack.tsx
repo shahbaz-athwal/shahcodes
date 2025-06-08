@@ -155,9 +155,6 @@ export function TechStack() {
 
   return (
     <>
-      <Header variant="primary" as="h2" className="mb-4 text-4xl">
-        Tech Stack
-      </Header>
       <div>
         <div className="text-md mb-6 leading-normal font-normal text-zinc-700 md:text-lg dark:text-zinc-300">
           <p>I&apos;m a full-stack developer specializing in web development with modern frameworks.</p>
