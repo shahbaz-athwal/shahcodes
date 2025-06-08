@@ -19,7 +19,7 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
   return (
     <Card className="w-64 rounded-2xl px-4 py-3 2xl:w-72">
       <div className="flex gap-3">
-        <div className="relative h-[72px] w-[58px] shrink-0">
+        <div className="relative h-fit w-[58px] shrink-0">
           <div className="my-1 flex h-14 w-14 overflow-hidden rounded-md bg-stone-200 dark:bg-stone-700">
             {codeData.assets?.large_image ? (
               <Image
@@ -34,7 +34,7 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
             )}
           </div>
           {codeData.assets?.small_image && (
-            <div className="absolute -right-1 bottom-2 h-6 w-6 overflow-hidden rounded-full border-2 border-white bg-stone-200 dark:border-stone-800 dark:bg-stone-700">
+            <div className="absolute -right-1 bottom-0 h-6 w-6 overflow-hidden rounded-full border-2 border-white bg-stone-200 dark:border-stone-800 dark:bg-stone-700">
               <Image
                 src={`https://cdn.discordapp.com/app-assets/${codeData.application_id}/${codeData.assets.small_image}.png`}
                 alt={codeData.assets.small_text || ""}
