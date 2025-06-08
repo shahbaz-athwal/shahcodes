@@ -2,8 +2,6 @@ import { motion } from "motion/react";
 import { User } from "lucide-react";
 import { IconAI } from "@/components/ui/ai-icon";
 import ReactMarkdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import type { Message } from "@ai-sdk/react";
 
 interface MessageBubbleProps {
@@ -65,8 +63,7 @@ interface MessageTextProps {
 
 function MessageText({ part, role }: MessageTextProps) {
   const getProseClasses = () => {
-    const baseClasses =
-      "prose prose-sm prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent max-w-none text-sm leading-relaxed";
+    const baseClasses = "prose prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent max-w-none text-sm leading-relaxed";
 
     if (role === "user") {
       return `${baseClasses} prose-headings:text-white prose-p:text-white prose-strong:text-white prose-em:text-white prose-ul:text-white prose-ol:text-white prose-li:text-white prose-a:text-blue-300 prose-code:text-white dark:prose-headings:text-stone-900 dark:prose-p:text-stone-900 dark:prose-strong:text-stone-900 dark:prose-em:text-stone-900 dark:prose-ul:text-stone-900 dark:prose-ol:text-stone-900 dark:prose-li:text-stone-900 dark:prose-a:text-blue-600 dark:prose-code:text-stone-900`;
@@ -77,48 +74,7 @@ function MessageText({ part, role }: MessageTextProps) {
 
   return (
     <div className={getProseClasses()}>
-      <ReactMarkdown
-        components={{
-          code: ({ className, children, ...props }: any) => {
-            const match = /language-(\w+)/.exec(className || "");
-            const language = match ? match[1] : "";
-            const isCodeBlock = Boolean(language);
-
-            if (isCodeBlock) {
-              return (
-                <SyntaxHighlighter
-                  style={materialDark}
-                  language={language}
-                  PreTag="div"
-                  customStyle={{
-                    margin: 0,
-                    borderRadius: "0.9rem",
-                    fontSize: "0.9rem",
-                    lineHeight: "1rem",
-                  }}
-                >
-                  {String(children).replace(/\n$/, "")}
-                </SyntaxHighlighter>
-              );
-            }
-
-            return (
-              <code
-                className={`${className || ""} rounded px-1.5 py-0.5 text-xs font-medium ${
-                  role === "user"
-                    ? "bg-white/20 text-white dark:bg-stone-800/60 dark:text-stone-100"
-                    : "bg-stone-200/80 text-stone-800 dark:bg-stone-700/80 dark:text-stone-200"
-                }`}
-                {...props}
-              >
-                {children}
-              </code>
-            );
-          },
-        }}
-      >
-        {part.text}
-      </ReactMarkdown>
+      <ReactMarkdown>{part.text}</ReactMarkdown>
     </div>
   );
 }

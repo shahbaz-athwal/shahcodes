@@ -3,8 +3,8 @@
 import { AnimatePresence } from "motion/react";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useChatWidget } from "@/hooks/useChat";
-import { ChatButton } from "./ai-chat/ChatButton";
-import { ChatInterface } from "./ai-chat/ChatInterface";
+import { ChatButton } from "./ai-chat/chat-button";
+import { ChatInterface } from "./ai-chat/chat-interface";
 
 export default function ChatWidget() {
   const { isOpen, messages, input, messagesEndRef, toggleChat, closeChat, handleInputChange, handleSubmit } =
@@ -12,7 +12,6 @@ export default function ChatWidget() {
 
   const isChatWidgetEnabled = useFeatureFlagEnabled("chat-widget");
 
-  // Fix: The feature flag logic was inverted - should return null when NOT enabled
   if (!isChatWidgetEnabled) {
     return null;
   }
