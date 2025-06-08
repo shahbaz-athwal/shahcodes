@@ -13,7 +13,7 @@ export async function POST(req: Request) {
   const chatModel = openai("gpt-4o");
 
   const result = streamText({
-    system: SECRET_SAUCE,
+    // system: SECRET_SAUCE,
     model: chatModel,
     messages,
     tools: {
@@ -26,15 +26,15 @@ export async function POST(req: Request) {
       //     return await createResource(content);
       //   },
       // }),
-      getResource: tool({
-        description: `Get a resource from knowledge base.`,
-        parameters: z.object({
-          content: z.string().describe("The content or resource to get from the knowledge base"),
-        }),
-        execute: async ({ content }) => {
-          return await getResource(content);
-        },
-      }),
+      // getResource: tool({
+      //   description: `Get a resource from knowledge base.`,
+      //   parameters: z.object({
+      //     content: z.string().describe("The content or resource to get from the knowledge base"),
+      //   }),
+      //   execute: async ({ content }) => {
+      //     return await getResource(content);
+      //   },
+      // }),
     },
   });
 
