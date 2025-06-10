@@ -13,7 +13,7 @@ export async function POST(req: Request) {
   const chatModel = openai("gpt-4o");
 
   const result = streamText({
-    // system: SECRET_SAUCE,
+    system: SECRET_SAUCE,
     model: chatModel,
     messages,
     tools: {
