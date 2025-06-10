@@ -12,7 +12,7 @@ export default function ChatWidget() {
 
   const isChatWidgetEnabled = useFeatureFlagEnabled("chat-widget");
 
-  if (isChatWidgetEnabled) {
+  if (!isChatWidgetEnabled) {
     return null;
   }
 
