@@ -1,19 +1,17 @@
-import { getResource } from "@/lib/embeddings";
 import { openai } from "@ai-sdk/openai";
-import { streamText, tool } from "ai";
-import { z } from "zod";
+import { streamText } from "ai";
+import { get } from "@vercel/edge-config";
+// import { getResource } from "@/lib/embeddings";
+// import { z } from "zod";
 
 export const maxDuration = 45;
 
-const SECRET_SAUCE = process.env.SECRET_SAUCE;
-
 export async function POST(req: Request) {
   const { messages } = await req.json();
-
   const chatModel = openai("gpt-4o");
 
   const result = streamText({
-    system: SECRET_SAUCE,
+    system: (await get("SECRET_SAUCE")) as string,
     model: chatModel,
     messages,
     tools: {
