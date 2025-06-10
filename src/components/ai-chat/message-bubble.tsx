@@ -17,7 +17,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       transition={{ duration: 0.15 }}
       className={`mb-3 flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
     >
-      <div className={`flex max-w-[85%] gap-2 sm:max-w-[80%] ${message.role === "user" ? "flex-row-reverse" : ""}`}>
+      <div className={`flex max-w-[90%] gap-2 ${message.role === "user" ? "flex-row-reverse" : ""}`}>
         <div
           className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full ${
             message.role === "user"

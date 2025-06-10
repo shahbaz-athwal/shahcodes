@@ -3,7 +3,7 @@ import { useChat as useAIChat } from "@ai-sdk/react";
 
 export function useChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit } = useAIChat({
+  const { messages, input, handleInputChange, handleSubmit, status } = useAIChat({
     maxSteps: 4,
   });
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -14,13 +14,14 @@ export function useChatWidget() {
   useEffect(() => {
     if (isOpen && messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({
-        behavior: "smooth",
+        behavior: "instant",
       });
     }
   }, [messages, isOpen]);
 
   return {
     isOpen,
+    status,
     messages,
     input,
     messagesEndRef,
