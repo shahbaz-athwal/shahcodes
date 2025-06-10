@@ -45,6 +45,7 @@ import {
   SiSqlalchemy,
   SiCypress,
 } from "react-icons/si";
+import { Header } from "@/components/ui/header";
 
 type TechCategoryProps = {
   title: string;
@@ -57,7 +58,7 @@ type TechCategoryProps = {
 };
 
 const TechCategory = ({ title, icon, skills }: TechCategoryProps) => (
-  <Card className="p-3 dark:bg-stone-700/25">
+  <Card className="p-4 dark:bg-stone-700/25">
     <div className="mb-3 flex items-center gap-2">
       <span className="text-primary">{icon}</span>
       <h3 className="text-md font-semibold tracking-wider text-zinc-700 uppercase dark:text-zinc-300">{title}</h3>
@@ -153,11 +154,8 @@ export function TechStack() {
   ];
 
   return (
-    <Card className="mt-6 mb-8">
-      <CardHeader className="pb-2">
-        <h2 className="text-3xl font-bold dark:text-zinc-200">Tech Stack</h2>
-      </CardHeader>
-      <CardContent>
+    <>
+      <div>
         <div className="text-md mb-6 leading-normal font-normal text-zinc-700 md:text-lg dark:text-zinc-300">
           <p>I&apos;m a full-stack developer specializing in web development with modern frameworks.</p>
         </div>
@@ -167,7 +165,7 @@ export function TechStack() {
             <TechCategory key={category.title} title={category.title} icon={category.icon} skills={category.skills} />
           ))}
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </>
   );
 }
