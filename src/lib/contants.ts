@@ -168,7 +168,7 @@ export const experience = [
     company: "Dash Social",
     role: "Software Developer Intern",
     date: "Jan 2025 → Apr 2025 · 4 months",
-    logo: "/dash.png",
+    logo: "/dashsocial.png",
     location: "Halifax, NS · Hybrid",
     description: [
       "Maintained front-end application using Vue.js, Pinia, and Tailwind, directly enhancing customer experience",
