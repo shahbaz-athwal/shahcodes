@@ -2,6 +2,7 @@ import { defineCollection, defineConfig } from "@content-collections/core";
 import { compileMDX } from "@content-collections/mdx";
 import { type RehypeCodeOptions, rehypeCode, remarkGfm, remarkHeading } from "fumadocs-core/mdx-plugins";
 import readingTime from "reading-time";
+import { z } from "zod";
 
 const rehypeCodeOptions: RehypeCodeOptions = {
   themes: {
@@ -14,7 +15,7 @@ const posts = defineCollection({
   name: "posts",
   directory: "src/posts",
   include: "**/*.mdx",
-  schema: (z) => ({
+  schema: z.object({
     title: z.string(),
     description: z.string(),
     published: z.boolean(),
@@ -23,8 +24,8 @@ const posts = defineCollection({
   }),
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document, {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [[rehypeCode, rehypeCodeOptions], remarkHeading],
+      remarkPlugins: [remarkGfm, remarkHeading],
+      rehypePlugins: [[rehypeCode, rehypeCodeOptions]],
     });
     return {
       ...document,

@@ -62,9 +62,6 @@ export default function Home() {
             Below is a selection of recent projects that I&apos;ve worked on.
           </p>
         </div>
-      </MotionChild>
-
-      <MotionChild>
         <Projects />
       </MotionChild>
     </MotionParent>

@@ -71,7 +71,7 @@ export const projects: ProjectCardProps[] = [
   {
     title: "Study Link",
     href: "https://studylink.dryft.ca",
-    code: "https://github.com/mehirk/study-link",
+    code: "https://github.com/shahbaz-athwal/study-link",
     description: "A Study & Collaboration Platform",
     image: "/projects/study-link.jpg",
     badges: [
@@ -160,5 +160,33 @@ export const contacts = [
     method: "Instagram",
     link: "https://www.instagram.com/shahbaz_athwal/",
     label: "@shahbaz_athwal",
+  },
+];
+
+export const experience = [
+  {
+    company: "Dash Social",
+    role: "Software Developer Intern",
+    date: "Jan 2025 → Apr 2025 · 4 months",
+    logo: "/dashsocial.png",
+    location: "Halifax, NS · Hybrid",
+    description: [
+      "Maintained front-end application using Vue.js, Pinia, and Tailwind, directly enhancing customer experience",
+      "Contributed to the development of RESTful APIs using Python, Flask, SQLAlchemy, and Docker supporting backend functionality and performance",
+      "Monitored application performance and identified issues using Datadog, enabling faster debugging and reducing downtime",
+      "Optimized ElasticSearch queries to improve data retrieval and search functionalities",
+    ],
+  },
+  {
+    company: "Acadia University",
+    role: "Teaching Assistant",
+    date: "Jan 2023 → Present · 2 years 3 months",
+    logo: "/acadia-university-logo.webp",
+    location: "Wolfville, NS · On-site",
+    description: [
+      "Tutored 150+ students, achieving positive feedback",
+      "Enforced academic integrity and overseeing a fair grading process for 1000+ assignments and lab reports",
+      "Conducted weekly office hours, assisting 10-15 students in each session",
+    ],
   },
 ];
