@@ -46,10 +46,10 @@ export function Experience() {
                   <AccordionContent>
                     <ul className="pl-4 text-sm leading-relaxed text-stone-700 sm:pl-0 dark:text-stone-400">
                       {exp.description.map((bullet, i) => (
-                        <div className="flex gap-3" key={i}>
-                          <span>→</span>
-                          <li>{bullet}</li>
-                        </div>
+                        <li key={i} className="flex gap-3">
+                          <span className="shrink-0">→</span>
+                          <span>{bullet}</span>
+                        </li>
                       ))}
                     </ul>
                   </AccordionContent>

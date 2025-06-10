@@ -8,7 +8,7 @@ export function useChatWidget() {
   });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const toggleChat = () => setIsOpen(!isOpen);
+  const toggleChat = () => setIsOpen((prev) => !prev);
   const closeChat = () => setIsOpen(false);
 
   useEffect(() => {

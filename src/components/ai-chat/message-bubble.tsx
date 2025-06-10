@@ -74,7 +74,7 @@ function MessageText({ part, role }: MessageTextProps) {
 
   return (
     <div className={getProseClasses()}>
-      <ReactMarkdown>{part.text}</ReactMarkdown>
+      <ReactMarkdown skipHtml>{part.text}</ReactMarkdown>
     </div>
   );
 }
