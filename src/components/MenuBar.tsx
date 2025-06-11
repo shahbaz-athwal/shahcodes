@@ -22,10 +22,9 @@ export const DesktopMenuBar = ({ path, links }: { path: string; links: LinkType[
                 className={cn(
                   "flex items-center justify-center px-3 py-1 text-[13px] transition sm:text-[15px]",
                   {
-                    "text-stone-100 hover:scale-105 hover:text-stone-100 dark:text-stone-800 dark:hover:text-stone-900":
-                      isActive,
+                    "text-stone-100 hover:scale-105 hover:text-stone-100 dark:text-stone-900": isActive,
                   },
-                  { "hover:text-primary dark:hover:text-primary text-stone-800 dark:text-stone-400": !isActive }
+                  { "hover:text-primary text-stone-800 dark:text-stone-300": !isActive }
                 )}
                 href={link.href}
               >

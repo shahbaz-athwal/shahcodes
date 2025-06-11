@@ -13,13 +13,13 @@ const ProjectCard = ({ title, description, href, code, image, badges }: ProjectC
         <p className="text-base text-stone-600 sm:text-[17px] dark:text-stone-300">{description}</p>
       </div>
       <a href={href || code} target="_blank">
-        <div className="w-fit overflow-hidden rounded-2xl shadow-xl dark:shadow-zinc-800/50">
+        <div className="w-fit overflow-hidden rounded-2xl shadow-xl dark:shadow-none">
           <Image
             src={image}
             alt={title}
             width={700}
             height={400}
-            className="rounded-2xl border border-stone-200 object-cover dark:border-stone-700"
+            className="rounded-2xl border border-stone-200 object-cover dark:border-stone-800"
             loading="eager"
           />
         </div>

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export function Education() {
   return (
-    <Card className="mx-2 mt-6 divide-y divide-stone-200 px-4 dark:divide-stone-700">
+    <Card className="mt-6 divide-y divide-stone-200 px-4 dark:divide-stone-700">
       <div className="flex flex-col py-4 sm:flex-row sm:gap-4">
         {/* Mobile: Logo and title/company in row, Desktop: Just logo */}
         <div className="flex items-start gap-3 sm:mt-1 sm:block">

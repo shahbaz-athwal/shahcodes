@@ -5,10 +5,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 export function Experience() {
   return (
-    <Card className="mx-2 mt-6 divide-y divide-stone-200 px-4 dark:divide-stone-700">
+    <Card className="mt-6 px-4">
       {experience.map((exp, index) => {
         return (
-          <div className="flex flex-col py-4 sm:flex-row sm:gap-4" key={index}>
+          <div
+            className="-mx-4 flex flex-col border-b border-stone-200 px-4 pt-4 pb-2 last:border-none last:pb-2 sm:flex-row sm:gap-4 dark:border-stone-700/30"
+            key={index}
+          >
             <div className="flex items-start gap-3 sm:mt-1 sm:block">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-3xl bg-stone-100 pt-0.5">
                 <Image width={100} height={100} src={exp.logo} alt={exp.company} className="h-8 w-8" />
@@ -40,10 +43,10 @@ export function Experience() {
 
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value={`item-${index}`} className="border-none">
-                  <AccordionTrigger className="text-left text-sm font-medium text-stone-600 hover:no-underline dark:text-stone-400">
+                  <AccordionTrigger className="pt-4 pb-2 text-left font-mono text-xs text-stone-600 hover:no-underline dark:text-stone-400">
                     View Details
                   </AccordionTrigger>
-                  <AccordionContent>
+                  <AccordionContent className="pb-2">
                     <ul className="pl-4 text-sm leading-relaxed text-stone-700 sm:pl-0 dark:text-stone-400">
                       {exp.description.map((bullet, i) => (
                         <li key={i} className="flex gap-3">

@@ -2,8 +2,8 @@ import { MotionChild, MotionParent } from "@/components/Motion";
 import { Header } from "@/components/ui/header";
 import { Metadata } from "next";
 import { TechStack } from "./TechStack";
-import { Education } from "../(home)/Education";
-import { Experience } from "../(home)/Experience";
+import { Education } from "./Education";
+import { Experience } from "./Experience";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({

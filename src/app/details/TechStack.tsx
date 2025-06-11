@@ -58,10 +58,10 @@ type TechCategoryProps = {
 };
 
 const TechCategory = ({ title, icon, skills }: TechCategoryProps) => (
-  <Card className="p-4 dark:bg-stone-700/25">
+  <Card className="p-4">
     <div className="mb-3 flex items-center gap-2">
       <span className="text-primary">{icon}</span>
-      <h3 className="text-md font-semibold tracking-wider text-zinc-700 uppercase dark:text-zinc-300">{title}</h3>
+      <h3 className="text-md font-extrabold tracking-wider text-zinc-700 uppercase dark:text-zinc-300">{title}</h3>
     </div>
     <div className="flex flex-wrap gap-2">
       {skills.map((skill) => (
