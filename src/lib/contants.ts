@@ -70,7 +70,7 @@ export const projects: ProjectCardProps[] = [
   },
   {
     title: "Study Link",
-    href: "https://studylink.dryft.ca",
+    href: "https://studylink.shahcodes.in",
     code: "https://github.com/shahbaz-athwal/study-link",
     description: "A Study & Collaboration Platform",
     image: "/projects/study-link.jpg",
