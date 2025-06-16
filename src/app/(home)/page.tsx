@@ -31,10 +31,14 @@ export default function Home() {
           A full stack developer based in Canada
         </span>
         <p className="text-lg leading-normal dark:text-zinc-300/70">
-          A third year computer science student with nearly 2 years of experience in Full Stack Development. Currently,
-          I am focusing on advanced Backend and DevOps skills. Proficient with <strong>TypeScript</strong>,{" "}
-          <strong>PostgreSQL</strong>, <strong>Next.js</strong>, <strong>React</strong>, <strong>Docker</strong>, and{" "}
-          <strong>Node.js</strong>.
+          Senior year computer science student with 2 years of experience in Full Stack Development. Currently, focusing
+          on Backend and DevOps. Proficient in{" "}
+          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">TypeScript</strong>,{" "}
+          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">PostgreSQL</strong>,{" "}
+          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">Next.js</strong>,{" "}
+          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">React</strong>,{" "}
+          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">Docker</strong>, and{" "}
+          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">Node.js</strong>.
         </p>
         <Socials />
         <Link
