@@ -7,6 +7,7 @@ import { getCachedGithubData } from "@/lib/redis";
 import { Suspense } from "react";
 import { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
+import { Socials } from "./Socials";
 
 export const metadata: Metadata = createMetadata({
   title: "Home",
@@ -35,6 +36,7 @@ export default function Home() {
           <strong>PostgreSQL</strong>, <strong>Next.js</strong>, <strong>React</strong>, <strong>Docker</strong>, and{" "}
           <strong>Node.js</strong>.
         </p>
+        <Socials />
         <Link
           href="/details"
           className="group mt-8 inline-block rounded-full bg-zinc-950 px-8 py-3 font-mono text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-black dark:hover:bg-zinc-200"

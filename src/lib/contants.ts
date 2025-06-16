@@ -1,4 +1,6 @@
 import { IconBriefcase, IconHome, IconMail, IconMusic, IconPencilBolt } from "@tabler/icons-react";
+import { MdEmail } from "react-icons/md";
+import { FaGithub, FaLinkedin, FaXTwitter, FaInstagram } from "react-icons/fa6";
 
 export interface Link {
   name: string;
@@ -140,26 +142,31 @@ export const contacts = [
     method: "Email",
     link: "mailto:shahbazathwal2107@gmail.com",
     label: "shahbazathwal2107@gmail.com",
+    icon: MdEmail,
   },
   {
     method: "GitHub",
     link: "https://github.com/shahbaz-athwal",
     label: "git/shahbaz-athwal",
+    icon: FaGithub,
   },
   {
     method: "LinkedIn",
     link: "https://www.linkedin.com/in/shahbaz-athwal/",
     label: "in/shahbaz-athwal",
+    icon: FaLinkedin,
   },
   {
     method: "X",
     link: "https://x.com/shahcodes",
     label: "@shahcodes",
+    icon: FaXTwitter,
   },
   {
     method: "Instagram",
     link: "https://www.instagram.com/shahbaz_athwal/",
     label: "@shahbaz_athwal",
+    icon: FaInstagram,
   },
 ];
 
