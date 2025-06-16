@@ -32,7 +32,7 @@ function Page() {
                     <Title as="h2" variant="tertiary">
                       {contactMethod.method}
                     </Title>
-                    <a href={contactMethod.link} target="_blank" className="text-zinc-600 dark:text-zinc-500">
+                    <a href={contactMethod.link} target="_blank" className="text-stone-600 dark:text-stone-500">
                       {contactMethod.label}
                     </a>
                   </div>

@@ -56,7 +56,7 @@ export default function WhisperellaBox() {
         <Separator className="my-4 w-5/12 rounded bg-stone-300 dark:bg-stone-500/50" />
       </div>
 
-      <p className="my-4 text-xl">Leave an anonymous message</p>
+      <p className="my-4 text-2xl font-bold text-balance">Leave an anonymous message</p>
 
       <form onSubmit={handleSubmit} className="mx-1 space-y-6">
         <div>
