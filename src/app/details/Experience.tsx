@@ -43,11 +43,11 @@ export function Experience() {
 
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value={`item-${index}`} className="border-none">
-                  <AccordionTrigger className="pt-4 pb-2 text-left font-mono text-xs text-stone-600 hover:no-underline dark:text-stone-400">
+                  <AccordionTrigger className="pt-4 pb-2 text-left font-mono text-sm text-stone-600 hover:no-underline dark:text-stone-400">
                     View Details
                   </AccordionTrigger>
                   <AccordionContent className="pb-2">
-                    <ul className="pl-4 text-sm leading-relaxed text-stone-700 sm:pl-0 dark:text-stone-400">
+                    <ul className="space-y-2 font-mono text-sm leading-relaxed text-stone-700 sm:pl-0 dark:text-stone-400">
                       {exp.description.map((bullet, i) => (
                         <li key={i} className="flex gap-3">
                           <span className="shrink-0">→</span>
