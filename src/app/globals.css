@@ -100,6 +100,26 @@
   ::file-selector-button {
     border-color: var(--color-border, currentcolor);
   }
+  /* Custom Scrollbar Styles */
+  ::-webkit-scrollbar {
+    @apply h-2 w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-2xl border-transparent bg-stone-600/50;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-zinc-600/60;
+  }
+}
+
+@layer components {
   .shiki {
     @apply bg-secondary/50 border-border/50 my-4 rounded-lg border;
     @apply text-[var(--shiki-light)] dark:text-[var(--shiki-dark)];
@@ -122,36 +142,13 @@
     content: attr(title);
     @apply text-muted-foreground mb-0 block border-b p-3 text-xs;
   }
-
-  /* Custom Scrollbar Styles */
-  ::-webkit-scrollbar {
-    @apply h-2 w-2;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply rounded-2xl border-transparent bg-stone-600/50;
-    background-clip: content-box;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-zinc-600/60;
-  }
-
   /* Code block copy button styles */
   .code-block-wrapper {
     @apply relative;
   }
 
   .code-block-wrapper .copy-button {
-    @apply absolute top-5 right-3 opacity-0 transition-opacity duration-200;
-  }
-
-  .code-block-wrapper:hover .copy-button {
-    @apply opacity-100;
+    @apply absolute top-5 right-3 transition-opacity duration-200;
   }
 }
 
@@ -196,22 +193,3 @@
     opacity: 1;
   }
 }
-
-/* ===== VIEW TRANSITIONS ===== */
-/* ::view-transition-old(root), */
-/* ::view-transition-new(root) { */
-/* animation: none; */
-/* mix-blend-mode: normal; */
-/* } */
-
-/* ::view-transition-old(root) { */
-/* Ensure the outgoing view (old theme) is beneath */
-/* z-index: 0; */
-/* } */
-
-/* ::view-transition-new(root) { */
-/* Ensure the incoming view (new theme) is always on top */
-/* z-index: 1; */
-/* Apply the reveal animation */
-/* animation: reveal 0.8s ease-in-out forwards; */
-/* } */
