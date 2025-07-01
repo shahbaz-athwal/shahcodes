@@ -140,8 +140,8 @@ export const projects: ProjectCardProps[] = [
 export const contacts = [
   {
     method: "Email",
-    link: "mailto:shahbazathwal2107@gmail.com",
-    label: "shahbazathwal2107@gmail.com",
+    link: "mailto:me@shahcodes.in",
+    label: "me@shahcodes.in",
     icon: MdEmail,
   },
   {
@@ -161,12 +161,6 @@ export const contacts = [
     link: "https://x.com/shahcodes",
     label: "@shahcodes",
     icon: FaXTwitter,
-  },
-  {
-    method: "Instagram",
-    link: "https://www.instagram.com/shahbaz_athwal/",
-    label: "@shahbaz_athwal",
-    icon: FaInstagram,
   },
 ];
 
