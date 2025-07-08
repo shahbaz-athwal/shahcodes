@@ -1,14 +1,14 @@
 "use client";
-import type { LanyardData, LanyardMessage } from "@/types/Lanyard";
-import { useEffect, useState, useCallback } from "react";
+import { useState } from "react";
 import useWebSocket, { ReadyState } from "react-use-websocket";
+import type { LanyardData, LanyardMessage } from "@/types/Lanyard";
 import { useSpotify } from "./useSpotify";
 
 export const useActivity = (userId: string) => {
   const [data, setData] = useState<LanyardData | null>(null);
   const { setSpotifyListening } = useSpotify();
 
-  const { sendMessage, readyState, getWebSocket } = useWebSocket(
+  const { sendMessage, readyState } = useWebSocket(
     "wss://api.lanyard.rest/socket",
     {
       onOpen: () => {
@@ -26,18 +26,6 @@ export const useActivity = (userId: string) => {
       onMessage: (event) => {
         const message = JSON.parse(event.data) as LanyardMessage;
 
-        // Handle heartbeat requests from server
-        if (message.op === 1) {
-          // Set up heartbeat interval to keep connection alive
-          const heartbeatInterval = message.d.heartbeat_interval;
-          const intervalId = setInterval(() => {
-            sendMessage(JSON.stringify({ op: 3 }));
-          }, heartbeatInterval);
-
-          // Store the interval ID for cleanup
-          (getWebSocket() as any)._heartbeatIntervalId = intervalId;
-        }
-
         if (message.t === "INIT_STATE") {
           const userData = message.d[userId];
           setData(userData);
@@ -53,62 +41,28 @@ export const useActivity = (userId: string) => {
           );
         }
       },
-      // Automatically reconnect on connection closed
-      shouldReconnect: (closeEvent) => true,
-      // Exponential backoff for reconnection attempts
+      shouldReconnect: () => true,
       reconnectInterval: (attemptNumber) =>
         Math.min(1000 * 2 ** attemptNumber, 30000),
-      // Max 10 reconnection attempts
       reconnectAttempts: 10,
+      heartbeat: {
+        message: JSON.stringify({ op: 3 }),
+        returnMessage: JSON.stringify({ op: 1 }),
+        timeout: 30000,
+        interval: 30000,
+      },
     },
   );
 
-  const getStatusFromReadyState = (
-    readyState: ReadyState,
-  ): "idle" | "connecting" | "connected" | "error" => {
-    switch (readyState) {
-      case ReadyState.CONNECTING:
-        return "connecting";
-      case ReadyState.OPEN:
-        return "connected";
-      case ReadyState.CLOSING:
-      case ReadyState.CLOSED:
-        return "idle";
-      case ReadyState.UNINSTANTIATED:
-        return "error";
-      default:
-        return "idle";
-    }
-  };
+  const connectionStatus = {
+    [ReadyState.CONNECTING]: "connecting",
+    [ReadyState.OPEN]: "connected",
+    [ReadyState.CLOSING]: "closing",
+    [ReadyState.CLOSED]: "closed",
+    [ReadyState.UNINSTANTIATED]: "error",
+  }[readyState];
 
-  const status = getStatusFromReadyState(readyState);
-
-  // Manual reconnect function to allow user-triggered reconnection
-  const reconnect = useCallback(() => {
-    const ws = getWebSocket();
-    if (ws) {
-      // Clean up any existing heartbeat interval
-      if ((ws as any)._heartbeatIntervalId) {
-        clearInterval((ws as any)._heartbeatIntervalId);
-        (ws as any)._heartbeatIntervalId = null;
-      }
-
-      // Close and reconnect
-      ws.close();
-    }
-  }, [getWebSocket]);
-
-  // Cleanup heartbeat interval on unmount
-  useEffect(() => {
-    return () => {
-      const ws = getWebSocket();
-      if (ws && (ws as any)._heartbeatIntervalId) {
-        clearInterval((ws as any)._heartbeatIntervalId);
-      }
-    };
-  }, [getWebSocket]);
-
-  return { data, status, reconnect };
+  return { data, connectionStatus };
 };
 
 export default useActivity;
