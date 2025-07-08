@@ -1,51 +1,49 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-
 import {
-  FaReact,
-  FaNode,
-  FaDocker,
-  FaPython,
   FaAws,
-  FaGithub,
-  FaDatabase,
-  FaCode,
-  FaServer,
   FaCloud,
+  FaCode,
+  FaDatabase,
+  FaDocker,
   FaFlask,
+  FaGithub,
+  FaNode,
+  FaPython,
+  FaReact,
+  FaServer,
 } from "react-icons/fa";
 import {
-  SiTypescript,
-  SiJavascript,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiPostgresql,
-  SiExpress,
-  SiKubernetes,
-  SiFlask,
-  SiVuedotjs,
-  SiMysql,
-  SiSqlite,
-  SiBun,
-  SiDeno,
-  SiTurborepo,
-  SiDrizzle,
-  SiPrisma,
-  SiFastapi,
-  SiRedis,
-  SiJest,
-  SiVitest,
-  SiPytest,
   SiAmazonec2,
-  SiAmazons3,
   SiAmazonrds,
+  SiAmazons3,
   SiAwslambda,
-  SiOpensearch,
-  SiGo,
-  SiSqlalchemy,
+  SiBun,
   SiCypress,
+  SiDeno,
+  SiDrizzle,
+  SiExpress,
+  SiFastapi,
+  SiFlask,
+  SiGo,
+  SiJavascript,
+  SiJest,
+  SiKubernetes,
+  SiMysql,
+  SiNextdotjs,
+  SiOpensearch,
+  SiPostgresql,
+  SiPrisma,
+  SiPytest,
+  SiRedis,
+  SiSqlalchemy,
+  SiSqlite,
+  SiTailwindcss,
+  SiTurborepo,
+  SiTypescript,
+  SiVitest,
+  SiVuedotjs,
 } from "react-icons/si";
-import { Header } from "@/components/ui/header";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 
 type TechCategoryProps = {
   title: string;
@@ -240,26 +238,24 @@ export function TechStack() {
   ];
 
   return (
-    <>
-      <div>
-        <div className="text-md mb-6 leading-normal font-normal text-zinc-700 md:text-lg dark:text-zinc-300">
-          <p>
-            I&apos;m a full-stack developer specializing in web development with
-            modern frameworks.
-          </p>
-        </div>
-
-        <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
-          {techCategories.map((category) => (
-            <TechCategory
-              key={category.title}
-              title={category.title}
-              icon={category.icon}
-              skills={category.skills}
-            />
-          ))}
-        </div>
+    <div>
+      <div className="text-md mb-6 leading-normal font-normal text-zinc-700 md:text-lg dark:text-zinc-300">
+        <p>
+          I&apos;m a full-stack developer specializing in web development with
+          modern frameworks.
+        </p>
       </div>
-    </>
+
+      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
+        {techCategories.map((category) => (
+          <TechCategory
+            key={category.title}
+            title={category.title}
+            icon={category.icon}
+            skills={category.skills}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
