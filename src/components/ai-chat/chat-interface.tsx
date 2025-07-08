@@ -1,15 +1,14 @@
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { CardContent } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { IconAI } from "@/components/ui/ai-icon";
+import type { Message } from "@ai-sdk/react";
+import { X } from "lucide-react";
 import { motion } from "motion/react";
+import type { FormEvent, RefObject } from "react";
+import { IconAI } from "@/components/ui/ai-icon";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "../ui/button";
+import { TypingIndicator } from "../ui/typing-dots";
 import { ChatInput } from "./chat-input";
 import { MessageBubble } from "./message-bubble";
-import type { Message } from "@ai-sdk/react";
-import type { RefObject, FormEvent } from "react";
-import { Button } from "../ui/button";
-import { X } from "lucide-react";
-import { TypingIndicator } from "../ui/typing-dots";
 
 interface ChatInterfaceProps {
   messages: Message[];

@@ -1,15 +1,13 @@
 "use client";
-import React, { useCallback, useRef } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
+import React, { useCallback, useRef } from "react";
 
 const transition = {
   type: "spring",
   mass: 0.5,
   damping: 11.5,
-  stiffness: 100,
-  restDelta: 0.001,
-  restSpeed: 0.001,
+  stiffness: 150,
 };
 
 export const MenuItem = ({
@@ -24,35 +22,34 @@ export const MenuItem = ({
   children?: React.ReactNode;
 }) => {
   return (
-    <div onClick={() => setActive(active ? null : item)} className="relative">
+    <button
+      type="button"
+      onClick={() => setActive(active ? null : item)}
+      className="relative bg-transparent border-none p-0"
+    >
       <motion.div
         transition={{ duration: 0.2 }}
-        className="cursor-pointer text-stone-900 transition-all duration-300 hover:scale-110 hover:opacity-[0.9] dark:text-stone-100"
+        className="cursor-pointer text-stone-900 transition-all duration-100 hover:scale-110 hover:opacity-[0.9] dark:text-stone-100"
       >
         {item}
       </motion.div>
       <AnimatePresence>
         {active !== null && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.6, y: 10 }}
+            initial={{ opacity: 0, scale: 0.5, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 10 }}
+            exit={{ opacity: 0, scale: 0.5, y: 10 }}
             transition={transition}
           >
-            <div className="absolute top-[calc(100%_+_1.2rem)] right-0">
+            <div className="absolute top-[calc(100%_+_1.2rem)] right-1">
               <div className="shadow-3xl text-primary rounded-tl-3xl rounded-b-3xl border border-stone-300 bg-white dark:border-stone-500/50 dark:bg-stone-900">
-                <div
-                  className="h-full w-max p-6"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {children}
-                </div>
+                <div className="h-full w-max p-6">{children}</div>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </button>
   );
 };
 
@@ -84,7 +81,11 @@ export const Menu = ({
   return <div ref={menuRef}>{children}</div>;
 };
 
-export const HoveredLink = ({ children, onClick, ...rest }: any) => {
+export const HoveredLink = ({
+  children,
+  onClick,
+  ...rest
+}: React.ComponentProps<typeof Link>) => {
   return (
     <Link
       {...rest}

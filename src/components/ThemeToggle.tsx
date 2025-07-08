@@ -1,5 +1,5 @@
 "use client";
-import { IconSun, IconMoon } from "@tabler/icons-react";
+import { IconMoon, IconSun } from "@tabler/icons-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -54,6 +54,7 @@ const ThemeToggle = () => {
 
   return (
     <button
+      type="button"
       title="Change Theme"
       className="items-center justify-center opacity-70 transition-transform hover:scale-110"
       onClick={(e) => handleThemeChange(theme === "dark" ? "light" : "dark", e)}

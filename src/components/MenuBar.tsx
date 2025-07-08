@@ -1,7 +1,7 @@
 "use client";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useState } from "react";
 import { HoveredLink, Menu, MenuItem } from "@/components/ui/mobile-menu";
 import type { Link as LinkType } from "@/lib/contants";
 import { MotionDiv } from "@/lib/motion";

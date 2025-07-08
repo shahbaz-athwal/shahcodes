@@ -3,8 +3,8 @@
 import { AnimatePresence } from "motion/react";
 import { useFeatureFlagEnabled } from "posthog-js/react";
 import { useChatWidget } from "@/hooks/useChat";
-import { ChatButton } from "./ai-chat/chat-trigger";
 import { ChatInterface } from "./ai-chat/chat-interface";
+import { ChatButton } from "./ai-chat/chat-trigger";
 
 export default function ChatWidget() {
   const {

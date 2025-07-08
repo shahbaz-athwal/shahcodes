@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export const ProfileImage = ({ className }: { className?: string }) => {
   return (

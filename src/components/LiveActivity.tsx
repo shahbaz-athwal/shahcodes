@@ -1,19 +1,18 @@
 "use client";
-import { useActivity } from "@/hooks/useActivity";
-import { Card } from "@/components/ui/card";
-import { useState, useEffect, useRef } from "react";
-import { MotionParent, MotionChild } from "./Motion";
-import type { Activity, SpotifyData } from "@/types/Lanyard";
-import { useElapsedTime } from "@/hooks/useElapsedTime";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { Card } from "@/components/ui/card";
 import {
   Tooltip,
   TooltipContent,
-  TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import Link from "next/link";
+import { useActivity } from "@/hooks/useActivity";
+import { useElapsedTime } from "@/hooks/useElapsedTime";
+import type { Activity, SpotifyData } from "@/types/Lanyard";
+import { MotionChild, MotionParent } from "./Motion";
 
 const CodeActivity = ({ codeData }: { codeData: Activity }) => {
   const startTime = codeData.timestamps?.start;
@@ -156,21 +155,21 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
 
 // Main component
 export default function LiveActivity() {
-  const { data, status } = useActivity("685471362961244160");
+  const { data, connectionStatus } = useActivity("685471362961244160");
   const [codeData, setCodeData] = useState<Activity>();
 
   const pathname = usePathname();
 
   useEffect(() => {
-    if (status === "connected" && data) {
+    if (connectionStatus === "connected" && data) {
       const hasVsCode = data.activities.find(
         (a) => a.name === "Visual Studio Code" || a.name === "Cursor",
       );
       setCodeData(hasVsCode);
     }
-  }, [data, status]);
+  }, [data, connectionStatus]);
 
-  if (status !== "connected" || !data) {
+  if (connectionStatus !== "connected" || !data) {
     return null;
   }
 

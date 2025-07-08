@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import Lottie from "react-lottie-player";
-import PlayerJson from "@/lib/player.json";
 import Image from "next/image";
+import React, { useEffect, useRef } from "react";
+import { FaSpotify } from "react-icons/fa";
+import Lottie from "react-lottie-player";
+import { Card } from "@/components/ui/card";
 import { TextGradient } from "@/components/ui/textgradient";
 import { useElapsedTime } from "@/hooks/useElapsedTime";
 import { useSpotify } from "@/hooks/useSpotify";
-import { FaSpotify } from "react-icons/fa";
-import { Card } from "@/components/ui/card";
+import PlayerJson from "@/lib/player.json";
 
 const PlayerAnimation = () => {
   return (

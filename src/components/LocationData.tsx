@@ -1,5 +1,5 @@
-import { MotionChild, MotionParent } from "./Motion";
 import { LocationUpdater } from "./LocationUpdater";
+import { MotionChild, MotionParent } from "./Motion";
 
 export interface LocationResponse {
   city: string;

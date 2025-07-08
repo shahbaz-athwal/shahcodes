@@ -1,8 +1,8 @@
-import redis, { getCachedLocationData } from "@/lib/redis";
 import { geolocation } from "@vercel/functions";
-import { userAgent } from "next/server";
-import type { NextRequest } from "next/server";
 import { revalidateTag } from "next/cache";
+import type { NextRequest } from "next/server";
+import { userAgent } from "next/server";
+import redis, { getCachedLocationData } from "@/lib/redis";
 export async function POST(req: NextRequest) {
   try {
     const geo = geolocation(req);

@@ -1,8 +1,8 @@
 import { allPosts } from "content-collections";
-import { Mdx } from "@/components/ui/mdx";
-import { notFound } from "next/navigation";
-import { createMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { Mdx } from "@/components/ui/mdx";
+import { createMetadata } from "@/lib/metadata";
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({

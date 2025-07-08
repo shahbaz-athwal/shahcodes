@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 import { IconAI } from "@/components/ui/ai-icon";
+import { Button } from "@/components/ui/button";
 
 interface ChatButtonProps {
   onClick: () => void;

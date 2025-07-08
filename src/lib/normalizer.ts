@@ -4,8 +4,10 @@ import type { SpotifyTopArtist } from "@/types/SpotifyTopArtist";
 export const normalizeRecentlyPlayed = ({
   track,
   played_at,
+  // biome-ignore lint: fix later
 }: any): SpotifyPlayedItem => ({
   title: track.name,
+  // biome-ignore lint: fix later
   artist: track.artists?.map(({ name }: any) => name).join(", "),
   album: track.album?.name,
   thumbnail: track.album?.images[0]?.url,
@@ -21,6 +23,7 @@ export const normalizeArtists = ({
   genres,
   external_urls,
   images,
+  // biome-ignore lint: fix later
 }: any): SpotifyTopArtist => ({
   id,
   name,

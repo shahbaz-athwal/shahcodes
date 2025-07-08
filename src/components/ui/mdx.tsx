@@ -4,8 +4,8 @@ import { MDXContent } from "@content-collections/mdx/react";
 import Image from "next/image";
 import type { HTMLProps, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
-import { Link } from "./link";
 import { CopyButton } from "./copy-button";
+import { Link } from "./link";
 
 type MdxProperties = {
   readonly code: string;
@@ -59,7 +59,7 @@ const Pre = ({ children, ...props }: HTMLProps<HTMLPreElement>) => {
         setCodeContent(cleanText);
       }
     }
-  }, [children]);
+  }, []);
 
   return (
     <div className="code-block-wrapper">

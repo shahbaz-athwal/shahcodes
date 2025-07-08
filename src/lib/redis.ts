@@ -1,11 +1,11 @@
-import type { LocationResponse } from "@/components/LocationData";
 import { Redis } from "@upstash/redis";
 import { unstable_cache as cache } from "next/cache";
 import type { Activity } from "react-activity-calendar";
+import type { LocationResponse } from "@/components/LocationData";
 
 const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL!,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+  url: process.env.UPSTASH_REDIS_REST_URL as string,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN as string,
 });
 
 export const getCachedGithubData = cache(

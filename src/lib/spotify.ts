@@ -1,4 +1,4 @@
-const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN!;
+const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN as string;
 const BASE_ENDPOINT = "https://api.spotify.com/v1";
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
 

@@ -1,8 +1,8 @@
 "use client";
 
+import { useEffect } from "react";
 import { recentlyPlayed } from "@/actions/recentlyPlayed";
 import { useSpotify } from "@/hooks/useSpotify";
-import { useEffect } from "react";
 
 export default function SpotifyPrefetch() {
   const { setSpotifyRecentlyPlayed } = useSpotify();

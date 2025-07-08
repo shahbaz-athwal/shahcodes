@@ -1,9 +1,9 @@
 "use client";
-import { useState, type FormEvent } from "react";
+import { IconCheck, IconLoader2 } from "@tabler/icons-react";
+import { type FormEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { IconLoader2, IconCheck } from "@tabler/icons-react";
 import { Separator } from "@/components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function WhisperellaBox() {
   const [message, setMessage] = useState("");

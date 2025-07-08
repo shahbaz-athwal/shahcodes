@@ -1,7 +1,7 @@
 import { allPosts } from "content-collections";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { createMetadata } from "@/lib/metadata";
-import type { Metadata } from "next";
 
 export const metadata: Metadata = createMetadata({
   title: "Blog",

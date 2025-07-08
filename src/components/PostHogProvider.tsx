@@ -1,9 +1,9 @@
 "use client";
 
+import { usePathname, useSearchParams } from "next/navigation";
 import posthog from "posthog-js";
 import { PostHogProvider as PHProvider, usePostHog } from "posthog-js/react";
 import { Suspense, useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
@@ -13,7 +13,7 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY as string, {
       api_host: "/api/ph",
       ui_host: "https://us.posthog.com",
     });
@@ -37,7 +37,7 @@ function PostHogPageView() {
       let url = window.origin + pathname;
       const search = searchParams.toString();
       if (search) {
-        url += "?" + search;
+        url += `?${search}`;
       }
       posthog.capture("$pageview", { $current_url: url });
     }

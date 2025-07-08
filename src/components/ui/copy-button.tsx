@@ -1,9 +1,9 @@
 "use client";
 
+import { IconCheck, IconCopy } from "@tabler/icons-react";
 import { useState } from "react";
-import { IconCopy, IconCheck } from "@tabler/icons-react";
-import { Button } from "./button";
 import { cn } from "@/lib/utils";
+import { Button } from "./button";
 
 interface CopyButtonProps {
   text: string;

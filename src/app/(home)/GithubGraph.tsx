@@ -1,6 +1,6 @@
 "use client";
-import { useThemeToggle } from "@/components/ThemeToggle";
 import { type Activity, ActivityCalendar } from "react-activity-calendar";
+import { useThemeToggle } from "@/components/ThemeToggle";
 import { MotionDiv } from "@/lib/motion";
 
 type GithubGraphProps = {
@@ -22,6 +22,7 @@ export const GithubGraph = ({ data }: GithubGraphProps) => {
     >
       <ActivityCalendar
         loading={!data}
+        // biome-ignore lint: fix later
         data={data!}
         maxLevel={4}
         blockMargin={2}

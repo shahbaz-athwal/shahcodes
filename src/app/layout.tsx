@@ -1,20 +1,20 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ChatWidget from "@/components/ChatWidget";
 import Footer from "@/components/Footer";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import TopBar from "@/components/TopBar";
-import SpotifyPrefetch from "./spotify/SpotifyFetcher";
-import { SpotifyProvider } from "@/hooks/useSpotify";
 import LiveActivity from "@/components/LiveActivity";
 import { LocationSection } from "@/components/LocationData";
 import { PostHogProvider } from "@/components/PostHogProvider";
-import { getCachedLocationData } from "@/lib/redis";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { WindowsEmojiPolyfill } from "@/components/ui/windows-emoji-polyfill";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import TopBar from "@/components/TopBar";
 import BgImages from "@/components/ui/bg-images";
 import { JsonLd } from "@/components/ui/json-ld";
-import ChatWidget from "@/components/ChatWidget";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { WindowsEmojiPolyfill } from "@/components/ui/windows-emoji-polyfill";
+import { SpotifyProvider } from "@/hooks/useSpotify";
 import PostHogClient from "@/lib/posthog";
+import { getCachedLocationData } from "@/lib/redis";
+import SpotifyPrefetch from "./spotify/SpotifyFetcher";
 
 const inter = Inter({ subsets: ["latin"] });
 

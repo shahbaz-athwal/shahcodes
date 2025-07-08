@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { topArtists } from "@/actions/topArtists";
 import { unstable_cache as cache } from "next/cache";
+import { topArtists } from "@/actions/topArtists";
 import { MotionChild, MotionParent } from "@/components/Motion";
-import TopArtists from "./TopArtists";
-import SpotifyPlayer from "./SpotifyPlayer";
-import RecentlyPlayed from "./RecentlyPlayed";
 import { createMetadata } from "@/lib/metadata";
+import RecentlyPlayed from "./RecentlyPlayed";
+import SpotifyPlayer from "./SpotifyPlayer";
+import TopArtists from "./TopArtists";
 
 export const metadata: Metadata = createMetadata({
   title: "Spotify",

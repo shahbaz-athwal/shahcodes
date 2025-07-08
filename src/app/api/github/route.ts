@@ -1,7 +1,9 @@
 // import { updateEdgeConfig } from "@/lib/vercel";
-import redis, { getCachedGithubData } from "@/lib/redis";
-import type { Activity } from "react-activity-calendar";
+
 import { revalidateTag } from "next/cache";
+import type { Activity } from "react-activity-calendar";
+import redis, { getCachedGithubData } from "@/lib/redis";
+
 type GitHubContributionsApiResponse = {
   data: Activity[];
 };

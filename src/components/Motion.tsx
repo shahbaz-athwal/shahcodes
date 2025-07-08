@@ -1,4 +1,4 @@
-import { MotionDiv, MotionImage as Image } from "@/lib/motion";
+import { MotionImage as Image, MotionDiv } from "@/lib/motion";
 
 const containerVariants = {
   hidden: { opacity: 0 },

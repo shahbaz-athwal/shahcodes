@@ -1,8 +1,8 @@
-import { motion } from "motion/react";
-import { User } from "lucide-react";
-import { IconAI } from "@/components/ui/ai-icon";
-import ReactMarkdown from "react-markdown";
 import type { Message } from "@ai-sdk/react";
+import { User } from "lucide-react";
+import { motion } from "motion/react";
+import ReactMarkdown from "react-markdown";
+import { IconAI } from "@/components/ui/ai-icon";
 
 interface MessageBubbleProps {
   message: Message;
@@ -53,7 +53,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
               case "tool-invocation":
                 return (
                   <div key={`${message.id}-${i}`} className="font-light italic">
-                    {"calling tool: " + part.toolInvocation.toolName}
+                    {`calling tool: ${part.toolInvocation.toolName}`}
                   </div>
                 );
             }

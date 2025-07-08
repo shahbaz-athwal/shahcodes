@@ -18,6 +18,7 @@ export interface LanyardData {
 export interface LanyardMessage {
   op: number;
   t?: string;
+  // biome-ignore lint: fix later
   d: any;
 }
 

@@ -1,10 +1,10 @@
+import type { Metadata } from "next";
+import WhisperellaBox from "@/app/contact/WhisperellaBox";
+import { MotionChild, MotionParent } from "@/components/Motion";
 import { Header } from "@/components/ui/header";
 import { Title } from "@/components/ui/title";
-import { MotionChild, MotionParent } from "@/components/Motion";
-import WhisperellaBox from "@/app/contact/WhisperellaBox";
-import type { Metadata } from "next";
-import { createMetadata } from "@/lib/metadata";
 import { contacts } from "@/lib/contants";
+import { createMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = createMetadata({
   title: "Contact",

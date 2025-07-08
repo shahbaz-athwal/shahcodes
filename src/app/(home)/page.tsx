@@ -1,12 +1,12 @@
-import { Header } from "@/components/ui/header";
-import Projects from "./Projects";
-import { MotionParent, MotionChild } from "@/components/Motion";
-import { GithubGraph } from "./GithubGraph";
-import Link from "next/link";
-import { getCachedGithubData } from "@/lib/redis";
-import { Suspense } from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { Suspense } from "react";
+import { MotionChild, MotionParent } from "@/components/Motion";
+import { Header } from "@/components/ui/header";
 import { createMetadata } from "@/lib/metadata";
+import { getCachedGithubData } from "@/lib/redis";
+import { GithubGraph } from "./GithubGraph";
+import Projects from "./Projects";
 import { Socials } from "./Socials";
 
 export const metadata: Metadata = createMetadata({

@@ -23,8 +23,9 @@ export const GET = async (request: NextRequest) => {
   return new ImageResponse(
     <div tw="flex flex-col justify-between w-full h-full relative p-16">
       {/* Background Image */}
+      {/* biome-ignore lint: fix later */}
       <img
-        src={backgroundSrc as any}
+        src={backgroundSrc as unknown as string}
         alt="background"
         width={1200}
         height={630}
@@ -45,8 +46,9 @@ export const GET = async (request: NextRequest) => {
 
       {/* Profile Section at Bottom */}
       <div tw="flex items-center z-10 mt-8">
+        {/* biome-ignore lint: fix later */}
         <img
-          src={avatarSrc as any}
+          src={avatarSrc as unknown as string}
           alt="Shahbaz Singh"
           width={80}
           height={80}

@@ -5,8 +5,8 @@ import {
   IconMusic,
   IconPencilBolt,
 } from "@tabler/icons-react";
+import { FaGithub, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import { FaGithub, FaLinkedin, FaXTwitter, FaInstagram } from "react-icons/fa6";
 
 export interface Link {
   name: string;

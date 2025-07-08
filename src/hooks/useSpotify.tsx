@@ -1,14 +1,14 @@
 "use client";
 
+import React, {
+  type ReactNode,
+  useCallback,
+  useContext,
+  useMemo,
+  useReducer,
+} from "react";
 import type { SpotifyData } from "@/types/Lanyard";
 import type { SpotifyPlayedItem } from "@/types/SpotifyRecentlyPlayed";
-import React, {
-  useCallback,
-  useMemo,
-  useContext,
-  useReducer,
-  type ReactNode,
-} from "react";
 
 // Interfaces
 interface SpotifyState {
@@ -79,13 +79,13 @@ export const SpotifyProvider: React.FC<SpotifyProviderProps> = ({
   const setSpotifyListening = useCallback(
     (payload: SpotifyData | null) =>
       dispatch({ type: types.SET_SPOTIFY_LISTENING, payload }),
-    [dispatch],
+    [],
   );
 
   const setSpotifyRecentlyPlayed = useCallback(
     (payload: SpotifyPlayedItem[] | null) =>
       dispatch({ type: types.SET_SPOTIFY_RECENTLY_PLAYED, payload }),
-    [dispatch],
+    [],
   );
 
   // Value Memoization

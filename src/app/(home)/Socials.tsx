@@ -1,5 +1,5 @@
-import { contacts } from "@/lib/contants";
 import Link from "next/link";
+import { contacts } from "@/lib/contants";
 
 export function Socials() {
   return (

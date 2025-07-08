@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { TextGradient } from "@/components/ui/textgradient";
 import type { SpotifyTopArtist } from "@/types/SpotifyTopArtist";
-import Image from "next/image";
 
 interface Props {
   topArtists: SpotifyTopArtist[] | null;

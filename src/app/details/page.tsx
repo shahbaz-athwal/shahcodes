@@ -1,10 +1,10 @@
+import type { Metadata } from "next";
 import { MotionChild, MotionParent } from "@/components/Motion";
 import { Header } from "@/components/ui/header";
-import type { Metadata } from "next";
-import { TechStack } from "./TechStack";
+import { createMetadata } from "@/lib/metadata";
 import { Education } from "./Education";
 import { Experience } from "./Experience";
-import { createMetadata } from "@/lib/metadata";
+import { TechStack } from "./TechStack";
 
 export const metadata: Metadata = createMetadata({
   title: "Details",

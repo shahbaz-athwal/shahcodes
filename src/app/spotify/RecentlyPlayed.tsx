@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -7,8 +8,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import Image from "next/image";
 import { TextGradient } from "@/components/ui/textgradient";
 import { useSpotify } from "@/hooks/useSpotify";
 
@@ -30,11 +29,11 @@ const RecentlyPlayed = () => {
             }}
           >
             <CarouselContent>
-              {recentlyPlayed.map((item, index) => (
-                <CarouselItem key={index} className="w-full">
+              {recentlyPlayed.map((item) => (
+                <CarouselItem key={item.playedAt} className="w-full">
                   <div className="relative mx-3 p-4">
                     <a
-                      href={item.url!}
+                      href={item.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       title={`${item.title} by: ${item.artist}`}
@@ -44,8 +43,8 @@ const RecentlyPlayed = () => {
                         height={400}
                         width={400}
                         priority
-                        src={item.thumbnail!}
-                        alt={item.title!}
+                        src={item.thumbnail}
+                        alt={item.title}
                         className="h-64 w-full rounded-2xl object-cover shadow-md brightness-[0.4] dark:shadow-stone-800/30"
                       />
                       <div className="absolute inset-0 flex flex-col items-center justify-center text-white">

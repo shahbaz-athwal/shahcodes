@@ -1,9 +1,9 @@
+import { IconCode, IconLink } from "@tabler/icons-react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { IconCode, IconLink } from "@tabler/icons-react";
-import { projects, type ProjectCardProps } from "@/lib/contants";
+import { type ProjectCardProps, projects } from "@/lib/contants";
 
 const ProjectCard = ({
   title,

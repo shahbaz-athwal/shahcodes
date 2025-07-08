@@ -16,6 +16,7 @@ export const recentlyPlayed = async (): Promise<SpotifyPlayedItem[] | null> => {
   const { items } = await response.json();
   const data = items
     .map(normalizeRecentlyPlayed)
+    // biome-ignore lint: fix later
     .sort((a: any, b: any) => b.played_at - a.played_at);
 
   return data;
