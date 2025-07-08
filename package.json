@@ -7,9 +7,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "bump-deps": "npx npm-check-updates -u -x 'next eslint-config-next' && pnpm install",
-    "format": "prettier --write ."
+    "bump-deps": "npx npm-check-updates -u -x 'next eslint-config-next' && pnpm install"
   },
   "dependencies": {
     "@ai-sdk/openai": "^1.3.22",
@@ -56,6 +54,7 @@
     "zod": "^3.25.51"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.1.0",
     "@content-collections/core": "^0.9.0",
     "@content-collections/mdx": "^0.2.2",
     "@content-collections/next": "^0.2.6",
@@ -63,12 +62,8 @@
     "@types/node": "^22",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
-    "eslint": "^9.24.0",
-    "eslint-config-next": "15.3.1-canary.15",
-    "fumadocs-core": "^15.4.2",
+    "fumadocs-core": "^15.6.2",
     "postcss": "^8",
-    "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.11",
     "reading-time": "^1.5.0",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.2"
