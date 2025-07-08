@@ -1,6 +1,6 @@
 "use client";
 import { useThemeToggle } from "@/components/ThemeToggle";
-import { Activity, ActivityCalendar } from "react-activity-calendar";
+import { type Activity, ActivityCalendar } from "react-activity-calendar";
 import { MotionDiv } from "@/lib/motion";
 
 type GithubGraphProps = {
@@ -10,7 +10,8 @@ type GithubGraphProps = {
 export const GithubGraph = ({ data }: GithubGraphProps) => {
   const { theme, mounted } = useThemeToggle();
 
-  if (!mounted) return <div className="h-[135px] w-32 opacity-0" aria-hidden="true" />;
+  if (!mounted)
+    return <div className="h-[135px] w-32 opacity-0" aria-hidden="true" />;
 
   return (
     <MotionDiv

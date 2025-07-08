@@ -24,7 +24,12 @@ const itemVariants = {
 
 export function MotionParent({ children }: { children: React.ReactNode }) {
   return (
-    <MotionDiv initial="hidden" animate="visible" variants={containerVariants} className="mx-auto max-w-3xl">
+    <MotionDiv
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="mx-auto max-w-3xl"
+    >
       {children}
     </MotionDiv>
   );
@@ -34,6 +39,14 @@ export function MotionChild({ children }: { children: React.ReactNode }) {
   return <MotionDiv variants={itemVariants}>{children}</MotionDiv>;
 }
 
-export function MotionImage({ src, alt, className }: { src: string; alt: string; className?: string }) {
+export function MotionImage({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
   return <Image src={src} alt={alt} className={className} />;
 }

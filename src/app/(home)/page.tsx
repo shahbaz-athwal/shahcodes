@@ -5,7 +5,7 @@ import { GithubGraph } from "./GithubGraph";
 import Link from "next/link";
 import { getCachedGithubData } from "@/lib/redis";
 import { Suspense } from "react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { Socials } from "./Socials";
 
@@ -31,14 +31,33 @@ export default function Home() {
           A full stack developer based in Canada
         </span>
         <p className="text-lg leading-normal dark:text-zinc-300/70">
-          Senior year computer science student with 2 years of experience in Full Stack Development. Currently, focusing
-          on Backend and DevOps. Proficient in{" "}
-          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">TypeScript</strong>,{" "}
-          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">PostgreSQL</strong>,{" "}
-          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">Next.js</strong>,{" "}
-          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">React</strong>,{" "}
-          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">Docker</strong>, and{" "}
-          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">Node.js</strong>.
+          Senior year computer science student with 2 years of experience in
+          Full Stack Development. Currently, focusing on Backend and DevOps.
+          Proficient in{" "}
+          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">
+            TypeScript
+          </strong>
+          ,{" "}
+          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">
+            PostgreSQL
+          </strong>
+          ,{" "}
+          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">
+            Next.js
+          </strong>
+          ,{" "}
+          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">
+            React
+          </strong>
+          ,{" "}
+          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">
+            Docker
+          </strong>
+          , and{" "}
+          <strong className="rounded bg-zinc-200/50 px-1.5 dark:bg-zinc-700/50">
+            Node.js
+          </strong>
+          .
         </p>
         <Socials />
         <Link
@@ -46,7 +65,9 @@ export default function Home() {
           className="group mt-8 inline-block rounded-full bg-zinc-950 px-8 py-3 font-mono text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-black dark:hover:bg-zinc-200"
         >
           More Information{" "}
-          <span className="ml-1 inline-block font-mono transition-transform group-hover:translate-x-2">→</span>
+          <span className="ml-1 inline-block font-mono transition-transform group-hover:translate-x-2">
+            →
+          </span>
         </Link>
       </MotionChild>
 

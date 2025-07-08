@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Send } from "lucide-react";
-import { FormEvent } from "react";
+import type { FormEvent } from "react";
 
 interface ChatInputProps {
   input: string;

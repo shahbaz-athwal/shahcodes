@@ -1,5 +1,11 @@
-export const updateEdgeConfig = async (key: string, value: number | object | string): Promise<void> => {
-  const endpoint = new URL(`/v1/edge-config/${process.env.EDGE_CONFIG_ID}/items`, "https://api.vercel.com");
+export const updateEdgeConfig = async (
+  key: string,
+  value: number | object | string,
+): Promise<void> => {
+  const endpoint = new URL(
+    `/v1/edge-config/${process.env.EDGE_CONFIG_ID}/items`,
+    "https://api.vercel.com",
+  );
 
   const response = await fetch(endpoint, {
     method: "PATCH",

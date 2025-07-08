@@ -1,4 +1,10 @@
-import { IconBriefcase, IconHome, IconMail, IconMusic, IconPencilBolt } from "@tabler/icons-react";
+import {
+  IconBriefcase,
+  IconHome,
+  IconMail,
+  IconMusic,
+  IconPencilBolt,
+} from "@tabler/icons-react";
 import { MdEmail } from "react-icons/md";
 import { FaGithub, FaLinkedin, FaXTwitter, FaInstagram } from "react-icons/fa6";
 
@@ -123,7 +129,16 @@ export const projects: ProjectCardProps[] = [
     code: "https://github.com/shahbaz-athwal/shahcodes",
     description: "My Personal Portfolio and Blog",
     image: "/og.png",
-    badges: ["Next.js", "Tailwind", "TypeScript", "Redis", "Spotify API", "MDX", "Discord API", "Motion"],
+    badges: [
+      "Next.js",
+      "Tailwind",
+      "TypeScript",
+      "Redis",
+      "Spotify API",
+      "MDX",
+      "Discord API",
+      "Motion",
+    ],
     hidden: false,
   },
   {
@@ -132,7 +147,15 @@ export const projects: ProjectCardProps[] = [
     code: "https://github.com/shahbaz-athwal/acadia-help",
     description: "One Stop Solution for Acadia Students",
     image: "/projects/acadia.png",
-    badges: ["Next.js", "Tailwind", "TypeScript", "PostgreSQL", "ShadCN", "Notion API", "Zod"],
+    badges: [
+      "Next.js",
+      "Tailwind",
+      "TypeScript",
+      "PostgreSQL",
+      "ShadCN",
+      "Notion API",
+      "Zod",
+    ],
     hidden: true,
   },
 ];

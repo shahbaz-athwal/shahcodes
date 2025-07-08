@@ -2,7 +2,7 @@ import { allPosts } from "content-collections";
 import { Mdx } from "@/components/ui/mdx";
 import { notFound } from "next/navigation";
 import { createMetadata } from "@/lib/metadata";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
@@ -10,7 +10,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> => {
   const { slug } = await params;
   const page = allPosts.find((page) => page._meta.path === slug);
 
@@ -25,7 +29,11 @@ export const generateMetadata = async ({ params }: { params: Promise<{ slug: str
   });
 };
 
-export default async function BlogPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const page = allPosts.find((page) => page.slug === slug);
 

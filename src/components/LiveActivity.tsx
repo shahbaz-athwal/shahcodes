@@ -3,11 +3,16 @@ import { useActivity } from "@/hooks/useActivity";
 import { Card } from "@/components/ui/card";
 import { useState, useEffect, useRef } from "react";
 import { MotionParent, MotionChild } from "./Motion";
-import { Activity, SpotifyData } from "@/types/Lanyard";
+import type { Activity, SpotifyData } from "@/types/Lanyard";
 import { useElapsedTime } from "@/hooks/useElapsedTime";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import Link from "next/link";
 
 const CodeActivity = ({ codeData }: { codeData: Activity }) => {
@@ -48,8 +53,12 @@ const CodeActivity = ({ codeData }: { codeData: Activity }) => {
 
         <div className="flex-1 space-y-0.5 overflow-hidden">
           <div className="text-sm font-medium">Cursor</div>
-          <div className="text-xs text-stone-600 dark:text-stone-400">{codeData.details}</div>
-          <div className="text-xs text-stone-600 dark:text-stone-400">{codeData.state}</div>
+          <div className="text-xs text-stone-600 dark:text-stone-400">
+            {codeData.details}
+          </div>
+          <div className="text-xs text-stone-600 dark:text-stone-400">
+            {codeData.state}
+          </div>
           <div className="flex items-center gap-1 font-mono text-[11px] text-stone-500 dark:text-stone-500">
             <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
             {elapsedFormatted}
@@ -66,7 +75,8 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
   const startTime = spotifyData.timestamps.start;
   const endTime = spotifyData.timestamps.end;
 
-  const { elapsedFormatted, totalFormatted, progressPercentage } = useElapsedTime(startTime, endTime);
+  const { elapsedFormatted, totalFormatted, progressPercentage } =
+    useElapsedTime(startTime, endTime);
 
   useEffect(() => {
     if (progressRef.current) {
@@ -131,7 +141,11 @@ const SpotifyActivity = ({ spotifyData }: { spotifyData: SpotifyData }) => {
               <span>{totalFormatted}</span>
             </div>
             <div className="h-1 overflow-hidden rounded-full bg-stone-200 dark:bg-stone-700">
-              <div ref={progressRef} className="h-full bg-stone-500/70 dark:bg-white/70" style={{ width: "0%" }}></div>
+              <div
+                ref={progressRef}
+                className="h-full bg-stone-500/70 dark:bg-white/70"
+                style={{ width: "0%" }}
+              ></div>
             </div>
           </div>
         </div>
@@ -149,7 +163,9 @@ export default function LiveActivity() {
 
   useEffect(() => {
     if (status === "connected" && data) {
-      const hasVsCode = data.activities.find((a) => a.name === "Visual Studio Code" || a.name === "Cursor");
+      const hasVsCode = data.activities.find(
+        (a) => a.name === "Visual Studio Code" || a.name === "Cursor",
+      );
       setCodeData(hasVsCode);
     }
   }, [data, status]);
@@ -160,7 +176,9 @@ export default function LiveActivity() {
 
   return (
     <MotionParent>
-      {(codeData || (data.spotify && pathname !== "/spotify")) && <div className="my-2 font-mono">Live Activity</div>}
+      {(codeData || (data.spotify && pathname !== "/spotify")) && (
+        <div className="my-2 font-mono">Live Activity</div>
+      )}
       {codeData && (
         <MotionChild key="code-activity">
           <CodeActivity codeData={codeData} />

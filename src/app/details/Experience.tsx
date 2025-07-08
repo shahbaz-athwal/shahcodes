@@ -1,7 +1,12 @@
 import Image from "next/image";
 import { experience } from "@/lib/contants";
 import { Card } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export function Experience() {
   return (
@@ -14,12 +19,24 @@ export function Experience() {
           >
             <div className="flex items-start gap-3 sm:mt-1 sm:block">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-3xl bg-stone-100 pt-0.5">
-                <Image width={100} height={100} src={exp.logo} alt={exp.company} className="h-8 w-8" />
+                <Image
+                  width={100}
+                  height={100}
+                  src={exp.logo}
+                  alt={exp.company}
+                  className="h-8 w-8"
+                />
               </div>
               <div className="flex flex-col sm:hidden">
-                <span className="text-base font-semibold text-stone-900 dark:text-stone-100">{exp.role}</span>
-                <span className="text-sm font-medium text-stone-700 dark:text-stone-300">{exp.company}</span>
-                <span className="text-xs font-medium text-stone-600 dark:text-stone-400">{exp.location}</span>
+                <span className="text-base font-semibold text-stone-900 dark:text-stone-100">
+                  {exp.role}
+                </span>
+                <span className="text-sm font-medium text-stone-700 dark:text-stone-300">
+                  {exp.company}
+                </span>
+                <span className="text-xs font-medium text-stone-600 dark:text-stone-400">
+                  {exp.location}
+                </span>
                 <span className="font-mono text-xs font-medium tracking-tight text-stone-600 dark:text-stone-400">
                   {exp.date}
                 </span>

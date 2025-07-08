@@ -1,7 +1,10 @@
-import { SpotifyPlayedItem } from "@/types/SpotifyRecentlyPlayed";
-import { SpotifyTopArtist } from "@/types/SpotifyTopArtist";
+import type { SpotifyPlayedItem } from "@/types/SpotifyRecentlyPlayed";
+import type { SpotifyTopArtist } from "@/types/SpotifyTopArtist";
 
-export const normalizeRecentlyPlayed = ({ track, played_at }: any): SpotifyPlayedItem => ({
+export const normalizeRecentlyPlayed = ({
+  track,
+  played_at,
+}: any): SpotifyPlayedItem => ({
   title: track.name,
   artist: track.artists?.map(({ name }: any) => name).join(", "),
   album: track.album?.name,
@@ -11,7 +14,14 @@ export const normalizeRecentlyPlayed = ({ track, played_at }: any): SpotifyPlaye
   duration: track.duration_ms,
 });
 
-export const normalizeArtists = ({ id, name, popularity, genres, external_urls, images }: any): SpotifyTopArtist => ({
+export const normalizeArtists = ({
+  id,
+  name,
+  popularity,
+  genres,
+  external_urls,
+  images,
+}: any): SpotifyTopArtist => ({
   id,
   name,
   popularity,

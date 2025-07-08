@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import { ChatInput } from "./chat-input";
 import { MessageBubble } from "./message-bubble";
 import type { Message } from "@ai-sdk/react";
-import { RefObject, FormEvent } from "react";
+import type { RefObject, FormEvent } from "react";
 import { Button } from "../ui/button";
 import { X } from "lucide-react";
 import { TypingIndicator } from "../ui/typing-dots";
@@ -45,7 +45,9 @@ export function ChatInterface({
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-stone-900 dark:bg-stone-100">
                 <IconAI className="h-4 w-4 text-white dark:text-stone-900" />
               </div>
-              <CardTitle className="text-base font-medium text-stone-900 dark:text-stone-100">Zero AI</CardTitle>
+              <CardTitle className="text-base font-medium text-stone-900 dark:text-stone-100">
+                Zero AI
+              </CardTitle>
             </div>
             <Button
               variant="ghost"
@@ -63,7 +65,9 @@ export function ChatInterface({
               {messages.length === 0 && (
                 <div className="py-8 text-center text-stone-500 dark:text-stone-400">
                   <IconAI className="mx-auto mb-3 h-10 w-10 text-stone-300 dark:text-stone-600" />
-                  <p className="text-base">Hey! Ask me anything about Shahbaz</p>
+                  <p className="text-base">
+                    Hey! Ask me anything about Shahbaz
+                  </p>
                 </div>
               )}
 
@@ -79,7 +83,11 @@ export function ChatInterface({
             </div>
           </ScrollArea>
         </CardContent>
-        <ChatInput input={input} onInputChange={onInputChange} onSubmit={onSubmit} />
+        <ChatInput
+          input={input}
+          onInputChange={onInputChange}
+          onSubmit={onSubmit}
+        />
       </Card>
     </motion.div>
   );

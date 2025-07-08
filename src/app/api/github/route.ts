@@ -12,7 +12,9 @@ export const dynamic = "force-dynamic";
 
 export const GET = async (): Promise<Response> => {
   try {
-    const response = await fetch("https://github.vineet.pro/api/shahbaz-athwal");
+    const response = await fetch(
+      "https://github.vineet.pro/api/shahbaz-athwal",
+    );
 
     const data = (await response.json()) as GitHubContributionsApiResponse;
 

@@ -23,7 +23,9 @@ const Location = async () => {
   return <LocationSection location={location} />;
 };
 
-export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   const posthog = PostHogClient();
   const flags = await posthog.getAllFlags("anon");
   const isBlogEnabled = flags["blog-page"];
@@ -49,7 +51,11 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
             <SpotifyProvider>
               <main className="flex h-screen flex-col items-center justify-between overflow-y-auto">
                 <div className="w-full grow">
-                  <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange>
+                  <ThemeProvider
+                    attribute="class"
+                    defaultTheme="dark"
+                    disableTransitionOnChange
+                  >
                     <TopBar isBlogEnabled={isBlogEnabled as boolean} />
                     <div className="mx-auto mt-16 max-w-2xl p-4 sm:mt-20 md:p-6">
                       <SpotifyPrefetch />

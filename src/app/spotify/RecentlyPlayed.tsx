@@ -1,6 +1,12 @@
 "use client";
 import React from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import { TextGradient } from "@/components/ui/textgradient";
@@ -19,7 +25,8 @@ const RecentlyPlayed = () => {
           <div
             className="relative"
             style={{
-              maskImage: "linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)",
+              maskImage:
+                "linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%)",
             }}
           >
             <CarouselContent>

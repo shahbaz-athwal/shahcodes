@@ -28,10 +28,17 @@ export const CopyButton = ({ text, className }: CopyButtonProps) => {
       variant="ghost"
       size="icon"
       onClick={handleCopy}
-      className={cn("bg-secondary/50 hover:bg-secondary/80 h-8 w-8 rounded-md transition-colors", className)}
+      className={cn(
+        "bg-secondary/50 hover:bg-secondary/80 h-8 w-8 rounded-md transition-colors",
+        className,
+      )}
       title={copied ? "Copied!" : "Copy code"}
     >
-      {copied ? <IconCheck className="h-4 w-4" /> : <IconCopy className="h-4 w-4" />}
+      {copied ? (
+        <IconCheck className="h-4 w-4" />
+      ) : (
+        <IconCopy className="h-4 w-4" />
+      )}
     </Button>
   );
 };

@@ -16,4 +16,6 @@ const person: WithContext<Person> = {
   alumniOf: "Acadia University",
 };
 
-export const JsonLd = () => <script type="application/ld+json">{JSON.stringify(person)}</script>;
+export const JsonLd = () => (
+  <script type="application/ld+json">{JSON.stringify(person)}</script>
+);

@@ -20,7 +20,10 @@ const a = (props: HTMLProps<HTMLAnchorElement>) => {
 };
 
 const img = (properties: HTMLProps<HTMLImageElement>) => {
-  if (typeof properties.src !== "string" || typeof properties.alt !== "string") {
+  if (
+    typeof properties.src !== "string" ||
+    typeof properties.alt !== "string"
+  ) {
     throw new TypeError("Image src and alt are required");
   }
 
@@ -70,7 +73,9 @@ const Pre = ({ children, ...props }: HTMLProps<HTMLPreElement>) => {
 
 const Callout = ({ children }: { children: ReactNode }) => (
   <div className="overflow-hidden rounded-lg bg-gradient-to-tr from-white/0 to-white/20 p-px">
-    <div className="rounded-[7px] bg-gradient-to-tr from-black to-neutral-950 p-6">{children}</div>
+    <div className="rounded-[7px] bg-gradient-to-tr from-black to-neutral-950 p-6">
+      {children}
+    </div>
   </div>
 );
 

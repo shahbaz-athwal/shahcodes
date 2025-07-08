@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { topArtists } from "@/actions/topArtists";
 import { unstable_cache as cache } from "next/cache";
 import { MotionChild, MotionParent } from "@/components/Motion";

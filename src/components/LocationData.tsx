@@ -15,7 +15,11 @@ const getCountryFlag = (countryCode: string) => {
     .join("");
 };
 
-export const LocationSection = ({ location }: { location: LocationResponse | null }) => {
+export const LocationSection = ({
+  location,
+}: {
+  location: LocationResponse | null;
+}) => {
   if (!location) {
     location = {
       city: "Amritsar",

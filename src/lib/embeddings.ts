@@ -11,7 +11,9 @@ const generateChunks = (input: string): string[] => {
     .filter((i) => i !== "");
 };
 
-export const generateEmbeddings = async (value: string): Promise<Array<{ embedding: number[]; content: string }>> => {
+export const generateEmbeddings = async (
+  value: string,
+): Promise<Array<{ embedding: number[]; content: string }>> => {
   const chunks = generateChunks(value);
   const { embeddings } = await embedMany({
     model: embeddingModel,

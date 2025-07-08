@@ -5,7 +5,11 @@ const Footer = () => {
         &copy; {new Date().getFullYear()} {"/"} Shahbaz Singh
       </p>
 
-      <a href="https://github.com/shahbaz-athwal/shahcodes" target="_blank">
+      <a
+        href="https://github.com/shahbaz-athwal/shahcodes"
+        target="_blank"
+        rel="noopener"
+      >
         View Source
       </a>
     </footer>

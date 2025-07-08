@@ -1,30 +1,46 @@
 "use client";
-import React, { useState } from "react";
 import { IconMenu2, IconX } from "@tabler/icons-react";
-import { cn } from "@/lib/utils";
-import { MotionDiv } from "@/lib/motion";
 import Link from "next/link";
-import { HoveredLink, MenuItem, Menu } from "@/components/ui/mobile-menu";
-import { Link as LinkType } from "@/lib/contants";
+import React, { useState } from "react";
+import { HoveredLink, Menu, MenuItem } from "@/components/ui/mobile-menu";
+import type { Link as LinkType } from "@/lib/contants";
+import { MotionDiv } from "@/lib/motion";
+import { cn } from "@/lib/utils";
 
 const baseMenuClass =
   "h-fit rounded-full px-4 py-2 backdrop-blur-sm transition-opacity bg-black/10 dark:bg-white/15 transition-colors duration-300 ease-in-out";
 
-export const DesktopMenuBar = ({ path, links }: { path: string; links: LinkType[] }) => {
+export const DesktopMenuBar = ({
+  path,
+  links,
+}: {
+  path: string;
+  links: LinkType[];
+}) => {
   return (
     <div className={cn(baseMenuClass, "mx-auto hidden w-fit md:block")}>
       <ul className="flex w-fit items-center justify-between gap-1 sm:gap-2">
         {links.map((link) => {
-          const isActive = link.href === "/blog" ? path.startsWith(link.href) : path === link.href;
+          const isActive =
+            link.href === "/blog"
+              ? path.startsWith(link.href)
+              : path === link.href;
           return (
-            <li key={link.name} className="relative flex items-center justify-center">
+            <li
+              key={link.name}
+              className="relative flex items-center justify-center"
+            >
               <Link
                 className={cn(
                   "flex items-center justify-center px-3 py-1 text-[13px] transition sm:text-[15px]",
                   {
-                    "text-stone-100 hover:scale-105 hover:text-stone-100 dark:text-stone-900": isActive,
+                    "text-stone-100 hover:scale-105 hover:text-stone-100 dark:text-stone-900":
+                      isActive,
                   },
-                  { "hover:text-primary text-stone-800 dark:text-stone-300": !isActive }
+                  {
+                    "hover:text-primary text-stone-800 dark:text-stone-300":
+                      !isActive,
+                  },
                 )}
                 href={link.href}
               >
@@ -52,21 +68,42 @@ export const DesktopMenuBar = ({ path, links }: { path: string; links: LinkType[
   );
 };
 
-export const MobileDock = ({ path, links }: { path: string; links: LinkType[] }) => {
+export const MobileDock = ({
+  path,
+  links,
+}: {
+  path: string;
+  links: LinkType[];
+}) => {
   return (
-    <div className={cn(baseMenuClass, "fixed bottom-4 left-1/2 z-50 block -translate-x-1/2 md:hidden")}>
+    <div
+      className={cn(
+        baseMenuClass,
+        "fixed bottom-4 left-1/2 z-50 block -translate-x-1/2 md:hidden",
+      )}
+    >
       <ul className="flex w-[250px] items-center justify-between gap-2">
         {links.map((link) => {
-          const isActive = link.href === "/blog" ? path.startsWith(link.href) : path === link.href;
+          const isActive =
+            link.href === "/blog"
+              ? path.startsWith(link.href)
+              : path === link.href;
           return (
-            <li key={link.name} className="relative flex items-center justify-center">
+            <li
+              key={link.name}
+              className="relative flex items-center justify-center"
+            >
               <Link
                 className={cn(
                   "flex h-9 w-9 items-center justify-center rounded-full transition",
                   {
-                    "text-white hover:scale-105 hover:text-gray-100 dark:text-black dark:hover:text-zinc-950": isActive,
+                    "text-white hover:scale-105 hover:text-gray-100 dark:text-black dark:hover:text-zinc-950":
+                      isActive,
                   },
-                  { "hover:text-primary text-zinc-600 dark:text-zinc-400": !isActive }
+                  {
+                    "hover:text-primary text-zinc-600 dark:text-zinc-400":
+                      !isActive,
+                  },
                 )}
                 href={link.href}
               >
@@ -105,7 +142,11 @@ export const MobileMenu = ({ links }: { links: LinkType[] }) => {
           active={isOpen ? "menu" : null}
           item={
             <div>
-              {isOpen ? <IconX size={28} className="opacity-70" /> : <IconMenu2 size={28} className="opacity-70" />}
+              {isOpen ? (
+                <IconX size={28} className="opacity-70" />
+              ) : (
+                <IconMenu2 size={28} className="opacity-70" />
+              )}
             </div>
           }
         >

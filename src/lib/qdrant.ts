@@ -8,7 +8,7 @@ const qdClient = new QdrantClient({
 
 export const storeEmbeddings = async (
   embeddings: Array<{ embedding: number[]; content: string }>,
-  collectionName: string = "embeddings"
+  collectionName: string = "embeddings",
 ) => {
   try {
     if (embeddings.length === 0) {
@@ -17,7 +17,9 @@ export const storeEmbeddings = async (
 
     // Check if collection exists, create if not
     const collections = await qdClient.getCollections();
-    const collectionExists = collections.collections.some((collection) => collection.name === collectionName);
+    const collectionExists = collections.collections.some(
+      (collection) => collection.name === collectionName,
+    );
     if (!collectionExists) {
       await qdClient.createCollection(collectionName, {
         vectors: {

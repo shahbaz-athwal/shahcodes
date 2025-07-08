@@ -1,7 +1,7 @@
 import redis, { getCachedLocationData } from "@/lib/redis";
 import { geolocation } from "@vercel/functions";
 import { userAgent } from "next/server";
-import { NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 import { revalidateTag } from "next/cache";
 export async function POST(req: NextRequest) {
   try {
@@ -13,7 +13,9 @@ export async function POST(req: NextRequest) {
     const { isBot } = userAgent(req);
 
     if (!country || !city || !region || isBot) {
-      return new Response("Missing location data or bot detected", { status: 400 });
+      return new Response("Missing location data or bot detected", {
+        status: 400,
+      });
     }
 
     const locationData = {

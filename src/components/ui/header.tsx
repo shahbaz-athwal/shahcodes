@@ -13,7 +13,16 @@ const classNames = {
   tertiary: "font-semibold text-xl tracking-tight",
 };
 
-export function Header({ children, as = "span", variant = "primary", className }: Props) {
+export function Header({
+  children,
+  as = "span",
+  variant = "primary",
+  className,
+}: Props) {
   const Component = as;
-  return <Component className={cn(classNames[variant], className)}>{children}</Component>;
+  return (
+    <Component className={cn(classNames[variant], className)}>
+      {children}
+    </Component>
+  );
 }

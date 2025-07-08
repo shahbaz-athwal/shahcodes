@@ -8,7 +8,9 @@ export const LocationUpdater = () => {
   useEffect(() => {
     if (!hasUpdated) {
       setHasUpdated(true);
-      fetch("/api/location", { method: "POST" }).catch((err) => console.error("Failed to update location:", err));
+      fetch("/api/location", { method: "POST" }).catch((err) =>
+        console.error("Failed to update location:", err),
+      );
     }
   }, [hasUpdated]);
 

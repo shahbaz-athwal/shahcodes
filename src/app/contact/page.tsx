@@ -2,7 +2,7 @@ import { Header } from "@/components/ui/header";
 import { Title } from "@/components/ui/title";
 import { MotionChild, MotionParent } from "@/components/Motion";
 import WhisperellaBox from "@/app/contact/WhisperellaBox";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { createMetadata } from "@/lib/metadata";
 import { contacts } from "@/lib/contants";
 
@@ -21,8 +21,9 @@ function Page() {
         </Header>
         <section className="py-8">
           <p className="mb-4 text-lg">
-            If you&apos;d like to get in touch, you can reach me using the following methods. I am open to freelance
-            projects and collaborations.
+            If you&apos;d like to get in touch, you can reach me using the
+            following methods. I am open to freelance projects and
+            collaborations.
           </p>
           <MotionChild>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -32,7 +33,11 @@ function Page() {
                     <Title as="h2" variant="tertiary">
                       {contactMethod.method}
                     </Title>
-                    <a href={contactMethod.link} target="_blank" className="text-stone-600 dark:text-stone-500">
+                    <a
+                      href={contactMethod.link}
+                      target="_blank"
+                      className="text-stone-600 dark:text-stone-500"
+                    >
                       {contactMethod.label}
                     </a>
                   </div>

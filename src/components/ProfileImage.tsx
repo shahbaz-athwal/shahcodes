@@ -13,7 +13,10 @@ export const ProfileImage = ({ className }: { className?: string }) => {
           quality={90}
           priority={true}
           alt="Shahbaz Singh"
-          className={cn("h-[70px] w-[70px] rounded-full sm:h-[90px] sm:w-[90px]", className)}
+          className={cn(
+            "h-[70px] w-[70px] rounded-full sm:h-[90px] sm:w-[90px]",
+            className,
+          )}
         />
       </Link>
     </div>

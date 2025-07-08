@@ -16,7 +16,13 @@ const author: Metadata["authors"] = {
 const publisher = "Shahbaz Singh";
 const twitterHandle = "@shahcodes";
 
-export const createMetadata = ({ title, description, ogText, image, ...properties }: MetadataGenerator): Metadata => {
+export const createMetadata = ({
+  title,
+  description,
+  ogText,
+  image,
+  ...properties
+}: MetadataGenerator): Metadata => {
   const parsedTitle = `${title} - ${applicationName}`;
 
   const defaultMetadata: Metadata = {

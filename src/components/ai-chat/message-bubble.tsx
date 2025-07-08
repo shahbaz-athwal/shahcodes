@@ -17,7 +17,9 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       transition={{ duration: 0.15 }}
       className={`mb-3 flex gap-3 ${message.role === "user" ? "justify-end" : "justify-start"}`}
     >
-      <div className={`flex max-w-[90%] gap-2 ${message.role === "user" ? "flex-row-reverse" : ""}`}>
+      <div
+        className={`flex max-w-[90%] gap-2 ${message.role === "user" ? "flex-row-reverse" : ""}`}
+      >
         <div
           className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full ${
             message.role === "user"
@@ -41,7 +43,13 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           {message.parts?.map((part, i) => {
             switch (part.type) {
               case "text":
-                return <MessageText key={`${message.id}-${i}`} part={part} role={message.role} />;
+                return (
+                  <MessageText
+                    key={`${message.id}-${i}`}
+                    part={part}
+                    role={message.role}
+                  />
+                );
               case "tool-invocation":
                 return (
                   <div key={`${message.id}-${i}`} className="font-light italic">
@@ -63,7 +71,8 @@ interface MessageTextProps {
 
 function MessageText({ part, role }: MessageTextProps) {
   const getProseClasses = () => {
-    const baseClasses = "prose prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent max-w-none text-sm leading-relaxed";
+    const baseClasses =
+      "prose prose-pre:p-0 prose-pre:m-0 prose-pre:bg-transparent max-w-none text-sm leading-relaxed";
 
     if (role === "user") {
       return `${baseClasses} prose-headings:text-white prose-p:text-white prose-strong:text-white prose-em:text-white prose-ul:text-white prose-ol:text-white prose-li:text-white prose-a:text-blue-300 prose-code:text-white dark:prose-headings:text-stone-900 dark:prose-p:text-stone-900 dark:prose-strong:text-stone-900 dark:prose-em:text-stone-900 dark:prose-ul:text-stone-900 dark:prose-ol:text-stone-900 dark:prose-li:text-stone-900 dark:prose-a:text-blue-600 dark:prose-code:text-stone-900`;

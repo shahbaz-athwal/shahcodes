@@ -11,12 +11,26 @@ import { FaSpotify } from "react-icons/fa";
 import { Card } from "@/components/ui/card";
 
 const PlayerAnimation = () => {
-  return <Lottie className="invert dark:invert-0" loop animationData={PlayerJson} play />;
+  return (
+    <Lottie
+      className="invert dark:invert-0"
+      loop
+      animationData={PlayerJson}
+      play
+    />
+  );
 };
 
-const ProgressBar = ({ startTime, endTime }: { startTime: number; endTime: number }) => {
+const ProgressBar = ({
+  startTime,
+  endTime,
+}: {
+  startTime: number;
+  endTime: number;
+}) => {
   const progressRef = useRef<HTMLDivElement>(null);
-  const { elapsedFormatted, totalFormatted, progressPercentage } = useElapsedTime(startTime, endTime);
+  const { elapsedFormatted, totalFormatted, progressPercentage } =
+    useElapsedTime(startTime, endTime);
 
   useEffect(() => {
     if (progressRef.current) {
@@ -56,7 +70,9 @@ const SpotifyPlayer = () => {
               <FaSpotify className="h-24 w-24 rounded-full bg-black text-green-500 opacity-80" />
               <div className="flex flex-col items-center justify-center sm:h-full">
                 <div className="text-center md:text-left">
-                  <p className="text-muted-foreground font-mono text-lg font-extrabold">Not Playing</p>
+                  <p className="text-muted-foreground font-mono text-lg font-extrabold">
+                    Not Playing
+                  </p>
                 </div>
               </div>
             </div>
@@ -82,11 +98,18 @@ const SpotifyPlayer = () => {
               <div className="w-full flex-1">
                 <div className="flex flex-col">
                   <div className="flex flex-col space-y-0.5 text-left">
-                    <p className="text-primary text-lg font-bold">{listening.song}</p>
-                    <p className="text-muted-foreground text-sm">{listening.artist}</p>
+                    <p className="text-primary text-lg font-bold">
+                      {listening.song}
+                    </p>
+                    <p className="text-muted-foreground text-sm">
+                      {listening.artist}
+                    </p>
                   </div>
                   <div className="mt-3 sm:mt-5">
-                    <ProgressBar startTime={listening.timestamps.start} endTime={listening.timestamps.end} />
+                    <ProgressBar
+                      startTime={listening.timestamps.start}
+                      endTime={listening.timestamps.end}
+                    />
                     <div className="mt- flex justify-center">
                       <PlayerAnimation />
                     </div>

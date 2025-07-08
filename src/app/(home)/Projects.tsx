@@ -5,12 +5,23 @@ import { Card } from "@/components/ui/card";
 import { IconCode, IconLink } from "@tabler/icons-react";
 import { projects, type ProjectCardProps } from "@/lib/contants";
 
-const ProjectCard = ({ title, description, href, code, image, badges }: ProjectCardProps) => {
+const ProjectCard = ({
+  title,
+  description,
+  href,
+  code,
+  image,
+  badges,
+}: ProjectCardProps) => {
   return (
     <Card className="mx-2 flex h-full w-fit flex-col space-y-6 p-6 sm:p-8 md:mx-0 md:p-6 xl:p-8">
       <div>
-        <h3 className="text-[18px] font-extrabold text-stone-900 sm:text-lg dark:text-stone-100">{title}</h3>
-        <p className="text-base text-stone-600 sm:text-[17px] dark:text-stone-300">{description}</p>
+        <h3 className="text-[18px] font-extrabold text-stone-900 sm:text-lg dark:text-stone-100">
+          {title}
+        </h3>
+        <p className="text-base text-stone-600 sm:text-[17px] dark:text-stone-300">
+          {description}
+        </p>
       </div>
       <a href={href || code} target="_blank">
         <div className="w-fit overflow-hidden rounded-2xl shadow-xl dark:shadow-none">

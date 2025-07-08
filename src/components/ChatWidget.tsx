@@ -7,8 +7,17 @@ import { ChatButton } from "./ai-chat/chat-trigger";
 import { ChatInterface } from "./ai-chat/chat-interface";
 
 export default function ChatWidget() {
-  const { isOpen, status, messages, input, messagesEndRef, toggleChat, closeChat, handleInputChange, handleSubmit } =
-    useChatWidget();
+  const {
+    isOpen,
+    status,
+    messages,
+    input,
+    messagesEndRef,
+    toggleChat,
+    closeChat,
+    handleInputChange,
+    handleSubmit,
+  } = useChatWidget();
 
   const isChatWidgetEnabled = useFeatureFlagEnabled("chat-widget");
 
@@ -19,7 +28,9 @@ export default function ChatWidget() {
   return (
     <>
       {/* Chat Widget Button */}
-      <AnimatePresence>{!isOpen && <ChatButton onClick={toggleChat} />}</AnimatePresence>
+      <AnimatePresence>
+        {!isOpen && <ChatButton onClick={toggleChat} />}
+      </AnimatePresence>
 
       {/* Chat Interface */}
       <AnimatePresence>

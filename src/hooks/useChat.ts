@@ -3,9 +3,10 @@ import { useChat as useAIChat } from "@ai-sdk/react";
 
 export function useChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, input, handleInputChange, handleSubmit, status } = useAIChat({
-    maxSteps: 4,
-  });
+  const { messages, input, handleInputChange, handleSubmit, status } =
+    useAIChat({
+      maxSteps: 4,
+    });
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const toggleChat = () => setIsOpen((prev) => !prev);

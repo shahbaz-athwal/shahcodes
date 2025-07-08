@@ -21,8 +21,12 @@ export function Education() {
             <span className="text-base font-semibold text-stone-900 dark:text-stone-100">
               Bachelors of Computer Science
             </span>
-            <span className="text-sm font-medium text-stone-700 dark:text-stone-300">Acadia University</span>
-            <span className="text-xs font-medium text-stone-600 dark:text-stone-400">Wolfville, NS</span>
+            <span className="text-sm font-medium text-stone-700 dark:text-stone-300">
+              Acadia University
+            </span>
+            <span className="text-xs font-medium text-stone-600 dark:text-stone-400">
+              Wolfville, NS
+            </span>
             <span className="font-mono text-xs font-medium tracking-tight text-stone-600 dark:text-stone-400">
               September 2022 → May 2026
             </span>
@@ -40,7 +44,9 @@ export function Education() {
           </span>
 
           {/* Desktop only: Location and date */}
-          <span className="hidden text-sm font-medium text-stone-600 sm:block dark:text-stone-400">Wolfville, NS</span>
+          <span className="hidden text-sm font-medium text-stone-600 sm:block dark:text-stone-400">
+            Wolfville, NS
+          </span>
           <span className="mt-2 hidden font-mono text-sm font-medium tracking-tight text-stone-600 sm:block dark:text-stone-400">
             September 2022 → May 2026
           </span>

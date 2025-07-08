@@ -1,5 +1,5 @@
 import { TextGradient } from "@/components/ui/textgradient";
-import { SpotifyTopArtist } from "@/types/SpotifyTopArtist";
+import type { SpotifyTopArtist } from "@/types/SpotifyTopArtist";
 import Image from "next/image";
 
 interface Props {
@@ -14,7 +14,12 @@ export default function TopArtists({ topArtists }: Props) {
       </h1>
       <div className="relative mx-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:-ml-[10%] xl:w-[120%] 2xl:-ml-[20%] 2xl:w-[140%]">
         {topArtists?.map((artist) => (
-          <a href={artist.url} target="_blank" key={artist.id} title={artist.name}>
+          <a
+            href={artist.url}
+            target="_blank"
+            key={artist.id}
+            title={artist.name}
+          >
             <div className="relative">
               <Image
                 width={400}
@@ -25,7 +30,9 @@ export default function TopArtists({ topArtists }: Props) {
                 className="h-64 w-full rounded-2xl object-cover brightness-[0.4] lg:h-80"
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-xl font-semibold text-white">{artist.name}</span>
+                <span className="text-xl font-semibold text-white">
+                  {artist.name}
+                </span>
               </div>
             </div>
           </a>

@@ -1,7 +1,7 @@
 "use server";
 import { normalizeRecentlyPlayed } from "@/lib/normalizer";
 import { getRecentlyPlayed } from "@/lib/spotify";
-import { SpotifyPlayedItem } from "@/types/SpotifyRecentlyPlayed";
+import type { SpotifyPlayedItem } from "@/types/SpotifyRecentlyPlayed";
 
 export const recentlyPlayed = async (): Promise<SpotifyPlayedItem[] | null> => {
   const response = await getRecentlyPlayed();
@@ -14,7 +14,9 @@ export const recentlyPlayed = async (): Promise<SpotifyPlayedItem[] | null> => {
     return null;
   }
   const { items } = await response.json();
-  const data = items.map(normalizeRecentlyPlayed).sort((a: any, b: any) => b.played_at - a.played_at);
+  const data = items
+    .map(normalizeRecentlyPlayed)
+    .sort((a: any, b: any) => b.played_at - a.played_at);
 
   return data;
 };

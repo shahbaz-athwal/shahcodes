@@ -1,5 +1,5 @@
 "use client";
-import { useState, FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { IconLoader2, IconCheck } from "@tabler/icons-react";
@@ -23,16 +23,19 @@ export default function WhisperellaBox() {
     setError("");
 
     try {
-      const response = await fetch("https://whisperella.shahcodes.in/api/sendmessage", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://whisperella.shahcodes.in/api/sendmessage",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            content: message,
+            username: "shahbazathwal2107",
+          }),
         },
-        body: JSON.stringify({
-          content: message,
-          username: "shahbazathwal2107",
-        }),
-      });
+      );
 
       if (!response.ok) {
         throw new Error("Failed to send message");
@@ -56,7 +59,9 @@ export default function WhisperellaBox() {
         <Separator className="my-4 w-5/12 rounded bg-stone-300 dark:bg-stone-500/50" />
       </div>
 
-      <p className="my-4 text-2xl font-bold text-balance">Leave an anonymous message</p>
+      <p className="my-4 text-2xl font-bold text-balance">
+        Leave an anonymous message
+      </p>
 
       <form onSubmit={handleSubmit} className="mx-1 space-y-6">
         <div>

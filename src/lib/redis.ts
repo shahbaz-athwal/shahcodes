@@ -1,7 +1,7 @@
-import { LocationResponse } from "@/components/LocationData";
+import type { LocationResponse } from "@/components/LocationData";
 import { Redis } from "@upstash/redis";
 import { unstable_cache as cache } from "next/cache";
-import { Activity } from "react-activity-calendar";
+import type { Activity } from "react-activity-calendar";
 
 const redis = new Redis({
   url: process.env.UPSTASH_REDIS_REST_URL!,
@@ -13,7 +13,7 @@ export const getCachedGithubData = cache(
     return (await redis.get("github")) as Activity[] | null;
   },
   ["github-data"],
-  { tags: ["github"] }
+  { tags: ["github"] },
 );
 
 export const getCachedLocationData = cache(
@@ -21,7 +21,7 @@ export const getCachedLocationData = cache(
     return (await redis.get("lastLocation")) as LocationResponse | null;
   },
   ["location-data"],
-  { tags: ["location"] }
+  { tags: ["location"] },
 );
 
 export default redis;
