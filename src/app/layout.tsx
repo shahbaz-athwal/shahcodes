@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Script from "next/script";
 import ChatWidget from "@/components/ChatWidget";
 import Footer from "@/components/Footer";
 import LiveActivity from "@/components/LiveActivity";
