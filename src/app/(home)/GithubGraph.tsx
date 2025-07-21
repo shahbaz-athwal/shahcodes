@@ -42,11 +42,7 @@ export const GithubGraph = ({ data }: GithubGraphProps) => {
         renderBlock={(block, activity) => {
           return (
             <Tooltip>
-              <TooltipTrigger asChild>
-                {cloneElement(block, {
-                  className: "cursor-pointer",
-                })}
-              </TooltipTrigger>
+              <TooltipTrigger asChild>{cloneElement(block, {})}</TooltipTrigger>
               <TooltipContent>
                 <div className="text-center">
                   {activity.count}{" "}
