@@ -17,6 +17,10 @@ import SpotifyPrefetch from "./spotify/SpotifyFetcher";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export const metadata = {
+  metadataBase: new URL("https://shahcodes.in"),
+};
+
 const Location = async () => {
   const location = await getCachedLocationData();
   return <LocationSection location={location} />;
