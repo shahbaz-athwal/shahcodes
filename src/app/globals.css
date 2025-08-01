@@ -2,12 +2,9 @@
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 
-/* ===== CUSTOM VARIANTS ===== */
 @custom-variant dark (&:is(.dark *));
 
-/* ===== THEME CONFIGURATION ===== */
 @theme {
-  /* Color Variables */
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
@@ -35,17 +32,13 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  /* Border Radius */
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
-  /* Animations */
   --animate-text-gradient: textGradient 5s ease infinite;
 }
 
-/* ===== BASE LAYER ===== */
-/* CSS Variables for Light/Dark Themes */
 :root {
   --background: 0 0% 100%;
   --foreground: 240 10% 3.9%;
@@ -99,7 +92,6 @@
   ::file-selector-button {
     border-color: var(--color-border, currentcolor);
   }
-  /* Custom Scrollbar Styles */
   ::-webkit-scrollbar {
     @apply h-2 w-2;
   }
@@ -141,7 +133,6 @@
     content: attr(title);
     @apply text-muted-foreground mb-0 block border-b p-3 text-xs;
   }
-  /* Code block copy button styles */
   .code-block-wrapper {
     @apply relative;
   }
@@ -151,7 +142,6 @@
   }
 }
 
-/* ===== KEYFRAMES ===== */
 @keyframes textGradient {
   0%,
   100% {
@@ -163,4 +153,3 @@
     background-position: right center;
   }
 }
-

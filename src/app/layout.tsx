@@ -51,7 +51,12 @@ export default async function RootLayout({
       >
         <PostHogProvider>
           <SpotifyProvider>
-            <main className="flex h-screen flex-col items-center justify-between overflow-y-auto">
+            <main
+              className="flex h-screen flex-col items-center justify-between overflow-y-auto"
+              style={{
+                scrollbarGutter: "stable",
+              }}
+            >
               <div className="w-full grow">
                 <ThemeProvider attribute="class" defaultTheme="dark">
                   <TopBar isBlogEnabled={isBlogEnabled as boolean} />
