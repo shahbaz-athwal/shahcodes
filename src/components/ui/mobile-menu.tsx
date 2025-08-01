@@ -8,7 +8,7 @@ const transition = {
   mass: 0.5,
   damping: 11.5,
   stiffness: 150,
-};
+} as const;
 
 export const MenuItem = ({
   setActive,
