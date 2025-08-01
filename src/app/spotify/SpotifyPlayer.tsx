@@ -1,14 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import { FaSpotify } from "react-icons/fa";
-import Lottie from "react-lottie-player";
 import { Card } from "@/components/ui/card";
 import { TextGradient } from "@/components/ui/textgradient";
 import { useElapsedTime } from "@/hooks/useElapsedTime";
 import { useSpotify } from "@/hooks/useSpotify";
 import PlayerJson from "@/lib/player.json";
+
+const Lottie = dynamic(() => import("react-lottie-player"), {
+  ssr: false,
+});
 
 const PlayerAnimation = () => {
   return (
