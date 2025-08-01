@@ -17,6 +17,7 @@ const nextConfig: NextConfig = {
         hostname: "cdn.discordapp.com",
       },
     ],
+    qualities: [100, 90, 80],
   },
   async rewrites() {
     return [
